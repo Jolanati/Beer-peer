@@ -1,6 +1,8 @@
 # ── Large data files ─────────────────────────────────────────────────────────
 wine-dine/data/food-101/
 wine-dine/data/food-101.tar.gz
+wine-dine/data/all_dataset.jsonl
+wine-dine/data/data/
 
 # ── Model weights / large downloads ──────────────────────────────────────────
 # Google News Word2Vec base model (~1.6 GB), downloaded by gensim

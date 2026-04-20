@@ -1,14 +1,14 @@
-# Beer Peer — Implementation Plan
+# Wine Peer — Implementation Plan
 
 ## Step-by-step reference
 
-> **Architecture in one sentence:** CNN classifies a food photo ? food label ? lookup table ? 2-3 beer styles ? BiLSTM retrieves flavor language per style; joint model learns food-beer compatibility from (image embedding, review embedding) pairs supervised by the lookup table.
+> **Architecture in one sentence:** CNN classifies a food photo → food label → food flavor table (complement / contrast / balance keyword sets in wine vocabulary) → Word2Vec cosine similarity → 3 grape variety recommendations → BiLSTM encoder retrieves the most representative real Vivino review per grape + highest-rated wine of that grape; joint model learns food-wine compatibility from (CNN image embedding, BiLSTM review embedding) pairs.
 
 ---
 
 ## Product recap
 
-A user photographs their food. Beer Peer returns three beer style recommendations, each with flavor language written by real beer drinkers. Three independent components: a CNN that sees the food, a BiLSTM that reads beer reviews, and a lookup table that connects them. The joint model (+10 pts) learns to generalize that connection — scoring food-beer pairs the lookup table never explicitly covered.
+A user photographs their food. Wine Peer returns three wine recommendations — one that complements the food's flavor, one that contrasts it, and one that balances it — each with a real Vivino tasting note, a wine bottle name and vintage, and a user approval percentage. Three independent components: a CNN that sees the food, Word2Vec that bridges food flavor vocabulary to grape variety vocabulary, and a BiLSTM that retrieves genuine Vivino review sentences per grape. The joint model (+10 pts) learns food-wine compatibility at the feature level — scoring (image embedding, review embedding) pairs.
 
 ---
 
@@ -16,11 +16,11 @@ A user photographs their food. Beer Peer returns three beer style recommendation
 
 | Dataset | How to load | Content | Used for |
 | --- | --- | --- | --- |
-| Food-101 | `load_dataset("ethz/food101")` | 101,000 images, 101 food classes | CNN training |
-| BeerAdvocate | `kaggle datasets download rdoume/beerreviews` | 1.5M reviews, `beer_style`, `review_text`, `review_overall` | BiLSTM training |
-| Pairing table | Embedded CSV string in notebook | 101 foods → 3 beer styles | Lookup + joint model labels |
+| Food-101 | `torchvision.datasets.Food101` | 101,000 images, 101 food classes | CNN training |
+| WineSensed | `load_dataset("Dakhoo/L2T-NeurIPS-2023", "vintages", trust_remote_code=True)` | 824k real Vivino reviews, `grape`, `wine`, `year`, `rating`, `review` | BiLSTM training · Word2Vec training · review retrieval |
+| Food flavor table | Embedded Python dict in notebook (Section 2.4) | 101 foods × 3 keyword sets (`complement` / `contrast` / `balance`) | Word2Vec pairing · joint model labels |
 
-**BiLSTM labels:** 8 macro-style classes (Lager / IPA / Stout-Porter / Wheat / Sour-Farmhouse / Amber-Brown / Pale Ale / Specialty) — group the 100+ raw `beer_style` values before training.
+**BiLSTM labels:** top 15 grape varieties by review count (Cabernet Sauvignon / Merlot / Pinot Noir / Syrah / Malbec / Sangiovese / Tempranillo / Grenache / Zinfandel / Chardonnay / Sauvignon Blanc / Riesling / Pinot Grigio / Viognier / Chenin Blanc) — covering ~85% of all reviews.
 
 ---
 
@@ -38,8 +38,7 @@ A user photographs their food. Beer Peer returns three beer style recommendation
 
 1. Folders `weights/`, `figures/`, `deployment/` are created automatically by the notebook.
 2. Open `beer-peer/beer_peer.ipynb`.
-3. Run **Section 1** (pip installs) once per environment.
-4. For BeerAdvocate: set up Kaggle API key (`~/.kaggle/kaggle.json`) before Phase 1.
+3. Run **Section 1** (pip installs) once per environment. No Kaggle API key needed — WineSensed loads via Hugging Face.
 
 ---
 
@@ -54,18 +53,21 @@ A user photographs their food. Beer Peer returns three beer style recommendation
 **Section 2 of the notebook.**
 
 ```python
-from datasets import load_dataset
-ds_food = load_dataset("ethz/food101")   # downloads ~5 GB
+import torchvision.datasets as tv_datasets
+ds_train = tv_datasets.Food101(root=DATA_DIR, split="train", download=True)
+ds_test  = tv_datasets.Food101(root=DATA_DIR, split="test",  download=True)
 
-import pandas as pd
-df_beer = pd.read_csv("beerreviews.csv") # after kaggle download
+from datasets import load_dataset
+_ds = load_dataset("Dakhoo/L2T-NeurIPS-2023", "vintages", trust_remote_code=True)
+df_wine = pd.concat([_ds[s].to_pandas() for s in _ds.keys()], ignore_index=True)
 ```
 
 - Print shapes, column names, class counts for both.
-- Map `beer_style` ? 8 macro-style classes; print distribution.
-- Load the pairing table from the embedded CSV string; display as a DataFrame.
+- Extract primary grape (first entry of `grape` column); select top 15 by frequency; add `grape_class` column; print distribution.
+- Compute `rating_pct = rating / 5.0 × 100`; build `wine_label = wine + year`.
+- Load the food flavor table (Section 2.4 embedded dict); display first 5 entries as a DataFrame with columns `food`, `complement`, `contrast`, `balance`.
 
-**Done when:** three DataFrames visible with correct shapes.
+**Done when:** Food-101 dataset objects, WineSensed DataFrame, and food flavor table all visible with correct sizes.
 
 ---
 
@@ -85,26 +87,31 @@ df_beer = pd.read_csv("beerreviews.csv") # after kaggle download
 
 **Section 4 of the notebook.**
 
-- Review length histogram (words per review); mark the 95th percentile ? set as max token length.
-- Macro-style class distribution bar chart (confirm reasonable balance after grouping).
-- Word cloud per macro-style (8 clouds).
-- 3 sample reviews per macro-style.
+- Review length histogram (words per review); mark the 95th percentile → set as max token length.
+- Grape class distribution bar chart (15 bars — confirm no extreme imbalance).
+- Word cloud per grape variety (15 clouds — visually confirm that each grape has distinct vocabulary).
+- 3 sample reviews per grape variety.
 
 **Done when:** all plots visible; max token length chosen.
 
 ---
 
-### STEP 4 — Text preprocessing and data loaders
+### STEP 4 — Text preprocessing, Word2Vec, and data loaders
 
 **Section 6 of the notebook.**
 
 - Tokenise `review_text` at word level; lowercase; strip punctuation.
-- Load GloVe-100d; build vocab from training split only (no data leakage).
+- Load GloVe-100d for BiLSTM; build vocab from training split only (no data leakage).
 - Pad/truncate to 95th-percentile token length; print % truncated.
-- Train / val / test split: 70 / 15 / 15, stratified by macro-style, `SEED=42`.
-- Create `DataLoader` (batch size 64).
+- Load pre-trained Google News Word2Vec via gensim (`api.load("word2vec-google-news-300")`); this gives the model general food vocabulary (*tomato*, *fatty*, *smoky*) before any wine-specific training.
+- Fine-tune on all WineSensed review text: `w2v.build_vocab(wine_sentences, update=True)` → `w2v.train(wine_sentences, total_examples=len(wine_sentences), epochs=5)`. This anchors wine-specific words (*Sangiovese*, *cassis*, *tannic*, *terroir*) into the shared space (~10–15 minutes CPU).
+- Save fine-tuned model to `weights/w2v_finetuned.model`.
+- Compute grape embeddings: for each of 15 grape varieties, average all word vectors across reviews for that grape → 15 grape vectors. Save to `weights/grape_embeddings.npy`.
+- **Note:** add `~/gensim-data/` to `.gitignore` — the base Google News model (~1.6 GB) must not be committed.
+- Train / val / test split: 70 / 15 / 15, stratified by `grape_class`, `SEED=42`.
+- Create BiLSTM `DataLoader` (batch size 64).
 
-**Done when:** one batch prints `torch.Size([64, N])`.
+**Done when:** one BiLSTM batch prints `torch.Size([64, N])`; 15 grape vectors saved.
 
 ---
 
@@ -135,9 +142,9 @@ df_beer = pd.read_csv("beerreviews.csv") # after kaggle download
 
 **Section 10 of the notebook.**
 
-- `nn.Embedding(GloVe) → nn.LSTM(hidden=128) → nn.Linear(128, 8)`.
+- `nn.Embedding(GloVe) → nn.LSTM(hidden=128) → nn.Linear(128, 15)`.
 - Train 3 epochs; plot loss + accuracy curves.
-- Report val accuracy.
+- Report val accuracy (random baseline = 6.7% across 15 classes).
 
 **Done when:** loss decreases across epochs.
 
@@ -163,27 +170,31 @@ df_beer = pd.read_csv("beerreviews.csv") # after kaggle download
 Build the training data from what you already have:
 
 ```python
-# Positive pairs: food image + review of a paired style ? label 1
-# Negative pairs: food image + review of a non-paired style ? label 0
-# Source of truth: food_beer_pairing.csv
+# Positive pairs: food image + review of a grape whose Word2Vec similarity score
+# to any of the food's keyword sets (complement/contrast/balance) exceeds threshold → label 1
+# Negative pairs: food image + review of a clearly incompatible grape → label 0
 
-def build_pairs(df_food, df_beer, pairing_df, n_negatives_per_positive=3):
+def build_pairs(food_flavor_table, df_wine, grape_embeddings, w2v_model,
+                n_negatives_per_positive=3):
     pairs = []
-    for _, row in pairing_df.iterrows():
-        food = row['food']
-        paired_styles = [row['beer_style_1'], row['beer_style_2'], row['beer_style_3']]
-        food_images = df_food.filter(label=food101_label_map[food])
-        
-        for style in paired_styles:
-            reviews = df_beer[df_beer['macro_style'] == style]['review_text'].sample(5)
-            for img in food_images.select(range(5)):
+    for food, profiles in food_flavor_table.items():
+        food_images = get_food_images(food)  # from Food-101
+        compatible_grapes = set()
+        for intent in ["complement", "contrast", "balance"]:
+            vec = embed_keywords(profiles[intent], w2v_model)
+            top_grape = cosine_top1(vec, grape_embeddings)
+            compatible_grapes.add(top_grape)
+
+        for grape in compatible_grapes:
+            reviews = df_wine[df_wine["grape_class"] == grape]["review_text"].sample(5)
+            for img in food_images[:5]:
                 for rev in reviews:
                     pairs.append((img, rev, 1))  # positive
-        
-        all_styles = set(MACRO_STYLES) - set(paired_styles)
-        for style in random.sample(all_styles, n_negatives_per_positive):
-            reviews = df_beer[df_beer['macro_style'] == style]['review_text'].sample(5)
-            for img in food_images.select(range(5)):
+
+        incompatible = set(GRAPE_CLASSES) - compatible_grapes
+        for grape in random.sample(incompatible, n_negatives_per_positive):
+            reviews = df_wine[df_wine["grape_class"] == grape]["review_text"].sample(5)
+            for img in food_images[:5]:
                 for rev in reviews:
                     pairs.append((img, rev, 0))  # negative
     return pairs
@@ -227,7 +238,7 @@ class CompatibilityModel(nn.Module):
 
 ### STEP 10 — Move to Colab
 
-- Upload `beer_peer.ipynb` to Colab; mount Drive; set weight output paths to Drive.
+- Upload `beer-peer/beer_peer.ipynb` to Colab; mount Drive; set weight output paths to Drive.
 - Run **Section 5**: build image `DataLoader` from Food-101.
   - Transforms: `Resize(256) ? CenterCrop(224) ? RandomHorizontalFlip ? ColorJitter ? ToTensor ? Normalize(ImageNet stats)`.
   - Train / val / test split stratified by class (750/250 already done by Food-101 — use official split).
@@ -268,7 +279,7 @@ class CompatibilityModel(nn.Module):
 - Train only the FC head, 10 epochs, BCELoss, Adam lr 1e-3.
 - Save to `weights/joint_model.pt`.
 - Report: AUC-ROC, precision, recall on test pairs.
-- **The interesting experiment:** run the joint model on food-style pairs NOT in the lookup table. Print the top-5 unexpected high-scoring pairs — these are the "learned extensions" of the hardcoded rules.
+- **The interesting experiment:** run the joint model on food-grape pairs NOT in the flavor table. Print the top-5 unexpected high-scoring pairs — these are the "learned extensions" beyond the hand-curated rules.
 
 ---
 
@@ -303,9 +314,9 @@ Download from Colab / Drive to local `weights/`:
 
 **Section 12 of the notebook.**
 
-- Load `bilstm.pt`; pick 6 reviews (1 per macro-style, 6 of 8).
-- Extract attention weight vector; render as colour-highlighted text (word opacity ? weight).
-- 3-sentence interpretation: which words ("hoppy", "roasty", "crisp") drove each style prediction?
+- Load `bilstm.pt`; pick 6 reviews (1 per grape variety, sampled from the 15 classes).
+- Extract attention weight vector; render as colour-highlighted text (word opacity ∝ weight).
+- 3-sentence interpretation: which words (*"cassis"*, *"mineral"*, *"floral"*) drove each grape prediction?
 
 ---
 
@@ -315,25 +326,46 @@ Download from Colab / Drive to local `weights/`:
 
 ```python
 def recommend(image_path):
-    # 1. CNN ? food label (top-3 with confidence)
+    # 1. CNN → food label (top-3 with confidence)
     food_label, confidence = cnn_predict(image_path)
-    
-    # 2. Lookup table ? 2-3 beer styles
-    styles = get_beer_styles(food_label, pairing_df)
-    
-    # 3. Joint model ? re-score and re-rank styles
-    joint_scores = {s: joint_score(image_path, sample_review(s)) for s in styles}
-    ranked_styles = sorted(joint_scores, key=joint_scores.get, reverse=True)
-    
-    # 4. BiLSTM ? retrieve top-rated review sentences per style
-    flavor_text = {s: get_flavor_language(s, df_beer) for s in ranked_styles}
-    
-    return format_card(food_label, confidence, ranked_styles, joint_scores, flavor_text)
+
+    # 2. Food flavor table → three keyword sets
+    profiles = food_flavor_table[food_label]  # {complement: [...], contrast: [...], balance: [...]}
+
+    # 3. Word2Vec → one grape variety per pairing intent
+    recommendations = {}
+    for intent in ["complement", "contrast", "balance"]:
+        vec = embed_keywords(profiles[intent], w2v_model)
+        recommendations[intent] = cosine_top1(vec, grape_embeddings)
+
+    # 4. Joint model → re-score each recommended grape (optional reranking)
+    joint_scores = {
+        intent: joint_score(image_path, sample_review(grape))
+        for intent, grape in recommendations.items()
+    }
+
+    # 5. BiLSTM → retrieve most representative Vivino review per grape
+    #    + fetch highest-rated real wine of that grape
+    flavor_text = {}
+    wine_names   = {}
+    rating_pcts  = {}
+    for intent, grape in recommendations.items():
+        review, wine_label, pct = get_representative_review(
+            grape, bilstm_encoder, df_wine
+        )
+        flavor_text[intent] = review
+        wine_names[intent]  = wine_label
+        rating_pcts[intent] = pct
+
+    return format_card(
+        food_label, confidence, recommendations,
+        wine_names, rating_pcts, joint_scores, flavor_text
+    )
 ```
 
 - Run on 20 Food-101 test images.
-- Display as table: Food | CNN confidence | Style 1 | Style 2 | Style 3 | Joint scores.
-- Highlight 3 cases where joint model re-ranked the lookup table order — explain why.
+- Display as table: Food | CNN confidence | Grape 1 (Complement) | Grape 2 (Contrast) | Grape 3 (Balance) | Wine names | Rating % | Joint scores.
+- Highlight 3 cases where joint model re-ranked the flavor table order — explain why.
 
 ---
 
@@ -343,8 +375,8 @@ def recommend(image_path):
 
 Three markdown cells:
 
-1. **Business framing** — target user (restaurant guests, home cooks, event planners). Decision supported: what beer to order or stock. Cost of a bad recommendation: wasted purchase, disappointed guest. Cost of a missed pairing: guest defaults to habit instead of trying something new.
-2. **Ethics and bias** — BeerAdvocate skews toward craft beer enthusiasts and English-language reviewers. Food-101 skews toward Western dishes. Pairing table is curated by one perspective (Brewers Association). Joint model inherits all three biases. Mitigation ideas.
+1. **Business framing** — target user (restaurant guests, home cooks, event planners, wine shops). Decision supported: which wine to order, recommend, or stock. Cost of a bad recommendation: wasted purchase or disappointed guest. Cost of a missed pairing: guest defaults to habit instead of discovering something new.
+2. **Ethics and bias** — WineSensed / Vivino skews toward European wines and English-language reviewers. Food-101 skews toward Western dishes. The food flavor table is curated from one cultural perspective. The joint model inherits all these biases. Mitigation ideas: multilingual reviews, regional dataset expansion, diverse flavor table curators.
 3. **Team contribution table** — each member's section ownership.
 
 ---
@@ -356,16 +388,17 @@ Three markdown cells:
 Two-column layout:
 
 - **Left:** Upload food photo → CNN food label + confidence bar + Grad-CAM heatmap.
-- **Right:** Three beer style cards, each showing: style name, joint compatibility score, top 3 flavor sentences from BiLSTM-ranked BeerAdvocate reviews.
+- **Right:** Three wine recommendation cards, each showing: grape variety name, wine bottle + vintage, Vivino approval %, real tasting note from BiLSTM-retrieved Vivino review, joint compatibility score.
+- **Standalone text mode:** User can also paste a Vivino-style tasting note → BiLSTM predicts the grape variety with confidence (satisfies rubric requirement for standalone text input).
 
 **One-time setup (before Phase 3):**
 
 1. Create a free account at [huggingface.co](https://huggingface.co).
-2. Create a new Space: `Jolanati/beer-peer`, SDK = **Streamlit**.
+2. Create a new Space: `Jolanati/wine-peer`, SDK = **Streamlit**.
 3. Clone the Space repo locally:
 
    ```bash
-   git clone https://huggingface.co/spaces/Jolanati/beer-peer
+   git clone https://huggingface.co/spaces/Jolanati/wine-peer
    ```
 
 4. Enable Git LFS for model weights:
@@ -381,7 +414,7 @@ Two-column layout:
 ```bash
 # copy app.py, requirements.txt, weights/ into the cloned Space repo
 git add .
-git commit -m "deploy beer-peer"
+git commit -m "deploy wine-peer"
 git push
 ```
 
@@ -404,11 +437,12 @@ pandas
 
 ## Final checklist before submission
 
-- [ ] Notebook runs end to end without errors (Restart Kernel ? Run All)
+- [ ] Notebook runs end to end without errors (Restart Kernel → Run All)
 - [ ] All 15 sections have visible outputs
 - [ ] `figures/` contains all saved plots
 - [ ] `weights/` contains all four `.pt` files
-- [ ] `recommend()` runs on a new food photo end to end
+- [ ] `recommend()` runs on a new food photo end to end and shows grape + wine + tasting note + rating %
+- [ ] Standalone text mode: paste a tasting note → BiLSTM predicts grape variety
 - [ ] Joint model "unexpected pairings" experiment has visible output
 - [ ] Streamlit app runs locally (`streamlit run deployment/app.py`)
 - [ ] Weights pushed to HF Space via Git LFS (`git lfs track "*.pt"`)

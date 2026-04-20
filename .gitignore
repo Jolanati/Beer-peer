@@ -1,6 +1,10 @@
-# ── Dataset (large files — download locally via Section 2) ───────────────────
-beer-peer/data/food-101/
-beer-peer/data/food-101.tar.gz
+# ── Large data files ─────────────────────────────────────────────────────────
+wine-dine/data/food-101/
+wine-dine/data/food-101.tar.gz
+
+# ── Model weights / large downloads ──────────────────────────────────────────
+# Google News Word2Vec base model (~1.6 GB), downloaded by gensim
+gensim-data/
 
 # ── Python ───────────────────────────────────────────────────────────────────
 __pycache__/

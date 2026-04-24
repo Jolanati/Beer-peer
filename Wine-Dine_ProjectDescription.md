@@ -101,7 +101,51 @@ The CNN uses a transfer learning approach based on ResNet-50, with the classific
 - Classification head: Linear layer with 101 output units, softmax activation
 - Output: Food category label with confidence score
 
-A CNN trained from scratch (3 convolutional blocks) is also implemented for comparison.
+#### 4.1.1 CNN from Scratch — Two Generations
+
+Alongside the ResNet-50 transfer learning model, we implemented a CNN trained entirely from scratch on Food-101. This model went through two distinct design generations.
+
+**Generation 1 — First attempt (3 single-conv blocks)**
+
+The initial scratch architecture was modest by design: three convolutional blocks, each consisting of a single convolution followed by batch normalisation, ReLU activation, and max pooling. After the third block the spatial maps were globally averaged to a 256-dimensional feature vector, which was then passed through a single-layer classifier head (256 → 512 → 101).
+
+Training this model triggered the early stopping mechanism twice before it reached epoch 13, peaking at around 27% validation accuracy. With only 101 classes to separate and relatively little representational capacity, the network was essentially underpowered for the task.
+
+**Generation 2 — Redesigned architecture (4 double-conv VGG-style blocks)**
+
+After analysing the training failure, we redesigned the scratch CNN around five targeted improvements. Each change addresses a specific weakness:
+
+**1. Double convolutions per block — looking twice before moving on**
+
+Originally the model would process a spatial scale once and immediately zoom out. The new design runs two convolutions at the same scale before pooling, following the pattern proven by VGGNet. Think of identifying a pizza: one look might catch "it's round and flat," but a second look at the same zoom level also catches "it has crust edges and uneven toppings." More detail is extracted before moving to the next level of abstraction.
+
+**2. A fourth block (256 → 512 channels) — one extra level of abstraction**
+
+The original model had three zoom levels going from fine details to bigger patterns. Adding a fourth gives it one more step to reason about higher-level concepts — not just "these are grill marks" but "grill marks on meat typically mean this is a burger or steak." With 101 classes to distinguish, the extra representational depth makes a meaningful difference.
+
+**3. A wider, deeper classifier head — more thinking space at the end**
+
+After all the visual analysis, the model must make its final decision. The original architecture used a single 512-neuron layer for this. The new design uses a two-stage head: 512 → 1024 → 512 → 101. The wider first room allows more deliberation across candidate categories before narrowing to a final vote.
+
+**4. Dropout2d after each pool — preventing the model from getting lazy**
+
+`Dropout2d(0.1)` is added after every max-pooling layer. During training this randomly zeroes entire feature channels, forcing the network not to over-rely on any single visual cue — like a teacher who covers random parts of your notes before a test, pushing you to understand the material rather than memorise specific spots.
+
+**5. RandomErasing augmentation — showing messier photos on purpose**
+
+`RandomErasing(p=0.2)` is added as the final training augmentation step. With 20% probability it blacks out a random rectangle in the image, simulating partial occlusion — a plate half in frame, a hand in the shot, a shadow. Combined with existing augmentations (random crop, flip, rotation, colour jitter), the model never sees the same photo twice in exactly the same way, which teaches it to recognise food regardless of lighting, angle, or partial obstruction.
+
+**Comparison summary**
+
+| | Generation 1 | Generation 2 |
+|---|---|---|
+| Convolutions per block | 1 | 2 (VGG-style) |
+| Convolutional blocks | 3 | 4 |
+| Deepest feature map | 256 ch | 512 ch |
+| Feature vector | 256-d | 512-d |
+| Spatial dropout | — | `Dropout2d(0.1)` after each pool |
+| Classifier head | 256 → 512 → 101 | 512 → 1024 → 512 → 101 |
+| RandomErasing augmentation | No | `p=0.2` |
 
 ### 4.2 LSTM Architecture
 

@@ -15,2426 +15,4042 @@
   },
   "apple_pie": {
     "classic": [
-      "sweet",
       "cinnamon",
-      "baked",
-      "fruity",
-      "buttery",
-      "warm"
+      "nutmeg",
+      "apple",
+      "vanilla",
+      "brown-sugar",
+      "pastry",
+      "allspice",
+      "clove",
+      "golden",
+      "caramelized",
+      "warm-spice",
+      "flaky"
     ],
     "contrast": [
       "sugary",
+      "starchy",
+      "buttery",
+      "dense",
       "heavy",
-      "pastry",
-      "rich",
-      "starchy"
+      "syrupy",
+      "calorific",
+      "thick",
+      "greasy",
+      "sweet-filling"
     ],
     "safe_bet": [
-      "mild",
       "light",
-      "soft",
+      "off-dry",
+      "fruity",
+      "gentle",
+      "low-tannin",
+      "easy-drinking",
       "smooth",
-      "easy"
+      "soft",
+      "mild",
+      "approachable"
     ]
   },
   "baby_back_ribs": {
     "classic": [
-      "smoky",
-      "meaty",
-      "barbecue",
+      "smoked",
+      "barbecue-sauce",
+      "pork",
+      "charred",
+      "black-pepper",
+      "paprika",
       "caramelized",
-      "savory",
-      "charred"
+      "molasses",
+      "hickory",
+      "chili-rub",
+      "fall-off-the-bone",
+      "bold"
     ],
     "contrast": [
       "fatty",
       "sticky",
-      "sweet",
+      "greasy",
       "heavy",
-      "greasy"
+      "saucy",
+      "sweet-sauce",
+      "calorie-dense",
+      "oily",
+      "rich-marinade",
+      "thick-cut"
     ],
     "safe_bet": [
-      "soft",
       "round",
+      "soft-tannin",
+      "fruity",
+      "easy",
+      "gentle",
+      "low-acid",
       "smooth",
       "mild",
-      "easy"
+      "approachable",
+      "juicy"
     ]
   },
   "baklava": {
     "classic": [
       "honey",
-      "nutty",
-      "sweet",
+      "pistachio",
+      "walnut",
+      "rosewater",
+      "orange-blossom",
+      "phyllo",
+      "cinnamon",
+      "cardamom",
+      "clove",
+      "amber-syrup",
       "floral",
-      "spiced",
-      "pastry"
+      "middle-eastern"
     ],
     "contrast": [
       "sugary",
       "syrupy",
+      "dense",
+      "sticky",
       "buttery",
-      "rich",
-      "dense"
+      "heavy",
+      "extremely-sweet",
+      "calorie-dense",
+      "oily",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
       "crisp",
+      "floral",
+      "aromatic",
+      "delicate",
+      "gentle",
       "refreshing",
-      "mild",
-      "clean"
+      "low-tannin",
+      "easy"
     ]
   },
   "beef_carpaccio": {
     "classic": [
-      "raw",
-      "beefy",
-      "savory",
-      "umami",
+      "raw-beef",
+      "capers",
+      "arugula",
+      "parmesan",
+      "lemon-zest",
+      "olive-oil",
+      "dijon",
+      "shaved",
       "delicate",
-      "salty"
-    ],
-    "contrast": [
-      "lean",
-      "tender",
-      "light",
-      "fresh",
-      "cold"
-    ],
-    "safe_bet": [
-      "soft",
-      "smooth",
-      "mild",
-      "easy",
-      "light"
-    ]
-  },
-  "beef_tartare": {
-    "classic": [
-      "raw",
-      "beefy",
-      "umami",
-      "savory",
-      "sharp",
-      "tangy"
+      "iron",
+      "peppercorn",
+      "italian-appetizer"
     ],
     "contrast": [
       "lean",
       "cold",
-      "fresh",
-      "intense",
-      "sharp"
+      "iron-forward",
+      "sharp",
+      "acidic",
+      "salty",
+      "intense-umami",
+      "pungent-cheese",
+      "peppery",
+      "thin-sliced"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "low-tannin",
+      "fresh",
       "clean",
+      "elegant",
+      "mineral",
       "soft",
-      "mild"
+      "unoaked",
+      "easy"
+    ]
+  },
+  "beef_tartare": {
+    "classic": [
+      "raw-beef",
+      "dijon-mustard",
+      "shallot",
+      "capers",
+      "egg-yolk",
+      "worcestershire",
+      "tabasco",
+      "cornichon",
+      "black-pepper",
+      "chive",
+      "hand-chopped",
+      "french-bistro"
+    ],
+    "contrast": [
+      "raw",
+      "sharp",
+      "intense",
+      "pungent",
+      "acidic",
+      "salty",
+      "cold",
+      "lean",
+      "iron-rich",
+      "fermented-tang"
+    ],
+    "safe_bet": [
+      "light",
+      "crisp",
+      "unoaked",
+      "fresh",
+      "mineral",
+      "low-tannin",
+      "delicate",
+      "clean",
+      "easy",
+      "soft"
     ]
   },
   "beet_salad": {
     "classic": [
+      "roasted-beet",
+      "goat-cheese",
+      "walnut",
+      "balsamic",
+      "arugula",
+      "orange-zest",
+      "fennel",
+      "endive",
+      "thyme",
       "earthy",
-      "sweet",
-      "tangy",
-      "fresh",
-      "herby",
-      "light"
+      "violet",
+      "sweet-vegetable"
     ],
     "contrast": [
       "earthy",
-      "rich",
-      "sweet",
+      "sweet-root",
+      "astringent-walnut",
+      "tangy-cheese",
+      "acidic-dressing",
       "dense",
-      "heavy"
+      "vegetal",
+      "bitter-leaf",
+      "sharp",
+      "rustic"
     ],
     "safe_bet": [
       "light",
+      "fresh",
       "crisp",
-      "refreshing",
-      "mild",
-      "clean"
+      "fruity",
+      "easy",
+      "low-tannin",
+      "aromatic",
+      "gentle",
+      "soft",
+      "approachable"
     ]
   },
   "beignets": {
     "classic": [
-      "fried",
-      "sweet",
-      "powdery",
-      "doughy",
-      "warm",
-      "buttery"
+      "powdered-sugar",
+      "choux-dough",
+      "deep-fried",
+      "vanilla-custard",
+      "new-orleans",
+      "light-dough",
+      "yeast",
+      "airy",
+      "dusted",
+      "cafe-du-monde",
+      "hot-oil",
+      "confectioners"
     ],
     "contrast": [
-      "sugary",
-      "heavy",
       "oily",
+      "heavy",
       "greasy",
-      "rich"
+      "sugary",
+      "dense-dough",
+      "calorie-dense",
+      "starchy",
+      "thick",
+      "saturated",
+      "sweet"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
-      "fresh",
+      "sparkling",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "mild",
-      "clean"
+      "clean",
+      "approachable"
     ]
   },
   "bibimbap": {
     "classic": [
-      "savory",
-      "spicy",
+      "gochujang",
+      "sesame-oil",
+      "kimchi",
+      "rice",
+      "fernbrake",
+      "spinach",
+      "doenjang",
+      "fried-egg",
+      "korean",
       "fermented",
-      "earthy",
-      "umami",
-      "sesame"
+      "chili-paste",
+      "umami-rich"
     ],
     "contrast": [
       "spicy",
       "pungent",
-      "fatty",
+      "fermented",
       "oily",
-      "intense"
+      "salty",
+      "intense",
+      "chili-heat",
+      "heavy-sesame",
+      "bold",
+      "tangy"
     ],
     "safe_bet": [
+      "off-dry",
+      "fruity",
+      "low-tannin",
       "soft",
-      "mild",
-      "light",
       "easy",
-      "smooth"
+      "mild",
+      "slightly-sweet",
+      "smooth",
+      "gentle",
+      "light"
     ]
   },
   "bread_pudding": {
     "classic": [
-      "sweet",
-      "custardy",
-      "baked",
-      "vanilla",
-      "warm",
-      "rich"
+      "brioche",
+      "vanilla-custard",
+      "cinnamon",
+      "bourbon",
+      "caramel-sauce",
+      "brown-sugar",
+      "nutmeg",
+      "raisin",
+      "warm-spice",
+      "cream",
+      "southern",
+      "baked"
     ],
     "contrast": [
       "heavy",
       "dense",
       "starchy",
       "sugary",
-      "buttery"
+      "saturated",
+      "calorie-dense",
+      "thick",
+      "buttery",
+      "rich-custard",
+      "syrupy"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "gentle",
+      "low-tannin",
+      "smooth",
+      "fruity",
+      "easy",
       "soft",
       "mild",
-      "smooth",
-      "easy"
+      "approachable"
     ]
   },
   "breakfast_burrito": {
     "classic": [
-      "savory",
-      "eggy",
-      "spicy",
-      "hearty",
-      "meaty",
-      "warm"
+      "scrambled-egg",
+      "chorizo",
+      "salsa-verde",
+      "cumin",
+      "black-bean",
+      "cheddar",
+      "avocado",
+      "flour-tortilla",
+      "chipotle",
+      "green-chile",
+      "southwestern",
+      "morning-spice"
     ],
     "contrast": [
-      "heavy",
-      "greasy",
       "fatty",
+      "greasy",
+      "heavy",
       "starchy",
-      "filling"
+      "oily",
+      "salty",
+      "calorie-dense",
+      "filling",
+      "thick-wrap",
+      "rich"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
       "fresh",
+      "low-tannin",
+      "easy",
+      "fruity",
       "mild",
-      "easy"
+      "gentle",
+      "clean",
+      "approachable"
     ]
   },
   "bruschetta": {
     "classic": [
-      "tomato",
-      "herby",
+      "san-marzano-tomato",
+      "fresh-basil",
       "garlic",
-      "fresh",
-      "crusty",
-      "tangy"
+      "extra-virgin-olive-oil",
+      "sea-salt",
+      "grilled-baguette",
+      "cherry-tomato",
+      "oregano",
+      "balsamic-glaze",
+      "italian-summer",
+      "roma-tomato",
+      "vibrant"
     ],
     "contrast": [
       "acidic",
       "oily",
+      "sharp-garlic",
+      "crunchy-bread",
+      "pungent",
       "starchy",
-      "sharp",
-      "pungent"
+      "tangy",
+      "bold-herb",
+      "intense",
+      "rustic"
     ],
     "safe_bet": [
       "light",
       "crisp",
-      "clean",
+      "fresh",
+      "low-tannin",
+      "unoaked",
+      "easy",
+      "mineral",
       "soft",
-      "mild"
+      "gentle",
+      "clean"
     ]
   },
   "caesar_salad": {
     "classic": [
-      "salty",
-      "umami",
-      "creamy",
-      "anchovy",
-      "tangy",
-      "crunchy"
+      "anchovy-paste",
+      "parmesan",
+      "lemon-juice",
+      "worcestershire",
+      "garlic",
+      "dijon",
+      "egg-yolk",
+      "romaine",
+      "crouton",
+      "black-pepper",
+      "umami-dressing",
+      "classic-american"
     ],
     "contrast": [
-      "rich",
-      "creamy",
+      "rich-dressing",
       "fatty",
-      "heavy",
-      "pungent"
+      "salty",
+      "pungent-anchovy",
+      "heavy-cheese",
+      "oily",
+      "intense",
+      "creamy",
+      "bold-umami",
+      "thick"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "clean",
+      "light",
       "fresh",
-      "mild"
+      "unoaked",
+      "easy",
+      "clean",
+      "mineral",
+      "low-tannin",
+      "gentle",
+      "soft"
     ]
   },
   "cannoli": {
     "classic": [
-      "sweet",
-      "creamy",
       "ricotta",
-      "chocolate",
-      "citrus",
-      "pastry"
+      "candied-orange",
+      "chocolate-chip",
+      "pistachio",
+      "fried-shell",
+      "powdered-sugar",
+      "cinnamon",
+      "marsala",
+      "sicilian",
+      "cream-cheese",
+      "lemon-zest",
+      "italian-pastry"
     ],
     "contrast": [
       "sugary",
-      "rich",
+      "rich-cream",
       "heavy",
-      "buttery",
-      "dense"
+      "oily-shell",
+      "dense",
+      "calorie-dense",
+      "sweet",
+      "thick-filling",
+      "saturated",
+      "buttery"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "delicate",
+      "easy",
       "soft",
-      "mild",
-      "smooth",
-      "clean"
+      "aromatic"
     ]
   },
   "caprese_salad": {
     "classic": [
-      "fresh",
-      "tomato",
+      "buffalo-mozzarella",
+      "heirloom-tomato",
+      "fresh-basil",
+      "extra-virgin-olive-oil",
+      "sea-salt",
+      "balsamic",
+      "italian",
       "milky",
-      "herby",
-      "light",
-      "tangy"
+      "summer",
+      "green-herb",
+      "vine-ripened",
+      "delicate"
     ],
     "contrast": [
-      "acidic",
+      "acidic-tomato",
       "oily",
+      "milky",
+      "sharp-basil",
+      "tangy-balsamic",
+      "dense-cheese",
       "fresh",
-      "bright",
-      "mild"
+      "light",
+      "clean",
+      "herbal"
     ],
     "safe_bet": [
       "crisp",
       "light",
+      "unoaked",
+      "fresh",
+      "mineral",
+      "low-tannin",
+      "easy",
+      "gentle",
       "clean",
-      "refreshing",
       "soft"
     ]
   },
   "carrot_cake": {
     "classic": [
-      "sweet",
-      "spiced",
-      "warm",
-      "earthy",
-      "creamy",
-      "dense"
+      "grated-carrot",
+      "cinnamon",
+      "nutmeg",
+      "ginger",
+      "cream-cheese-frosting",
+      "walnut",
+      "pineapple",
+      "brown-sugar",
+      "clove",
+      "allspice",
+      "warm-spice",
+      "moist"
     ],
     "contrast": [
+      "sweet",
+      "dense",
+      "heavy-frosting",
+      "starchy",
+      "oily",
       "sugary",
-      "heavy",
+      "calorie-dense",
       "rich",
-      "buttery",
-      "dense"
+      "thick",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "soft",
-      "mild",
+      "fruity",
+      "gentle",
+      "low-tannin",
+      "easy",
       "smooth",
-      "easy"
+      "aromatic",
+      "soft",
+      "mild"
     ]
   },
   "ceviche": {
     "classic": [
-      "citrus",
-      "fresh",
-      "tangy",
-      "spicy",
+      "lime-juice",
+      "cilantro",
+      "serrano",
+      "red-onion",
+      "fresh-fish",
+      "tiger-milk",
       "seafood",
+      "aji-amarillo",
+      "corn",
+      "peruvian",
+      "acid-cooked",
       "bright"
     ],
     "contrast": [
       "acidic",
-      "sharp",
       "spicy",
-      "cold",
-      "raw"
+      "raw-fish",
+      "sharp-onion",
+      "intense-citrus",
+      "pungent",
+      "bold",
+      "sour",
+      "fiery",
+      "bracing"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "fresh",
+      "low-tannin",
+      "light",
+      "easy",
       "clean",
-      "refreshing",
-      "mild"
+      "gentle",
+      "delicate"
     ]
   },
   "cheese_plate": {
     "classic": [
-      "creamy",
-      "salty",
-      "rich",
-      "nutty",
-      "pungent",
-      "aged"
+      "aged-cheddar",
+      "gorgonzola",
+      "brie",
+      "manchego",
+      "fig-jam",
+      "walnut",
+      "honeycomb",
+      "grapes",
+      "pungent-rind",
+      "fermented",
+      "complex-dairy",
+      "cave-aged"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
+      "fat",
+      "pungent",
+      "salty",
       "dense",
       "sharp",
-      "strong"
+      "moldy-rind",
+      "acidic",
+      "tangy",
+      "astringent",
+      "bold"
     ],
     "safe_bet": [
-      "soft",
-      "mild",
-      "light",
+      "versatile",
+      "fruity",
+      "low-tannin",
+      "off-dry",
+      "easy",
       "smooth",
-      "easy"
+      "gentle",
+      "medium-body",
+      "approachable",
+      "soft"
     ]
   },
   "cheesecake": {
     "classic": [
-      "creamy",
-      "sweet",
-      "tangy",
-      "rich",
+      "cream-cheese",
       "vanilla",
-      "dense"
+      "graham-cracker-crust",
+      "lemon-zest",
+      "sour-cream",
+      "egg",
+      "silky",
+      "new-york-style",
+      "dense",
+      "baked",
+      "tangy-sweet",
+      "confectioners"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
-      "sugary",
+      "rich",
       "dense",
-      "buttery"
+      "heavy",
+      "sugary",
+      "fatty",
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "saturated",
+      "creamy"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
-      "clean",
-      "mild",
-      "soft"
+      "sparkling",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
+      "soft",
+      "delicate",
+      "aromatic"
     ]
   },
   "chicken_curry": {
     "classic": [
-      "spiced",
-      "savory",
-      "warm",
-      "coconut",
+      "turmeric",
+      "cumin",
+      "coriander",
+      "garam-masala",
+      "coconut-milk",
+      "ginger",
+      "fenugreek",
+      "cardamom",
+      "tomato-base",
+      "indian",
       "aromatic",
-      "hearty"
+      "saffron-yellow"
     ],
     "contrast": [
       "spicy",
-      "fatty",
-      "heavy",
-      "creamy",
-      "rich"
+      "heavy-sauce",
+      "fatty-coconut",
+      "pungent",
+      "intense",
+      "rich-curry",
+      "oily",
+      "thick",
+      "bold-spice",
+      "calorie-dense"
     ],
     "safe_bet": [
-      "light",
+      "off-dry",
+      "aromatic",
+      "low-tannin",
+      "fruity",
+      "easy",
+      "gentle",
+      "smooth",
       "soft",
       "mild",
-      "easy",
-      "smooth"
+      "light-body"
     ]
   },
   "chicken_quesadilla": {
     "classic": [
-      "savory",
-      "cheesy",
-      "grilled",
-      "spicy",
-      "crispy",
-      "hearty"
+      "grilled-chicken",
+      "monterey-jack",
+      "jalapeno",
+      "chipotle",
+      "flour-tortilla",
+      "cumin",
+      "lime",
+      "salsa",
+      "black-bean",
+      "avocado",
+      "mexican",
+      "charred"
     ],
     "contrast": [
+      "cheesy",
       "fatty",
-      "greasy",
-      "heavy",
       "starchy",
-      "rich"
+      "oily",
+      "heavy",
+      "calorie-dense",
+      "salty",
+      "crispy-fat",
+      "thick",
+      "filling"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "mild",
+      "light",
+      "fresh",
       "easy",
-      "smooth"
+      "low-tannin",
+      "fruity",
+      "mild",
+      "gentle",
+      "clean",
+      "approachable"
     ]
   },
   "chicken_wings": {
     "classic": [
-      "savory",
-      "spicy",
-      "crispy",
-      "smoky",
-      "tangy",
-      "meaty"
+      "buffalo-sauce",
+      "cayenne",
+      "hot-sauce",
+      "garlic-butter",
+      "crispy-skin",
+      "celery",
+      "blue-cheese-dip",
+      "deep-fried",
+      "paprika",
+      "tabasco",
+      "american-bar",
+      "spicy-tangy"
     ],
     "contrast": [
-      "fatty",
-      "greasy",
+      "fatty-skin",
+      "oily",
       "spicy",
+      "salty",
       "heavy",
-      "fried"
+      "greasy",
+      "calorie-dense",
+      "bold",
+      "intense",
+      "thick-sauce"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "off-dry",
+      "easy",
+      "fruity",
+      "low-tannin",
+      "gentle",
       "clean",
       "mild",
-      "refreshing"
+      "approachable"
     ]
   },
   "chocolate_cake": {
     "classic": [
-      "rich",
-      "chocolate",
-      "sweet",
-      "dense",
+      "dark-chocolate",
+      "cocoa",
+      "espresso",
+      "ganache",
       "bittersweet",
-      "indulgent"
+      "vanilla-buttercream",
+      "dutch-process",
+      "moist-crumb",
+      "fudge",
+      "intense-chocolate",
+      "layered",
+      "decadent"
     ],
     "contrast": [
       "heavy",
+      "dense",
       "sugary",
       "fatty",
-      "dense",
-      "buttery"
+      "intense",
+      "calorie-dense",
+      "thick-frosting",
+      "dark",
+      "rich-chocolate",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
+      "off-dry",
+      "fruity",
+      "low-tannin",
       "soft",
-      "mild",
+      "gentle",
+      "easy",
+      "light-body",
       "smooth",
-      "easy"
+      "sweet",
+      "mild"
     ]
   },
   "chocolate_mousse": {
     "classic": [
-      "rich",
-      "chocolate",
-      "airy",
+      "dark-chocolate",
+      "espresso",
+      "whipped-cream",
       "bittersweet",
-      "creamy",
-      "indulgent"
+      "airy",
+      "egg-white",
+      "cognac",
+      "cocoa",
+      "silky",
+      "french",
+      "light-texture",
+      "intense-flavor"
     ],
     "contrast": [
+      "rich-chocolate",
       "heavy",
-      "sugary",
-      "fatty",
+      "fatty-cream",
       "dense",
-      "rich"
+      "intense",
+      "sugary",
+      "thick",
+      "dark",
+      "calorie-dense",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "fresh",
-      "mild",
+      "fruity",
+      "delicate",
+      "easy",
+      "gentle",
+      "low-tannin",
       "soft",
-      "clean"
+      "aromatic"
     ]
   },
   "churros": {
     "classic": [
-      "sweet",
-      "fried",
-      "cinnamon",
-      "doughy",
-      "warm",
-      "crispy"
+      "cinnamon-sugar",
+      "deep-fried",
+      "choux-dough",
+      "chocolate-dipping-sauce",
+      "spanish",
+      "crispy-outside",
+      "soft-inside",
+      "dulce-de-leche",
+      "street-food",
+      "golden",
+      "ridged",
+      "warm"
     ],
     "contrast": [
       "oily",
       "sugary",
-      "heavy",
       "starchy",
-      "greasy"
+      "greasy",
+      "heavy",
+      "sweet-dip",
+      "calorie-dense",
+      "thick-dough",
+      "fried",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "crisp",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "mild",
       "clean",
-      "easy"
+      "approachable"
     ]
   },
   "clam_chowder": {
     "classic": [
-      "creamy",
-      "briny",
-      "savory",
-      "seafood",
-      "hearty",
-      "starchy"
+      "little-neck-clam",
+      "russet-potato",
+      "thyme",
+      "bay-leaf",
+      "celery",
+      "heavy-cream",
+      "smoked-bacon",
+      "onion",
+      "new-england",
+      "coastal",
+      "mineral-brine",
+      "chowder"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
-      "creamy",
+      "heavy-cream",
+      "fatty-bacon",
+      "starchy",
       "salty",
-      "thick"
+      "thick",
+      "rich",
+      "calorie-dense",
+      "dense",
+      "oily",
+      "briny"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "fresh",
+      "light",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "refreshing"
+      "gentle",
+      "coastal"
     ]
   },
   "club_sandwich": {
     "classic": [
-      "savory",
-      "meaty",
-      "creamy",
-      "toasted",
-      "salty",
-      "hearty"
+      "turkey-breast",
+      "crispy-bacon",
+      "lettuce",
+      "tomato",
+      "mayo",
+      "sourdough-toast",
+      "swiss-cheese",
+      "dill-pickle",
+      "three-layer",
+      "american-diner",
+      "sliced-thin",
+      "cold-cut"
     ],
     "contrast": [
-      "fatty",
+      "fatty-bacon",
+      "oily-mayo",
+      "starchy-bread",
+      "salty",
       "heavy",
-      "starchy",
+      "rich",
+      "calorie-dense",
+      "thick",
       "greasy",
       "filling"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
       "mild",
-      "easy"
+      "approachable",
+      "soft"
     ]
   },
   "crab_cakes": {
     "classic": [
-      "briny",
-      "seafood",
-      "savory",
-      "crispy",
-      "delicate",
-      "buttery"
+      "lump-crab",
+      "old-bay",
+      "dijon",
+      "panko",
+      "lemon",
+      "chive",
+      "remoulade",
+      "chesapeake",
+      "coastal",
+      "seared",
+      "mineral",
+      "delicate-seafood"
     ],
     "contrast": [
-      "fatty",
       "oily",
-      "fried",
+      "fatty-binding",
+      "salty",
+      "crispy-crust",
       "rich",
-      "heavy"
+      "starchy-bread",
+      "buttery-sauce",
+      "intense",
+      "thick",
+      "calorie-dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "fresh",
+      "light",
+      "low-tannin",
+      "easy",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate",
+      "coastal"
     ]
   },
   "creme_brulee": {
     "classic": [
-      "creamy",
-      "sweet",
-      "vanilla",
-      "caramelized",
-      "rich",
-      "eggy"
+      "vanilla-bean",
+      "egg-yolk",
+      "heavy-cream",
+      "caramelized-sugar",
+      "burnt-top",
+      "french",
+      "ramekin",
+      "silky-custard",
+      "elegant",
+      "torched",
+      "subtle",
+      "refined"
     ],
     "contrast": [
-      "heavy",
+      "fatty-cream",
       "sugary",
-      "fatty",
+      "heavy",
+      "rich",
       "dense",
-      "buttery"
+      "calorie-dense",
+      "thick-custard",
+      "sweet",
+      "saturated",
+      "eggy"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "sparkling",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
+      "delicate",
       "soft",
-      "mild",
-      "smooth",
-      "easy"
+      "aromatic"
     ]
   },
   "croque_madame": {
     "classic": [
-      "savory",
-      "cheesy",
-      "eggy",
-      "buttery",
-      "crispy",
-      "hearty"
+      "gruyere",
+      "black-forest-ham",
+      "bechamel",
+      "fried-egg",
+      "dijon",
+      "pain-de-mie",
+      "nutmeg",
+      "french-bistro",
+      "toasted",
+      "golden-yolk",
+      "classic-paris",
+      "melted"
     ],
     "contrast": [
       "fatty",
+      "rich-bechamel",
+      "salty-ham",
       "heavy",
-      "rich",
+      "eggy",
       "greasy",
-      "starchy"
+      "calorie-dense",
+      "thick-sauce",
+      "starchy",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "mild",
+      "light",
+      "unoaked",
+      "easy",
+      "fresh",
+      "low-tannin",
+      "gentle",
       "clean",
-      "easy"
+      "mineral",
+      "soft"
     ]
   },
   "cup_cakes": {
     "classic": [
-      "sweet",
-      "buttery",
-      "vanilla",
+      "vanilla-sponge",
+      "buttercream-frosting",
+      "sprinkles",
+      "sugar",
+      "almond-extract",
+      "baked",
+      "american",
       "fluffy",
-      "creamy",
-      "baked"
+      "light-crumb",
+      "decorated",
+      "birthday",
+      "sweet"
     ],
     "contrast": [
       "sugary",
+      "buttery-frosting",
       "heavy",
-      "fatty",
       "dense",
-      "rich"
+      "calorie-dense",
+      "thick-icing",
+      "sweet",
+      "oily",
+      "saturated",
+      "starchy"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "soft",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "mild",
-      "smooth",
-      "easy"
+      "delicate",
+      "aromatic"
     ]
   },
   "deviled_eggs": {
     "classic": [
-      "creamy",
-      "savory",
-      "tangy",
-      "eggy",
-      "mustardy",
-      "salty"
+      "egg-yolk",
+      "dijon-mustard",
+      "mayo",
+      "paprika",
+      "chive",
+      "white-wine-vinegar",
+      "celery-salt",
+      "pickle-relish",
+      "tabasco",
+      "american-classic",
+      "savory-filling",
+      "party-food"
     ],
     "contrast": [
-      "fatty",
+      "fatty-yolk",
+      "oily-mayo",
+      "eggy",
+      "salty",
+      "sharp-mustard",
       "rich",
+      "intense",
+      "thick",
       "pungent",
-      "heavy",
-      "eggy"
+      "acidic"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "mild",
+      "light",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
       "clean",
-      "refreshing"
+      "gentle",
+      "mineral",
+      "soft"
     ]
   },
   "donuts": {
     "classic": [
-      "sweet",
-      "fried",
-      "doughy",
-      "glazed",
-      "warm",
-      "soft"
+      "glazed-yeast",
+      "vanilla-icing",
+      "deep-fried",
+      "powdered-sugar",
+      "cinnamon-roll",
+      "boston-cream",
+      "maple-frosting",
+      "sprinkles",
+      "american",
+      "dough",
+      "airy",
+      "sweet-glaze"
     ],
     "contrast": [
-      "sugary",
       "oily",
-      "heavy",
+      "sugary",
       "starchy",
-      "greasy"
+      "greasy",
+      "heavy",
+      "calorie-dense",
+      "fried-dough",
+      "thick-glaze",
+      "sweet",
+      "dense"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "crisp",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "mild",
       "clean",
-      "easy"
+      "approachable"
     ]
   },
   "dumplings": {
     "classic": [
-      "savory",
-      "meaty",
-      "steamed",
-      "umami",
+      "pork-filling",
+      "napa-cabbage",
       "ginger",
-      "soy"
+      "soy-sauce",
+      "sesame-oil",
+      "chive",
+      "shaoxing-wine",
+      "five-spice",
+      "steamed",
+      "chinese",
+      "pan-fried",
+      "umami-rich"
     ],
     "contrast": [
-      "fatty",
-      "starchy",
-      "heavy",
+      "fatty-pork",
+      "salty",
       "oily",
-      "rich"
+      "starchy-wrapper",
+      "heavy",
+      "rich",
+      "calorie-dense",
+      "thick-skin",
+      "intense-umami",
+      "pungent"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
-      "mild",
+      "fruity",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
-      "easy"
+      "soft",
+      "mild",
+      "approachable"
     ]
   },
   "edamame": {
     "classic": [
-      "fresh",
+      "soybean",
+      "sea-salt",
       "grassy",
-      "salty",
-      "light",
+      "green",
+      "japanese",
+      "steamed-pod",
+      "mineral",
+      "clean",
       "vegetal",
-      "clean"
+      "fresh-soy",
+      "izakaya",
+      "umami-light"
     ],
     "contrast": [
-      "mild",
-      "light",
-      "fresh",
       "salty",
-      "simple"
+      "grassy",
+      "green-vegetal",
+      "light",
+      "simple",
+      "mild",
+      "clean",
+      "mineral",
+      "low-fat",
+      "fresh"
     ],
     "safe_bet": [
       "crisp",
       "light",
-      "clean",
+      "mineral",
+      "unoaked",
       "easy",
-      "refreshing"
+      "fresh",
+      "low-tannin",
+      "clean",
+      "gentle",
+      "delicate"
     ]
   },
   "eggs_benedict": {
     "classic": [
-      "rich",
-      "buttery",
-      "eggy",
-      "savory",
-      "creamy",
-      "meaty"
+      "hollandaise",
+      "poached-egg",
+      "canadian-bacon",
+      "english-muffin",
+      "lemon-juice",
+      "clarified-butter",
+      "egg-yolk-sauce",
+      "brunch",
+      "runny-yolk",
+      "paprika",
+      "tarragon",
+      "classic-american"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
+      "fatty-hollandaise",
+      "buttery",
       "rich",
-      "creamy",
-      "salty"
+      "heavy",
+      "eggy",
+      "oily",
+      "calorie-dense",
+      "salty-bacon",
+      "thick-sauce",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "easy"
+      "mineral",
+      "gentle",
+      "soft"
     ]
   },
   "escargots": {
     "classic": [
-      "garlicky",
-      "buttery",
-      "herby",
-      "savory",
-      "earthy",
-      "rich"
+      "garlic-butter",
+      "parsley",
+      "burgundy",
+      "shallot",
+      "thyme",
+      "pastis",
+      "shell",
+      "french",
+      "earthy-snail",
+      "pernod",
+      "herb-butter",
+      "bistro"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
-      "pungent",
+      "garlicky",
+      "fatty-butter",
       "rich",
-      "buttery"
+      "pungent",
+      "intense-herb",
+      "heavy",
+      "oily",
+      "earthy",
+      "bold",
+      "calorie-dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "fresh",
+      "mineral",
+      "light",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "easy"
+      "gentle",
+      "herbal"
     ]
   },
   "falafel": {
     "classic": [
-      "earthy",
-      "spiced",
-      "herby",
-      "crispy",
-      "nutty",
-      "savory"
+      "chickpea",
+      "tahini",
+      "cumin",
+      "coriander",
+      "parsley",
+      "garlic",
+      "sumac",
+      "pita",
+      "middle-eastern",
+      "deep-fried",
+      "herb-packed",
+      "spiced"
     ],
     "contrast": [
-      "dense",
+      "oily",
       "starchy",
-      "fried",
       "heavy",
-      "oily"
+      "pungent-herb",
+      "spiced",
+      "dense",
+      "calorie-dense",
+      "crispy-fried",
+      "thick",
+      "filling"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "mineral",
+      "unoaked",
+      "gentle",
       "clean",
-      "mild",
-      "refreshing"
+      "approachable"
     ]
   },
   "filet_mignon": {
     "classic": [
-      "beefy",
-      "tender",
-      "savory",
-      "rich",
-      "buttery",
-      "meaty"
+      "tenderloin",
+      "black-pepper",
+      "rosemary",
+      "thyme",
+      "bordelaise",
+      "demi-glace",
+      "truffle-butter",
+      "sea-salt",
+      "iron",
+      "elegant",
+      "tannic-pairing",
+      "fine-dining"
     ],
     "contrast": [
-      "fatty",
+      "fatty-marbling",
       "rich",
-      "heavy",
-      "tender",
-      "salty"
+      "iron-forward",
+      "bold",
+      "intense",
+      "heavy-sauce",
+      "tannic",
+      "calorie-dense",
+      "meaty",
+      "robust"
     ],
     "safe_bet": [
-      "soft",
+      "medium-body",
+      "soft-tannin",
+      "fruity",
       "round",
+      "easy",
+      "gentle",
       "smooth",
-      "mild",
-      "easy"
+      "approachable",
+      "balanced",
+      "plush"
     ]
   },
   "fish_and_chips": {
     "classic": [
-      "crispy",
-      "fried",
-      "briny",
-      "savory",
-      "starchy",
-      "malty"
+      "battered-cod",
+      "malt-vinegar",
+      "tartar-sauce",
+      "mushy-peas",
+      "lemon",
+      "beer-batter",
+      "british",
+      "newspaper-wrap",
+      "sea-salt",
+      "crispy-batter",
+      "haddock",
+      "pub-food"
     ],
     "contrast": [
       "oily",
-      "greasy",
-      "heavy",
       "starchy",
-      "fried"
+      "heavy-batter",
+      "greasy",
+      "fatty",
+      "calorie-dense",
+      "thick-coating",
+      "fried",
+      "dense",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "mineral",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "refreshing"
+      "gentle",
+      "coastal"
     ]
   },
   "foie_gras": {
     "classic": [
-      "rich",
-      "fatty",
-      "buttery",
-      "savory",
-      "delicate",
-      "luxurious"
+      "duck-liver",
+      "sauternes-pairing",
+      "truffle",
+      "brioche",
+      "port-reduction",
+      "fig-jam",
+      "silky",
+      "french-luxury",
+      "rich-fat",
+      "cognac",
+      "terrine",
+      "fine-dining"
     ],
     "contrast": [
-      "extremely fatty",
-      "heavy",
+      "extremely-fatty",
       "rich",
+      "heavy",
+      "luxurious",
+      "intense",
+      "calorie-dense",
       "dense",
-      "indulgent"
+      "oily",
+      "bold",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
+      "off-dry",
       "sweet",
-      "mild",
+      "botrytis",
+      "dessert-wine",
+      "gentle",
       "soft",
-      "clean"
+      "aromatic",
+      "delicate",
+      "easy",
+      "luscious"
     ]
   },
   "french_fries": {
     "classic": [
-      "salty",
-      "starchy",
-      "fried",
+      "russet-potato",
+      "sea-salt",
       "crispy",
-      "potato",
-      "savory"
+      "malt-vinegar",
+      "ketchup",
+      "duck-fat",
+      "garlic-aioli",
+      "thin-cut",
+      "double-fried",
+      "american",
+      "starch",
+      "golden"
     ],
     "contrast": [
       "oily",
+      "starchy",
       "greasy",
+      "salty",
       "heavy",
+      "calorie-dense",
+      "fried",
+      "thick-cut",
       "fatty",
-      "starchy"
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
+      "gentle",
       "clean",
       "mild",
-      "easy"
+      "approachable",
+      "soft"
     ]
   },
   "french_onion_soup": {
     "classic": [
-      "savory",
-      "caramelized",
-      "sweet",
-      "cheesy",
-      "meaty",
-      "rich"
+      "caramelized-onion",
+      "gruyere",
+      "beef-stock",
+      "thyme",
+      "bay-leaf",
+      "sherry",
+      "cognac",
+      "baguette-crouton",
+      "dark-broth",
+      "french-bistro",
+      "slow-cooked",
+      "deeply-savory"
     ],
     "contrast": [
-      "heavy",
-      "rich",
+      "heavy-cheese",
       "fatty",
+      "rich-broth",
       "salty",
-      "thick"
+      "intense",
+      "thick",
+      "calorie-dense",
+      "dense-onion",
+      "bold",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
+      "medium-body",
+      "round",
+      "fruity",
+      "easy",
+      "soft-tannin",
+      "smooth",
+      "gentle",
+      "approachable",
+      "balanced",
+      "low-acid"
     ]
   },
   "french_toast": {
     "classic": [
-      "sweet",
-      "eggy",
-      "buttery",
-      "warm",
-      "custardy",
-      "cinnamon"
+      "brioche",
+      "maple-syrup",
+      "cinnamon",
+      "vanilla-extract",
+      "powdered-sugar",
+      "egg-custard",
+      "browned-butter",
+      "fresh-berry",
+      "brunch",
+      "nutmeg",
+      "thick-cut",
+      "golden"
     ],
     "contrast": [
-      "heavy",
       "sugary",
-      "fatty",
-      "rich",
-      "starchy"
+      "buttery",
+      "eggy",
+      "starchy",
+      "heavy",
+      "syrupy",
+      "calorie-dense",
+      "oily",
+      "dense",
+      "sweet"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "fruity",
+      "gentle",
+      "low-tannin",
+      "easy",
+      "smooth",
       "soft",
       "mild",
-      "clean",
-      "easy"
+      "aromatic"
     ]
   },
   "fried_calamari": {
     "classic": [
-      "briny",
-      "crispy",
-      "seafood",
-      "savory",
-      "lemony",
-      "fried"
+      "squid",
+      "semolina-coating",
+      "lemon-wedge",
+      "marinara-dip",
+      "garlic",
+      "sea-salt",
+      "crispy-rings",
+      "mediterranean",
+      "parsley",
+      "aioli",
+      "coastal",
+      "light-batter"
     ],
     "contrast": [
       "oily",
+      "starchy-coating",
       "greasy",
-      "heavy",
+      "salty",
       "fried",
-      "starchy"
+      "calorie-dense",
+      "thick-batter",
+      "heavy",
+      "fatty",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "coastal",
       "clean",
-      "mild",
-      "refreshing"
+      "gentle"
     ]
   },
   "fried_rice": {
     "classic": [
-      "savory",
-      "umami",
-      "eggy",
-      "soy",
-      "smoky",
-      "starchy"
+      "jasmine-rice",
+      "soy-sauce",
+      "sesame-oil",
+      "scallion",
+      "wok-hei",
+      "fried-egg",
+      "oyster-sauce",
+      "ginger",
+      "chinese",
+      "char",
+      "smoky-wok",
+      "umami"
     ],
     "contrast": [
-      "heavy",
       "oily",
-      "greasy",
       "salty",
-      "starchy"
+      "starchy",
+      "heavy",
+      "greasy",
+      "intense-soy",
+      "calorie-dense",
+      "fatty-egg",
+      "thick",
+      "smoky"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
+      "easy",
+      "low-tannin",
+      "fruity",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "approachable"
     ]
   },
   "frozen_yogurt": {
     "classic": [
-      "sweet",
-      "tangy",
-      "creamy",
+      "tart-yogurt",
+      "live-culture",
+      "berry-swirl",
+      "mango-sorbet",
+      "granola-topping",
       "cold",
-      "fruity",
+      "tangy",
+      "low-fat",
+      "refreshing",
+      "probiotic",
+      "fruit-forward",
       "light"
     ],
     "contrast": [
-      "sugary",
+      "tangy-acidic",
+      "sugary-topping",
       "cold",
       "tart",
       "light",
-      "mild"
+      "sweet-fruit",
+      "clean",
+      "low-fat",
+      "fresh",
+      "crisp"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "off-dry",
+      "sparkling",
+      "easy",
+      "fruity",
+      "low-tannin",
+      "gentle",
       "clean",
-      "mild",
-      "easy"
+      "delicate"
     ]
   },
   "garlic_bread": {
     "classic": [
-      "garlicky",
-      "buttery",
-      "toasted",
-      "savory",
-      "crispy",
-      "herby"
+      "roasted-garlic",
+      "unsalted-butter",
+      "parsley",
+      "baguette",
+      "olive-oil",
+      "oregano",
+      "sea-salt",
+      "mozzarella",
+      "italian",
+      "crispy-edge",
+      "herb-butter",
+      "toasted"
     ],
     "contrast": [
-      "fatty",
-      "pungent",
-      "starchy",
+      "garlicky",
       "oily",
-      "heavy"
+      "starchy",
+      "heavy-butter",
+      "pungent",
+      "calorie-dense",
+      "salty",
+      "crispy-fat",
+      "intense",
+      "bold-herb"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "unoaked",
+      "easy",
+      "fresh",
+      "low-tannin",
       "clean",
-      "mild",
-      "easy"
+      "gentle",
+      "mineral",
+      "herbal"
     ]
   },
   "gnocchi": {
     "classic": [
-      "starchy",
-      "creamy",
-      "savory",
-      "soft",
-      "buttery",
-      "rich"
+      "potato-dumpling",
+      "semolina",
+      "sage-butter",
+      "parmesan",
+      "truffle",
+      "gorgonzola-sauce",
+      "bolognese",
+      "pillowy",
+      "italian",
+      "flour",
+      "brown-butter",
+      "al-dente"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
-      "dense",
       "starchy",
-      "rich"
+      "heavy-sauce",
+      "fatty-butter",
+      "dense",
+      "calorie-dense",
+      "thick",
+      "rich-cheese",
+      "oily",
+      "filling",
+      "bold"
     ],
     "safe_bet": [
+      "medium-body",
       "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "easy",
+      "fruity",
+      "low-tannin",
+      "soft",
+      "round",
+      "gentle",
+      "approachable",
+      "smooth"
     ]
   },
   "greek_salad": {
     "classic": [
-      "fresh",
-      "tangy",
-      "salty",
-      "herby",
-      "briny",
-      "light"
+      "feta-cheese",
+      "kalamata-olive",
+      "oregano",
+      "red-onion",
+      "cucumber",
+      "heirloom-tomato",
+      "lemon-dressing",
+      "extra-virgin-olive-oil",
+      "mint",
+      "mediterranean",
+      "pepperoncini",
+      "sea-salt"
     ],
     "contrast": [
-      "acidic",
-      "salty",
+      "salty-feta",
       "oily",
-      "sharp",
-      "pungent"
+      "acidic-dressing",
+      "pungent-olive",
+      "tangy",
+      "sharp-onion",
+      "intense-oregano",
+      "briny",
+      "bold",
+      "astringent"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "fresh",
+      "light",
+      "easy",
+      "low-tannin",
       "clean",
-      "refreshing",
-      "mild"
+      "gentle",
+      "coastal"
     ]
   },
   "grilled_cheese_sandwich": {
     "classic": [
-      "savory",
-      "cheesy",
-      "crispy",
+      "aged-cheddar",
+      "gruyere",
+      "sourdough",
+      "salted-butter",
+      "dijon",
+      "tomato-soup-pairing",
+      "american-comfort",
+      "caramelized",
+      "gooey",
+      "crispy-crust",
+      "melted",
+      "simple"
+    ],
+    "contrast": [
+      "fatty-cheese",
       "buttery",
-      "rich",
-      "toasted"
-    ],
-    "contrast": [
-      "fatty",
-      "heavy",
-      "greasy",
-      "rich",
-      "starchy"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
-    ]
-  },
-  "grilled_salmon": {
-    "classic": [
-      "smoky",
-      "fatty",
-      "rich",
-      "seafood",
-      "savory",
-      "delicate"
-    ],
-    "contrast": [
+      "starchy-bread",
       "oily",
-      "fatty",
-      "rich",
+      "calorie-dense",
       "heavy",
-      "smoky"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "refreshing"
-    ]
-  },
-  "guacamole": {
-    "classic": [
-      "creamy",
-      "fresh",
-      "tangy",
-      "earthy",
-      "spicy",
-      "rich"
-    ],
-    "contrast": [
-      "fatty",
-      "heavy",
-      "creamy",
-      "oily",
+      "salty",
+      "rich-dairy",
+      "thick",
       "dense"
     ],
     "safe_bet": [
       "light",
+      "easy",
+      "low-tannin",
+      "fruity",
       "crisp",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "approachable"
+    ]
+  },
+  "grilled_salmon": {
+    "classic": [
+      "atlantic-salmon",
+      "dill",
+      "lemon-butter",
+      "capers",
+      "cedar-plank",
+      "dijon-glaze",
+      "fennel",
+      "pink-flesh",
+      "omega-rich",
+      "nordic",
+      "mineral",
+      "flaky"
+    ],
+    "contrast": [
+      "fatty-fish",
+      "oily",
+      "rich",
+      "heavy",
+      "intense-fish",
+      "calorie-dense",
+      "thick-fillet",
+      "strong-flavor",
+      "bold",
+      "saturated"
+    ],
+    "safe_bet": [
+      "crisp",
+      "unoaked",
+      "mineral",
+      "fresh",
+      "light",
+      "easy",
+      "low-tannin",
+      "coastal",
+      "clean",
+      "delicate"
+    ]
+  },
+  "guacamole": {
+    "classic": [
+      "hass-avocado",
+      "lime-juice",
+      "cilantro",
+      "jalapeño",
+      "red-onion",
+      "roma-tomato",
+      "garlic",
+      "sea-salt",
+      "cumin",
+      "tortilla-chip",
+      "mexican",
+      "fresh"
+    ],
+    "contrast": [
+      "fatty-avocado",
+      "oily",
+      "spicy",
+      "sharp-lime",
+      "pungent-cilantro",
+      "salty",
+      "tangy",
+      "intense",
+      "rich",
+      "calorie-dense"
+    ],
+    "safe_bet": [
+      "crisp",
+      "light",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "clean",
+      "gentle",
+      "mineral",
+      "approachable"
     ]
   },
   "gyoza": {
     "classic": [
-      "savory",
-      "umami",
+      "pork-cabbage",
       "ginger",
-      "soy",
-      "crispy",
-      "meaty"
+      "soy-dipping",
+      "sesame-oil",
+      "rice-vinegar",
+      "chili-oil",
+      "crispy-bottom",
+      "steamed-top",
+      "japanese",
+      "scallion",
+      "umami-filling",
+      "pan-fried"
     ],
     "contrast": [
-      "fatty",
+      "fatty-pork",
+      "salty-soy",
       "oily",
+      "starchy-wrapper",
       "heavy",
-      "starchy",
-      "rich"
+      "rich",
+      "calorie-dense",
+      "thick-skin",
+      "intense",
+      "pungent"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
+      "fruity",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "approachable"
     ]
   },
   "hamburger": {
     "classic": [
-      "meaty",
-      "savory",
-      "smoky",
-      "juicy",
-      "beefy",
-      "grilled"
+      "ground-chuck",
+      "charbroiled",
+      "american-cheddar",
+      "dill-pickle",
+      "yellow-mustard",
+      "brioche-bun",
+      "caramelized-onion",
+      "iceberg-lettuce",
+      "ketchup",
+      "tomato",
+      "smash-burger",
+      "american-classic"
     ],
     "contrast": [
       "fatty",
       "greasy",
       "heavy",
-      "rich",
-      "starchy"
+      "calorie-dense",
+      "salty",
+      "oily",
+      "thick-patty",
+      "dense",
+      "starchy-bun",
+      "rich"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "medium-body",
+      "fruity",
+      "soft-tannin",
+      "easy",
+      "round",
+      "gentle",
+      "smooth",
+      "approachable",
+      "juicy",
+      "low-acid"
     ]
   },
   "hot_and_sour_soup": {
     "classic": [
-      "spicy",
-      "sour",
-      "umami",
-      "tangy",
-      "savory",
-      "pungent"
+      "rice-vinegar",
+      "white-pepper",
+      "wood-ear-mushroom",
+      "tofu",
+      "bamboo",
+      "chili",
+      "egg-drop",
+      "cornstarch",
+      "chinese",
+      "sour-tang",
+      "pungent",
+      "spicy"
     ],
     "contrast": [
       "spicy",
-      "acidic",
-      "sharp",
+      "sour",
+      "pungent",
       "intense",
-      "heavy"
+      "sharp-vinegar",
+      "bold",
+      "fermented",
+      "fiery",
+      "acidic",
+      "starchy"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "mild",
+      "gentle",
+      "low-tannin",
+      "easy",
+      "fruity",
+      "smooth",
       "soft",
-      "clean",
-      "easy"
+      "mild",
+      "approachable"
     ]
   },
   "hot_dog": {
     "classic": [
-      "savory",
-      "smoky",
-      "meaty",
-      "salty",
-      "grilled",
-      "tangy"
-    ],
-    "contrast": [
-      "fatty",
-      "greasy",
-      "heavy",
-      "salty",
-      "starchy"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
-    ]
-  },
-  "huevos_rancheros": {
-    "classic": [
-      "spicy",
-      "savory",
+      "beef-frank",
+      "yellow-mustard",
+      "sauerkraut",
+      "relish",
+      "onion",
+      "chicago-style",
+      "brioche-bun",
+      "celery-salt",
       "tomato",
-      "eggy",
-      "earthy",
-      "hearty"
+      "sport-pepper",
+      "american",
+      "grilled-snap"
     ],
     "contrast": [
+      "processed-meat",
+      "salty",
       "fatty",
+      "starchy-bun",
       "heavy",
-      "spicy",
-      "greasy",
-      "starchy"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
-    ]
-  },
-  "hummus": {
-    "classic": [
-      "earthy",
-      "creamy",
-      "nutty",
-      "savory",
-      "tangy",
-      "rich"
-    ],
-    "contrast": [
-      "heavy",
-      "fatty",
-      "dense",
       "oily",
+      "calorie-dense",
+      "nitrate",
+      "bold",
       "thick"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "easy",
+      "low-tannin",
+      "fruity",
+      "gentle",
       "clean",
       "mild",
-      "refreshing"
+      "approachable",
+      "fresh"
+    ]
+  },
+  "huevos_rancheros": {
+    "classic": [
+      "fried-egg",
+      "ranchero-salsa",
+      "black-bean",
+      "corn-tortilla",
+      "queso",
+      "chipotle",
+      "cilantro",
+      "avocado",
+      "cumin",
+      "mexican",
+      "brunch",
+      "chili-sauce"
+    ],
+    "contrast": [
+      "spicy-salsa",
+      "fatty-egg",
+      "starchy-tortilla",
+      "heavy",
+      "oily",
+      "calorie-dense",
+      "salty",
+      "bold",
+      "intense",
+      "filling"
+    ],
+    "safe_bet": [
+      "crisp",
+      "light",
+      "unoaked",
+      "easy",
+      "fresh",
+      "low-tannin",
+      "clean",
+      "gentle",
+      "fruity",
+      "approachable"
+    ]
+  },
+  "hummus": {
+    "classic": [
+      "chickpea",
+      "tahini",
+      "lemon-juice",
+      "garlic",
+      "cumin",
+      "olive-oil",
+      "paprika",
+      "sumac",
+      "parsley",
+      "middle-eastern",
+      "smooth-paste",
+      "earthy"
+    ],
+    "contrast": [
+      "earthy",
+      "heavy-tahini",
+      "oily",
+      "dense",
+      "starchy",
+      "pungent",
+      "calorie-dense",
+      "thick",
+      "intense",
+      "filling"
+    ],
+    "safe_bet": [
+      "crisp",
+      "light",
+      "mineral",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "clean",
+      "gentle",
+      "approachable"
     ]
   },
   "ice_cream": {
     "classic": [
-      "sweet",
-      "creamy",
+      "vanilla-bean",
+      "heavy-cream",
+      "egg-yolk",
+      "sugar",
       "cold",
-      "vanilla",
-      "rich",
-      "smooth"
+      "smooth",
+      "american",
+      "scoop",
+      "waffle-cone",
+      "french-custard-base",
+      "dairy-sweet",
+      "gelato"
     ],
     "contrast": [
+      "fatty-cream",
       "sugary",
-      "fatty",
       "heavy",
       "cold",
-      "dense"
+      "dense",
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "saturated",
+      "rich"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "soft",
-      "mild",
+      "gentle",
+      "low-tannin",
+      "fruity",
       "easy",
-      "clean"
+      "delicate",
+      "soft",
+      "aromatic"
     ]
   },
   "lasagna": {
     "classic": [
-      "meaty",
-      "tomato",
-      "savory",
-      "cheesy",
-      "herby",
-      "rich"
+      "ragú-bolognese",
+      "béchamel",
+      "pasta-sheet",
+      "parmigiano",
+      "mozzarella",
+      "san-marzano",
+      "italian-herb",
+      "basil",
+      "oregano",
+      "slow-cooked",
+      "layered",
+      "baked"
     ],
     "contrast": [
       "heavy",
-      "fatty",
-      "rich",
+      "fatty-meat",
+      "rich-béchamel",
+      "calorie-dense",
       "starchy",
-      "dense"
+      "dense",
+      "thick",
+      "oily",
+      "salty",
+      "bold"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
+      "medium-body",
+      "fruity",
+      "soft-tannin",
+      "easy",
+      "round",
+      "gentle",
+      "smooth",
+      "approachable",
+      "balanced",
+      "low-acid"
     ]
   },
   "lobster_bisque": {
     "classic": [
-      "creamy",
-      "briny",
-      "rich",
-      "seafood",
-      "buttery",
-      "savory"
+      "maine-lobster",
+      "heavy-cream",
+      "cognac",
+      "sherry",
+      "tarragon",
+      "tomato-paste",
+      "mirepoix",
+      "chervil",
+      "seafood-stock",
+      "saffron",
+      "coastal",
+      "velvety"
     ],
     "contrast": [
-      "heavy",
+      "heavy-cream",
       "fatty",
-      "thick",
       "rich",
-      "creamy"
+      "calorie-dense",
+      "thick",
+      "intense",
+      "oily",
+      "salty",
+      "dense",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "coastal",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate"
     ]
   },
   "lobster_roll_sandwich": {
     "classic": [
-      "briny",
-      "buttery",
-      "seafood",
-      "savory",
-      "fresh",
-      "light"
+      "maine-lobster",
+      "celery",
+      "mayo",
+      "lemon-zest",
+      "chive",
+      "paprika",
+      "hot-dog-bun",
+      "brown-butter",
+      "connecticut-style",
+      "cold",
+      "coastal-new-england",
+      "delicate"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
-      "creamy",
+      "fatty-mayo",
+      "oily",
+      "buttery",
+      "starchy-bun",
       "rich",
-      "starchy"
+      "calorie-dense",
+      "heavy",
+      "salty",
+      "dense",
+      "thick"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "coastal",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate"
     ]
   },
   "macaroni_and_cheese": {
     "classic": [
+      "aged-cheddar",
+      "gruyere",
+      "elbow-macaroni",
+      "béchamel",
+      "smoked-paprika",
+      "breadcrumb-crust",
+      "american-comfort",
+      "velveeta",
+      "dijon",
+      "baked",
       "creamy",
-      "cheesy",
-      "savory",
-      "starchy",
-      "rich",
-      "warm"
+      "layered"
     ],
     "contrast": [
-      "heavy",
+      "heavy-cheese",
+      "starchy",
       "fatty",
+      "calorie-dense",
+      "rich-sauce",
+      "oily",
+      "thick",
       "dense",
-      "rich",
-      "starchy"
+      "salty",
+      "saturated"
     ],
     "safe_bet": [
       "light",
       "crisp",
-      "mild",
+      "easy",
+      "low-tannin",
+      "fruity",
+      "gentle",
       "clean",
-      "easy"
+      "soft",
+      "mild",
+      "approachable"
     ]
   },
   "macarons": {
     "classic": [
-      "sweet",
-      "almond",
-      "creamy",
-      "floral",
+      "almond-flour",
+      "cassis",
+      "raspberry-jam",
+      "chocolate-ganache",
+      "pistachio-cream",
+      "french-pastry",
+      "meringue",
+      "powdered-sugar",
+      "rosewater",
+      "lavender",
       "delicate",
-      "light"
+      "pastel"
     ],
     "contrast": [
       "sugary",
-      "rich",
+      "dense-filling",
       "sweet",
-      "dense",
-      "buttery"
+      "heavy",
+      "calorie-dense",
+      "thick-ganache",
+      "buttery",
+      "saturated",
+      "oily",
+      "rich-cream"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "delicate",
+      "easy",
+      "aromatic",
+      "floral"
     ]
   },
   "miso_soup": {
     "classic": [
+      "white-miso",
+      "dashi",
+      "tofu",
+      "wakame",
+      "scallion",
+      "fermented-soy",
       "umami",
-      "savory",
-      "briny",
-      "light",
-      "earthy",
+      "japanese",
+      "kombu",
+      "bonito",
+      "subtle",
       "warm"
     ],
     "contrast": [
       "salty",
-      "pungent",
       "fermented",
-      "light",
-      "mild"
+      "pungent-miso",
+      "umami-rich",
+      "bold",
+      "intense",
+      "briny",
+      "earthy",
+      "mineral",
+      "deep"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "mineral",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "easy"
+      "gentle",
+      "delicate"
     ]
   },
   "mussels": {
     "classic": [
+      "moules-marinières",
+      "white-wine",
+      "shallot",
+      "parsley",
+      "thyme",
+      "bay-leaf",
+      "garlic",
+      "coastal",
       "briny",
-      "seafood",
-      "garlicky",
-      "herby",
-      "savory",
-      "fresh"
+      "mineral",
+      "steamed-shell",
+      "french"
     ],
     "contrast": [
+      "briny",
+      "fishy",
       "salty",
       "pungent",
-      "fishy",
-      "heavy",
-      "rich"
+      "garlicky",
+      "oily-broth",
+      "intense-ocean",
+      "bold",
+      "mineral",
+      "acidic"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "coastal",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate"
     ]
   },
   "nachos": {
     "classic": [
-      "spicy",
-      "cheesy",
-      "savory",
-      "crunchy",
-      "tangy",
-      "hearty"
+      "corn-tortilla-chip",
+      "nacho-cheese",
+      "jalapeño",
+      "salsa",
+      "guacamole",
+      "sour-cream",
+      "black-bean",
+      "cheddar",
+      "chipotle",
+      "pico-de-gallo",
+      "american-tex-mex",
+      "loaded"
     ],
     "contrast": [
       "fatty",
+      "oily",
+      "salty",
+      "calorie-dense",
       "heavy",
-      "greasy",
       "starchy",
-      "rich"
+      "cheesy",
+      "greasy",
+      "spicy",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "mild",
+      "light",
+      "off-dry",
+      "easy",
+      "fruity",
+      "low-tannin",
+      "gentle",
       "clean",
-      "easy"
+      "mild",
+      "approachable"
     ]
   },
   "omelette": {
     "classic": [
-      "eggy",
-      "savory",
-      "buttery",
-      "creamy",
-      "soft",
-      "herby"
+      "free-range-egg",
+      "gruyere",
+      "fine-herbes",
+      "chive",
+      "tarragon",
+      "parsley",
+      "shallot",
+      "french",
+      "silky",
+      "folded",
+      "butter",
+      "delicate"
     ],
     "contrast": [
-      "fatty",
+      "eggy",
+      "fatty-butter",
+      "rich-cheese",
       "heavy",
-      "rich",
-      "creamy",
-      "oily"
+      "oily",
+      "calorie-dense",
+      "thick",
+      "salty",
+      "dense",
+      "filling"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
       "clean",
-      "mild",
-      "easy"
+      "mineral",
+      "gentle",
+      "soft"
     ]
   },
   "onion_rings": {
     "classic": [
-      "savory",
+      "sweet-onion",
+      "beer-batter",
+      "cayenne",
+      "buttermilk",
+      "panko",
       "crispy",
-      "sweet",
-      "fried",
-      "starchy",
-      "oily"
+      "deep-fried",
+      "american",
+      "horseradish-dip",
+      "sea-salt",
+      "golden",
+      "crunchy"
     ],
     "contrast": [
+      "oily",
+      "starchy",
       "greasy",
       "heavy",
-      "oily",
+      "calorie-dense",
+      "fried",
       "fatty",
-      "starchy"
+      "salty",
+      "thick-batter",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
+      "gentle",
       "clean",
       "mild",
-      "easy"
+      "approachable",
+      "fruity"
     ]
   },
   "oysters": {
     "classic": [
-      "briny",
-      "seafood",
-      "fresh",
-      "saline",
-      "delicate",
-      "mineral"
+      "kumamoto",
+      "pacific-oyster",
+      "mignonette",
+      "lemon",
+      "horseradish",
+      "mineral-brine",
+      "cold-ocean",
+      "iodine",
+      "champagne-pairing",
+      "fresh-shucked",
+      "coastal",
+      "raw"
     ],
     "contrast": [
+      "intensely-briny",
+      "fishy",
       "salty",
-      "mineral",
-      "cold",
+      "mineral-sharp",
+      "pungent",
       "raw",
-      "pungent"
+      "cold",
+      "metallic",
+      "bold",
+      "iodine"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "sparkling",
+      "mineral",
+      "coastal",
+      "light",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate"
     ]
   },
   "pad_thai": {
     "classic": [
-      "savory",
-      "tangy",
-      "nutty",
-      "spicy",
-      "sweet",
-      "umami"
+      "rice-noodle",
+      "tamarind",
+      "fish-sauce",
+      "shrimp",
+      "tofu",
+      "peanut",
+      "bean-sprout",
+      "lime",
+      "scallion",
+      "thai",
+      "sweet-sour-salty",
+      "wok-fried"
     ],
     "contrast": [
+      "sweet-tamarind",
+      "salty-fish-sauce",
       "oily",
       "heavy",
       "starchy",
-      "sweet",
-      "spicy"
+      "peanut-rich",
+      "spicy",
+      "intense",
+      "calorie-dense",
+      "bold"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
+      "fruity",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "aromatic"
     ]
   },
   "paella": {
     "classic": [
-      "savory",
-      "seafood",
       "saffron",
-      "smoky",
-      "aromatic",
-      "rich"
+      "bomba-rice",
+      "chorizo",
+      "shrimp",
+      "mussel",
+      "squid",
+      "smoked-paprika",
+      "sofrito",
+      "socarrat-crust",
+      "spanish",
+      "valencia",
+      "seafood-stock"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
       "oily",
-      "rich",
-      "starchy"
+      "salty",
+      "heavy",
+      "starchy-rice",
+      "fatty-chorizo",
+      "calorie-dense",
+      "smoky",
+      "intense",
+      "bold",
+      "thick"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "coastal",
+      "easy",
+      "fresh",
+      "low-tannin",
+      "light",
       "clean",
-      "mild",
-      "easy"
+      "gentle"
     ]
   },
   "pancakes": {
     "classic": [
-      "sweet",
-      "buttery",
+      "buttermilk",
+      "maple-syrup",
+      "vanilla-extract",
+      "blueberry",
+      "butter",
+      "baking-powder",
       "fluffy",
-      "warm",
-      "syrupy",
-      "starchy"
+      "stacked",
+      "american-brunch",
+      "lemon-zest",
+      "golden-brown",
+      "comfort"
     ],
     "contrast": [
+      "starchy",
+      "sugary-syrup",
+      "buttery",
       "heavy",
-      "sugary",
-      "fatty",
       "dense",
-      "starchy"
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "oily",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "sparkling",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "soft",
       "mild",
-      "clean",
-      "easy"
+      "aromatic"
     ]
   },
   "panna_cotta": {
     "classic": [
-      "creamy",
-      "sweet",
-      "vanilla",
+      "heavy-cream",
+      "vanilla-bean",
+      "gelatin",
+      "berry-coulis",
+      "caramel",
+      "passionfruit",
+      "italian",
       "silky",
       "delicate",
-      "light"
+      "set-cream",
+      "elegant",
+      "refined"
     ],
     "contrast": [
-      "rich",
-      "fatty",
+      "fatty-cream",
       "sugary",
       "heavy",
-      "creamy"
+      "rich-dairy",
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "dense",
+      "saturated",
+      "eggy"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "delicate",
+      "easy",
+      "aromatic",
+      "soft"
     ]
   },
   "peking_duck": {
     "classic": [
-      "crispy",
-      "rich",
-      "savory",
-      "fatty",
-      "sweet",
-      "smoky"
+      "lacquered-skin",
+      "hoisin-sauce",
+      "scallion",
+      "cucumber",
+      "mandarin-pancake",
+      "star-anise",
+      "five-spice",
+      "dark-soy",
+      "crispy-skin",
+      "beijing",
+      "imperial",
+      "roasted"
     ],
     "contrast": [
-      "fatty",
+      "fatty-skin",
+      "oily",
+      "rich-sauce",
+      "sweet-hoisin",
+      "calorie-dense",
       "heavy",
-      "rich",
-      "greasy",
-      "indulgent"
+      "intense",
+      "salty",
+      "thick",
+      "bold-spice"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "medium-body",
+      "fruity",
+      "off-dry",
+      "gentle",
+      "low-tannin",
+      "easy",
+      "smooth",
+      "soft",
+      "aromatic",
+      "round"
     ]
   },
   "pho": {
     "classic": [
-      "aromatic",
-      "savory",
-      "spiced",
-      "brothy",
-      "meaty",
-      "warm"
+      "beef-bone-broth",
+      "star-anise",
+      "cinnamon",
+      "cardamom",
+      "ginger",
+      "fish-sauce",
+      "rice-noodle",
+      "thai-basil",
+      "bean-sprout",
+      "hoisin",
+      "vietnamese",
+      "aromatic-broth"
     ],
     "contrast": [
-      "salty",
-      "spicy",
-      "heavy",
+      "salty-broth",
+      "spicy-sriracha",
+      "pungent-fish-sauce",
+      "heavy-bone-broth",
+      "intense",
+      "bold-spice",
       "fatty",
-      "intense"
+      "oily",
+      "calorie-dense",
+      "thick"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "fruity",
+      "aromatic",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
-      "mild",
       "soft",
-      "easy"
+      "mild"
     ]
   },
   "pizza": {
     "classic": [
-      "tomato",
-      "cheesy",
-      "savory",
-      "herby",
-      "baked",
-      "meaty"
+      "san-marzano-tomato",
+      "fior-di-latte",
+      "basil",
+      "olive-oil",
+      "wood-fired",
+      "doppio-zero-flour",
+      "mozzarella",
+      "italian",
+      "char",
+      "neapolitan",
+      "pepperoni",
+      "oregano"
     ],
     "contrast": [
-      "fatty",
-      "greasy",
+      "fatty-cheese",
+      "oily",
+      "starchy-crust",
       "heavy",
-      "starchy",
-      "salty"
+      "calorie-dense",
+      "salty",
+      "rich-topping",
+      "thick",
+      "greasy",
+      "dense"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
+      "medium-body",
+      "fruity",
+      "easy",
+      "soft-tannin",
+      "round",
+      "gentle",
+      "smooth",
+      "approachable",
+      "balanced",
+      "low-acid"
     ]
   },
   "pork_chop": {
     "classic": [
-      "meaty",
-      "savory",
-      "grilled",
-      "smoky",
+      "bone-in-chop",
+      "apple-cider-brine",
+      "rosemary",
+      "sage",
+      "dijon",
+      "apple-chutney",
+      "pan-seared",
+      "thyme",
+      "black-pepper",
+      "american",
       "juicy",
-      "rich"
+      "charred"
     ],
     "contrast": [
       "fatty",
       "heavy",
-      "rich",
-      "greasy",
+      "rich-meat",
+      "calorie-dense",
+      "oily",
+      "bold",
+      "intense",
+      "thick-cut",
+      "robust",
       "salty"
     ],
     "safe_bet": [
-      "soft",
+      "medium-body",
+      "fruity",
+      "soft-tannin",
+      "easy",
       "round",
+      "gentle",
       "smooth",
-      "mild",
-      "easy"
+      "approachable",
+      "balanced",
+      "plush"
     ]
   },
   "poutine": {
     "classic": [
-      "savory",
-      "meaty",
-      "cheesy",
-      "starchy",
-      "gravy",
-      "hearty"
+      "russet-fry",
+      "cheese-curd",
+      "beef-gravy",
+      "montreal",
+      "squeaky-curd",
+      "dark-brown-gravy",
+      "canadian",
+      "crispy-base",
+      "hearty",
+      "indulgent",
+      "comfort-food",
+      "loaded"
     ],
     "contrast": [
+      "extremely-fatty",
       "heavy",
-      "fatty",
-      "greasy",
+      "oily",
+      "starchy",
+      "calorie-dense",
+      "thick-gravy",
+      "salty",
       "rich",
-      "dense"
+      "dense",
+      "saturated"
     ],
     "safe_bet": [
       "light",
       "crisp",
+      "easy",
+      "low-tannin",
+      "fruity",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "approachable"
     ]
   },
   "prime_rib": {
     "classic": [
-      "beefy",
-      "savory",
-      "rich",
-      "juicy",
-      "fatty",
-      "roasted"
+      "standing-rib-roast",
+      "black-pepper-crust",
+      "horseradish-cream",
+      "au-jus",
+      "rosemary",
+      "thyme",
+      "garlic",
+      "dijon",
+      "yorkshire-pudding",
+      "marbled",
+      "roasted",
+      "fine-dining"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
+      "extremely-fatty",
       "rich",
-      "dense",
-      "salty"
+      "heavy",
+      "iron-forward",
+      "bold",
+      "calorie-dense",
+      "tannic",
+      "intense-meat",
+      "oily",
+      "robust"
     ],
     "safe_bet": [
-      "soft",
+      "full-body",
+      "fruity",
+      "soft-tannin",
       "round",
+      "easy",
       "smooth",
-      "mild",
-      "easy"
+      "approachable",
+      "plush",
+      "balanced",
+      "gentle"
     ]
   },
   "pulled_pork_sandwich": {
     "classic": [
-      "smoky",
-      "sweet",
-      "savory",
-      "meaty",
-      "tangy",
-      "barbecue"
+      "smoked-shoulder",
+      "carolina-bbq-sauce",
+      "apple-cider-vinegar",
+      "brown-sugar-rub",
+      "paprika",
+      "coleslaw",
+      "brioche-bun",
+      "hickory",
+      "low-and-slow",
+      "molasses",
+      "american-south",
+      "charred"
     ],
     "contrast": [
       "fatty",
+      "sticky-sauce",
+      "oily",
       "heavy",
-      "sweet",
+      "calorie-dense",
+      "sweet-bbq",
+      "thick",
       "greasy",
-      "rich"
+      "rich",
+      "salty"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
+      "fruity",
+      "off-dry",
+      "low-tannin",
+      "round",
+      "easy",
+      "gentle",
+      "smooth",
+      "soft",
+      "approachable",
+      "juicy"
     ]
   },
   "ramen": {
     "classic": [
-      "savory",
-      "umami",
-      "brothy",
-      "meaty",
-      "rich",
-      "aromatic"
+      "tonkotsu-broth",
+      "chashu-pork",
+      "soft-boiled-egg",
+      "nori",
+      "bamboo",
+      "miso-tare",
+      "sesame-oil",
+      "scallion",
+      "corn",
+      "menma",
+      "japanese",
+      "umami-rich"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
-      "salty",
+      "fatty-broth",
       "oily",
-      "intense"
+      "salty",
+      "heavy",
+      "calorie-dense",
+      "pungent",
+      "rich-pork",
+      "thick-soup",
+      "intense",
+      "bold"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
+      "fruity",
+      "easy",
+      "low-tannin",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "crisp",
-      "easy"
+      "approachable"
     ]
   },
   "ravioli": {
     "classic": [
-      "savory",
-      "cheesy",
-      "pasta",
-      "buttery",
-      "herby",
-      "rich"
+      "ricotta-spinach",
+      "sage-brown-butter",
+      "parmesan",
+      "lobster-filling",
+      "pasta-dough",
+      "lemon-zest",
+      "truffle",
+      "black-pepper",
+      "italian",
+      "hand-rolled",
+      "al-dente",
+      "herb-stuffed"
     ],
     "contrast": [
+      "starchy-pasta",
+      "fatty-butter",
+      "rich-filling",
+      "calorie-dense",
       "heavy",
-      "fatty",
-      "starchy",
-      "rich",
-      "dense"
+      "oily",
+      "dense",
+      "salty",
+      "thick-sauce",
+      "bold"
     ],
     "safe_bet": [
+      "medium-body",
       "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
+      "easy",
+      "fruity",
+      "low-tannin",
+      "soft",
+      "round",
+      "gentle",
+      "approachable",
+      "smooth"
     ]
   },
   "red_velvet_cake": {
     "classic": [
-      "sweet",
-      "creamy",
-      "chocolatey",
-      "tangy",
-      "rich",
-      "dense"
+      "buttermilk",
+      "cocoa",
+      "cream-cheese-frosting",
+      "crimson-crumb",
+      "vanilla-extract",
+      "beet-red",
+      "southern-american",
+      "layered",
+      "moist",
+      "confectioners-sugar",
+      "vinegar",
+      "rich-frosting"
     ],
     "contrast": [
       "sugary",
-      "heavy",
+      "heavy-frosting",
+      "dense",
       "fatty",
-      "rich",
+      "starchy",
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "saturated",
       "buttery"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "soft",
-      "mild",
-      "clean",
-      "easy"
+      "delicate",
+      "aromatic"
     ]
   },
   "risotto": {
     "classic": [
-      "creamy",
-      "savory",
-      "buttery",
-      "starchy",
-      "umami",
-      "rich"
+      "arborio-rice",
+      "parmigiano",
+      "white-wine",
+      "saffron",
+      "porcini",
+      "shallot",
+      "unsalted-butter",
+      "mascarpone",
+      "lobster",
+      "truffle",
+      "mantecatura",
+      "italian"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
-      "dense",
       "starchy",
-      "rich"
+      "heavy-butter",
+      "fatty-cheese",
+      "rich",
+      "calorie-dense",
+      "oily",
+      "dense",
+      "thick",
+      "bold",
+      "saturated"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "medium-body",
+      "fruity",
+      "unoaked",
+      "easy",
+      "soft-tannin",
+      "round",
+      "gentle",
+      "smooth",
+      "approachable",
+      "balanced"
     ]
   },
   "samosa": {
     "classic": [
-      "spiced",
-      "crispy",
-      "earthy",
-      "savory",
-      "warm",
-      "starchy"
+      "spiced-potato",
+      "peas",
+      "cumin",
+      "coriander",
+      "turmeric",
+      "garam-masala",
+      "ginger",
+      "amchur",
+      "deep-fried-pastry",
+      "chutney",
+      "indian",
+      "triangular"
     ],
     "contrast": [
       "oily",
-      "heavy",
-      "fried",
       "starchy",
-      "dense"
+      "spiced",
+      "heavy",
+      "greasy",
+      "calorie-dense",
+      "crispy-fried",
+      "dense",
+      "pungent",
+      "intense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "off-dry",
+      "light",
+      "aromatic",
+      "easy",
+      "low-tannin",
+      "gentle",
+      "fruity",
       "clean",
-      "mild",
-      "easy"
+      "approachable"
     ]
   },
   "sashimi": {
     "classic": [
-      "fresh",
-      "delicate",
-      "briny",
-      "seafood",
-      "clean",
-      "light"
+      "bluefin-tuna",
+      "yellowtail",
+      "salmon",
+      "soy-sauce",
+      "wasabi",
+      "pickled-ginger",
+      "shiso",
+      "daikon",
+      "pure-fish",
+      "japanese",
+      "ultra-fresh",
+      "mineral"
     ],
     "contrast": [
-      "raw",
-      "cold",
-      "mild",
+      "raw-fish",
       "fishy",
-      "light"
+      "mineral-sharp",
+      "salty-soy",
+      "pungent-wasabi",
+      "cold",
+      "intense-ocean",
+      "briny",
+      "lean",
+      "iron"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "coastal",
       "clean",
-      "mild",
-      "easy"
+      "delicate"
     ]
   },
   "scallops": {
     "classic": [
-      "sweet",
-      "briny",
-      "seafood",
-      "buttery",
-      "delicate",
-      "seared"
+      "dry-sea-scallop",
+      "sear-crust",
+      "lemon-butter",
+      "capers",
+      "truffle",
+      "cauliflower-puree",
+      "chive",
+      "pancetta",
+      "fine-dining",
+      "coastal",
+      "mineral",
+      "sweet-flesh"
     ],
     "contrast": [
-      "fatty",
-      "rich",
+      "fatty-butter",
+      "sweet-flesh",
+      "oily",
+      "briny",
+      "calorie-dense",
+      "rich-sauce",
+      "intense-sear",
+      "thick-crust",
       "heavy",
-      "buttery",
-      "sweet"
+      "bold"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "coastal",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "refreshing"
+      "delicate"
     ]
   },
   "seaweed_salad": {
     "classic": [
-      "briny",
-      "umami",
-      "fresh",
-      "earthy",
-      "sesame",
-      "light"
+      "wakame",
+      "sesame-oil",
+      "rice-vinegar",
+      "soy-sauce",
+      "ginger",
+      "scallion",
+      "sesame-seed",
+      "cucumber",
+      "japanese",
+      "iodine",
+      "mineral-ocean",
+      "tangy"
     ],
     "contrast": [
-      "salty",
-      "pungent",
+      "salty-soy",
+      "oily-sesame",
+      "briny-ocean",
+      "acidic",
+      "pungent-ginger",
+      "mineral-sharp",
+      "intense",
+      "bold",
       "fishy",
-      "mineral",
-      "light"
+      "tangy"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "coastal",
       "clean",
-      "mild",
-      "easy"
+      "delicate"
     ]
   },
   "shrimp_and_grits": {
     "classic": [
-      "savory",
-      "briny",
-      "creamy",
-      "hearty",
-      "spicy",
-      "cheesy"
+      "gulf-shrimp",
+      "stone-ground-grits",
+      "tasso-ham",
+      "andouille",
+      "scallion",
+      "cheddar",
+      "cajun",
+      "cream",
+      "southern-american",
+      "butter",
+      "white-wine-sauce",
+      "coastal"
     ],
     "contrast": [
-      "heavy",
-      "fatty",
-      "rich",
-      "creamy",
-      "starchy"
+      "fatty-butter",
+      "heavy-grits",
+      "starchy",
+      "calorie-dense",
+      "oily",
+      "rich-cream",
+      "salty-ham",
+      "thick",
+      "bold",
+      "dense"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "coastal",
+      "mineral",
+      "light",
+      "easy",
+      "low-tannin",
+      "fresh",
       "clean",
-      "mild",
-      "easy"
+      "gentle"
     ]
   },
   "spaghetti_bolognese": {
     "classic": [
-      "meaty",
-      "tomato",
-      "savory",
-      "herby",
-      "rich",
-      "hearty"
+      "ground-beef-pork",
+      "san-marzano",
+      "soffritto",
+      "red-wine",
+      "milk",
+      "parmigiano",
+      "pasta-al-dente",
+      "slow-simmered",
+      "bay-leaf",
+      "nutmeg",
+      "bologna",
+      "italian-classic"
     ],
     "contrast": [
+      "fatty-meat",
       "heavy",
-      "fatty",
-      "rich",
-      "starchy",
-      "dense"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
-    ]
-  },
-  "spaghetti_carbonara": {
-    "classic": [
-      "creamy",
-      "savory",
-      "eggy",
-      "salty",
-      "smoky",
-      "rich"
-    ],
-    "contrast": [
-      "fatty",
-      "heavy",
-      "rich",
-      "creamy",
-      "dense"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "mild",
-      "clean",
-      "easy"
-    ]
-  },
-  "spring_rolls": {
-    "classic": [
-      "fresh",
-      "crispy",
-      "light",
-      "herby",
-      "tangy",
-      "delicate"
-    ],
-    "contrast": [
       "oily",
-      "fried",
-      "heavy",
+      "calorie-dense",
+      "rich-sauce",
       "starchy",
-      "greasy"
-    ],
-    "safe_bet": [
-      "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
-    ]
-  },
-  "steak": {
-    "classic": [
-      "beefy",
-      "savory",
-      "rich",
-      "grilled",
-      "smoky",
-      "juicy"
-    ],
-    "contrast": [
-      "fatty",
-      "heavy",
-      "rich",
+      "bold",
+      "dense",
       "salty",
       "intense"
     ],
     "safe_bet": [
-      "soft",
+      "medium-body",
+      "fruity",
+      "soft-tannin",
+      "easy",
       "round",
+      "gentle",
       "smooth",
-      "mild",
-      "easy"
+      "approachable",
+      "balanced",
+      "low-acid"
+    ]
+  },
+  "spaghetti_carbonara": {
+    "classic": [
+      "guanciale",
+      "pecorino-romano",
+      "egg-yolk",
+      "black-pepper",
+      "pasta",
+      "italian",
+      "silky-sauce",
+      "no-cream",
+      "emulsified",
+      "rendered-pork-fat",
+      "roman",
+      "classic"
+    ],
+    "contrast": [
+      "fatty-pork",
+      "eggy",
+      "rich-sauce",
+      "oily",
+      "heavy",
+      "calorie-dense",
+      "salty-cheese",
+      "starchy",
+      "bold",
+      "intense"
+    ],
+    "safe_bet": [
+      "medium-body",
+      "crisp",
+      "unoaked",
+      "easy",
+      "fruity",
+      "low-tannin",
+      "fresh",
+      "clean",
+      "gentle",
+      "mineral"
+    ]
+  },
+  "spring_rolls": {
+    "classic": [
+      "rice-paper",
+      "shrimp",
+      "vermicelli",
+      "mint",
+      "cilantro",
+      "lettuce",
+      "peanut-dipping-sauce",
+      "fish-sauce",
+      "vietnamese",
+      "fresh-herb",
+      "light",
+      "cold"
+    ],
+    "contrast": [
+      "oily-peanut-sauce",
+      "starchy",
+      "salty-fish-sauce",
+      "light",
+      "fresh",
+      "herb-forward",
+      "delicate",
+      "tangy",
+      "clean",
+      "mild"
+    ],
+    "safe_bet": [
+      "crisp",
+      "light",
+      "unoaked",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "mineral",
+      "clean",
+      "gentle",
+      "delicate"
+    ]
+  },
+  "steak": {
+    "classic": [
+      "dry-aged-ribeye",
+      "black-pepper-crust",
+      "char",
+      "iron",
+      "rosemary",
+      "thyme",
+      "garlic-butter",
+      "dijon-crust",
+      "umami-rich",
+      "marbled",
+      "tannic-pairing",
+      "fine-dining"
+    ],
+    "contrast": [
+      "fatty-marbling",
+      "iron-forward",
+      "heavy",
+      "rich",
+      "bold",
+      "calorie-dense",
+      "robust",
+      "oily",
+      "thick-cut",
+      "intense-meat"
+    ],
+    "safe_bet": [
+      "full-body",
+      "fruity",
+      "soft-tannin",
+      "round",
+      "easy",
+      "smooth",
+      "approachable",
+      "plush",
+      "balanced",
+      "gentle"
     ]
   },
   "strawberry_shortcake": {
     "classic": [
-      "sweet",
-      "fruity",
-      "creamy",
-      "light",
-      "fresh",
-      "floral"
+      "fresh-strawberry",
+      "whipped-cream",
+      "vanilla-sponge",
+      "biscuit",
+      "macerated-berry",
+      "powdered-sugar",
+      "summer",
+      "american",
+      "light-cream",
+      "lemon-zest",
+      "floral",
+      "delicate"
     ],
     "contrast": [
       "sugary",
-      "heavy",
-      "fatty",
-      "rich",
-      "starchy"
+      "fatty-cream",
+      "sweet-berry",
+      "starchy-cake",
+      "calorie-dense",
+      "heavy-topping",
+      "thick",
+      "soft",
+      "sweet",
+      "buttery"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
-      "crisp",
-      "clean",
-      "mild",
-      "easy"
+      "fruity",
+      "gentle",
+      "low-tannin",
+      "easy",
+      "delicate",
+      "aromatic",
+      "floral"
     ]
   },
   "sushi": {
     "classic": [
-      "fresh",
-      "briny",
-      "delicate",
+      "sushi-rice",
+      "nori",
+      "bluefin-tuna",
+      "salmon",
+      "wasabi",
+      "pickled-ginger",
+      "soy-sauce",
+      "japanese",
       "umami",
-      "light",
-      "seafood"
+      "mineral",
+      "seasoned-vinegar",
+      "chef-crafted"
     ],
     "contrast": [
-      "raw",
+      "salty-soy",
+      "pungent-wasabi",
+      "raw-fish",
+      "acidic-rice-vinegar",
+      "briny",
+      "intense-ocean",
       "cold",
-      "mild",
-      "fishy",
-      "light"
+      "mineral-sharp",
+      "lean",
+      "bold"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "coastal",
       "clean",
-      "mild",
-      "easy"
+      "delicate"
     ]
   },
   "tacos": {
     "classic": [
-      "spicy",
-      "savory",
-      "meaty",
-      "tangy",
-      "fresh",
-      "hearty"
+      "corn-tortilla",
+      "carne-asada",
+      "lime-crema",
+      "salsa-verde",
+      "cotija",
+      "cilantro",
+      "pickled-onion",
+      "chipotle",
+      "achiote",
+      "al-pastor",
+      "mexican-street",
+      "charred"
     ],
     "contrast": [
-      "fatty",
-      "heavy",
+      "fatty-meat",
       "spicy",
-      "greasy",
-      "starchy"
+      "oily",
+      "salty",
+      "starchy-tortilla",
+      "calorie-dense",
+      "bold",
+      "heavy",
+      "intense",
+      "greasy"
     ],
     "safe_bet": [
-      "light",
       "crisp",
-      "mild",
+      "light",
+      "off-dry",
+      "easy",
+      "fruity",
+      "low-tannin",
+      "gentle",
       "clean",
-      "easy"
+      "mild",
+      "approachable"
     ]
   },
   "takoyaki": {
     "classic": [
-      "savory",
-      "umami",
-      "briny",
-      "sweet",
-      "crispy",
-      "saucy"
+      "octopus",
+      "dashi-batter",
+      "bonito-flake",
+      "okonomi-sauce",
+      "mayo",
+      "scallion",
+      "pickled-ginger",
+      "nori",
+      "japanese",
+      "street-food",
+      "crispy-outside",
+      "soft-inside"
     ],
     "contrast": [
       "oily",
-      "heavy",
-      "fatty",
       "starchy",
-      "fried"
+      "fatty-mayo",
+      "sweet-sauce",
+      "salty",
+      "heavy",
+      "calorie-dense",
+      "thick",
+      "fried",
+      "dense"
     ],
     "safe_bet": [
+      "off-dry",
       "light",
-      "crisp",
+      "easy",
+      "low-tannin",
+      "fruity",
+      "gentle",
       "clean",
+      "soft",
       "mild",
-      "easy"
+      "approachable"
     ]
   },
   "tiramisu": {
     "classic": [
+      "espresso-soaked-ladyfinger",
+      "mascarpone",
+      "zabaglione",
+      "marsala",
+      "cocoa-powder",
+      "dark-chocolate",
+      "italian",
       "coffee",
-      "creamy",
-      "sweet",
-      "rich",
-      "bittersweet",
-      "boozy"
+      "creamy-layers",
+      "rum",
+      "luxurious",
+      "no-bake"
     ],
     "contrast": [
+      "rich-mascarpone",
       "heavy",
+      "fatty-cream",
       "sugary",
-      "fatty",
-      "dense",
+      "intense-coffee",
+      "calorie-dense",
+      "thick",
+      "saturated",
+      "bold",
       "alcoholic"
     ],
     "safe_bet": [
-      "light",
+      "off-dry",
+      "sweet",
+      "sparkling",
+      "gentle",
+      "low-tannin",
+      "easy",
       "soft",
-      "mild",
-      "clean",
-      "easy"
+      "aromatic",
+      "delicate",
+      "dessert-style"
     ]
   },
   "tuna_tartare": {
     "classic": [
-      "fresh",
-      "briny",
-      "delicate",
-      "savory",
-      "tangy",
-      "light"
+      "bluefin-tuna",
+      "sesame-oil",
+      "soy-sauce",
+      "avocado",
+      "jalapeno",
+      "citrus-ponzu",
+      "tobiko",
+      "scallion",
+      "ginger",
+      "japanese-inspired",
+      "hand-chopped",
+      "mineral"
     ],
     "contrast": [
-      "raw",
-      "cold",
-      "mild",
+      "raw-fish",
+      "salty-soy",
+      "oily-sesame",
       "fishy",
-      "light"
+      "sharp-jalapeno",
+      "acidic",
+      "cold",
+      "mineral-intense",
+      "pungent",
+      "bold"
     ],
     "safe_bet": [
-      "light",
       "crisp",
+      "unoaked",
+      "mineral",
+      "light",
+      "fresh",
+      "easy",
+      "low-tannin",
+      "coastal",
       "clean",
-      "mild",
-      "easy"
+      "delicate"
     ]
   },
   "waffles": {
     "classic": [
-      "sweet",
-      "crispy",
-      "buttery",
-      "warm",
-      "starchy",
+      "buttermilk-batter",
+      "maple-syrup",
+      "vanilla-extract",
+      "fresh-berry",
+      "crispy-grid",
+      "whipped-cream",
+      "browned-butter",
+      "american-brunch",
+      "light-inside",
+      "golden-outside",
+      "powdered-sugar",
       "fluffy"
     ],
     "contrast": [
-      "heavy",
-      "sugary",
-      "fatty",
       "starchy",
-      "dense"
+      "sugary-syrup",
+      "buttery",
+      "heavy",
+      "calorie-dense",
+      "thick",
+      "sweet",
+      "oily",
+      "dense",
+      "saturated"
     ],
     "safe_bet": [
+      "off-dry",
+      "sparkling",
       "light",
+      "gentle",
+      "low-tannin",
+      "fruity",
+      "easy",
       "soft",
       "mild",
-      "clean",
-      "easy"
+      "aromatic"
     ]
   }
 }

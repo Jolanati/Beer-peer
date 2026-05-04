@@ -29,28 +29,28 @@
       "flaky"
     ],
     "contrast": [
-      "sugary",
-      "starchy",
-      "buttery",
-      "dense",
-      "heavy",
-      "syrupy",
-      "calorific",
-      "thick",
-      "greasy",
-      "sweet-filling"
+      "bone-dry",
+      "razor-sharp",
+      "tart",
+      "austere",
+      "bracing-acidity",
+      "angular",
+      "puckering",
+      "lean",
+      "nerve",
+      "flinty"
     ],
     "safe_bet": [
-      "light",
+      "honeyed",
+      "peachy",
       "off-dry",
-      "fruity",
-      "gentle",
-      "low-tannin",
-      "easy-drinking",
-      "smooth",
-      "soft",
-      "mild",
-      "approachable"
+      "apricot",
+      "nectarine",
+      "golden-sweetness",
+      "ripe-pear",
+      "blossom",
+      "mellow",
+      "amber"
     ]
   },
   "baby_back_ribs": {
@@ -69,28 +69,28 @@
       "bold"
     ],
     "contrast": [
-      "fatty",
-      "sticky",
-      "greasy",
-      "heavy",
-      "saucy",
-      "sweet-sauce",
-      "calorie-dense",
-      "oily",
-      "rich-marinade",
-      "thick-cut"
+      "electric-acidity",
+      "saline",
+      "lean",
+      "racy",
+      "vivid",
+      "piercing",
+      "wire-taut",
+      "chalky",
+      "bright-citrus",
+      "searing"
     ],
     "safe_bet": [
-      "round",
-      "soft-tannin",
-      "fruity",
-      "easy",
-      "gentle",
-      "low-acid",
-      "smooth",
-      "mild",
-      "approachable",
-      "juicy"
+      "toasty",
+      "warm-spice",
+      "cedar",
+      "tobacco-leaf",
+      "dark-berry",
+      "smoked-plum",
+      "forest-floor",
+      "leather",
+      "dried-cherry",
+      "spiced-oak"
     ]
   },
   "baklava": {
@@ -109,28 +109,28 @@
       "middle-eastern"
     ],
     "contrast": [
-      "sugary",
-      "syrupy",
-      "dense",
-      "sticky",
-      "buttery",
-      "heavy",
-      "extremely-sweet",
-      "calorie-dense",
-      "oily",
-      "saturated"
+      "bone-dry",
+      "austere",
+      "flinty-mineral",
+      "puckering-tannin",
+      "sharp",
+      "grip",
+      "steely",
+      "crystalline",
+      "angular-acid",
+      "nerve"
     ],
     "safe_bet": [
-      "off-dry",
-      "light",
-      "crisp",
-      "floral",
-      "aromatic",
-      "delicate",
-      "gentle",
-      "refreshing",
-      "low-tannin",
-      "easy"
+      "honeyed",
+      "amber",
+      "blossom-honey",
+      "golden-raisin",
+      "fig-note",
+      "dried-apricot",
+      "candied-orange",
+      "mellow-sweetness",
+      "ripe",
+      "luscious"
     ]
   },
   "beef_carpaccio": {
@@ -149,28 +149,28 @@
       "italian-appetizer"
     ],
     "contrast": [
-      "lean",
-      "cold",
-      "iron-forward",
-      "sharp",
-      "acidic",
-      "salty",
-      "intense-umami",
-      "pungent-cheese",
-      "peppery",
-      "thin-sliced"
+      "opulent",
+      "lush-fruit",
+      "tropical",
+      "voluptuous",
+      "heady",
+      "exotic",
+      "passionfruit",
+      "mango-ripe",
+      "full-bodied",
+      "generous"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "low-tannin",
-      "fresh",
-      "clean",
-      "elegant",
-      "mineral",
-      "soft",
-      "unoaked",
-      "easy"
+      "earthy-mushroom",
+      "forest-floor",
+      "cedar-spice",
+      "truffle-hint",
+      "dried-herb",
+      "barnyard",
+      "rustic",
+      "aged-character",
+      "leather-note",
+      "savory"
     ]
   },
   "beef_tartare": {
@@ -189,28 +189,28 @@
       "french-bistro"
     ],
     "contrast": [
-      "raw",
-      "sharp",
-      "intense",
-      "pungent",
-      "acidic",
-      "salty",
-      "cold",
-      "lean",
-      "iron-rich",
-      "fermented-tang"
+      "ripe-plum",
+      "velvety-texture",
+      "plush",
+      "dark-cherry",
+      "generous-fruit",
+      "jammy",
+      "supple",
+      "rounded",
+      "warm-alcohol",
+      "soft-tannin"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "unoaked",
-      "fresh",
-      "mineral",
-      "low-tannin",
-      "delicate",
-      "clean",
-      "easy",
-      "soft"
+      "tobacco-leaf",
+      "dark-berry",
+      "graphite",
+      "black-pepper-spice",
+      "iron-mineral",
+      "firm-structure",
+      "dry-herb",
+      "violet-note",
+      "cedar",
+      "robust"
     ]
   },
   "beet_salad": {
@@ -229,28 +229,28 @@
       "sweet-vegetable"
     ],
     "contrast": [
-      "earthy",
-      "sweet-root",
-      "astringent-walnut",
-      "tangy-cheese",
-      "acidic-dressing",
-      "dense",
-      "vegetal",
-      "bitter-leaf",
-      "sharp",
-      "rustic"
+      "citrusy",
+      "zesty-lime",
+      "tropical",
+      "passionfruit",
+      "lychee",
+      "grapefruit-pith",
+      "lemon-verbena",
+      "vibrant",
+      "exotic-fruit",
+      "tangy"
     ],
     "safe_bet": [
-      "light",
-      "fresh",
-      "crisp",
-      "fruity",
-      "easy",
-      "low-tannin",
-      "aromatic",
-      "gentle",
-      "soft",
-      "approachable"
+      "rose-petal",
+      "elderflower",
+      "violet-scent",
+      "floral-lift",
+      "jasmine",
+      "orange-blossom",
+      "soft-fruit",
+      "delicate",
+      "fragrant",
+      "graceful"
     ]
   },
   "beignets": {
@@ -269,28 +269,28 @@
       "confectioners"
     ],
     "contrast": [
-      "oily",
-      "heavy",
-      "greasy",
-      "sugary",
-      "dense-dough",
-      "calorie-dense",
-      "starchy",
-      "thick",
-      "saturated",
-      "sweet"
+      "bracing",
+      "bone-dry",
+      "razor-tart",
+      "austere",
+      "acidic-backbone",
+      "sharp-edge",
+      "puckering",
+      "lean-finish",
+      "biting-acidity",
+      "crisp-nerve"
     ],
     "safe_bet": [
       "off-dry",
-      "light",
-      "sparkling",
-      "gentle",
-      "low-tannin",
-      "fruity",
-      "easy",
-      "mild",
-      "clean",
-      "approachable"
+      "peachy",
+      "soft-sweetness",
+      "apricot-blossom",
+      "nectarine",
+      "golden-apple",
+      "gentle-fizz",
+      "light-honey",
+      "mellow-fruit",
+      "creamy-bubble"
     ]
   },
   "bibimbap": {
@@ -309,28 +309,28 @@
       "umami-rich"
     ],
     "contrast": [
-      "spicy",
-      "pungent",
-      "fermented",
-      "oily",
-      "salty",
-      "intense",
-      "chili-heat",
-      "heavy-sesame",
-      "bold",
-      "tangy"
+      "floral-perfume",
+      "gossamer",
+      "cooling",
+      "ethereal",
+      "featherweight",
+      "delicate-rose",
+      "airy",
+      "translucent",
+      "light-as-silk",
+      "pale-blush"
     ],
     "safe_bet": [
-      "off-dry",
-      "fruity",
-      "low-tannin",
-      "soft",
-      "easy",
-      "mild",
-      "slightly-sweet",
-      "smooth",
-      "gentle",
-      "light"
+      "lychee",
+      "rose-hip",
+      "exotic-spice-note",
+      "tropical-lilt",
+      "aromatic-lift",
+      "white-pepper",
+      "ginger-snap",
+      "soft-stone-fruit",
+      "fragrant",
+      "off-dry-spice"
     ]
   },
   "bread_pudding": {
@@ -349,28 +349,28 @@
       "baked"
     ],
     "contrast": [
-      "heavy",
-      "dense",
-      "starchy",
-      "sugary",
-      "saturated",
-      "calorie-dense",
-      "thick",
-      "buttery",
-      "rich-custard",
-      "syrupy"
+      "tart",
+      "sharp-acidity",
+      "bracing-tartness",
+      "lemon-zing",
+      "zesty",
+      "high-acid",
+      "puckering-citrus",
+      "lean",
+      "angular",
+      "nerve-acidity"
     ],
     "safe_bet": [
-      "off-dry",
-      "light",
-      "gentle",
-      "low-tannin",
-      "smooth",
-      "fruity",
-      "easy",
-      "soft",
-      "mild",
-      "approachable"
+      "vanilla-cream",
+      "toasty",
+      "nutty",
+      "caramel-note",
+      "warm-toast",
+      "brioche-hint",
+      "buttery-oak",
+      "amber-warmth",
+      "ripe-peach",
+      "creamy-texture"
     ]
   },
   "breakfast_burrito": {
@@ -389,28 +389,28 @@
       "morning-spice"
     ],
     "contrast": [
-      "fatty",
-      "greasy",
-      "heavy",
-      "starchy",
-      "oily",
-      "salty",
-      "calorie-dense",
-      "filling",
-      "thick-wrap",
-      "rich"
+      "floral-lift",
+      "lychee-note",
+      "tropical-brightness",
+      "exotic-flower",
+      "aromatic-spice",
+      "passionfruit-note",
+      "white-blossom",
+      "jasmine-hint",
+      "airy-fruit",
+      "vivid-perfume"
     ],
     "safe_bet": [
-      "crisp",
-      "light",
-      "fresh",
-      "low-tannin",
-      "easy",
-      "fruity",
-      "mild",
-      "gentle",
-      "clean",
-      "approachable"
+      "citrus-zest",
+      "grapefruit",
+      "lime-zest",
+      "lemon-curd",
+      "tangy-citrus",
+      "bright-apple",
+      "zippy-acid",
+      "fresh-herb",
+      "clean-mineral",
+      "green-note"
     ]
   },
   "bruschetta": {
@@ -429,28 +429,28 @@
       "vibrant"
     ],
     "contrast": [
-      "acidic",
-      "oily",
-      "sharp-garlic",
-      "crunchy-bread",
-      "pungent",
-      "starchy",
-      "tangy",
-      "bold-herb",
-      "intense",
-      "rustic"
+      "plush",
+      "ripe-cherry",
+      "full-bodied",
+      "dark-plum",
+      "round-tannin",
+      "generous",
+      "warm-fruit",
+      "jam-like",
+      "velvety",
+      "soft-structure"
     ],
     "safe_bet": [
-      "light",
-      "crisp",
-      "fresh",
-      "low-tannin",
-      "unoaked",
-      "easy",
-      "mineral",
-      "soft",
-      "gentle",
-      "clean"
+      "dried-herb",
+      "rustic",
+      "earthy",
+      "garrigue",
+      "olive-note",
+      "sun-baked",
+      "wild-herb",
+      "thyme-rosemary",
+      "mediterranean-brush",
+      "savory-finish"
     ]
   },
   "caesar_salad": {
@@ -469,28 +469,28 @@
       "classic-american"
     ],
     "contrast": [
-      "rich-dressing",
-      "fatty",
-      "salty",
-      "pungent-anchovy",
-      "heavy-cheese",
-      "oily",
-      "intense",
-      "creamy",
-      "bold-umami",
-      "thick"
+      "tropical",
+      "exotic",
+      "lychee-blossom",
+      "mango-hint",
+      "passionfruit",
+      "heady-floral",
+      "vivid-citrus",
+      "pineapple-note",
+      "aromatic-zest",
+      "bright-exotic"
     ],
     "safe_bet": [
-      "crisp",
-      "light",
-      "fresh",
-      "unoaked",
-      "easy",
-      "clean",
-      "mineral",
-      "low-tannin",
-      "gentle",
-      "soft"
+      "toasty-oak",
+      "nutty-finish",
+      "brioche",
+      "creamy-lees",
+      "biscuit",
+      "almond-note",
+      "warm-yeast",
+      "hazelnut",
+      "fresh-butter",
+      "sur-lie"
     ]
   },
   "cannoli": {
@@ -509,28 +509,28 @@
       "italian-pastry"
     ],
     "contrast": [
-      "sugary",
-      "rich-cream",
-      "heavy",
-      "oily-shell",
-      "dense",
-      "calorie-dense",
-      "sweet",
-      "thick-filling",
-      "saturated",
-      "buttery"
+      "dry",
+      "sharp-mineral",
+      "angular-acid",
+      "austere-finish",
+      "lean-structure",
+      "bone-dry-palate",
+      "steely-nerve",
+      "taut",
+      "stripped-back",
+      "green-acidity"
     ],
     "safe_bet": [
-      "off-dry",
-      "sparkling",
-      "light",
-      "gentle",
-      "low-tannin",
-      "fruity",
-      "delicate",
-      "easy",
-      "soft",
-      "aromatic"
+      "honeyed-nectar",
+      "candied-citrus",
+      "orange-blossom",
+      "almond-marzipan",
+      "sweet-almond",
+      "dried-fig",
+      "golden-sultana",
+      "warm-amber",
+      "raisin-note",
+      "soft-honey"
     ]
   },
   "caprese_salad": {
@@ -549,28 +549,28 @@
       "delicate"
     ],
     "contrast": [
-      "acidic-tomato",
-      "oily",
-      "milky",
-      "sharp-basil",
-      "tangy-balsamic",
-      "dense-cheese",
-      "fresh",
-      "light",
-      "clean",
-      "herbal"
+      "full-bodied",
+      "dark-fruit",
+      "tannic-grip",
+      "inky",
+      "brooding",
+      "concentrated",
+      "bold-extract",
+      "deep-color",
+      "robust-structure",
+      "powerful"
     ],
     "safe_bet": [
-      "crisp",
-      "light",
-      "unoaked",
-      "fresh",
-      "mineral",
-      "low-tannin",
-      "easy",
-      "gentle",
-      "clean",
-      "soft"
+      "floral",
+      "delicate",
+      "herbal-lift",
+      "light-bodied",
+      "graceful",
+      "silky",
+      "gossamer-texture",
+      "pale",
+      "translucent-fruit",
+      "ethereal"
     ]
   },
   "carrot_cake": {
@@ -589,28 +589,28 @@
       "moist"
     ],
     "contrast": [
-      "sweet",
-      "dense",
-      "heavy-frosting",
-      "starchy",
-      "oily",
-      "sugary",
-      "calorie-dense",
-      "rich",
-      "thick",
-      "saturated"
+      "bone-dry",
+      "tart-acidity",
+      "bracing-nerve",
+      "lean-palate",
+      "sharp-citrus",
+      "razor-finish",
+      "austere-mineral",
+      "angular-frame",
+      "biting-acid",
+      "puckering-tang"
     ],
     "safe_bet": [
-      "off-dry",
-      "light",
-      "fruity",
-      "gentle",
-      "low-tannin",
-      "easy",
-      "smooth",
-      "aromatic",
-      "soft",
-      "mild"
+      "warm-cinnamon",
+      "spiced-fig",
+      "amber-warmth",
+      "dried-apricot",
+      "ginger-note",
+      "nutmeg-hint",
+      "soft-caramel",
+      "warm-spice",
+      "ripe-apple-note",
+      "mellow-amber"
     ]
   },
   "ceviche": {
@@ -629,28 +629,28 @@
       "bright"
     ],
     "contrast": [
-      "acidic",
-      "spicy",
-      "raw-fish",
-      "sharp-onion",
-      "intense-citrus",
-      "pungent",
-      "bold",
-      "sour",
-      "fiery",
-      "bracing"
+      "ripe-tropical",
+      "lush",
+      "opulent",
+      "exotic-fruit",
+      "heady-passion",
+      "voluptuous-texture",
+      "plush-stone-fruit",
+      "mango-flesh",
+      "ripe-melon",
+      "rounded"
     ],
     "safe_bet": [
-      "crisp",
-      "unoaked",
-      "mineral",
-      "fresh",
-      "low-tannin",
-      "light",
-      "easy",
-      "clean",
-      "gentle",
-      "delicate"
+      "saline",
+      "sea-spray",
+      "mineral-lime",
+      "ocean-breeze",
+      "coastal-mineral",
+      "oyster-shell",
+      "chalky-finish",
+      "sea-breeze",
+      "iodine-mineral",
+      "brine-note"
     ]
   },
   "cheese_plate": {
@@ -669,28 +669,28 @@
       "cave-aged"
     ],
     "contrast": [
-      "fat",
-      "pungent",
-      "salty",
-      "dense",
-      "sharp",
-      "moldy-rind",
-      "acidic",
-      "tangy",
-      "astringent",
-      "bold"
+      "lean-citrus",
+      "electric-acidity",
+      "racy",
+      "sharp-lemon",
+      "cutting-acid",
+      "laser-focus",
+      "incisive",
+      "green-apple-bite",
+      "vivid-zest",
+      "piercing-mineral"
     ],
     "safe_bet": [
-      "versatile",
-      "fruity",
-      "low-tannin",
-      "off-dry",
-      "easy",
-      "smooth",
-      "gentle",
-      "medium-body",
-      "approachable",
-      "soft"
+      "nutty-walnut",
+      "honeyed-fig",
+      "toasty-almond",
+      "warm-hazelnut",
+      "dried-fig",
+      "amber-honey",
+      "ripe-pear-note",
+      "waxy-texture",
+      "caramelized-nut",
+      "mellow-sweetness"
     ]
   },
   "cheesecake": {
@@ -709,28 +709,28 @@
       "confectioners"
     ],
     "contrast": [
-      "rich",
-      "dense",
-      "heavy",
-      "sugary",
-      "fatty",
-      "calorie-dense",
-      "thick",
-      "sweet",
-      "saturated",
-      "creamy"
+      "bone-dry",
+      "flinty",
+      "sharp-acidity",
+      "taut-nerve",
+      "bracing-lemon",
+      "angular-finish",
+      "puckering-zest",
+      "austere-palate",
+      "steely-edge",
+      "razor-acid"
     ],
     "safe_bet": [
-      "off-dry",
-      "light",
-      "sparkling",
-      "gentle",
-      "low-tannin",
-      "fruity",
-      "easy",
-      "soft",
-      "delicate",
-      "aromatic"
+      "peachy-cream",
+      "creamy-blossom",
+      "nectarine-ripe",
+      "apricot-velvet",
+      "soft-honey",
+      "golden-peach",
+      "light-caramel",
+      "ripe-quince",
+      "delicate-sweetness",
+      "mellow-cream"
     ]
   },
   "chicken_curry": {
@@ -749,28 +749,28 @@
       "saffron-yellow"
     ],
     "contrast": [
-      "spicy",
-      "heavy-sauce",
-      "fatty-coconut",
-      "pungent",
-      "intense",
-      "rich-curry",
-      "oily",
-      "thick",
-      "bold-spice",
-      "calorie-dense"
+      "gossamer",
+      "floral-cooling",
+      "ethereal-pale",
+      "featherweight",
+      "delicate-petal",
+      "cooling-menthol",
+      "airy-floral",
+      "translucent-silk",
+      "light-as-dew",
+      "soft-perfume"
     ],
     "safe_bet": [
-      "off-dry",
-      "aromatic",
-      "low-tannin",
-      "fruity",
-      "easy",
-      "gentle",
-      "smooth",
-      "soft",
-      "mild",
-      "light-body"
+      "aromatic-lychee",
+      "rose-water",
+      "exotic-spice",
+      "white-pepper-note",
+      "star-anise-hint",
+      "cardamom-lift",
+      "ginger-rose",
+      "fragrant-spice",
+      "perfumed",
+      "jasmine-rice"
     ]
   },
   "chicken_quesadilla": {
@@ -789,28 +789,28 @@
       "charred"
     ],
     "contrast": [
-      "cheesy",
-      "fatty",
-      "starchy",
-      "oily",
-      "heavy",
-      "calorie-dense",
-      "salty",
-      "crispy-fat",
-      "thick",
-      "filling"
+      "citrusy",
+      "lime-zest",
+      "vivid-acid",
+      "fresh-grapefruit",
+      "tangy-lemon",
+      "cutting-citrus",
+      "bright-zesty",
+      "green-herb-acid",
+      "prickly",
+      "sharp-fresh"
     ],
     "safe_bet": [
-      "crisp",
-      "light",
-      "fresh",
-      "easy",
-      "low-tannin",
-      "fruity",
-      "mild",
-      "gentle",
-      "clean",
-      "approachable"
+      "toasty-corn",
+      "warm-fruit",
+      "spiced-cherry",
+      "ripe-melon",
+      "soft-plum",
+      "juicy-strawberry",
+      "round-berry",
+      "easy-fruit",
+      "mellow-red",
+      "peachy-flesh"
     ]
   },
   "chicken_wings": {

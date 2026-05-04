@@ -86,7 +86,7 @@
 
 - [ ] Define concrete business decision using both model outputs
 - [ ] Implement Word2Vec cosine similarity pairing (characteristic / opposite / unexpected)
-- [ ] BiLSTM review retrieval — highest-confidence review per grape class
+- [ ] BiLSTM review retrieval — median-confidence review per grape class (representative, not extreme)
 - [ ] Wine ranking — highest-rated wine per grape from df_wine
 - [ ] Table of 10–20 examples: CNN prediction + grape recommendations (3 types) + tasting note snippet
 - [ ] Comparison chart: CNN accuracy vs BiLSTM accuracy vs pipeline end-to-end

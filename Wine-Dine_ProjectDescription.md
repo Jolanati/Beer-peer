@@ -26,7 +26,7 @@ The interaction is designed to take under 10 seconds from input to output:
 2. The CNN model identifies the dish from the image.
 3. The food's flavor profile (a set of taste-descriptor keywords in wine vocabulary) is looked up from the food flavor table.
 4. Word2Vec — trained on 824,000 real Vivino reviews — maps those keywords into the same flavor embedding space as grape varieties. Cosine similarity finds the best match for each of three pairing intents: Characteristic, Opposite, Unexpected.
-5. The BiLSTM encoder scores all reviews for the matched grape class and picks the one with the **highest classification confidence** as the most representative real Vivino tasting note.
+5. The BiLSTM encoder scores a random sample of 2,000 test-set reviews and picks the one whose confidence for the target grape sits at the **median** of the distribution — a representative tasting note, not an outlier inflated by winner-takes-all scoring.
 6. The user sees the dish name, three wine recommendations (one per intent) with grape variety, a real wine bottle name, a genuine drinker quote, and a Vivino approval percentage.
 
 ### 2.2 Example Output
@@ -81,7 +81,7 @@ WineSensed is a NeurIPS 2023 multimodal wine dataset built from Vivino data. Eve
 The project pipeline consists of four sequential layers. Each layer is independently trained and evaluated before being connected into the full pipeline.
 
 ```text
-PHOTO → CNN → food label → food flavor profile (JSON) → Word2Vec cosine similarity → grape variety (Characteristic / Opposite / Unexpected) → BiLSTM review retrieval (highest confidence) → flavor language + rating %
+PHOTO → CNN → food label → food flavor profile (JSON) → Word2Vec cosine similarity → grape variety (Characteristic / Opposite / Unexpected) → BiLSTM review retrieval (median confidence, test set) → flavor language + rating %
 ```
 
 | Step | Component | Function | Dataset |
@@ -89,7 +89,7 @@ PHOTO → CNN → food label → food flavor profile (JSON) → Word2Vec cosine 
 | 1 | CNN — Image Classifier | Takes a food photograph as input. Outputs a food category label from 101 classes. | Food-101 |
 | 2 | Food Flavor Table | Each of the 101 food classes has three sets of taste-descriptor keywords (plain language, not wine vocabulary): `characteristic`, `opposite`, `unexpected`. Stored in `data/food_flavor_table.json`. | External curated file |
 | 3 | Word2Vec — Flavor Embedding | Pre-trained on Google News (300-d), fine-tuned on WineSensed review text. Maps food flavor keywords and grape variety review language into the same 300-d vector space. Cosine similarity returns the closest grape centroid (15 × 300) per pairing intent. | WineSensed |
-| 4 | BiLSTM — Review Retrieval | Trained on WineSensed reviews for 15-class grape classification. At inference, the encoder scores every review for the recommended grape class; the review with the **highest BiLSTM confidence** is shown as the most representative tasting note. The wine with the highest Vivino rating for that grape is selected from `df_wine`. | WineSensed |
+| 4 | BiLSTM — Review Retrieval | Trained on WineSensed reviews for 15-class grape classification. At inference, the encoder scores 2,000 randomly sampled test-set reviews; the review at the **median BiLSTM confidence** (50th percentile) is shown as a representative tasting note. The median avoids the winner-takes-all inflation of argmax and the overconfidence of uncalibrated softmax scores. The wine with the highest Vivino rating for that grape is selected from `df_wine`. | WineSensed |
 | 5 | DistilBERT (Bonus) | Fine-tuned `distilbert-base-uncased` on the same 15-class grape classification task. Compared against LSTM and BiLSTM in Section 11.12 as a Transformer-based encoder alternative. | WineSensed |
 | 6 | Output Layer | Combines CNN label + Word2Vec pairings + BiLSTM-retrieved Vivino quote + wine name + rating percentage into a structured recommendation card. | Combined |
 

@@ -71,7 +71,7 @@ At inference:
 For each recommended grape:
 
 - The **WineSensed dataset** is filtered to that grape and sorted by Vivino rating → the highest-rated real wine bottle + vintage year is selected
-- The **BiLSTM encoder** scores every review for that grape class; the review with the **highest confidence score** is picked as the most representative tasting note to show the user
+- The **BiLSTM encoder** scores a random sample of 2,000 test-set reviews; the review at the **median confidence score** (50th percentile) is shown as the most representative tasting note — avoiding argmax winner-takes-all inflation and uncalibrated softmax overconfidence
 - The rating is converted to a user approval percentage: `rating / 5.0 × 100`
 
 The final output card shows:
@@ -145,7 +145,7 @@ All pip installs are in Section 1.1; all library imports (including `DistilBertT
 | Flavor bridge | LLM-generated food flavor table — plain taste keywords (characteristic / opposite / unexpected) |
 | Grape matching | Word2Vec (Google News pre-trained, fine-tuned on WineSensed) |
 | Grape centroids | 15 vectors (300-d each), one per grape class |
-| Review retrieval | BiLSTM encoder — highest-confidence review per grape = most representative tasting note |
+| Review retrieval | BiLSTM encoder — median-confidence review per grape (representative, not an argmax outlier) |
 | Wine ranking | Highest Vivino rating per grape from df_wine |
 | Output | Real wine bottle + real Vivino quote + real approval % |
 | Bonus text model | DistilBERT fine-tuned on same 15-class task |

@@ -583,7 +583,7 @@ with gr.Blocks(
                 yes_btn = gr.Button("✅  Yes — show me wine pairings!", variant="primary")
                 no_btn  = gr.Button("❌  No, try another photo",        variant="secondary")
 
-    with gr.Group(visible=False) as card_group:
+    with gr.Column(visible=False) as card_group:
         gr.Markdown("---\n## 🍷 Your Wine Pairings")
         wine_card = gr.HTML()
 

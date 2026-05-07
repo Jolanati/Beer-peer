@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "wine-dine/deployment/**"
+  workflow_dispatch:   # allows manual trigger from GitHub Actions tab
 
 jobs:
   sync-to-hf:

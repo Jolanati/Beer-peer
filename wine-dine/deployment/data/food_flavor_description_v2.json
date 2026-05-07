@@ -1,0 +1,521 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "keys": {
+      "classic": "Safe Bet — closest taste match: describes the dish's dominant flavor in full",
+      "contrast": "Bold Move — deliberate contrast: a taste that clashes intentionally",
+      "safe_bet": "Hidden Gem — compatible but surprising: a taste that pairs unexpectedly well"
+    },
+    "card_labels": {
+      "classic": "Safe Bet",
+      "contrast": "Bold Move",
+      "safe_bet": "Hidden Gem"
+    },
+    "note": "Descriptions use food and taste language only. No wine vocabulary."
+  },
+  "apple_pie": {
+    "classic": "Warm cinnamon and nutmeg spice weave through soft, caramelized apple filling wrapped in a buttery, flaky pastry. The sweetness is rounded and golden, with vanilla undertones and a gentle brown sugar depth that lingers on the palate.",
+    "safe_bet": "Something lightly honeyed with ripe peach and apricot notes would echo the golden sweetness of the filling without overshadowing it, adding a fragrant, blossomy lift that feels like a natural extension of the dessert.",
+    "contrast": "Something sharply tart and citrusy — like cold lemon juice or unripe green apple — cuts straight through the buttery richness and sweetness, creating a bracing contrast that resets the palate completely."
+  },
+  "baby_back_ribs": {
+    "classic": "Smoky, charred pork with a sticky barbecue glaze of molasses, brown sugar, and tangy vinegar. The meat is fall-off-the-bone tender with a peppery, caramelized crust and deep hickory smoke running through every bite.",
+    "safe_bet": "Something with a dark, dried fruit quality — like tamarind or prune — would echo the molasses depth of the glaze while adding a slightly tart, exotic dimension that surprises without clashing.",
+    "contrast": "Something sharply acidic and bright — like a cold squeeze of lemon over fresh herbs — would cut aggressively through the fat and smoke, creating a jarring but cleansing contrast."
+  },
+  "baklava": {
+    "classic": "Layers of crisp, paper-thin pastry soaked in floral honey syrup, packed with crushed pistachios and walnuts, and fragrant with cinnamon, cardamom, and orange blossom. The sweetness is rich, amber-golden, and intensely aromatic.",
+    "safe_bet": "Something with a dried fig or golden raisin sweetness and a candied orange quality would echo the honey and nut richness without repeating it exactly, adding a warm, Mediterranean depth.",
+    "contrast": "Something bone-dry and almost astringent — like very strong unsweetened black tea — would clash strikingly with the sticky sweetness, making the richness feel almost overwhelming by contrast."
+  },
+  "beef_carpaccio": {
+    "classic": "Thinly shaved raw beef with a delicate iron-rich flavor, dressed with peppery arugula, salty shaved parmesan, briny capers, and a squeeze of lemon. The dish is light, fresh, and quietly savory.",
+    "safe_bet": "Something earthy and mushroom-like — think truffle oil or dried porcini — would deepen the subtle meatiness of the raw beef, adding a forest-floor complexity that feels luxurious and unexpected.",
+    "contrast": "Something tropical, sweet, and intensely fruity — like ripe mango or passionfruit — would clash dramatically with the delicate iron and savory notes of the raw beef, overwhelming its restraint."
+  },
+  "beef_tartare": {
+    "classic": "Hand-chopped raw beef seasoned with sharp dijon mustard, tangy cornichons, salty capers, a raw egg yolk, and a kick of Worcestershire and Tabasco. The flavors are bold, briny, and deeply savory with a peppery bite.",
+    "safe_bet": "Something with dark berry, graphite, and iron-mineral qualities would echo the robust meatiness while adding a structured, almost earthy dimension that feels like it belongs on the same plate.",
+    "contrast": "Something sweet, jammy, and ripe — like warm cherry compote or plum jam — would clash with the sharp, briny tartare, creating a dissonant sweetness against all that mustard and capers."
+  },
+  "beet_salad": {
+    "classic": "Roasted beets with their deep, earthy sweetness paired with tangy goat cheese, bitter arugula, crunchy walnuts, and a balsamic glaze. The flavors balance sweet, sour, earthy, and creamy in a light, elegant way.",
+    "safe_bet": "Something floral and fragrant — like rose water or elderflower — would lift the earthy beet sweetness with a delicate, unexpected aromatic quality that makes the salad feel almost perfumed.",
+    "contrast": "Something sharply citrusy and tropical — like cold grapefruit juice or passionfruit — would clash with the earthy, musky beet flavor, creating a vivid tension between sweet earth and bright acidity."
+  },
+  "beignets": {
+    "classic": "Light, pillowy deep-fried dough dusted generously with powdered sugar, crisp on the outside and airy within, with a mild yeast sweetness and the faint richness of hot oil. Simple, warm, and comforting.",
+    "safe_bet": "Something lightly sweet with ripe peach, apricot, and a gentle fizz would echo the airy sweetness of the dough while adding a fruity lift that makes the whole thing feel more festive.",
+    "contrast": "Something sharply tart and lemony — like cold lemonade with no sugar — would clash with the powdered sweetness, making the sugar coating feel almost cloying by comparison."
+  },
+  "bibimbap": {
+    "classic": "A colorful bowl of steamed rice topped with seasoned vegetables, a fried egg, and bold gochujang chili paste, finished with sesame oil. The flavors are fermented, spicy, nutty, and deeply savory all at once.",
+    "safe_bet": "Something lightly sweet with exotic spice — like lychee or stone fruit with a hint of white pepper and ginger — would play beautifully with the gochujang heat, cooling and complementing it at the same time.",
+    "contrast": "Something delicate, floral, and almost weightless — like jasmine tea or a mild cucumber water — would be completely drowned out by the bold, fermented, spicy flavors of the bibimbap."
+  },
+  "bread_pudding": {
+    "classic": "Soft brioche soaked in a rich vanilla custard with cinnamon, nutmeg, and brown sugar, baked until golden and topped with a warm bourbon caramel sauce. Every bite is warm, creamy, and deeply comforting.",
+    "safe_bet": "Something with vanilla cream, toasted nuts, and a buttery warmth would echo the custard richness and caramel notes, adding a nutty depth that feels indulgent and entirely satisfying.",
+    "contrast": "Something sharply acidic and citrusy — like cold lemon curd or tart passion fruit — would cut hard against the warm, creamy sweetness, creating an abrasive contrast that jolts the palate awake."
+  },
+  "breakfast_burrito": {
+    "classic": "Scrambled eggs, crispy bacon or sausage, melted cheese, and roasted potatoes wrapped in a warm flour tortilla, with salsa and sour cream adding tang and heat. Hearty, savory, and deeply satisfying.",
+    "safe_bet": "Something smoky and slightly sweet — like a chipotle honey or a slow-roasted tomato with a touch of sweetness — would deepen the egg and meat flavors while adding a gentle, unexpected warmth.",
+    "contrast": "Something sharply acidic and pickled — like a vinegar-heavy hot sauce or tart kimchi — would cut through the richness of the cheese and eggs with a bracing, fermented sharpness."
+  },
+  "bruschetta": {
+    "classic": "Toasted crusty bread rubbed with raw garlic, drizzled with good olive oil, and topped with fresh tomatoes, basil, and flaky salt. The flavors are bright, herby, and vivid with the natural sweetness of ripe summer tomatoes.",
+    "safe_bet": "Something with a balsamic-like sweetness and a hint of roasted pepper would echo the tomato's sweetness while adding a deeper, caramelized dimension that elevates the simple ingredients.",
+    "contrast": "Something rich, creamy, and buttery — like a thick béchamel or cold cream cheese — would clash with the sharp, acidic tomato and raw garlic, dulling all that bright, vivid freshness."
+  },
+  "caesar_salad": {
+    "classic": "Crisp romaine lettuce tossed in a rich, anchovy-spiked dressing with garlic, parmesan, lemon, and a sharp mustard bite, topped with crunchy croutons. The flavors are salty, creamy, and boldly savory.",
+    "safe_bet": "Something with a clean, green herbaceousness — like cold cucumber with fresh dill — would lift the heavy dressing with a light, garden-fresh contrast that is refreshing without fighting the anchovy.",
+    "contrast": "Something sweet and tropical — like mango salsa or pineapple — would clash boldly with the salty, garlicky, anchovy-forward dressing, creating a dissonant sweetness against all that umami."
+  },
+  "cannoli": {
+    "classic": "A crisp, fried pastry shell filled with sweet, creamy ricotta studded with chocolate chips and candied orange peel, dusted with powdered sugar. The contrast of crunchy shell and rich, cool filling is central to its charm.",
+    "safe_bet": "Something with almond, honey, and a faint citrus zest would echo the candied orange and sweet ricotta while adding a slightly nutty, warm quality that deepens the Sicilian character.",
+    "contrast": "Something sharply tangy and fermented — like plain unsweetened yogurt with lemon — would clash with the sweet, rich ricotta filling, creating a sour contrast that fights the dessert's indulgence."
+  },
+  "caprese_salad": {
+    "classic": "Thick slices of ripe tomato and fresh mozzarella layered with fragrant basil leaves, drizzled with fruity olive oil and flaky salt. The flavors are clean, milky, and summery with a bright tomato acidity.",
+    "safe_bet": "Something with a light, grassy, herbal quality — like a cold infusion of basil and cucumber — would amplify the fresh herb notes and milky mozzarella without disrupting the simplicity of the dish.",
+    "contrast": "Something deeply smoky and charred — like a roasted black pepper crust or smoked paprika oil — would clash with the delicate, fresh milky flavors, overwhelming the salad's quiet elegance."
+  },
+  "carrot_cake": {
+    "classic": "Moist, spiced cake packed with grated carrot, cinnamon, ginger, and nutmeg, layered with a thick, tangy cream cheese frosting. The sweetness is warm and earthy, balanced by the slight tartness of the icing.",
+    "safe_bet": "Something with warm honey, ripe pear, and a hint of cardamom would echo the spiced sweetness of the cake while adding a gentle, floral quality that complements the cream cheese tang.",
+    "contrast": "Something intensely dark and bitter — like very strong espresso or unsweetened dark chocolate — would clash with the sweet, warm spice of the cake, creating a heavy bitterness against all that gentle warmth."
+  },
+  "ceviche": {
+    "classic": "Fresh raw fish cured in bright lime juice, tossed with red onion, cilantro, and chili, resulting in a dish that is intensely acidic, fresh, and clean with a gentle heat. The fish is tender and light, almost melting.",
+    "safe_bet": "Something with tropical sweetness — like fresh mango or watermelon with a hint of mint — would balance the sharp lime acidity with sweetness and add a refreshing, unexpected tropical dimension.",
+    "contrast": "Something rich, creamy, and fatty — like avocado mousse or coconut cream — would coat the palate and mute the bright, sharp acidity of the ceviche, clashing with its essential lightness."
+  },
+  "cheese_plate": {
+    "classic": "A curated spread of aged, creamy, and sharp cheeses alongside honey, nuts, and dried fruit, offering flavors that range from nutty and caramelized to pungent and bold. The interplay of salt, fat, and sweetness is the entire appeal.",
+    "safe_bet": "Something with a quince or fig-jam sweetness combined with toasted walnut and a hint of dried herb would play across multiple cheeses on the plate, creating different harmonies with each one.",
+    "contrast": "Something sharply acidic and fizzy — like cold sour lemonade or a green apple shrub — would clash with the rich fat and salt of the cheeses, stripping away their creaminess and making them taste almost harsh."
+  },
+  "cheesecake": {
+    "classic": "Dense, creamy New York-style cheesecake with a buttery graham cracker crust, rich cream cheese filling, and a silky vanilla sweetness with just enough lemon tang to keep it from being cloying.",
+    "safe_bet": "Something with ripe stone fruit — like peach or nectarine — and a light floral note would add a fruity, summery freshness that lifts the dense cream cheese without overpowering it.",
+    "contrast": "Something intensely dark, bitter, and roasted — like black coffee or dark cocoa — would clash with the pale, sweet, creamy filling, creating a heavy bitterness against all that delicate vanilla."
+  },
+  "chicken_curry": {
+    "classic": "Tender chicken simmered in a deeply spiced sauce of turmeric, cumin, coriander, and garam masala with tomato, onion, and coconut milk. The flavors are warm, fragrant, and layered with heat and richness.",
+    "safe_bet": "Something cooling and slightly sweet — like mango lassi or a cold cucumber raita — would temper the spice heat while echoing the tropical richness of the coconut, creating a soothing balance.",
+    "contrast": "Something sharply acidic and bright — like fresh lime juice with raw chili — would amplify the heat rather than balance it, creating an almost overwhelming spice-acid combination."
+  },
+  "chicken_quesadilla": {
+    "classic": "Grilled flour tortilla filled with seasoned chicken, melted cheese, and roasted peppers, crisp on the outside and gooey within. The flavors are savory, mild, and satisfying with a smoky, toasted quality.",
+    "safe_bet": "Something with a smoky chipotle and roasted corn sweetness would deepen the grilled flavors of the tortilla while adding a subtle spice character that elevates the whole thing.",
+    "contrast": "Something sharply pickled and vinegary — like raw jalapeño brine or a tart tomatillo salsa — would cut hard against the rich melted cheese, stripping away the comfort of the gooey filling."
+  },
+  "chicken_wings": {
+    "classic": "Crispy fried chicken wings coated in a sticky, tangy buffalo sauce of hot sauce and butter, or a sweet and smoky barbecue glaze. The skin is crunchy, the meat juicy, and the heat lingers on the lips.",
+    "safe_bet": "Something cooling, creamy, and blue cheese-forward — like a cold buttermilk dip with chive — would temper the heat with dairy richness in a surprisingly satisfying way.",
+    "contrast": "Something very sweet and syrupy — like a thick honey glaze without any acid or heat — would clash with the punchy vinegar-based hot sauce, dulling the spice with cloying sweetness."
+  },
+  "chocolate_cake": {
+    "classic": "Rich, dense chocolate sponge with deep cocoa flavor, layered with dark chocolate ganache or buttercream frosting. The bitterness of the chocolate is balanced with sweetness, and the texture is moist and indulgent.",
+    "safe_bet": "Something with a sharp raspberry or cherry tartness would cut through the richness of the dark chocolate with bright acidity, creating a classic but always surprising fruit-chocolate harmony.",
+    "contrast": "Something very milky, vanilla-sweet, and light — like a glass of cold whole milk — would clash softly with the intense dark cocoa, diluting the boldness into something almost bland."
+  },
+  "chocolate_mousse": {
+    "classic": "Airy, silky-smooth dark chocolate mousse with an intense cocoa depth, a slight bitterness, and a melt-on-the-tongue texture that feels luxurious yet weightless. Often finished with a touch of vanilla or espresso.",
+    "safe_bet": "Something with a faint orange zest and a hint of sea salt would echo the classic chocolate-orange pairing while the salt amplifies the chocolate's depth in an unexpectedly delicious way.",
+    "contrast": "Something sharply acidic and tropical — like cold passion fruit or tamarind — would clash with the dark, bittersweet chocolate, creating a sour brightness that fights the mousse's smooth richness."
+  },
+  "churros": {
+    "classic": "Long ridged sticks of deep-fried choux dough, crispy outside and soft within, rolled in cinnamon sugar and served with a thick, rich dark chocolate dipping sauce. Warm, sweet, and deeply satisfying.",
+    "safe_bet": "Something with a caramel toffee quality and a hint of smoked salt would deepen the cinnamon sugar coating while adding a sophisticated savory edge that makes the sweetness more interesting.",
+    "contrast": "Something intensely sour and citrusy — like a cold tamarind agua fresca — would clash with the warm cinnamon sweetness, creating a jarring acid-sweet tension against the fried dough."
+  },
+  "clam_chowder": {
+    "classic": "A thick, creamy soup of tender clams, diced potato, smoky bacon, onion, and celery in a rich cream base. The flavors are briny, smoky, and deeply comforting with a gentle sweetness from the clam liquor.",
+    "safe_bet": "Something with a bright lemon and fresh thyme quality would cut through the cream with enough acidity to lift the brininess of the clams, adding a herbal freshness that lightens the whole bowl.",
+    "contrast": "Something spicy, bold, and tomato-forward — like a fiery hot sauce or a peppery tomato broth — would clash with the delicate cream base, turning the quiet comfort of the chowder into something aggressive and discordant."
+  },
+  "club_sandwich": {
+    "classic": "Triple-decker toasted white bread layered with sliced turkey, crispy bacon, lettuce, ripe tomato, and mayonnaise. The flavors are savory, salty, and fresh, with the crunch of toast and bacon running through every bite.",
+    "safe_bet": "Something with a tangy, mustardy quality and pickled cucumber would echo the deli flavors of the turkey and add a sharp acidity that lifts the richness of the mayo beautifully.",
+    "contrast": "Something sweet and fruity — like a thick apricot jam or mango chutney — would clash with the salty, savory layers of the sandwich, introducing a sweetness that fights the bacon and mayo."
+  },
+  "crab_cakes": {
+    "classic": "Pan-fried crab cakes with a crisp, golden breadcrumb crust and a sweet, tender crab interior seasoned with Old Bay, mustard, and a touch of lemon. Light, briny, and delicate with a satisfying crunch.",
+    "safe_bet": "Something with a gentle corn sweetness and a squeeze of lime would echo the sweetness of the crab meat while adding a bright, summery freshness that feels like it belongs on the same plate.",
+    "contrast": "Something deeply smoky and charred — like a blackened spice rub or a heavily smoked oil — would overwhelm the delicate sweetness of the crab, drowning its subtlety in aggressive smoke."
+  },
+  "creme_brulee": {
+    "classic": "A silky, set vanilla custard with a perfectly caramelized, crackling burnt sugar crust on top. The contrast between the cold, creamy custard and the warm, brittle caramel is the entire point of the dish.",
+    "safe_bet": "Something with a warm caramel, toasted almond, and a hint of coffee bitterness would echo the burnt sugar crust while adding a nutty depth that deepens the custard's sweetness.",
+    "contrast": "Something sharply citrusy and cold — like a tart lemon sorbet — would clash with the warm, rich vanilla custard, introducing a bright acidity that fights the gentle sweetness."
+  },
+  "croque_madame": {
+    "classic": "A toasted ham and gruyere sandwich on thick brioche, smothered in a rich bechamel sauce and topped with a fried egg. The flavors are deeply savory, buttery, and indulgent with the salt of the ham and the richness of the cheese.",
+    "safe_bet": "Something with a sharp dijon and cornichon quality would cut through the bechamel richness with a piquant tang, adding a French bistro sharpness that makes the whole dish feel more alive.",
+    "contrast": "Something sweet and tropical — like a cold pineapple juice or passion fruit — would clash with the buttery, eggy, ham-forward flavors, introducing a sweetness that has no place in this rich French indulgence."
+  },
+  "cup_cakes": {
+    "classic": "Soft, fluffy vanilla or chocolate sponge in a paper cup, topped with a generous swirl of sweet buttercream frosting and sprinkles. The flavors are sweet, buttery, and cheerful with a simple, childlike warmth.",
+    "safe_bet": "Something with a tangy cream cheese and lemon zest quality would offset the sweetness of the buttercream with just enough tartness, adding a grown-up dimension to an otherwise simple treat.",
+    "contrast": "Something intensely bitter and dark — like black espresso or unsweetened cocoa — would clash with the sweet, cheerful frosting, creating a harsh bitterness against all that sugary butter."
+  },
+  "deviled_eggs": {
+    "classic": "Hard-boiled egg whites filled with a smooth, tangy mixture of yolk, mayonnaise, dijon mustard, and a splash of vinegar, topped with paprika. The flavors are creamy, rich, and sharply tangy.",
+    "safe_bet": "Something with a smoky bacon and chive quality would deepen the richness of the yolk filling while adding a savory, slightly charred dimension that plays well with the mustard tang.",
+    "contrast": "Something sweet and sticky — like a honey glaze or a fruit chutney — would clash with the sharp, vinegary mustard filling, introducing a sweetness with no natural place alongside the egg yolk's richness."
+  },
+  "donuts": {
+    "classic": "Soft, pillowy fried dough in a ring or filled with jam or custard, glazed with a sweet vanilla or chocolate coating. The texture is light and yielding, the flavor sweet and comforting with a gentle yeasty warmth.",
+    "safe_bet": "Something with a salted caramel and a hint of cardamom would deepen the glaze sweetness with a savory edge and exotic spice, creating a more complex and surprising experience.",
+    "contrast": "Something intensely sour and tangy — like cold plain yogurt or a sharp citrus curd — would clash with the soft, sweet dough, stripping away its comfort with jarring acidity."
+  },
+  "dumplings": {
+    "classic": "Tender steamed or pan-fried dough parcels filled with seasoned pork, cabbage, ginger, and sesame oil, with a thin, chewy wrapper that is crispy on the bottom. Served with a soy and vinegar dipping sauce.",
+    "safe_bet": "Something with a chili oil heat, sesame, and a hint of toasted garlic would echo the filling's flavor while adding a fiery, aromatic depth that makes every bite feel bolder.",
+    "contrast": "Something sweet and creamy — like a coconut milk sauce or a mild honey glaze — would clash with the savory, gingery, soy-dipped dumpling, introducing a sweetness that fights the umami filling."
+  },
+  "edamame": {
+    "classic": "Young soybeans steamed in the pod and generously salted, with a mild, grassy, slightly sweet flavor and a firm, satisfying texture. Simple, clean, and deeply snackable.",
+    "safe_bet": "Something with a roasted sesame, light chili flake, and sea salt quality would deepen the mild soybean flavor with a warm, nutty dimension that makes this simple snack feel elevated.",
+    "contrast": "Something intensely sweet and syrupy — like a fruit glaze or honey drizzle — would clash with the clean, salty, grassy soybean, turning a simple savory snack into a confused dessert."
+  },
+  "eggs_benedict": {
+    "classic": "Toasted English muffin topped with Canadian bacon, a perfectly poached egg, and a rich, buttery hollandaise sauce with a sharp lemon bite. The flavors are indulgent, silky, and savory with a runny yolk richness.",
+    "safe_bet": "Something with a smoked salmon and caper quality would echo the brininess and add an oceanic complexity that transforms the dish without breaking its essential richness.",
+    "contrast": "Something very spicy and sharp — like a fiery sriracha or a raw jalapeño — would clash with the delicate, buttery hollandaise, overwhelming its gentle lemon richness with aggressive heat."
+  },
+  "escargots": {
+    "classic": "Tender snails baked in individual shells with a generous stuffing of garlic herb butter — parsley, shallot, and a touch of white wine reduced into the butter. The flavors are intensely garlicky, herbal, and richly buttery.",
+    "safe_bet": "Something with a roasted bone marrow depth and a touch of truffle would deepen the umami and butter richness of the dish, adding a luxurious earthiness that complements the garlic without competing.",
+    "contrast": "Something sharply acidic and cold — like a squeeze of citrus vinegar or tart green apple — would cut hard against the rich garlic butter, stripping away its lusciousness in a jarring way."
+  },
+  "falafel": {
+    "classic": "Crispy fried balls of ground chickpea and herb, seasoned with cumin, coriander, garlic, and parsley, served with tahini sauce and wrapped in warm pita with tomato and cucumber. Earthy, herby, and satisfying.",
+    "safe_bet": "Something with a pomegranate molasses sweetness and a touch of sumac tartness would play against the earthy chickpea with a sweet-sour Middle Eastern quality that feels like the natural next step.",
+    "contrast": "Something rich, creamy, and very mild — like a bland cream sauce or buttery potato mash — would clash with the bold cumin-coriander spice of the falafel, dulling all that herby intensity into mush."
+  },
+  "filet_mignon": {
+    "classic": "A thick-cut beef tenderloin with a buttery, almost silky texture and a mild, clean beef flavor. Often finished with herb butter and a light char, it is the most tender and delicate of steaks.",
+    "safe_bet": "Something with a truffle and mushroom earthiness combined with a hint of aged butter would elevate the mild beef into something luxuriously complex without overwhelming its delicate texture.",
+    "contrast": "Something sharply acidic and bright — like a cold citrus chimichurri or a tart berry reduction — would fight the tender, buttery meat with an aggressive acidity that cuts against its refinement."
+  },
+  "fish_and_chips": {
+    "classic": "Thick fillets of white fish in a crispy, golden batter served with thick-cut fried potato chips, wrapped in paper with malt vinegar and tartar sauce. Crunchy, salty, and deeply satisfying British comfort food.",
+    "safe_bet": "Something with a pickled cucumber and dill quality — like a gribiche or a Scandinavian-style sauce — would echo the vinegar brightness and add a herbal freshness that lifts the fried richness elegantly.",
+    "contrast": "Something very sweet and sticky — like a honey glaze — would clash with the sharp vinegar and salty batter, introducing a cloying sweetness to a dish built around savory crunch."
+  },
+  "foie_gras": {
+    "classic": "Silky, buttery duck or goose liver with an almost molten richness, a deep umami depth, and a faint metallic sweetness. Served warm or as a cold terrine, it is one of the most intensely luxurious flavors in cooking.",
+    "safe_bet": "Something with a quince or fig jam sweetness and a slight acidity would echo the classic foie gras pairing of sweet fruit against rich liver, adding a concentrated fruit character that cuts the fat beautifully.",
+    "contrast": "Something sharply tannic, astringent, and drying — like very strong black tea or raw walnut bitterness — would fight the silky fat of the foie gras, creating a harsh, drying mouthfeel clash."
+  },
+  "french_fries": {
+    "classic": "Thin or thick-cut potato strips fried to a golden crisp with a fluffy interior, generously salted and often served with ketchup or aioli. The flavor is simple — starchy, salty, and deeply satisfying with a hot oil richness.",
+    "safe_bet": "Something with a roasted garlic, parmesan, and fresh herb quality would elevate the humble potato into something more sophisticated while still honoring the salty-starchy core.",
+    "contrast": "Something sweet and fruity — like a thick fruit jam or a sweet chili glaze — would clash with the pure savory saltiness of the fries, creating a confusing sweet-salty tension."
+  },
+  "french_onion_soup": {
+    "classic": "A deep bowl of slowly caramelized sweet onions in a rich beef broth, topped with a thick layer of melted gruyere cheese and a toasted bread crouton. The flavors are sweet, savory, and deeply umami-rich.",
+    "safe_bet": "Something with a sharp aged cheese and a touch of smoky bacon would deepen the gruyere richness and add a smokiness that echoes the caramelized onion depth in a surprisingly satisfying way.",
+    "contrast": "Something sharply acidic and light — like a cold citrus broth or a vinaigrette — would clash with the deep, rich, slow-cooked sweetness of the onion soup, making it feel thin and aggressive by contrast."
+  },
+  "french_toast": {
+    "classic": "Thick bread soaked in a vanilla-spiced egg and cream mixture, pan-fried in butter until golden and caramelized, topped with maple syrup and powdered sugar. Rich, eggy, and warmly sweet with a crisp buttery exterior.",
+    "safe_bet": "Something with a ripe berry compote and a touch of citrus zest would add a bright, jammy fruitiness that plays off the vanilla custard while cutting the richness with a little acidity.",
+    "contrast": "Something very savory and sharp — like a cold pickle brine or a sharp cheddar — would clash with the sweet, eggy, maple-drenched toast in a deeply dissonant way."
+  },
+  "fried_calamari": {
+    "classic": "Tender squid rings in a light, crispy flour coating, fried golden and served with marinara sauce or aioli and a wedge of lemon. The flavor is mild and slightly oceanic, with a satisfying crunch.",
+    "safe_bet": "Something with a roasted garlic aioli and a hint of smoked paprika would deepen the mild squid flavor with a smoky, creamy dimension that makes each crispy bite feel more substantial.",
+    "contrast": "Something very sweet and tropical — like a mango dipping sauce — would clash with the salty, oceanic, lemon-dressed calamari, introducing a fruity sweetness that fights the delicate seafood flavor."
+  },
+  "fried_rice": {
+    "classic": "Day-old rice stir-fried over high heat with egg, vegetables, soy sauce, sesame oil, and often shrimp or pork, with a smoky wok char running through it. The flavors are savory, slightly smoky, and deeply satisfying.",
+    "safe_bet": "Something with a kimchi fermented heat and a touch of sesame would add a funky, spicy dimension to the rice that deepens its savory character in a bold and satisfying way.",
+    "contrast": "Something sweet and syrupy — like a fruit glaze or coconut cream — would clash with the savory, soy-seasoned rice, dulling the umami with an out-of-place sweetness."
+  },
+  "frozen_yogurt": {
+    "classic": "Tangy, cold, smooth yogurt-based dessert with a clean dairy sourness and a light sweetness, topped with fresh fruit, granola, or mochi. Refreshing, creamy, and much lighter than ice cream.",
+    "safe_bet": "Something with a honey and lavender quality or a roasted nut butter swirl would add warmth and depth to the cool, tangy yogurt, creating a sophisticated contrast between cold and floral.",
+    "contrast": "Something deeply rich, dark, and smoky — like a dark chocolate or espresso sauce — would clash with the light, tangy dairy freshness, overwhelming the delicacy of the frozen yogurt with heavy intensity."
+  },
+  "garlic_bread": {
+    "classic": "Crusty bread slathered with garlic-infused butter and fresh parsley, toasted until golden and fragrant. The flavor is intensely garlicky, richly buttery, and deeply savory with a crunchy exterior.",
+    "safe_bet": "Something with a roasted tomato and basil quality — like a slow-cooked marinara — would echo the Italian herb character and add a bright acidity that cuts through the garlic butter beautifully.",
+    "contrast": "Something sweet and fruity — like a strawberry jam or a honey glaze — would clash completely with the pungent garlic and salt, creating a deeply off-putting sweet-savory discord."
+  },
+  "gnocchi": {
+    "classic": "Soft, pillowy potato dumplings with a mild, starchy sweetness, typically served with a sage brown butter, tomato sauce, or gorgonzola. The texture is tender and yielding, and the flavor takes on the character of its sauce.",
+    "safe_bet": "Something with a truffle oil and aged parmesan quality would elevate the gentle potato with a luxurious earthiness that makes the soft dumpling feel decadently rich.",
+    "contrast": "Something sharply acidic and raw — like a cold lemon and raw onion salad — would clash with the soft, pillowy comfort of the gnocchi, introducing a harsh brightness that fights the starchy tenderness."
+  },
+  "greek_salad": {
+    "classic": "Chunky tomatoes, cucumber, red onion, kalamata olives, and a thick slab of salty feta cheese dressed in olive oil and dried oregano. The flavors are bright, salty, and herbal with a Mediterranean freshness.",
+    "safe_bet": "Something with a roasted red pepper and smoked paprika sweetness would add a warm depth to the cold, raw vegetables while echoing the olive and feta saltiness in a rich, satisfying way.",
+    "contrast": "Something rich, creamy, and sweet — like a honey tahini drizzle or a fruit-based dressing — would clash with the sharp feta salt, raw onion bite, and tangy olive, muddying the clean flavors."
+  },
+  "grilled_cheese_sandwich": {
+    "classic": "Two slices of buttered white bread toasted in a pan until golden and crispy, filled with melted cheddar or American cheese. The flavor is rich, salty, and comforting with a deeply satisfying crunch.",
+    "safe_bet": "Something with a tangy tomato soup quality — acidic, slightly sweet, and tomato-forward — would echo the classic grilled cheese pairing and cut the richness of the melted cheese with bright acidity.",
+    "contrast": "Something intensely spicy and sharp — like raw jalapeño or a fiery hot sauce — would clash with the mild, comforting sweetness of the melted cheese, overwhelming the gentle richness."
+  },
+  "grilled_salmon": {
+    "classic": "A fillet of salmon grilled until the skin is crispy and the flesh is just cooked through, rich with natural oils and a slightly smoky char. The flavor is fatty, slightly oceanic, and deeply satisfying with a hint of lemon.",
+    "safe_bet": "Something with a fresh dill, cucumber, and a touch of creme fraiche quality would echo the classic Nordic pairing and add a cool, herby creaminess that complements the rich salmon beautifully.",
+    "contrast": "Something very sweet and rich — like a teriyaki-style honey glaze — would clash with the clean, oceanic salmon, coating the delicate fish in a cloying sweetness that masks its natural depth."
+  },
+  "guacamole": {
+    "classic": "Ripe avocado mashed with lime juice, cilantro, red onion, jalapeño, and salt, resulting in a creamy, rich dip with a bright citrus edge, a gentle heat, and a grassy freshness. Best served immediately with tortilla chips.",
+    "safe_bet": "Something with a roasted tomato and corn sweetness would deepen the avocado's richness while adding a smoky, caramelized quality that elevates the simple dip in a satisfying way.",
+    "contrast": "Something sharp, acidic, and pungent — like a very heavy raw garlic and vinegar hot sauce — would clash with the creamy, gentle avocado, overwhelming its mild, buttery texture with aggressive sharpness."
+  },
+  "gyoza": {
+    "classic": "Pan-fried Japanese dumplings with a crispy, golden bottom and a steamed, chewy top, filled with seasoned pork, cabbage, ginger, and garlic. Served with a soy and rice vinegar dipping sauce with chili oil.",
+    "safe_bet": "Something with a ponzu-like citrus and soy quality — bright, tangy, and slightly savory — would echo the dipping sauce character while adding a clean citrus lift that brightens every bite.",
+    "contrast": "Something sweet and fruity — like a plum sauce or a sweet chili dip — would clash with the savory, gingery, garlicky filling, muddying the clean umami of the gyoza with unnecessary sweetness."
+  },
+  "hamburger": {
+    "classic": "A beef patty grilled or smashed until juicy and charred, stacked on a soft bun with melted cheese, lettuce, tomato, onion, pickles, and mustard or ketchup. The flavors are savory, salty, and deeply satisfying.",
+    "safe_bet": "Something with a smoky aioli, caramelized onion, and a sharp pickle quality would deepen the beef's natural umami while adding a sweet-tart tang that makes the whole burger feel more layered.",
+    "contrast": "Something very light, floral, and sweet — like a honey lavender sauce or a fruit preserve — would clash with the bold, charred, beefy flavors, introducing a delicate sweetness that has no place in a great burger."
+  },
+  "hot_and_sour_soup": {
+    "classic": "A Chinese broth-based soup with a sharp vinegar tang, tofu, bamboo shoots, wood ear mushrooms, egg ribbons, and white pepper heat. The flavors are simultaneously sour, spicy, and deeply savory with a silky, slightly thick texture.",
+    "safe_bet": "Something with a roasted sesame and a touch of chili oil would echo the heat and add a warm, nutty depth that deepens the soup's complexity without disrupting the sharp sour balance.",
+    "contrast": "Something sweet and mild — like a coconut milk or a light honey broth — would clash with the sharp vinegar and white pepper heat, dulling the characteristic sourness that defines the soup."
+  },
+  "hot_dog": {
+    "classic": "A steamed or grilled beef or pork sausage in a soft, pillowy bun, topped with yellow mustard, ketchup, and relish. The flavor is mild, salty, and savory with a smoky, slightly charred quality when grilled.",
+    "safe_bet": "Something with a tangy sauerkraut and caraway quality would echo the German sausage tradition and add a fermented sharpness that cuts through the fatty sausage in a surprisingly satisfying way.",
+    "contrast": "Something sweet, creamy, and tropical — like a coconut cream or mango salsa — would clash completely with the salty, smoky simplicity of the hot dog, creating a deeply dissonant tropical sweetness."
+  },
+  "huevos_rancheros": {
+    "classic": "Fried eggs laid on warm corn tortillas smothered in a bold, charred tomato and chili salsa, topped with crumbled cotija cheese and sliced avocado. Smoky, spicy, and deeply satisfying breakfast food.",
+    "safe_bet": "Something with a black bean depth and roasted corn sweetness would echo the Latin American character of the dish and add a hearty, smoky earthiness that deepens every element.",
+    "contrast": "Something light, sweet, and floral — like a mild fruit jam or elderflower syrup — would clash completely with the bold, smoky, chili-forward flavors of the salsa and eggs."
+  },
+  "hummus": {
+    "classic": "Silky smooth puree of cooked chickpeas blended with tahini, lemon juice, garlic, and olive oil, topped with paprika and a drizzle of oil. The flavor is earthy, creamy, and nutty with a bright lemon tang.",
+    "safe_bet": "Something with a za'atar herb and roasted pine nut quality would echo the Middle Eastern character of the dish while adding a toasted, herbal complexity that makes the simple dip feel more sophisticated.",
+    "contrast": "Something very sweet and fruity — like a berry compote or honey drizzle — would clash with the earthy chickpea, sesame, and garlic flavors, introducing a sweetness with no natural place in the savory profile."
+  },
+  "ice_cream": {
+    "classic": "Cold, creamy frozen dairy dessert with a smooth, rich texture and a simple, clean sweetness. Vanilla has a warm, floral depth from the bean; chocolate is bittersweet and deep; strawberry is bright and fruity.",
+    "safe_bet": "Something with a warm salted caramel and a hint of espresso bitterness would echo the dairy richness while adding a sophisticated contrast between bittersweet and sweet cream.",
+    "contrast": "Something sharply sour and acidic — like a cold lemon sorbet or tart passion fruit — would clash with the rich, sweet creaminess, creating a bright acidity that fights the gentle, milky sweetness."
+  },
+  "lasagna": {
+    "classic": "Layers of broad pasta sheets alternating with rich meat ragu, creamy bechamel, and melted mozzarella, baked until golden and bubbling. The flavors are deep, savory, and comforting with a slow-cooked meatiness.",
+    "safe_bet": "Something with a fresh basil and sun-dried tomato quality would echo the Italian herbs and add a concentrated tomato sweetness and bright herbal note that lifts the richness of the meat and cheese.",
+    "contrast": "Something very light and raw — like a cold cucumber and dill salad — would clash with the deep, rich, slow-cooked layers of the lasagna, creating a jarring freshness against all that baked umami."
+  },
+  "lobster_bisque": {
+    "classic": "A silky, cream-enriched soup built on a deeply concentrated shellfish stock, with sweet lobster meat, a splash of cognac, and a gentle warmth from cayenne. Rich, oceanic, and luxurious in every spoonful.",
+    "safe_bet": "Something with a fresh tarragon and lemon zest quality would echo the shellfish's natural sweetness while cutting the cream richness with a herbal brightness that makes the bisque feel lighter and more alive.",
+    "contrast": "Something very smoky and charred — like a blackened spice rub or heavy smoked paprika — would overwhelm the delicate sweetness of the lobster, turning the refined bisque into something aggressive and heavy."
+  },
+  "lobster_roll_sandwich": {
+    "classic": "Sweet, fresh chunks of lobster meat dressed in either a light lemon-butter or a cold mayonnaise with celery and chive, served in a toasted, split-top hot dog bun. The lobster is the star — sweet, tender, and oceanic.",
+    "safe_bet": "Something with a fresh corn and tarragon sweetness would echo the natural sweetness of the lobster while adding a summery, herbal quality that feels perfectly suited to a New England lobster roll.",
+    "contrast": "Something intensely smoky and meaty — like a thick barbecue sauce or smoked bacon — would clash with the delicate, sweet lobster meat, drowning its elegance in heavy, assertive smoke."
+  },
+  "macaroni_and_cheese": {
+    "classic": "Elbow pasta in a thick, creamy cheese sauce made from sharp cheddar, milk, and butter, baked with a golden breadcrumb crust. The flavor is rich, salty, and deeply comforting with a sharp cheddar tang.",
+    "safe_bet": "Something with a sharp jalapeño and smoked paprika quality would add heat and a smoky spice to the rich cheese sauce, elevating the comfort food into something more exciting and complex.",
+    "contrast": "Something sharply acidic and raw — like a cold tomato salsa or lemon vinaigrette — would clash with the thick, creamy cheese sauce, stripping away its richness with harsh acidity."
+  },
+  "macarons": {
+    "classic": "Delicate, chewy almond meringue shells sandwiched around a smooth ganache or buttercream filling in flavors like raspberry, pistachio, or salted caramel. The texture is light, slightly crisp outside and moist within.",
+    "safe_bet": "Something with a bergamot and Earl Grey quality would echo the delicate floral notes of the almond shell while adding an aromatic, slightly citrusy depth that is elegant and unexpected.",
+    "contrast": "Something bold, bitter, and intensely roasted — like very strong espresso or dark cocoa — would overwhelm the delicate almond shell with a heavy bitterness that drowns the macaron's subtlety."
+  },
+  "miso_soup": {
+    "classic": "A simple, deeply savory Japanese broth made from fermented soybean paste with dashi, soft tofu, wakame seaweed, and scallion. The flavor is quietly umami, slightly salty, and warming with a fermented depth.",
+    "safe_bet": "Something with a light sesame oil and shichimi togarashi quality would echo the Japanese flavors while adding a warm, nutty spice that deepens the miso without disrupting its gentle balance.",
+    "contrast": "Something very sweet and fruity — like a coconut cream or a tropical juice — would clash with the subtle, savory, fermented miso, introducing a sweetness that completely disrupts the quiet umami character."
+  },
+  "mussels": {
+    "classic": "Fresh mussels steamed open in a broth of garlic, shallot, parsley, and butter, served with crusty bread for dipping. The flavors are briny, garlicky, and herbaceous with a sweet, oceanic depth from the mussel liquor.",
+    "safe_bet": "Something with a saffron and roasted tomato quality would echo the French-style moules mariniere character while adding a golden, floral warmth that deepens the brothy, briny base beautifully.",
+    "contrast": "Something sweet and sticky — like a honey glaze or a fruit reduction — would clash with the salty, garlicky, briny mussel broth, introducing a cloying sweetness against the clean oceanic flavor."
+  },
+  "nachos": {
+    "classic": "Tortilla chips loaded with melted cheddar and jack cheese, jalapeños, sour cream, guacamole, pico de gallo, and black beans. The flavors are bold, salty, and cheesy with layers of heat, acid, and creaminess.",
+    "safe_bet": "Something with a smoked chipotle and roasted corn sweetness would deepen the Tex-Mex flavors while adding a slightly smoky, caramelized dimension that makes the whole plate feel more intentional.",
+    "contrast": "Something delicate, floral, and very sweet — like a light fruit tea or jasmine syrup — would be completely obliterated by the bold, cheesy, spicy, acidic layers of a fully loaded nacho plate."
+  },
+  "omelette": {
+    "classic": "Lightly beaten eggs cooked in butter over gentle heat until just set, folded around a filling of fresh herbs, cheese, or mushrooms. The texture is silky and tender, the flavor mild, rich, and eggy with a buttery warmth.",
+    "safe_bet": "Something with a sharp comte cheese and thyme quality would echo the classic French herb omelette character and add a nutty, herbal complexity that elevates the simple egg.",
+    "contrast": "Something very spicy and assertive — like a fiery Szechuan chili sauce or aggressive kimchi — would clash with the gentle, delicate egg flavor, overwhelming the omelette's quiet subtlety."
+  },
+  "onion_rings": {
+    "classic": "Thick rounds of sweet onion in a crispy, golden batter, fried until crunchy and served hot with ketchup or ranch. The sweetness of the cooked onion contrasts beautifully with the salty, crunchy batter.",
+    "safe_bet": "Something with a tangy buttermilk and herb ranch quality would echo the dairy in the batter while adding a cool, herbal tartness that cuts the fry oil and pairs naturally with the sweet onion.",
+    "contrast": "Something intensely sweet and syrupy — like a fruit jam or honey mustard glaze — would clash with the salty, savory, oily crunch, introducing a cloying sweetness that fights the simplicity of the fried onion."
+  },
+  "oysters": {
+    "classic": "Fresh raw oysters served on ice with a squeeze of lemon and a touch of mignonette, delivering a clean, briny, mineral oceanic flavor with a silky, slightly firm texture. The taste of cold seawater and deep ocean.",
+    "safe_bet": "Something with a cucumber, green apple, and fresh herb quality would echo the oyster's clean mineral character while adding a crisp, garden-fresh brightness that makes the brininess feel even more vivid.",
+    "contrast": "Something very rich, fatty, and creamy — like a butter sauce or a thick cream — would clash with the clean, cold brininess of the raw oyster, coating the palate and dulling the essential mineral freshness."
+  },
+  "pad_thai": {
+    "classic": "Stir-fried rice noodles with egg, bean sprouts, tofu or shrimp, tamarind paste, fish sauce, and palm sugar, finished with roasted peanuts, lime, and chili flakes. Sweet, sour, salty, and nutty all in one bowl.",
+    "safe_bet": "Something with a roasted peanut, tamarind, and fresh lime quality would echo the dish's own flavor profile back at itself, adding depth without changing direction — a rare case where similarity is the surprise.",
+    "contrast": "Something very creamy and mild — like a coconut cream or a bland white sauce — would clash with the bold, tangy, sweet-sour complexity of the pad thai, neutralizing all its vivid flavor layers."
+  },
+  "paella": {
+    "classic": "A broad pan of saffron-stained rice cooked in a rich seafood and chicken stock with tomato, paprika, and aromatics, topped with mussels, shrimp, and chicken, with a crispy socarrat crust at the bottom. Complex, smoky, and deeply savory.",
+    "safe_bet": "Something with a roasted pepper, smoked paprika, and a touch of lemon would echo the Spanish flavor profile while adding a caramelized sweetness that deepens the saffron and seafood character.",
+    "contrast": "Something very light, clean, and fresh — like a cold cucumber broth or a delicate herb water — would be overwhelmed by the rich, smoky, heavily seasoned paella, vanishing completely beside its bold complexity."
+  },
+  "pancakes": {
+    "classic": "Thick, fluffy buttermilk pancakes cooked on a griddle until golden, served in a stack with butter and warm maple syrup. The flavor is mildly sweet, slightly tangy from the buttermilk, and warmly comforting.",
+    "safe_bet": "Something with a fresh berry compote and a hint of lemon zest would add a bright, jammy fruitiness that cuts the richness of the butter and syrup with just enough acidity to keep every bite interesting.",
+    "contrast": "Something intensely savory and meaty — like a thick gravy or a pungent blue cheese — would clash completely with the sweet, maple-drenched softness of the pancake, creating a confusing savory-sweet discord."
+  },
+  "panna_cotta": {
+    "classic": "A gently set vanilla cream dessert with a silky, trembling texture that melts on the palate, topped with a sharp fruit coulis or caramel. The flavor is clean, milky, and delicately sweet with a faint floral vanilla note.",
+    "safe_bet": "Something with a passion fruit and mango quality — bright, tropical, and sharply sweet-sour — would create a vivid contrast with the cool, neutral cream, adding a tropical lift that makes the dessert feel unexpected.",
+    "contrast": "Something intensely bitter and dark — like a strong espresso reduction or dark chocolate sauce — would clash with the pale, gentle sweetness of the panna cotta, overwhelming its delicacy with a heavy bitterness."
+  },
+  "peking_duck": {
+    "classic": "Lacquered duck roasted until the skin is thin and shatteringly crispy, served with warm mandarin pancakes, hoisin sauce, sliced cucumber, and scallion. The flavor is rich, fatty, sweet, and smoky with a luxurious skin crunch.",
+    "safe_bet": "Something with a five-spice warmth, plum sweetness, and a hint of ginger would echo the Chinese flavor profile and deepen the hoisin character, adding an aromatic complexity that feels entirely at home.",
+    "contrast": "Something very tart and acidic — like a cold pickled radish with vinegar or a sharp citrus — would fight the rich, fatty, sweet skin, stripping away its lacquered richness with harsh sharpness."
+  },
+  "pho": {
+    "classic": "A deeply fragrant Vietnamese beef broth simmered for hours with charred ginger, star anise, cinnamon, and clove, served over rice noodles with thin beef slices, bean sprouts, fresh herbs, lime, and chili. Clean, complex, and warming.",
+    "safe_bet": "Something with a fresh ginger, coriander, and lime quality would echo the aromatic spice backbone of the broth while adding a bright, citrusy lift that deepens the herbal freshness on top.",
+    "contrast": "Something very rich, creamy, and heavy — like a coconut cream or a thick dairy broth — would clash with the clear, clean, deeply spiced pho broth, muddying its clarity with fat and sweetness."
+  },
+  "pizza": {
+    "classic": "A wood-fired dough base with a charred, crispy crust, spread with bright tomato sauce, melted mozzarella, and fresh basil. The flavors are simple, salty, and satisfying with a smoky char running through the crust.",
+    "safe_bet": "Something with a fresh arugula, parmesan, and lemon quality would echo the Italian character and add a peppery, sharp freshness that cuts through the melted cheese and sauce with elegant contrast.",
+    "contrast": "Something very sweet and fruity — like a honey and fig jam — would clash with the savory, garlicky, tomato-forward sauce, introducing a sweetness that fights the simplicity of the classic pizza."
+  },
+  "pork_chop": {
+    "classic": "A bone-in pork chop grilled or pan-seared until golden with a slightly charred crust, juicy and tender within, seasoned simply with rosemary, garlic, and black pepper. The flavor is mildly fatty, meaty, and savory.",
+    "safe_bet": "Something with a tart green apple and sage quality would echo the classic pork-apple pairing tradition and add a sweet-sour freshness that balances the fat beautifully.",
+    "contrast": "Something very heavy, rich, and buttery — like a double cream reduction or a thick cheese sauce — would clash with the already fatty pork, creating an overwhelming richness that coats the palate and never lets go."
+  },
+  "poutine": {
+    "classic": "Thick-cut fries smothered in dark, savory beef gravy and topped with fresh cheese curds that soften and squeak slightly in the heat. The flavor is deeply savory, salty, and indulgent with a comforting, meaty warmth.",
+    "safe_bet": "Something with a smoked meat and caramelized onion quality would deepen the gravy's richness while adding a smoky sweetness that transforms the poutine into something even more deeply satisfying.",
+    "contrast": "Something sharply acidic and bright — like a cold vinegar slaw or a tart cranberry — would clash hard with the heavy, rich, meaty gravy, introducing a cold brightness that fights the warm comfort of the dish."
+  },
+  "prime_rib": {
+    "classic": "A thick-cut slow-roasted standing rib roast with a herb-crusted exterior and a juicy, deeply marbled interior, carved tableside and served with au jus and horseradish. The flavor is intensely beefy, fatty, and rich.",
+    "safe_bet": "Something with a sharp horseradish, dijon mustard, and fresh thyme quality would echo the classic prime rib accompaniments and add a clean, sharp heat that cuts the fat with precision.",
+    "contrast": "Something very light, sweet, and fruity — like a mild fruit salsa — would clash with the intensely rich, deeply savory beef, vanishing against its weight like a candle in a storm."
+  },
+  "pulled_pork_sandwich": {
+    "classic": "Slow-smoked pork shoulder shredded and piled high on a soft brioche bun with tangy coleslaw and a smoky barbecue sauce of molasses, vinegar, and brown sugar. The flavor is sweet, smoky, and deeply savory.",
+    "safe_bet": "Something with a spicy pickle and tangy vinegar quality would echo the coleslaw's acidity and add a sharp fermented brightness that cuts through the richness of the slow-smoked pork.",
+    "contrast": "Something delicate, floral, and mild — like a jasmine tea or a light cucumber water — would be completely overwhelmed by the bold, smoky, sweet, fatty pulled pork, vanishing immediately."
+  },
+  "ramen": {
+    "classic": "A deeply flavored Japanese broth — tonkotsu, miso, soy, or shio — with springy wheat noodles, a marinated soft-boiled egg, chashu pork belly, nori, and bamboo shoots. Rich, savory, and deeply satisfying.",
+    "safe_bet": "Something with a roasted sesame, chili, and scallion quality would echo the ramen garnish flavors while adding an extra warm, nutty spice layer that deepens the broth without competing with it.",
+    "contrast": "Something very sweet and tropical — like a coconut cream or a fruit-forward sauce — would clash with the deep, savory, soy-and-pork richness of the broth, muddying its concentrated umami with sweetness."
+  },
+  "ravioli": {
+    "classic": "Plump fresh pasta parcels filled with ricotta and spinach or meat, served in a light tomato sauce or brown butter with sage. The pasta is silky and delicate, and the filling is creamy and mild with a herbal quality.",
+    "safe_bet": "Something with a truffle, mushroom, and aged parmesan quality would elevate the delicate ricotta filling with an earthy luxury, adding a depth that makes the simple pasta feel richly sophisticated.",
+    "contrast": "Something sharply acidic and raw — like a cold citrus vinaigrette or pickled vegetables — would clash with the soft, delicate pasta and gentle filling, introducing a harsh brightness against its tenderness."
+  },
+  "red_velvet_cake": {
+    "classic": "Bright red sponge with a subtle cocoa flavor and a slight tang from buttermilk, layered with thick, creamy cream cheese frosting. The sweetness is balanced by the slight sourness of the frosting and the gentle cocoa bitterness.",
+    "safe_bet": "Something with a tart raspberry and a hint of dark cocoa would echo the berry-chocolate color story of the cake while adding a sharp fruit contrast to the rich cream cheese that feels cleverly intentional.",
+    "contrast": "Something intensely smoky and savory — like a charred spice rub or a meaty reduction — would clash completely with the sweet, tangy, celebration-ready flavors of the red velvet cake."
+  },
+  "risotto": {
+    "classic": "Short-grain Arborio rice cooked slowly in warm stock until silky and creamy, finished with butter and parmesan to create a rich, starchy texture that flows gently when spooned. Savory, deeply comforting, and endlessly versatile.",
+    "safe_bet": "Something with a truffle shaving and a nutty aged cheese quality would push the creamy rice into luxurious territory, adding an earthy depth that makes every spoonful feel indulgent.",
+    "contrast": "Something sharply acidic and light — like a cold lemon dressing or a pickled vegetable garnish — would clash with the rich, creamy, starchy warmth of the risotto, cutting against its comfort."
+  },
+  "samosa": {
+    "classic": "Crispy, golden triangular pastry filled with spiced potato and peas, seasoned with cumin, coriander, garam masala, and green chili, served with mint chutney and tamarind sauce. Flaky, warm, and fragrant with spice.",
+    "safe_bet": "Something with a tangy tamarind and jaggery sweetness would echo the classic chutney pairing, adding a sweet-sour depth that plays perfectly against the dry spiced potato filling.",
+    "contrast": "Something very rich and creamy — like a thick bechamel or a heavy cream sauce — would clash with the dry, spiced, flaky samosa, coating the bright spice in a fat that dulls every note of the filling."
+  },
+  "sashimi": {
+    "classic": "Premium slices of raw fish — bluefin tuna, yellowtail, or salmon — served at the chef's temperature with a dab of wasabi and soy sauce, showing the pure flavor of each fish: clean, oceanic, and quietly rich.",
+    "safe_bet": "Something with a fresh yuzu, sesame, and a whisper of shiso would echo Japanese flavor principles while adding a citrusy brightness and herbal note that elevates the clean fish without masking it.",
+    "contrast": "Something heavy, sweet, and stewed — like a dark fruit sauce or a thick caramel — would completely overwhelm the delicate, clean, mineral character of premium raw fish."
+  },
+  "scallops": {
+    "classic": "Pan-seared sea scallops with a deep golden caramelized crust and a sweet, tender, slightly briny interior, finished with brown butter, lemon, and fresh herbs. The flavor is clean, sweet, and oceanic with a nutty char.",
+    "safe_bet": "Something with a sweet corn puree and a hint of smoked paprika would echo the natural sweetness of the scallop while adding a smoky, caramelized depth that makes the pairing feel intentional.",
+    "contrast": "Something intensely spicy and fermented — like a heavy kimchi or a fiery chili paste — would clash with the delicate sweetness of the scallop, overwhelming the clean brininess with aggressive heat."
+  },
+  "seaweed_salad": {
+    "classic": "Tender, silky strands of marinated seaweed with a sesame oil dressing, rice vinegar, and a touch of sugar and chili, garnished with sesame seeds. The flavor is oceanic, slightly sweet, and gently tangy with a clean mineral depth.",
+    "safe_bet": "Something with a light miso, toasted sesame, and cucumber quality would echo the Japanese seasoning profile while adding a mild savory depth that complements the brininess without overpowering it.",
+    "contrast": "Something rich, fatty, and heavy — like a cream sauce or a buttery glaze — would clash with the clean, mineral, lightly dressed seaweed, dulling its freshness with unnecessary richness."
+  },
+  "shrimp_and_grits": {
+    "classic": "Plump shrimp sauteed with bacon, garlic, and scallion in a spiced butter sauce, served over creamy stone-ground grits with sharp cheddar melted in. Southern comfort food at its finest — rich, savory, and warming.",
+    "safe_bet": "Something with a roasted corn and smoked cheddar quality would echo the Southern character of the dish and add a caramelized sweetness that deepens the creamy grits beautifully.",
+    "contrast": "Something sharply acidic and tropical — like a cold citrus salsa or a vinegar-forward hot sauce — would clash with the rich, creamy, buttery grits, introducing a harsh brightness that fights the comfort."
+  },
+  "spaghetti_bolognese": {
+    "classic": "Long spaghetti tossed in a slow-cooked meat ragu of beef and pork with tomato, carrot, celery, onion, and a splash of milk, finished with parmesan. The flavor is deeply savory, meaty, and rich with a gentle tomato sweetness.",
+    "safe_bet": "Something with a dried porcini mushroom and a touch of dark chocolate would deepen the ragu's umami with an earthy, complex character that makes the meat sauce taste almost more intense.",
+    "contrast": "Something very light and raw — like a cold caprese salad or a fresh herb salad — would clash with the deep, slow-cooked richness of the bolognese, feeling thin and unanchored beside all that savory depth."
+  },
+  "spaghetti_carbonara": {
+    "classic": "Spaghetti tossed in a sauce of raw egg, pecorino romano, and black pepper emulsified with the fat from crispy guanciale, creating a silky, rich coating that clings to every strand. Intensely savory, fatty, and peppery.",
+    "safe_bet": "Something with a sharp pecorino and smoked guanciale quality would echo the carbonara's own character back, adding a deeper saltiness and smokiness that amplifies without complicating the dish.",
+    "contrast": "Something very sweet and light — like a honey drizzle or a fruit-based sauce — would clash with the intensely savory, peppery, eggy richness of the carbonara, disrupting its tight, focused flavor."
+  },
+  "spring_rolls": {
+    "classic": "Delicate rice paper rolls filled with fresh shrimp, vermicelli, mint, cilantro, and lettuce, served with a peanut or fish sauce dipping sauce. The flavor is cool, herby, and clean with a gentle oceanic sweetness from the shrimp.",
+    "safe_bet": "Something with a fresh lime, cilantro, and a hint of chili would echo the Vietnamese herb character and add a bright, zingy lift that complements the clean, light filling without overwhelming it.",
+    "contrast": "Something deeply earthy, smoky, and savory — like a dark tobacco-herb reduction — would clash with the cool, fresh, delicate spring roll, bringing an aggressive earthiness that fights the light wrapper."
+  },
+  "steak": {
+    "classic": "A dry-aged ribeye or strip with a black pepper crust, deeply charred exterior, and a juicy, marbled interior seasoned with garlic butter, rosemary, and thyme. The flavor is intensely beefy, fatty, and satisfying.",
+    "safe_bet": "Something with a cedar, dark berry, and tobacco-spice depth would echo the char and umami of the steak while adding a smoky, structured complexity that makes the richness feel even more purposeful.",
+    "contrast": "Something lean, electric, and sharply mineral — like a cold citrus broth or a raw green herb sauce — would cut aggressively through the fat and char, creating a vivid, almost jarring contrast."
+  },
+  "strawberry_shortcake": {
+    "classic": "Sweet, fluffy sponge or buttery biscuit layered with freshly whipped cream and macerated strawberries soaked in sugar and lemon. The flavor is light, creamy, and summery with bright berry acidity and gentle sweetness.",
+    "safe_bet": "Something with a fresh rose water and a hint of elderflower would add a delicate floral quality that echoes the strawberry's natural perfume, turning a simple dessert into something unexpectedly elegant.",
+    "contrast": "Something sharp, tannic, and drying — like strong unsweetened black tea or a very astringent dark berry — would clash with the soft, sweet cream and fresh strawberry, creating a dry, harsh contrast."
+  },
+  "sushi": {
+    "classic": "Delicate vinegared rice, clean raw fish, and a whisper of wasabi heat define this dish — precise, mineral, and subtly umami. Nori adds a quiet briny depth, and every element feels crafted and intentional.",
+    "safe_bet": "Something with a salty, sea-air quality and a squeeze of fresh lime would mirror the oceanic character of the fish while adding a coastal brightness that feels effortless and clean alongside it.",
+    "contrast": "Something deeply rich, jammy, and sweet — like warm stewed dark plum or fig — would clash boldly with the cool, delicate fish, overwhelming its subtlety with heavy sweetness and weight it was never built to handle."
+  },
+  "tacos": {
+    "classic": "Charred corn tortillas, smoky grilled meat, tangy salsa verde, and bright lime crema build a bold, layered flavor that is spicy, acidic, and savory all at once. Cilantro and pickled onion sharpen every bite with a fresh, assertive edge.",
+    "safe_bet": "Something lightly sweet with zesty lime and tangy citrus — like a cold agua fresca — plays beautifully with the salsa and crema, adding fruity brightness without competing with the spice. The touch of sweetness softens the heat just enough to feel clever.",
+    "contrast": "Something very light, floral, and delicate — like jasmine tea or elderflower water — would be completely overwhelmed by the bold, charred, spicy flavors, making the taco's intensity feel almost aggressive by comparison."
+  },
+  "takoyaki": {
+    "classic": "Round, crispy-outside, soft-inside balls of savory dashi batter filled with tender octopus, topped with okonomi sauce, Japanese mayo, bonito flakes, and nori. The flavor is savory, slightly sweet, and umami-rich with a hint of smokiness.",
+    "safe_bet": "Something with a dried shiitake, soy, and roasted sesame quality would echo the dashi and umami character of the batter, adding an earthy, savory depth that makes the snack feel more complex.",
+    "contrast": "Something floral, cooling, and delicate — like a jasmine tea or a lychee-forward note — would be overwhelmed by the savory, saucy, umami-heavy layers of the takoyaki."
+  },
+  "tiramisu": {
+    "classic": "Espresso-soaked ladyfingers, rich mascarpone cream, and dark cocoa create a deeply indulgent, coffee-forward dessert with a luxurious, layered texture. Hints of marsala and rum add a warm, boozy depth beneath the creamy surface.",
+    "safe_bet": "Something with roasted coffee, mocha, and earthy mineral notes feels like a natural companion — echoing the espresso character while adding a savory, almost mysterious dimension that deepens the experience rather than repeating it.",
+    "contrast": "Something vivid, tart, and bursting with sour cherry and bright berry acidity cuts through the mascarpone richness and clashes with the bitter coffee notes, creating an electric tension that is more provocative than comfortable."
+  },
+  "tuna_tartare": {
+    "classic": "Hand-diced bluefin tuna dressed in soy, sesame oil, a touch of citrus ponzu, and avocado, garnished with tobiko and scallion. The flavor is clean, oceanic, slightly nutty, and minerally with a subtle heat from wasabi or jalapeño.",
+    "safe_bet": "Something with a yuzu citrus, sesame, and a whisper of toasted nori would echo the Japanese-inspired seasoning and add a fragrant, oceanic brightness that deepens the tuna without masking its quality.",
+    "contrast": "Something rich, opulent, and stewed — like a warm dark berry sauce or a thick plum reduction — would completely overwhelm the clean, delicate, mineral tuna, burying its freshness under heavy sweetness."
+  },
+  "waffles": {
+    "classic": "Crispy, golden buttermilk waffles with a light, airy interior, served with whipped cream, fresh berries, and warm maple syrup. The flavor is slightly tangy from the buttermilk, sweet from the syrup, and satisfying with the crispy grid.",
+    "safe_bet": "Something with a sparkling peach and honey blossom quality would echo the warm golden sweetness of the waffle while adding a fruity, effervescent lift that makes brunch feel festive.",
+    "contrast": "Something intensely sharp and tart — like cold citrus curd with no sweetness — would clash with the warm, maple-drenched waffle, stripping away its gentle sweetness with aggressive acidity."
+  }
+}

@@ -1,0 +1,3 @@
+# Model weights — upload manually to HF Space via web UI or git-lfs
+weights/
+*.pt

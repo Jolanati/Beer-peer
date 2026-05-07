@@ -1,0 +1,36 @@
+name: Sync deployment → HuggingFace Space
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wine-dine/deployment/**"
+
+jobs:
+  sync-to-hf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false          # weights are NOT in git — upload manually to HF
+
+      - name: Push deployment/ subfolder to HF Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd wine-dine/deployment
+
+          # Initialise a throwaway git repo for the subfolder
+          git init
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+
+          # Stage everything except weights (covered by .gitignore)
+          git add .
+          git commit -m "Sync from GitHub ${GITHUB_SHA::8}"
+
+          # Force-push to the HF Space (main branch)
+          git push --force \
+            https://Jolanati:${HF_TOKEN}@huggingface.co/spaces/Jolanati/wine-dine \
+            HEAD:main

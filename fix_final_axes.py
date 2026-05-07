@@ -1,0 +1,233 @@
+import json
+
+nb_path = r'c:\Users\jolanta.stutane\Desktop\RSU_AI\DL_Final\wine-dine\wine-dine.ipynb'
+with open(nb_path, encoding='utf-8-sig') as f:
+    nb = json.load(f)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# New §12.1 source — full replacement
+# ─────────────────────────────────────────────────────────────────────────────
+NEW_121 = '''\
+# ── 12.1  Taste-label dataset ─────────────────────────────────────────────────
+
+# Technical axis names (used in code, model weights, cluster keys)
+TASTE_AXES = ["body", "acidity", "tannin", "red_fruit", "dark_fruit",
+              "earthy", "sweet",  "oaky",   "floral",    "mineral"]
+
+# User-friendly display names (used in printouts and cluster labels)
+TASTE_AXIS_NAMES = {
+    "body":       "The Velvet",    # full, round, heavy, plush
+    "acidity":    "The Electric",  # crisp, bright, zingy, sharp
+    "tannin":     "The Grippy",    # firm, chewy, drying, bold
+    "red_fruit":  "The Berry",     # cherry, raspberry, strawberry
+    "dark_fruit": "The Dark",      # plum, blackberry, cassis, fig
+    "earthy":     "The Earthy",    # leather, tobacco, soil, mushroom
+    "sweet":      "The Honey",     # jammy, soft, warm, generous
+    "oaky":       "The Smoky",     # vanilla, toast, cedar, smoke
+    "floral":     "The Floral",    # violet, rose, jasmine, delicate
+    "mineral":    "The Mineral",   # flinty, saline, chalky, stony
+}
+
+_TASTE_KW = {
+    "body":       ["full-bodied",  "full bodied",  "rich",        "opulent",
+                   "lush",         "concentrated", "powerful",    "dense",
+                   "velvety",      "creamy",       "voluminous",  "weighty"],
+    "acidity":    ["acid",         "acidity",      "crisp",       "bright",
+                   "tart",         "racy",         "lively",      "zesty",
+                   "sharp",        "electric",     "refreshing"],
+    "tannin":     ["tannin",       "tannic",       "grippy",      "astringent",
+                   "firm tannin",  "tight tannin", "chewy",       "drying",
+                   "structured",   "gripping"],
+    "red_fruit":  ["cherry",       "raspberry",    "strawberry",  "red currant",
+                   "cranberry",    "red fruit",    "pomegranate", "redcurrant"],
+    "dark_fruit": ["blackberry",   "plum",         "cassis",      "black currant",
+                   "dark fruit",   "black fruit",  "blueberry",   "fig",
+                   "black cherry", "dark cherry",  "boysenboy",   "mulberry"],
+    "earthy":     ["earthy",       "earth",        "soil",        "mushroom",
+                   "forest floor", "tobacco",      "leather",     "savory",
+                   "herbal",       "truffle",      "barnyard"],
+    "sweet":      ["sweet",        "sweetness",    "off-dry",     "residual sugar",
+                   "honeyed",      "honey",        "dessert",     "luscious",
+                   "syrupy",       "jammy",        "ripe",        "candied",
+                   "sugar",        "semi-sweet"],
+    "oaky":       ["oak",          "oaky",         "vanilla",     "toast",
+                   "toasty",       "cedar",        "smoky",       "barrel",
+                   "wood",         "woody",        "buttery",     "spice",
+                   "clove",        "coconut",      "caramel"],
+    "floral":     ["floral",       "flower",       "violet",      "rose",
+                   "jasmine",      "blossom",      "lavender",    "perfumed"],
+    "mineral":    ["mineral",      "minerality",   "stony",       "slate",
+                   "chalk",        "flinty",       "wet stone",   "limestone",
+                   "graphite",     "volcanic",     "flint",       "crushed rock",
+                   "steely",       "sea spray",    "oyster shell"],
+}
+
+
+def _taste_label(description: str) -> list:
+    """Binary taste labels via keyword matching on lowercased text."""
+    d = description.lower()
+    return [1.0 if any(kw in d for kw in _TASTE_KW[ax]) else 0.0
+            for ax in TASTE_AXES]
+
+
+# ── Apply to train / val / test ────────────────────────────────────────────────
+taste_train = np.array([_taste_label(t) for t in df_train["review_text"]], dtype=np.float32)
+taste_val   = np.array([_taste_label(t) for t in df_val["review_text"]],   dtype=np.float32)
+taste_test  = np.array([_taste_label(t) for t in df_test["review_text"]],  dtype=np.float32)
+
+# ── Coverage stats — shows both technical and friendly names ───────────────────
+print(f"{'Axis':<12} {'Friendly Name':<16} {'train %':>8}  {'val %':>7}  {'test %':>7}")
+print("-" * 58)
+for i, ax in enumerate(TASTE_AXES):
+    tr = taste_train[:, i].mean() * 100
+    v  = taste_val[:,   i].mean() * 100
+    te = taste_test[:,  i].mean() * 100
+    friendly = TASTE_AXIS_NAMES[ax]
+    print(f"{ax:<12} {friendly:<16} {tr:>7.1f}%  {v:>6.1f}%  {te:>6.1f}%")
+
+n_neutral = (taste_train.sum(axis=1) == 0).sum()
+print(f"\\nNeutral (all-zero) reviews : {n_neutral:,} / {len(taste_train):,}  "
+      f"({n_neutral/len(taste_train)*100:.1f}%)")
+print(f"Avg taste axes per review  : {taste_train.sum(axis=1).mean():.2f}")
+
+# ── Build TasteDataset and DataLoaders ─────────────────────────────────────────
+TASTE_BATCH = 64
+
+
+class TasteDataset(torch.utils.data.Dataset):
+    """Wine reviews with multi-label taste annotations."""
+    def __init__(self, sequences, taste_labels):
+        self.X       = torch.tensor(sequences,    dtype=torch.long)
+        self.y       = torch.tensor(taste_labels, dtype=torch.float)   # (N, 10)
+        self.lengths = (self.X != 0).sum(dim=1).clamp(min=1)
+
+    def __len__(self):
+        return len(self.y)
+
+    def __getitem__(self, i):
+        return self.X[i], self.lengths[i], self.y[i]
+
+
+taste_train_ds = TasteDataset(X_train, taste_train)
+taste_val_ds   = TasteDataset(X_val,   taste_val)
+taste_test_ds  = TasteDataset(X_test,  taste_test)
+
+taste_train_loader = DataLoader(taste_train_ds, batch_size=TASTE_BATCH, shuffle=True,
+                                num_workers=0, pin_memory=False)
+taste_val_loader   = DataLoader(taste_val_ds,   batch_size=TASTE_BATCH, shuffle=False,
+                                num_workers=0, pin_memory=False)
+taste_test_loader  = DataLoader(taste_test_ds,  batch_size=TASTE_BATCH, shuffle=False,
+                                num_workers=0, pin_memory=False)
+
+print(f"\\n{'Split':<8} {'Samples':>8}  {'Batches':>8}")
+print("-" * 28)
+for _n, _ds, _ldr in [("train", taste_train_ds, taste_train_loader),
+                       ("val",   taste_val_ds,   taste_val_loader),
+                       ("test",  taste_test_ds,  taste_test_loader)]:
+    print(f"{_n:<8} {len(_ds):>8,}  {len(_ldr):>8,}")
+
+print("\\u2713 12.1 \\u2014 Taste labels and DataLoaders ready.")
+'''
+
+# ─────────────────────────────────────────────────────────────────────────────
+# New §12.4 _AXIS_THRESHOLDS — updated axis names and order
+# ─────────────────────────────────────────────────────────────────────────────
+OLD_THR = '''_AXIS_THRESHOLDS = torch.tensor([
+    0.50,  # tannic
+    0.50,  # red_fruity
+    0.35,  # citrus_fruity  ← lowered: recall was 0.36
+    0.50,  # acidic
+    0.50,  # earthy
+    0.50,  # floral
+    0.50,  # rich
+    0.55,  # mineral        ← raised: precision was 0.65
+    0.50,  # oaky           new axis
+    0.50,  # sweet          new axis
+])'''
+
+NEW_THR = '''_AXIS_THRESHOLDS = torch.tensor([
+    0.50,  # body
+    0.50,  # acidity
+    0.50,  # tannin
+    0.50,  # red_fruit
+    0.50,  # dark_fruit
+    0.50,  # earthy
+    0.50,  # sweet
+    0.50,  # oaky
+    0.50,  # floral
+    0.55,  # mineral     ← raised: over-predicted in v1 (precision 0.65)
+])'''
+
+# Also update the per-axis print in §12.4 to show friendly names
+OLD_PRINT = '''print(f"{'Axis':<16} {'Thr':>4}  {'Acc':>7}  {'Prec':>6}  {'Rec':>6}  {'F1':>6}")
+print("-" * 56)
+taste_axis_f1s = []
+for i, ax in enumerate(TASTE_AXES):
+    y_true = all_labels_taste[:, i].numpy()
+    y_pred = all_preds_taste[:,  i].numpy()
+    acc    = (y_true == y_pred).mean()
+    prec   = precision_score(y_true, y_pred, zero_division=0)
+    rec    = recall_score(y_true,    y_pred, zero_division=0)
+    f1_ax  = f1_score(y_true,        y_pred, zero_division=0)
+    taste_axis_f1s.append(f1_ax)
+    thr    = _AXIS_THRESHOLDS[i].item()
+    print(f"{ax:<16} {thr:>4.2f}  {acc:>7.4f}  {prec:>6.4f}  {rec:>6.4f}  {f1_ax:>6.4f}")'''
+
+NEW_PRINT = '''print(f"{'Axis':<12} {'Friendly':<16} {'Thr':>4}  {'Acc':>7}  {'Prec':>6}  {'Rec':>6}  {'F1':>6}")
+print("-" * 68)
+taste_axis_f1s = []
+for i, ax in enumerate(TASTE_AXES):
+    y_true   = all_labels_taste[:, i].numpy()
+    y_pred   = all_preds_taste[:,  i].numpy()
+    acc      = (y_true == y_pred).mean()
+    prec     = precision_score(y_true, y_pred, zero_division=0)
+    rec      = recall_score(y_true,    y_pred, zero_division=0)
+    f1_ax    = f1_score(y_true,        y_pred, zero_division=0)
+    taste_axis_f1s.append(f1_ax)
+    thr      = _AXIS_THRESHOLDS[i].item()
+    friendly = TASTE_AXIS_NAMES[ax]
+    print(f"{ax:<12} {friendly:<16} {thr:>4.2f}  {acc:>7.4f}  {prec:>6.4f}  {rec:>6.4f}  {f1_ax:>6.4f}")'''
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Apply patches
+# ─────────────────────────────────────────────────────────────────────────────
+def to_source(code):
+    lines = code.split('\n')
+    result = []
+    for i, line in enumerate(lines):
+        if i < len(lines) - 1:
+            result.append(line + '\n')
+        elif line:
+            result.append(line)
+    return result
+
+changed = 0
+for cell in nb['cells']:
+    cid = cell.get('id', '')
+    if cid == '49bd6eb3':
+        cell['source'] = to_source(NEW_121)
+        cell['outputs'] = []
+        cell['execution_count'] = None
+        changed += 1
+        print(f'  ✓ 12.1 replaced (cell {cid})')
+    elif cid == 'f62145e0':
+        src = ''.join(cell.get('source', []))
+        if OLD_THR in src and OLD_PRINT in src:
+            src = src.replace(OLD_THR, NEW_THR).replace(OLD_PRINT, NEW_PRINT)
+            cell['source'] = to_source(src)
+            cell['outputs'] = []
+            cell['execution_count'] = None
+            changed += 1
+            print(f'  ✓ 12.4 thresholds + print updated (cell {cid})')
+        else:
+            missing = []
+            if OLD_THR not in src: missing.append('thresholds')
+            if OLD_PRINT not in src: missing.append('print block')
+            print(f'  ✗ 12.4 NOT FOUND: {missing}')
+
+if changed == 2:
+    with open(nb_path, 'w', encoding='utf-8') as f:
+        json.dump(nb, f, ensure_ascii=False, indent=1)
+    print(f'\nSaved. {changed}/2 cells patched.')
+else:
+    print(f'\nWARNING: only {changed}/2 patched — NOT saved.')

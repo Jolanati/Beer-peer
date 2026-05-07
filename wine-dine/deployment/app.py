@@ -14,6 +14,7 @@ Pipeline (all inference happens in real time):
 
 import os
 import json
+import time
 import numpy as np
 import torch
 import torch.nn as nn
@@ -227,7 +228,72 @@ def identify_food(pil_img):
     ]
     return top5[0][0], top5[0][1], top5
 
-# ── HTML card builder ─────────────────────────────────────────────────────────
+# ── Card style helpers (matching notebook §14.5 print_card) ───────────────────
+_AXIS_FOOD_FEEL = {
+    "soft":     "rich and velvety",
+    "crispy":   "bright and zesty",
+    "bold":     "hearty and bold",
+    "juicy":    "fruity and fresh",
+    "deep":     "deep and ripe",
+    "earthy":   "savory and earthy",
+    "sweet":    "sweet and indulgent",
+    "smoky":    "warm and smoky",
+    "delicate": "light and fragrant",
+    "mineral":  "crisp and mineral",
+}
+
+_INTENT = {
+    "SAFE BET":   "matches it",
+    "HIDDEN GEM": "surprises you",
+    "BOLD MOVE":  "goes against it",
+}
+
+_TIER_COLOR = {
+    "SAFE BET":   "#2CA02C",
+    "HIDDEN GEM": "#1F77B4",
+    "BOLD MOVE":  "#D62728",
+}
+
+_TIER_BORDER = {
+    "SAFE BET":   "#2CA02C",
+    "HIDDEN GEM": "#1F77B4",
+    "BOLD MOVE":  "#D62728",
+}
+
+
+def _cluster_adj(cluster_name: str) -> str:
+    first = cluster_name.split("&")[0].strip()
+    if first.lower().startswith("the "):
+        first = first[4:]
+    if first.lower().startswith("something "):
+        first = first[10:]
+    return first.lower()
+
+
+def _food_feel(safe_bet_cluster_name: str) -> str:
+    adj = _cluster_adj(safe_bet_cluster_name)
+    return _AXIS_FOOD_FEEL.get(adj, "rich and complex")
+
+
+def _clip(text: str, max_chars: int = 160) -> str:
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars].rsplit(" ", 1)[0].rstrip(".,;: ") + "…"
+
+
+def _conf_bar_html(conf: float, color: str) -> str:
+    pct = int(conf * 100)
+    bar_w = int(conf * 120)
+    return (
+        f'<div style="display:flex;align-items:center;gap:8px;margin:4px 0">'
+        f'<div style="background:#e8e4dd;border-radius:4px;width:120px;height:10px;overflow:hidden">'
+        f'<div style="background:{color};width:{bar_w}px;height:10px;border-radius:4px"></div>'
+        f'</div>'
+        f'<span style="font-size:12px;color:#888;font-weight:600">{pct}%</span>'
+        f'</div>'
+    )
+
+
 # ── HTML builders ─────────────────────────────────────────────────────────────
 def _top5_bars_html(top5, confirmed_food):
     html = ""
@@ -247,11 +313,107 @@ def _top5_bars_html(top5, confirmed_food):
     return html
 
 
+def _tier_card_html(rec: dict, display_name: str, feel: str) -> str:
+    """Build one tier panel — matches notebook print_card style."""
+    tier    = rec.get("tier", "")
+    icon    = rec.get("icon", "")
+    name    = rec.get("name", "")
+    wine    = rec.get("wine", "—")
+    rating  = rec.get("rating", "—")
+    snippet = _clip(rec.get("snippet", ""))
+    conf    = rec.get("confidence", 0)
+    kws     = rec.get("keywords", [])
+
+    color   = _TIER_COLOR.get(tier, "#555")
+    border  = _TIER_BORDER.get(tier, "#ccc")
+    intent  = _INTENT.get(tier, "pairs with")
+    adj     = _cluster_adj(name)
+    kw_str  = " · ".join(kws) if kws else "—"
+
+    return f"""
+    <div style="border-left:4px solid {border};background:#fff;
+                border-radius:0 12px 12px 0;padding:18px 22px;margin:10px 0;
+                box-shadow:0 2px 8px rgba(0,0,0,0.04)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:18px">{icon}</span>
+        <span style="font-size:15px;font-weight:700;color:{color}">{tier}</span>
+      </div>
+      <div style="font-size:11px;color:#aaa;text-transform:uppercase;
+                  letter-spacing:0.8px;margin-bottom:4px">Match confidence</div>
+      {_conf_bar_html(conf, color)}
+      <div style="font-size:13px;color:#444;margin:12px 0 6px;line-height:1.6">
+        As your <strong>{display_name}</strong> is <em>{feel}</em>,<br>
+        we believe you need a wine that
+        <strong style="color:{color}">{intent}</strong> —
+        something <em style="font-weight:600">{adj}</em><br>
+        that plays on
+        <span style="color:#0D7C66;font-weight:600">{kw_str}</span>
+      </div>
+      <hr style="margin:12px 0;border:none;border-top:1px solid #eee">
+      <div style="font-size:11px;color:#aaa;margin-bottom:4px">Wine drinkers suggest:</div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a2e">
+        {wine} &nbsp;⭐ {rating}
+      </div>
+      <div style="font-size:11px;color:#aaa;margin:8px 0 2px">Wine drinkers say:</div>
+      <div style="font-size:12px;color:#666;font-style:italic;
+                  line-height:1.5;padding:6px 0">
+        "{snippet}"
+      </div>
+    </div>"""
+
+
 def _wine_card_html(food_name: str, conf: float, top5,
                     cluster_idx: int, cluster_name: str,
                     sims, desc: str, attn_w) -> str:
+    """Build the full card (non-streaming fallback)."""
+    parts = list(_wine_card_parts(food_name, conf, top5,
+                                  cluster_idx, cluster_name,
+                                  sims, desc, attn_w))
+    return parts[-1] if parts else ""
+
+
+def _wine_card_parts(food_name: str, conf: float, top5,
+                     cluster_idx: int, cluster_name: str,
+                     sims, desc: str, attn_w):
+    """Yield progressively longer HTML — each yield is the full card so far."""
     food_key = food_name.lower().replace(" ", "_")
     recs     = RESULTS_ALL.get(food_key, [])
+    display  = food_name.replace("_", " ").title() if "_" in food_name else food_name
+
+    WRAP_OPEN = (
+        '<div style="font-family:\'Segoe UI\',Arial,sans-serif;background:#faf7f2;'
+        'border-radius:16px;padding:28px 34px;'
+        'box-shadow:0 4px 20px rgba(0,0,0,0.09)">'
+    )
+    FOOTER = (
+        '<div style="margin-top:18px;font-size:10px;color:#ccc;text-align:right">'
+        'Wine &amp; Dine · RSU Advanced ML · 2026</div>'
+    )
+
+    # Header (always shown)
+    header = f"""
+  <div style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:2px">
+    🍽️&nbsp; {display}
+    <span style="font-size:12px;font-weight:400;color:#aaa;margin-left:10px">
+      CNN confidence: <strong style="color:#2CA02C">{conf*100:.0f}%</strong>
+    </span>
+  </div>
+  <details style="margin:12px 0 4px">
+    <summary style="cursor:pointer;font-size:11px;color:#bbb;
+                    text-transform:uppercase;letter-spacing:1px">
+      📷 Top-5 CNN predictions
+    </summary>
+    <div style="margin-top:8px">{_top5_bars_html(top5, food_name)}</div>
+  </details>
+  <hr style="margin:18px 0;border:none;border-top:1px solid #e4ddd2">
+"""
+
+    # ── Stage 0: "Computing..." spinner ──────────────────────────────────────
+    spinner = (
+        '<div style="padding:20px;text-align:center;color:#6b3fa0;font-size:14px">'
+        '⏳ Encoding flavor description through BiLSTM…</div>'
+    )
+    yield WRAP_OPEN + header + spinner + FOOTER + '</div>'
 
     # Attention-highlighted flavor text
     words    = desc.split()[:MAX_SEQ_LEN]
@@ -266,6 +428,30 @@ def _wine_card_html(food_name: str, conf: float, top5,
             f'padding:1px 4px;border-radius:3px;margin:1px;font-size:12px">'
             f'{w_txt}</span> '
         )
+
+    step1 = f"""
+  <div style="font-size:10px;color:#bbb;text-transform:uppercase;
+              letter-spacing:1.2px;margin-bottom:6px">
+    🧠 Step 1 — BiLSTM flavor encoding
+  </div>
+  <div style="font-size:12px;color:#888;margin-bottom:6px">
+    Flavor description for <em>{display}</em> tokenised and fed through the trained BiLSTM:
+  </div>
+  <div style="background:#f0ebe0;padding:10px 14px;border-radius:8px;
+              line-height:1.9;margin-bottom:14px">
+    {word_html}
+    <div style="font-size:10px;color:#bbb;margin-top:6px">
+      Word opacity = attention weight (darker = more attended)
+    </div>
+  </div>
+"""
+
+    # ── Stage 1: show attention map, spinner for clusters ────────────────────
+    spinner2 = (
+        '<div style="padding:16px;text-align:center;color:#6b3fa0;font-size:14px">'
+        '⏳ Computing cosine similarity to 9 flavor clusters…</div>'
+    )
+    yield WRAP_OPEN + header + step1 + spinner2 + FOOTER + '</div>'
 
     # Cluster similarity bars (top-5)
     sorted_k = np.argsort(sims)[::-1][:5] if len(sims) > 0 else []
@@ -285,102 +471,50 @@ def _wine_card_html(food_name: str, conf: float, top5,
             f'</div>'
         )
 
-    # Wine rows
-    TIERS = [("🥇 Safe Bet",      "#1F77B4", "Reliable — always works."),
-             ("✨ Characteristic", "#8B0000", "Deepens the flavour experience."),
-             ("🔄 Contrast",       "#6b3fa0", "Bold contrast for adventurous palates.")]
-    wine_rows = ""
-    for i, rec in enumerate(recs[:3]):
-        lbl, acc, sub = TIERS[i] if i < len(TIERS) else (f"Option {i+1}", "#555", "")
-        wine = rec.get("wine", "—")
-        rt   = rec.get("rating_pt", "—")
-        note = rec.get("description", "")
-        note = (note[:105] + "…") if len(note) > 105 else (note or "—")
-        wine_rows += (
-            f'<tr>'
-            f'<td style="padding:9px 14px;font-weight:700;color:{acc};white-space:nowrap">'
-            f'{lbl}<br><span style="font-size:10px;font-weight:400;color:#aaa">{sub}</span></td>'
-            f'<td style="padding:9px 14px;font-weight:600;color:#1a1a2e;font-size:13px">{wine}</td>'
-            f'<td style="padding:9px 6px;color:#888;white-space:nowrap;font-size:12px">{rt} pts</td>'
-            f'<td style="padding:9px 14px;color:#888;font-size:11px;font-style:italic">{note}</td>'
-            f'</tr>'
-        )
-    if not wine_rows:
-        wine_rows = ('<tr><td colspan="4" style="padding:14px;color:#bbb;text-align:center">'
-                     'No pairing data available for this food.</td></tr>')
-
-    return f"""
-<div style="font-family:'Segoe UI',Arial,sans-serif;background:#faf7f2;
-            border-radius:16px;padding:28px 34px;
-            box-shadow:0 4px 20px rgba(0,0,0,0.09)">
-
-  <div style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:2px">
-    🍽️&nbsp; {food_name}
-    <span style="font-size:12px;font-weight:400;color:#aaa;margin-left:10px">
-      CNN confidence: <strong style="color:#2CA02C">{conf*100:.0f}%</strong>
-    </span>
-  </div>
-
-  <details style="margin:12px 0 4px">
-    <summary style="cursor:pointer;font-size:11px;color:#bbb;
-                    text-transform:uppercase;letter-spacing:1px">
-      📷 Top-5 CNN predictions
-    </summary>
-    <div style="margin-top:8px">{_top5_bars_html(top5, food_name)}</div>
-  </details>
-
-  <hr style="margin:18px 0;border:none;border-top:1px solid #e4ddd2">
-
-  <!-- Step 1: Flavor profile -->
+    step2 = f"""
   <div style="font-size:10px;color:#bbb;text-transform:uppercase;
               letter-spacing:1.2px;margin-bottom:6px">
-    🧠 Step 1 — BiLSTM flavor encoding
-  </div>
-  <div style="font-size:12px;color:#888;margin-bottom:6px">
-    Flavor description for <em>{food_name}</em> tokenized and fed through the trained BiLSTM:
-  </div>
-  <div style="background:#f0ebe0;padding:10px 14px;border-radius:8px;
-              line-height:1.9;margin-bottom:14px">
-    {word_html}
-    <div style="font-size:10px;color:#bbb;margin-top:6px">
-      Word opacity = attention weight (darker = more attended)
-    </div>
-  </div>
-
-  <!-- Step 2: Cluster -->
-  <div style="font-size:10px;color:#bbb;text-transform:uppercase;
-              letter-spacing:1.2px;margin-bottom:6px">
-    🎯 Step 2 — Cosine similarity to flavor clusters
+    🎯 Step 2 — Cosine similarity to 9 flavor clusters
   </div>
   {sim_bars}
   <div style="margin-top:10px;margin-bottom:4px;font-size:13px;
               font-weight:700;color:#6b3fa0">
-    → Flavor cluster: <strong>{cluster_name}</strong>
+    → Primary flavor cluster: <strong>{cluster_name}</strong>
   </div>
-
   <hr style="margin:18px 0;border:none;border-top:1px solid #e4ddd2">
+"""
 
-  <!-- Step 3: Wine card -->
+    # ── Stage 2: show clusters, spinner for wines ────────────────────────────
+    spinner3 = (
+        '<div style="padding:16px;text-align:center;color:#6b3fa0;font-size:14px">'
+        '⏳ Selecting wine pairings from cluster pools…</div>'
+    )
+    yield WRAP_OPEN + header + step1 + step2 + spinner3 + FOOTER + '</div>'
+
+    # Derive food feel from Safe Bet cluster
+    safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
+    feel = _food_feel(safe_cluster)
+
+    # Build tier cards (notebook style)
+    tier_cards_html = ""
+    if recs:
+        for rec in recs[:3]:
+            tier_cards_html += _tier_card_html(rec, display, feel)
+    else:
+        tier_cards_html = ('<div style="padding:20px;color:#bbb;text-align:center">'
+                           'No pairing data available for this food.</div>')
+
+    step3 = f"""
   <div style="font-size:10px;color:#bbb;text-transform:uppercase;
               letter-spacing:1.2px;margin-bottom:12px">
     🍷 Step 3 — Wine Pairings
   </div>
-  <table style="width:100%;border-collapse:collapse">
-    <thead>
-      <tr style="background:#f0ebe0;font-size:10px;color:#aaa;text-transform:uppercase">
-        <th style="padding:7px 14px;text-align:left">Tier</th>
-        <th style="padding:7px 14px;text-align:left">Wine</th>
-        <th style="padding:7px 6px;text-align:left">Rating</th>
-        <th style="padding:7px 14px;text-align:left">Tasting note</th>
-      </tr>
-    </thead>
-    <tbody>{wine_rows}</tbody>
-  </table>
+  {tier_cards_html}
+"""
 
-  <div style="margin-top:18px;font-size:10px;color:#ccc;text-align:right">
-    Wine &amp; Dine · RSU Advanced ML · 2026
-  </div>
-</div>"""
+    # ── Stage 3: complete card ───────────────────────────────────────────────
+    yield WRAP_OPEN + header + step1 + step2 + step3 + FOOTER + '</div>'
+
 
 # ── App state ─────────────────────────────────────────────────────────────────
 _state: dict = {"food": "", "conf": 0.0, "top5": []}
@@ -412,9 +546,10 @@ def on_yes():
     food_name = _state.get("food", "")
     food_key  = food_name.lower().replace(" ", "_")
     cluster, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
-    html = _wine_card_html(food_name, _state["conf"], _state["top5"],
-                           cluster, cluster_name, sims, desc, attn_w)
-    return gr.update(visible=True), html
+    for html in _wine_card_parts(food_name, _state["conf"], _state["top5"],
+                                 cluster, cluster_name, sims, desc, attn_w):
+        time.sleep(0.6)
+        yield gr.update(visible=True), html
 
 def on_no():
     return (

@@ -166,13 +166,34 @@ We start from Google's pre-trained Word2Vec (trained on ~100 billion words of Go
 
 We then fine-tune this model on all 824k WineSensed Vivino reviews. Fine-tuning adds wine-specific vocabulary (*Sangiovese*, *tannic*, *cassis*, *terroir*) and repositions existing words so their neighborhoods reflect how wine reviewers use them. The result is a single vector space where food words and wine tasting words sit on the same map.
 
-Grape embeddings are computed by averaging all word vectors across reviews for each of the 15 grape varieties. At inference, food flavor keywords (which can now be natural food words like *tomato* or *fatty*) are embedded the same way and matched to grape vectors by cosine similarity.
+Grape embeddings are computed by averaging all word vectors across reviews for each of the 15 grape varieties. At inference, food flavor keywords are embedded and matched to grape vectors by cosine similarity.
 
-| Pairing intent | Keyword direction | What gets returned |
+| Pairing intent | Mechanism | What gets returned |
 | --- | --- | --- |
-| **Complement** | Keywords that echo the food's dominant flavor | Grape whose review language most shares the food's taste profile |
-| **Contrast** | Keywords that cut through and refresh | Grape whose review language is most different but complementary (high acidity, mineral) |
-| **Balance** | Light, approachable, crowd-safe keywords | Grape closest to clean / fruity / gentle in embedding space |
+| **Safe Bet** | W2V rank-1 cosine similarity to classic flavor keywords | Grape whose tasting vocabulary best matches the food's flavor profile |
+| **Bold Move** | Grape centroid most geometrically distant from Safe Bet | Stylistically opposite grape — the sommelier surprise |
+| **Hidden Gem** | Top-5 flavor matches; pick most distant from Safe Bet centroid | Real flavor affinity with the food, but not the obvious first pick |
+
+#### 4.3.1 Vocabulary Mismatch — A Real Implementation Challenge
+
+During implementation we discovered a critical vocabulary gap. The food flavor table is written in natural food language: *cheesy*, *baked*, *greasy*, *starchy*, *fatty*. These words exist in Google News Word2Vec but **drift to meaningless regions** after fine-tuning on wine text — wine reviewers never write those words. A filter (`_WINE_VOCAB`) that keeps only words appearing in both the model and the actual training corpus silently dropped most food keywords, leaving 1–2 words to represent each dish. The result: all three pairings returned the same grape regardless of the food.
+
+This revealed a design tension:
+
+> The food flavor table *should* stay in food language — that is what curators naturally write and understand. The pipeline should do the translation, not the data.
+
+#### 4.3.2 Solution — Query Expansion as a Translation Layer
+
+We implement a **query expansion** step inside the embedding function. For each food keyword, we find its top-N nearest Word2Vec neighbours **within the wine vocabulary** — words that genuinely appear in wine reviews. This translates food-world descriptors into wine-world equivalents automatically:
+
+| Food keyword | Expands to (wine vocab neighbours) |
+|---|---|
+| `cheesy` | *buttery, creamy, rich, lactic, oaky, fat* |
+| `baked` | *toasty, roasted, warm, caramelised, spiced* |
+| `tomato` | *cherry, raspberry, redcurrant, plum, cassis* |
+| `greasy` | *oily, heavy, full-bodied, rich, fat* |
+
+The expanded set of 20–30 wine-world terms is IDF-weighted (rare grape-specific words upweighted) and embedded. The food flavor JSON remains in natural food language. The expansion layer is the explicit bridge between the two vocabularies — automatic, data-driven, and not hard-coded.
 
 ### 4.4 Food Flavor Table
 

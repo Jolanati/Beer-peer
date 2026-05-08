@@ -30,7 +30,7 @@ WEIGHTS_DIR = os.path.join(BASE_DIR, "weights")
 DATA_DIR    = os.path.join(BASE_DIR, "data")
 
 CNN_WEIGHTS    = os.path.join(WEIGHTS_DIR, "cnn_resnet50_best.pt")
-BILSTM_WEIGHTS = os.path.join(WEIGHTS_DIR, "bilstm_best.pt")
+BILSTM_WEIGHTS = os.path.join(WEIGHTS_DIR, "tastebilstm_best.pt")
 DATA_JSON      = os.path.join(DATA_DIR,    "food_flavor_description_v2.json")
 VOCAB_JSON     = os.path.join(DATA_DIR,    "vocab.json")
 CLUSTER_JSON   = os.path.join(DATA_DIR,    "cluster_names.json")
@@ -41,17 +41,12 @@ CENTROIDS_NPY  = os.path.join(DATA_DIR,    "centroids.npy")
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # ── BiLSTM hyperparameters (must match training) ──────────────────────────────
-HIDDEN_DIM  = 256
-N_LAYERS    = 2
-DROPOUT_RNN = 0.4
-EMBED_DIM   = 100
-MAX_SEQ_LEN = 64
-GRAPE_CLASSES = [
-    "Bordeaux-style Red Blend","Cabernet Sauvignon","Chardonnay",
-    "Merlot","Pinot Gris","Pinot Noir","Red Blend","Riesling",
-    "Rosé","Sauvignon Blanc","Sparkling Blend","Syrah","White Blend",
-    "Zinfandel","Other",
-]
+HIDDEN_DIM    = 256
+N_LAYERS      = 2
+DROPOUT_RNN   = 0.4
+EMBED_DIM     = 100
+MAX_SEQ_LEN   = 64
+N_TASTE_AXES  = 10  # TasteBiLSTM output — 10 sensory axes
 
 # ── Food-101 class list (alphabetical — matches torchvision ImageFolder order) ─
 FOOD101_CLASSES = [
@@ -123,17 +118,8 @@ CLUSTER_NAMES = {int(k): v for k, v in _safe_load(CLUSTER_JSON, {}).items()}
 RESULTS_ALL   = _safe_load(RESULTS_JSON, {})
 CENTROIDS     = np.load(CENTROIDS_NPY) if os.path.exists(CENTROIDS_NPY) else None
 
-# Derive vocab size from the checkpoint to avoid mismatch with vocab.json
-def _get_vocab_size():
-    if os.path.exists(BILSTM_WEIGHTS):
-        ckpt = torch.load(BILSTM_WEIGHTS, map_location="cpu")
-        if isinstance(ckpt, dict) and "model_state_dict" in ckpt:
-            ckpt = ckpt["model_state_dict"]
-        if "embedding.weight" in ckpt:
-            return ckpt["embedding.weight"].shape[0]
-    return len(VOCAB) + 1
-
-VOCAB_SIZE = _get_vocab_size()
+# TasteBiLSTM uses the same vocab.json (4294 tokens, MIN_FREQ=3)
+VOCAB_SIZE = len(VOCAB)  # matches embedding.weight shape in tastebilstm_best.pt
 
 # ── BiLSTM architecture ───────────────────────────────────────────────────────
 class BahdanauAttention(nn.Module):
@@ -177,7 +163,7 @@ class BiLSTMAttention(nn.Module):
 
 def _load_bilstm():
     model = BiLSTMAttention(VOCAB_SIZE, EMBED_DIM, HIDDEN_DIM,
-                            len(GRAPE_CLASSES), N_LAYERS, DROPOUT_RNN)
+                            N_TASTE_AXES, N_LAYERS, DROPOUT_RNN)
     if os.path.exists(BILSTM_WEIGHTS):
         ckpt = torch.load(BILSTM_WEIGHTS, map_location=DEVICE)
         if isinstance(ckpt, dict) and "model_state_dict" in ckpt:

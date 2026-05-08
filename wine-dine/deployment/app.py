@@ -122,7 +122,18 @@ VOCAB         = _safe_load(VOCAB_JSON, {})
 CLUSTER_NAMES = {int(k): v for k, v in _safe_load(CLUSTER_JSON, {}).items()}
 RESULTS_ALL   = _safe_load(RESULTS_JSON, {})
 CENTROIDS     = np.load(CENTROIDS_NPY) if os.path.exists(CENTROIDS_NPY) else None
-VOCAB_SIZE    = len(VOCAB) + 1
+
+# Derive vocab size from the checkpoint to avoid mismatch with vocab.json
+def _get_vocab_size():
+    if os.path.exists(BILSTM_WEIGHTS):
+        ckpt = torch.load(BILSTM_WEIGHTS, map_location="cpu")
+        if isinstance(ckpt, dict) and "model_state_dict" in ckpt:
+            ckpt = ckpt["model_state_dict"]
+        if "embedding.weight" in ckpt:
+            return ckpt["embedding.weight"].shape[0]
+    return len(VOCAB) + 1
+
+VOCAB_SIZE = _get_vocab_size()
 
 # ── BiLSTM architecture ───────────────────────────────────────────────────────
 class BahdanauAttention(nn.Module):

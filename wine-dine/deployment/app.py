@@ -324,7 +324,7 @@ def _top5_bars_html(top5, confirmed_food):
     return html
 
 
-def _tier_card_html(rec: dict, display_name: str, feel: str) -> str:
+def _tier_card_html(rec: dict, display_name: str, feel: str, conf: float = 0.0) -> str:
     """Build one tier panel — matches notebook print_card style."""
     tier    = rec.get("tier", "")
     icon    = rec.get("icon", "")
@@ -332,7 +332,6 @@ def _tier_card_html(rec: dict, display_name: str, feel: str) -> str:
     wine    = rec.get("wine", "—")
     rating  = rec.get("rating", "—")
     snippet = _clip(rec.get("snippet", ""))
-    conf    = rec.get("confidence", 0)
     kws     = rec.get("keywords", [])
 
     color   = _TIER_COLOR.get(tier, "#555")
@@ -510,7 +509,9 @@ def _wine_card_parts(food_name: str, conf: float, top5,
     tier_cards_html = ""
     if recs:
         for rec in recs[:3]:
-            tier_cards_html += _tier_card_html(rec, display, feel)
+            rec_cluster = rec.get("cluster", 0)
+            rec_conf = float(sims[rec_cluster]) if len(sims) > rec_cluster else 0.0
+            tier_cards_html += _tier_card_html(rec, display, feel, rec_conf)
     else:
         tier_cards_html = ('<div style="padding:20px;color:#bbb;text-align:center">'
                            'No pairing data available for this food.</div>')

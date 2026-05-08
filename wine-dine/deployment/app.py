@@ -15,6 +15,7 @@ Pipeline (all inference happens in real time):
 import os
 import json
 import time
+import string
 import numpy as np
 import torch
 import torch.nn as nn
@@ -176,9 +177,12 @@ def _load_bilstm():
 bilstm = _load_bilstm()
 
 
+_PUNCT_STRIP = str.maketrans("", "", string.punctuation)
+
 def _tokenize(text):
-    tokens = [VOCAB.get(w.lower(), 0) for w in str(text).split()]
-    tokens = tokens[:MAX_SEQ_LEN]
+    # strip punctuation then lowercase — matches §7/§14.5 tokeniser exactly
+    words  = str(text).lower().translate(_PUNCT_STRIP).split()
+    tokens = [VOCAB.get(w, 1) for w in words[:MAX_SEQ_LEN]]  # OOV→1, not 0
     tokens += [0] * (MAX_SEQ_LEN - len(tokens))
     return tokens
 

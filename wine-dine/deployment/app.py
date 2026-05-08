@@ -216,7 +216,8 @@ def bilstm_encode(food_key):
 
     if CENTROIDS is not None:
         vec_l2  = vec_np / (np.linalg.norm(vec_np) + 1e-8)
-        sims    = CENTROIDS @ vec_l2
+        cent_l2 = CENTROIDS / (np.linalg.norm(CENTROIDS, axis=1, keepdims=True) + 1e-8)
+        sims    = cent_l2 @ vec_l2
         cluster = int(np.argmax(sims))
     else:
         sims, cluster = np.zeros(9), 0

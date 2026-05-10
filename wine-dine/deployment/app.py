@@ -462,7 +462,7 @@ def _screen2_html(display: str, desc: str, attn_w,
                   cluster_idx: int, cluster_name: str, sims) -> str:
     """Screen 2 — taste fingerprint (matches mockup Screen 2)."""
 
-    # Attention-highlighted words — three opacity levels like mockup
+    # Attention-highlighted words — orange palette
     words     = desc.split()[:MAX_SEQ_LEN]
     attn_arr  = attn_w[:len(words)]
     a_min, a_max = attn_arr.min(), attn_arr.max()
@@ -470,11 +470,11 @@ def _screen2_html(display: str, desc: str, attn_w,
     word_html = ""
     for w_txt, a in zip(words, attn_norm):
         if a >= 0.75:
-            style = "background:#7A82D0;color:#fff;font-weight:600"
+            style = "background:#B85C38;color:#fff;font-weight:600"
         elif a >= 0.40:
-            style = "background:rgba(122,130,208,0.32)"
+            style = "background:rgba(184,92,56,0.25)"
         elif a >= 0.15:
-            style = "background:rgba(122,130,208,0.15)"
+            style = "background:rgba(184,92,56,0.10)"
         else:
             style = ""
         word_html += (
@@ -491,7 +491,7 @@ def _screen2_html(display: str, desc: str, attn_w,
         is_top  = int(k) == cluster_idx
         name_fw = "600" if is_top else "400"
         name_c  = "#1a1917" if is_top else "#5a5855"
-        bar_c   = "#7A82D0" if is_top else "#d4cfc8"
+        bar_c   = "#B85C38" if is_top else "#d4cfc8"
         cluster_rows += f"""
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
@@ -504,61 +504,90 @@ def _screen2_html(display: str, desc: str, attn_w,
           <span style="font-size:11px;color:#9a9895;width:38px;text-align:right">{sim_val:.3f}</span>
         </div>"""
 
-    return f"""
-    <div id="wd-screen2">
-      <div style="font-size:13px;color:#5a5855;line-height:1.7;margin-bottom:1rem">
-        Your dish's flavor fingerprint was encoded by our
-        <strong style="color:#1a1917">TasteBiLSTM</strong>
-        to understand how it truly tastes.
-      </div>
-      <div style="display:flex;gap:0;margin-bottom:1rem">
-        <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
-                    background:#f6f5f1;border-radius:8px 0 0 8px;border-right:none">
-          <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
-                      letter-spacing:0.05em;margin-bottom:3px">step 1</div>
-          <div style="font-size:12px;font-weight:600;color:#1a1917">flavor description</div>
-          <div style="font-size:10px;color:#9a9895;margin-top:2px">written by Claude Sonnet</div>
-        </div>
-        <div style="display:flex;align-items:center;padding:0 8px;
-                    background:#f6f5f1;border-top:0.5px solid rgba(26,25,23,0.10);
-                    border-bottom:0.5px solid rgba(26,25,23,0.10);
-                    color:#9a9895;font-size:14px">→</div>
-        <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
-                    background:#f6f5f1;border-radius:0 8px 8px 0">
-          <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
-                      letter-spacing:0.05em;margin-bottom:3px">step 2</div>
-          <div style="font-size:12px;font-weight:600;color:#1a1917">TasteBiLSTM</div>
-          <div style="font-size:10px;color:#9a9895;margin-top:2px">encodes it into a taste vector</div>
-        </div>
-      </div>
-      <div style="background:#f6f5f1;border-radius:8px;padding:12px 14px;
-                  font-size:13px;line-height:2.2;border:0.5px solid rgba(26,25,23,0.10);
-                  margin-bottom:5px">
-        {word_html}
-      </div>
-      <div style="font-size:10px;color:#9a9895;margin-bottom:1.25rem">
-        highlighted words = what the model pays most attention to
-      </div>
-      <div style="font-size:10px;color:#9a9895;text-transform:uppercase;
-                  letter-spacing:0.06em;margin-bottom:8px">
-        how close is your {display.lower()} to each flavor world?
-      </div>
-      {cluster_rows}
-      <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;
-                  background:#f6f5f1;border-radius:8px;border-left:3px solid #7A82D0;
-                  margin-top:4px">
-        <span style="font-size:11px;color:#9a9895">taste fingerprint</span>
-        <span style="font-size:14px;font-weight:600;color:#5558A8">{cluster_name}</span>
-      </div>
-      <div style="margin-top:1.5rem;text-align:center">
-        <button onclick="wdGoTo(2)"
-                style="padding:11px 32px;border-radius:10px;border:none;
-                       background:#B85C38;color:#fff;font-size:14px;
-                       font-weight:600;cursor:pointer;letter-spacing:-0.2px">
-          let's find wine &rarr;
-        </button>
-      </div>
-    </div>"""
+    info_text = (
+        "TasteBiLSTM + Bahdanau attention &middot; 10 sensory axes: acidity &middot; "
+        "tannin &middot; red fruit &middot; dark fruit &middot; earthy &middot; sweet &middot; "
+        "body &middot; oaky &middot; floral &middot; mineral &middot; 512-d L2-normalised "
+        "taste vector &middot; BisectingKMeans K=9 &middot; TF-IDF cluster naming"
+    )
+
+    # CSS for the info toggle (checkbox trick — no JS needed)
+    css = (
+        "<style>"
+        "#wdinf2panel{display:none}"
+        "#wdinf2:checked~#wdinf2panel{display:block}"
+        "</style>"
+    )
+
+    return f"""{css}
+<input type="checkbox" id="wdinf2" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;
+            margin-bottom:0.75rem">
+  <div style="font-size:13px;color:#5a5855;line-height:1.7">
+    Your dish's fingerprint was
+    <strong style="color:#1a1917">written by Claude Sonnet</strong>
+    &mdash; then run through our
+    <strong style="color:#1a1917">TasteBiLSTM</strong>
+    to understand how it truly tastes.
+  </div>
+  <label for="wdinf2"
+         style="margin-left:10px;flex-shrink:0;width:18px;height:18px;border-radius:50%;
+                display:flex;align-items:center;justify-content:center;
+                border:1px solid #9a9895;color:#9a9895;font-size:10px;cursor:pointer;
+                font-style:italic;font-weight:600;line-height:1">i</label>
+</div>
+<div id="wdinf2panel"
+     style="background:#f0ede8;border-radius:6px;padding:8px 12px;
+            font-size:10px;color:#5a5855;line-height:1.7;margin-bottom:0.75rem">
+  {info_text}
+</div>
+<div style="display:flex;gap:0;margin-bottom:1rem">
+  <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
+              background:#f6f5f1;border-radius:8px 0 0 8px;border-right:none">
+    <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
+                letter-spacing:0.05em;margin-bottom:3px">step 1</div>
+    <div style="font-size:12px;font-weight:600;color:#1a1917">flavor description</div>
+    <div style="font-size:10px;color:#9a9895;margin-top:2px">written by Claude Sonnet</div>
+  </div>
+  <div style="display:flex;align-items:center;padding:0 8px;
+              background:#f6f5f1;border-top:0.5px solid rgba(26,25,23,0.10);
+              border-bottom:0.5px solid rgba(26,25,23,0.10);
+              color:#9a9895;font-size:14px">&rarr;</div>
+  <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
+              background:#f6f5f1;border-radius:0 8px 8px 0">
+    <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
+                letter-spacing:0.05em;margin-bottom:3px">step 2</div>
+    <div style="font-size:12px;font-weight:600;color:#1a1917">TasteBiLSTM</div>
+    <div style="font-size:10px;color:#9a9895;margin-top:2px">encodes it into a taste vector</div>
+  </div>
+</div>
+<div style="background:#f6f5f1;border-radius:8px;padding:12px 14px;
+            font-size:13px;line-height:2.2;border:0.5px solid rgba(26,25,23,0.10);
+            margin-bottom:5px">
+  {word_html}
+</div>
+<div style="font-size:10px;color:#9a9895;margin-bottom:1.25rem">
+  word warmth = attention weight &middot; more golden = more attended to by the model
+</div>
+<div style="font-size:10px;color:#9a9895;text-transform:uppercase;
+            letter-spacing:0.06em;margin-bottom:8px">
+  closeness to each flavor world
+</div>
+{cluster_rows}
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;
+            background:#f6f5f1;border-radius:8px;border-left:3px solid #B85C38;
+            margin-top:4px;margin-bottom:1.5rem">
+  <span style="font-size:11px;color:#9a9895">taste fingerprint</span>
+  <span style="font-size:14px;font-weight:600;color:#B85C38">{cluster_name}</span>
+</div>
+<div style="text-align:center">
+  <label for="wdt2"
+         style="display:inline-block;padding:11px 32px;border-radius:10px;
+                background:#B85C38;color:#fff;font-size:14px;font-weight:600;
+                cursor:pointer;letter-spacing:-0.2px;border:none">
+    let&rsquo;s find wine &rarr;
+  </label>
+</div>"""
 
 
 _TIER_INFO = {
@@ -691,116 +720,141 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
 
 def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
     """
-    Full 3-screen shell with progress dots and nav buttons.
-    cur = 0/1/2 — which screen is currently active.
-    s2/s3 may be empty strings (not yet computed).
+    Full 3-screen shell using CSS radio-tab navigation — zero JavaScript.
+    cur = 0/1/2 — which tab is checked on server render.
+    Navigation via <label for="wdtN"> elements throughout.
     """
-    unlocked = int(bool(s1)) + int(bool(s2)) + int(bool(s3)) - 1  # highest unlocked index
+    unlocked = int(bool(s1)) + int(bool(s2)) + int(bool(s3)) - 1
+    c = [" checked" if i == cur else "" for i in range(3)]
 
-    screens_html = ""
-    for idx, content in enumerate([s1, s2, s3]):
-        display = "block" if idx == cur else "none"
-        screens_html += (
-            f'<div id="wd-s{idx}" style="display:{display}">'
-            f'{content}</div>'
-        )
-
-    # Progress dots
-    prog_labels = [
-        ("📷", "we identify<br>your dish"),
-        ("🫧", "we find its<br>taste fingerprint"),
-        ("🍷", "we match it<br>to a wine"),
+    # ── Progress dots ────────────────────────────────────────────────────────
+    prog_items = [
+        ("📷", "identify<br>dish"),
+        ("🫧", "taste<br>fingerprint"),
+        ("🍷", "wine<br>match"),
     ]
     dots_html = ""
-    for i, (icon, label) in enumerate(prog_labels):
-        if i < cur:
-            dot_bg, dot_c, dot_border = "#f6f5f1", "#5a5855", "rgba(26,25,23,0.20)"
-            lbl_c = "#5a5855"
-        elif i == cur:
-            dot_bg, dot_c, dot_border = "#B85C38", "#fff", "#B85C38"
-            lbl_c = "#B85C38"
+    for i, (icon, lbl) in enumerate(prog_items):
+        if i <= unlocked:
+            dot = (
+                f'<label for="wdt{i}" class="wddt wddt{i}"'
+                f' style="width:28px;height:28px;border-radius:50%;display:flex;'
+                f'align-items:center;justify-content:center;font-size:12px;'
+                f'cursor:pointer;box-sizing:border-box;'
+                f'border:1.5px solid rgba(26,25,23,0.12);background:#fff;'
+                f'color:#9a9895">{icon}</label>'
+            )
         else:
-            dot_bg, dot_c, dot_border = "#fff", "#9a9895", "rgba(26,25,23,0.10)"
-            lbl_c = "#9a9895"
-
-        connector = (
-            '<div style="flex:1;height:1px;background:rgba(26,25,23,0.10);'
-            'margin-top:-20px;z-index:0"></div>'
-            if i < 2 else ""
+            dot = (
+                f'<div style="width:28px;height:28px;border-radius:50%;display:flex;'
+                f'align-items:center;justify-content:center;font-size:12px;'
+                f'box-sizing:border-box;border:1.5px solid rgba(26,25,23,0.08);'
+                f'background:#fff;color:#ddd">{icon}</div>'
+            )
+        dots_html += (
+            f'<div style="display:flex;flex-direction:column;align-items:center;gap:4px">'
+            f'{dot}'
+            f'<div style="font-size:9px;color:#9a9895;text-align:center;line-height:1.3">{lbl}</div>'
+            f'</div>'
         )
-        dots_html += f"""
-        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;z-index:1">
-          <div onclick="wdGoTo({i})"
-               style="width:28px;height:28px;border-radius:50%;display:flex;
-                      align-items:center;justify-content:center;font-size:12px;
-                      background:{dot_bg};border:1.5px solid {dot_border};
-                      color:{dot_c};cursor:pointer;z-index:1">{icon}</div>
-          <div style="font-size:10px;color:{lbl_c};text-align:center;
-                      font-weight:500;line-height:1.35">{label}</div>
-        </div>
-        {connector}"""
+        if i < 2:
+            dots_html += (
+                '<div style="flex:1;height:1px;background:rgba(26,25,23,0.10);'
+                'margin-top:14px"></div>'
+            )
 
-    # Nav buttons
-    prev_dis = "opacity:0.28;pointer-events:none" if cur == 0 else ""
-    next_dis = "opacity:0.28;pointer-events:none" if cur >= unlocked else ""
-    next_lbl = "done ✓" if cur == 2 else "next →"
+    # ── Nav ──────────────────────────────────────────────────────────────────
+    _btn_back = ("padding:8px 16px;border-radius:8px;font-size:13px;display:none;"
+                 "border:0.5px solid rgba(26,25,23,0.20);background:transparent;"
+                 "color:#5a5855;cursor:pointer")
+    _btn_next = ("padding:8px 16px;border-radius:8px;font-size:13px;display:none;"
+                 "border:0.5px solid #B85C38;background:#B85C38;color:#fff;cursor:pointer")
+    _lock      = "pointer-events:none;opacity:0.25"
+    _ctr       = "font-size:11px;color:#9a9895;display:none"
 
-    return f"""
-<div style="font-family:'Segoe UI',Arial,sans-serif;background:#f6f5f1;
-            border-radius:16px;padding:24px 28px;max-width:720px;margin:0 auto;
-            box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">
+    # CSS — all rules in one <style> block (no JS)
+    css = (
+        "<style>"
+        # Screens — only active one visible
+        "#wds0,#wds1,#wds2{display:none}"
+        "#wdt0:checked~#wds0,#wdt1:checked~#wds1,#wdt2:checked~#wds2{display:block}"
+        # Active dot — terracotta
+        "#wdt0:checked~#wdprog .wddt0,"
+        "#wdt1:checked~#wdprog .wddt1,"
+        "#wdt2:checked~#wdprog .wddt2"
+        "{background:#B85C38!important;border-color:#B85C38!important;color:#fff!important}"
+        # Done dot — grey fill
+        "#wdt1:checked~#wdprog .wddt0,"
+        "#wdt2:checked~#wdprog .wddt0,"
+        "#wdt2:checked~#wdprog .wddt1"
+        "{background:#f6f5f1!important;border-color:rgba(26,25,23,0.20)!important;"
+        "color:#5a5855!important}"
+        # Back labels — one visible per screen
+        "#wdt1:checked~#wdnav #wdb1,"
+        "#wdt2:checked~#wdnav #wdb2{display:inline-block}"
+        # Next labels
+        "#wdt0:checked~#wdnav #wdn0,"
+        "#wdt1:checked~#wdnav #wdn1,"
+        "#wdt2:checked~#wdnav #wdn2{display:inline-block}"
+        # Counters
+        "#wdt0:checked~#wdnav #wdc0,"
+        "#wdt1:checked~#wdnav #wdc1,"
+        "#wdt2:checked~#wdnav #wdc2{display:inline}"
+        "</style>"
+    )
 
-  <div style="display:flex;justify-content:space-between;align-items:baseline;
-              padding-bottom:1.25rem;border-bottom:0.5px solid rgba(26,25,23,0.10);
-              margin-bottom:1.75rem">
-    <div style="font-size:19px;font-weight:600;color:#1a1917;letter-spacing:-0.3px">
-      Wine<span style="color:#B85C38"> &amp; </span>Dine
-    </div>
-    <div style="font-size:11px;color:#9a9895;font-style:italic">
-      photo &rarr; fingerprint &rarr; pairing
-    </div>
+    # Lock next labels that lead to unloaded screens
+    n0_lock = _lock if unlocked < 1 else ""
+    n1_lock = _lock if unlocked < 2 else ""
+
+    return f"""<div id="wdshell" style="font-family:'Segoe UI',Arial,sans-serif;background:#f6f5f1;
+     border-radius:16px;padding:24px 28px;max-width:720px;margin:0 auto;
+     box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">
+{css}
+<input type="radio" id="wdt0" name="wdtab"{c[0]} style="display:none">
+<input type="radio" id="wdt1" name="wdtab"{c[1]} style="display:none">
+<input type="radio" id="wdt2" name="wdtab"{c[2]} style="display:none">
+
+<div style="display:flex;justify-content:space-between;align-items:baseline;
+            padding-bottom:1.25rem;border-bottom:0.5px solid rgba(26,25,23,0.10);
+            margin-bottom:1.75rem">
+  <div style="font-size:19px;font-weight:600;color:#1a1917;letter-spacing:-0.3px">
+    Wine<span style="color:#B85C38"> &amp; </span>Dine</div>
+  <div style="font-size:11px;color:#9a9895;font-style:italic">
+    photo &rarr; fingerprint &rarr; pairing</div>
+</div>
+
+<div id="wdprog" style="display:flex;align-items:flex-start;margin-bottom:1.75rem">
+  {dots_html}
+</div>
+
+<div id="wds0">{s1 or ""}</div>
+<div id="wds1">{s2 or _LOADING_SPINNER}</div>
+<div id="wds2">{s3 or ""}</div>
+
+<div id="wdnav" style="display:flex;justify-content:space-between;align-items:center;
+            margin-top:1.5rem;padding-top:1rem;
+            border-top:0.5px solid rgba(26,25,23,0.10)">
+  <div>
+    <label for="wdt0" id="wdb1" style="{_btn_back}">&larr; back</label>
+    <label for="wdt1" id="wdb2" style="{_btn_back}">&larr; back</label>
   </div>
-
-  <div style="display:flex;align-items:flex-start;margin-bottom:1.75rem;gap:0">
-    {dots_html}
+  <div>
+    <span id="wdc0" style="{_ctr}">1 of 3</span>
+    <span id="wdc1" style="{_ctr}">2 of 3</span>
+    <span id="wdc2" style="{_ctr}">3 of 3</span>
   </div>
-
-  {screens_html}
-
-  <div style="display:flex;justify-content:space-between;align-items:center;
-              margin-top:1.5rem;padding-top:1rem;
-              border-top:0.5px solid rgba(26,25,23,0.10)">
-    <button onclick="wdGoTo({cur-1})"
-            style="padding:8px 16px;border-radius:8px;border:0.5px solid rgba(26,25,23,0.20);
-                   background:transparent;font-size:13px;color:#5a5855;cursor:pointer;{prev_dis}">
-      &larr; back
-    </button>
-    <span style="font-size:11px;color:#9a9895">{cur+1} of 3</span>
-    <button onclick="wdGoTo({cur+1})"
-            style="padding:8px 16px;border-radius:8px;border:0.5px solid #B85C38;
-                   background:#B85C38;font-size:13px;color:#fff;cursor:pointer;{next_dis}">
-      {next_lbl}
-    </button>
-  </div>
-
-  <div style="margin-top:14px;font-size:10px;color:#ccc;text-align:right">
-    Wine &amp; Dine &middot; RSU Advanced ML &middot; 2026
+  <div>
+    <label for="wdt1" id="wdn0" style="{_btn_next};{n0_lock}">next &rarr;</label>
+    <label for="wdt2" id="wdn1" style="{_btn_next};{n1_lock}">next &rarr;</label>
+    <span id="wdn2" style="{_btn_next}">done &#10003;</span>
   </div>
 </div>
 
-<script>
-(function() {{
-  var unlocked = {unlocked};
-  function wdGoTo(n) {{
-    if (n < 0 || n > unlocked) return;
-    for (var i = 0; i < 3; i++) {{
-      var s = document.getElementById('wd-s' + i);
-      if (s) s.style.display = (i === n) ? 'block' : 'none';
-    }}
-  }}
-  window.wdGoTo = wdGoTo;
-}})();
-</script>"""
+<div style="margin-top:14px;font-size:10px;color:#ccc;text-align:right">
+  Wine &amp; Dine &middot; RSU Advanced ML &middot; 2026
+</div>
+</div>"""
 
 
 _LOADING_SPINNER = (
@@ -860,7 +914,7 @@ def on_identify(pil_img):
 
 
 def on_yes():
-    """BiLSTM pass — streams screens 2 then 3 into the shell."""
+    """BiLSTM pass — 2 yields: spinner → fully ready (screen 2 + 3 in one shot)."""
     food_name = _state.get("food", "")
     food_key  = food_name.lower().replace(" ", "_")
     conf      = _state["conf"]
@@ -869,23 +923,20 @@ def on_yes():
 
     s1 = _screen1_html(food_name, conf, top5)
 
-    # ── Yield 0: show loading spinner on screen 2 BEFORE BiLSTM runs ────────
+    # ── Yield 0: show spinner on screen 2 BEFORE BiLSTM runs ────────────────
     yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1)
 
-    # BiLSTM inference (the slow part)
+    # BiLSTM inference (slow)
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
     s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims)
 
-    # ── Yield 1: screen 2 ready, show loading spinner for screen 3 ──────────
-    yield gr.update(visible=False), _shell_html(s1, s2, _LOADING_SPINNER, 1)
-
-    # Wine lookup (fast — pre-computed JSON)
+    # Wine lookup is fast (pre-computed JSON) — build s3 immediately
     recs         = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel         = _food_feel(safe_cluster)
     s3           = _screen3_html(display, cluster_name, recs, feel)
 
-    # ── Yield 2: all screens ready, stay on screen 2 — user clicks CTA ──────
+    # ── Yield 1: both screens ready; user reads screen 2, clicks CTA for 3 ──
     yield gr.update(visible=False), _shell_html(s1, s2, s3, 1)
 
 

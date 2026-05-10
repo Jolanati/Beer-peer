@@ -2,8 +2,8 @@
   "apple_pie": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -16,8 +16,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -30,8 +30,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -46,8 +46,8 @@
   "baby_back_ribs": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -60,8 +60,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -74,7 +74,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -90,8 +90,8 @@
   "baklava": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -104,8 +104,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -118,8 +118,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -134,8 +134,8 @@
   "beef_carpaccio": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 1,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -148,8 +148,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 0,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -162,8 +162,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -178,8 +178,8 @@
   "beef_tartare": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -192,8 +192,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -206,8 +206,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -222,8 +222,8 @@
   "beet_salad": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -236,8 +236,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -250,7 +250,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -266,8 +266,8 @@
   "beignets": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -280,8 +280,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -294,8 +294,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -310,8 +310,8 @@
   "bibimbap": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -324,8 +324,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -338,8 +338,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -354,8 +354,8 @@
   "bread_pudding": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -368,8 +368,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -378,12 +378,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -398,8 +398,8 @@
   "breakfast_burrito": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -412,8 +412,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -426,8 +426,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -442,8 +442,8 @@
   "bruschetta": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -456,8 +456,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -470,8 +470,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -486,8 +486,8 @@
   "caesar_salad": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -500,7 +500,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -514,8 +514,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -530,7 +530,7 @@
   "cannoli": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -544,8 +544,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -558,8 +558,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -574,8 +574,8 @@
   "caprese_salad": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -588,8 +588,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -602,8 +602,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -618,8 +618,8 @@
   "carrot_cake": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -632,8 +632,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -646,8 +646,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -662,7 +662,7 @@
   "ceviche": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -676,8 +676,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -690,8 +690,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -706,8 +706,8 @@
   "cheese_plate": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -720,8 +720,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -730,12 +730,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -750,8 +750,8 @@
   "cheesecake": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -764,8 +764,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -778,8 +778,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -794,8 +794,8 @@
   "chicken_curry": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -808,8 +808,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -822,8 +822,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -838,8 +838,8 @@
   "chicken_quesadilla": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -852,8 +852,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -862,12 +862,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -882,8 +882,8 @@
   "chicken_wings": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -896,8 +896,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -910,7 +910,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -926,8 +926,8 @@
   "chocolate_cake": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -940,8 +940,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -954,8 +954,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -970,8 +970,8 @@
   "chocolate_mousse": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 4,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -980,12 +980,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -998,8 +998,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1014,8 +1014,8 @@
   "churros": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1028,8 +1028,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1042,8 +1042,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1058,8 +1058,8 @@
   "clam_chowder": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1072,8 +1072,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1086,8 +1086,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1102,8 +1102,8 @@
   "club_sandwich": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1116,8 +1116,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1130,8 +1130,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1146,8 +1146,8 @@
   "crab_cakes": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1160,7 +1160,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -1174,7 +1174,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -1190,8 +1190,8 @@
   "creme_brulee": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1204,8 +1204,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1218,8 +1218,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1234,8 +1234,8 @@
   "croque_madame": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1248,8 +1248,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1262,8 +1262,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1278,8 +1278,8 @@
   "cup_cakes": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1292,8 +1292,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1306,7 +1306,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -1322,8 +1322,8 @@
   "deviled_eggs": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1336,8 +1336,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1350,8 +1350,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1366,8 +1366,8 @@
   "donuts": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1380,7 +1380,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 2,
       "name": "something earthy & something smoky",
       "keywords": [
@@ -1394,7 +1394,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -1410,7 +1410,7 @@
   "dumplings": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -1424,8 +1424,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -1434,12 +1434,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1454,8 +1454,8 @@
   "edamame": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1468,8 +1468,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1482,7 +1482,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -1498,8 +1498,8 @@
   "eggs_benedict": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1512,8 +1512,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1526,8 +1526,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1542,8 +1542,8 @@
   "escargots": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1556,8 +1556,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1570,8 +1570,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1586,8 +1586,8 @@
   "falafel": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1600,7 +1600,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -1614,8 +1614,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1630,8 +1630,8 @@
   "filet_mignon": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 4,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -1640,12 +1640,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1658,8 +1658,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1674,7 +1674,7 @@
   "fish_and_chips": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -1688,8 +1688,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 0,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1702,8 +1702,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1718,7 +1718,7 @@
   "foie_gras": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -1732,8 +1732,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1746,8 +1746,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1762,8 +1762,8 @@
   "french_fries": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1776,8 +1776,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1790,8 +1790,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1806,7 +1806,7 @@
   "french_onion_soup": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -1820,8 +1820,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1834,8 +1834,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1850,7 +1850,7 @@
   "french_toast": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -1864,8 +1864,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1878,8 +1878,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1894,7 +1894,7 @@
   "fried_calamari": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -1908,8 +1908,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 0,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1922,8 +1922,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1938,8 +1938,8 @@
   "fried_rice": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1952,8 +1952,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -1962,12 +1962,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1982,8 +1982,8 @@
   "frozen_yogurt": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -1996,8 +1996,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2010,8 +2010,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2026,8 +2026,8 @@
   "garlic_bread": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2040,8 +2040,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2054,8 +2054,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2070,8 +2070,8 @@
   "gnocchi": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2084,8 +2084,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2098,7 +2098,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -2114,8 +2114,8 @@
   "greek_salad": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 1,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2128,8 +2128,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2142,8 +2142,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2158,8 +2158,8 @@
   "grilled_cheese_sandwich": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2172,8 +2172,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2186,8 +2186,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2202,8 +2202,8 @@
   "grilled_salmon": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2216,8 +2216,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2230,8 +2230,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2246,8 +2246,8 @@
   "guacamole": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2260,7 +2260,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -2274,8 +2274,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2290,7 +2290,7 @@
   "gyoza": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -2304,8 +2304,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 0,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2318,8 +2318,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2334,8 +2334,8 @@
   "hamburger": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2348,8 +2348,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2362,8 +2362,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2378,8 +2378,8 @@
   "hot_and_sour_soup": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 1,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2392,8 +2392,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2406,8 +2406,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2422,8 +2422,8 @@
   "hot_dog": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2436,8 +2436,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2450,8 +2450,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2466,8 +2466,8 @@
   "huevos_rancheros": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 4,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -2476,12 +2476,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2494,8 +2494,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2510,8 +2510,8 @@
   "hummus": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2524,8 +2524,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2538,8 +2538,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2554,8 +2554,8 @@
   "ice_cream": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2568,8 +2568,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2582,8 +2582,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2598,8 +2598,8 @@
   "lasagna": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2612,8 +2612,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2626,8 +2626,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2642,8 +2642,8 @@
   "lobster_bisque": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2656,8 +2656,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2670,8 +2670,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2686,8 +2686,8 @@
   "lobster_roll_sandwich": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2700,7 +2700,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 2,
       "name": "something earthy & something smoky",
       "keywords": [
@@ -2714,8 +2714,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2730,8 +2730,8 @@
   "macaroni_and_cheese": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2744,8 +2744,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2758,8 +2758,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2774,7 +2774,7 @@
   "macarons": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -2788,8 +2788,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2802,8 +2802,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 0,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2818,8 +2818,8 @@
   "miso_soup": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2832,8 +2832,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -2842,12 +2842,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2862,8 +2862,8 @@
   "mussels": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2876,8 +2876,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2890,7 +2890,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -2906,7 +2906,7 @@
   "nachos": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -2920,8 +2920,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2934,8 +2934,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2950,8 +2950,8 @@
   "omelette": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2964,8 +2964,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2978,8 +2978,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2994,8 +2994,8 @@
   "onion_rings": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3008,8 +3008,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3022,7 +3022,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -3038,8 +3038,8 @@
   "oysters": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3052,8 +3052,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3066,8 +3066,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3082,8 +3082,8 @@
   "pad_thai": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3096,8 +3096,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3110,7 +3110,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -3126,8 +3126,8 @@
   "paella": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3140,8 +3140,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3154,8 +3154,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3170,8 +3170,8 @@
   "pancakes": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3184,8 +3184,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3198,7 +3198,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -3214,8 +3214,8 @@
   "panna_cotta": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3228,8 +3228,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3242,8 +3242,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3258,8 +3258,8 @@
   "peking_duck": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3272,8 +3272,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3286,8 +3286,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3302,8 +3302,8 @@
   "pho": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 4,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -3312,12 +3312,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3330,8 +3330,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3346,7 +3346,7 @@
   "pizza": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -3360,8 +3360,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3374,8 +3374,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3390,8 +3390,8 @@
   "pork_chop": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 1,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3404,8 +3404,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3418,8 +3418,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3434,8 +3434,8 @@
   "poutine": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3448,8 +3448,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3462,8 +3462,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3478,8 +3478,8 @@
   "prime_rib": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3492,8 +3492,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3506,8 +3506,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3522,8 +3522,8 @@
   "pulled_pork_sandwich": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3536,8 +3536,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3550,8 +3550,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 8,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3566,8 +3566,8 @@
   "ramen": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3580,8 +3580,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -3590,12 +3590,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3610,8 +3610,8 @@
   "ravioli": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3624,8 +3624,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3638,8 +3638,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3654,8 +3654,8 @@
   "red_velvet_cake": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3668,8 +3668,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3682,8 +3682,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3698,8 +3698,8 @@
   "risotto": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3712,8 +3712,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3726,8 +3726,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3742,8 +3742,8 @@
   "samosa": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 8,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3756,8 +3756,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3770,8 +3770,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3786,8 +3786,8 @@
   "sashimi": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3800,8 +3800,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3814,8 +3814,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3830,8 +3830,8 @@
   "scallops": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3844,7 +3844,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 4,
       "name": "something smoky & something deep",
       "keywords": [
@@ -3854,11 +3854,11 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -3874,8 +3874,8 @@
   "seaweed_salad": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3888,7 +3888,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 2,
       "name": "something earthy & something smoky",
       "keywords": [
@@ -3902,7 +3902,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
@@ -3918,8 +3918,8 @@
   "shrimp_and_grits": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 1,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3932,8 +3932,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3946,8 +3946,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3962,8 +3962,8 @@
   "spaghetti_bolognese": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -3976,8 +3976,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3990,8 +3990,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4006,8 +4006,8 @@
   "spaghetti_carbonara": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -4020,8 +4020,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 1,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4034,8 +4034,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4050,8 +4050,8 @@
   "spring_rolls": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 7,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4064,8 +4064,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4078,8 +4078,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4094,8 +4094,8 @@
   "steak": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4108,8 +4108,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 6,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something bold",
       "keywords": [
         "tannins",
@@ -4122,8 +4122,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4138,8 +4138,8 @@
   "strawberry_shortcake": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4152,7 +4152,7 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
+      "icon": "\u00f0\u0178\u2019\u017d",
       "cluster": 7,
       "name": "something sweet",
       "keywords": [
@@ -4166,7 +4166,7 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
+      "icon": "\u00f0\u0178\u201d\u00a5",
       "cluster": 0,
       "name": "The Balanced",
       "keywords": [
@@ -4182,8 +4182,8 @@
   "sushi": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4196,8 +4196,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4210,8 +4210,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -4226,7 +4226,7 @@
   "tacos": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
+      "icon": "\u00e2\u0153\u2026",
       "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
@@ -4240,8 +4240,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4254,8 +4254,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4270,8 +4270,8 @@
   "takoyaki": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 2,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -4284,8 +4284,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 2,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4298,8 +4298,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 5,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4314,8 +4314,8 @@
   "tiramisu": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 8,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -4328,8 +4328,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 2,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -4342,8 +4342,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 1,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4358,8 +4358,8 @@
   "tuna_tartare": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4372,8 +4372,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 4,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 3,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -4382,12 +4382,12 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There’s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 7,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4402,8 +4402,8 @@
   "waffles": [
     {
       "tier": "SAFE BET",
-      "icon": "✅",
-      "cluster": 5,
+      "icon": "\u00e2\u0153\u2026",
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4416,8 +4416,8 @@
     },
     {
       "tier": "HIDDEN GEM",
-      "icon": "💎",
-      "cluster": 7,
+      "icon": "\u00f0\u0178\u2019\u017d",
+      "cluster": 5,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4430,8 +4430,8 @@
     },
     {
       "tier": "BOLD MOVE",
-      "icon": "🔥",
-      "cluster": 0,
+      "icon": "\u00f0\u0178\u201d\u00a5",
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",

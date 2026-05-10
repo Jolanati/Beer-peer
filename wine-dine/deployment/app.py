@@ -550,6 +550,14 @@ def _screen2_html(display: str, desc: str, attn_w,
         <span style="font-size:11px;color:#9a9895">taste fingerprint</span>
         <span style="font-size:14px;font-weight:600;color:#5558A8">{cluster_name}</span>
       </div>
+      <div style="margin-top:1.5rem;text-align:center">
+        <button onclick="wdGoTo(2)"
+                style="padding:11px 32px;border-radius:10px;border:none;
+                       background:#B85C38;color:#fff;font-size:14px;
+                       font-weight:600;cursor:pointer;letter-spacing:-0.2px">
+          let's find wine &rarr;
+        </button>
+      </div>
     </div>"""
 
 
@@ -877,8 +885,8 @@ def on_yes():
     feel         = _food_feel(safe_cluster)
     s3           = _screen3_html(display, cluster_name, recs, feel)
 
-    # ── Yield 2: all screens ready, advance to screen 3 ─────────────────────
-    yield gr.update(visible=False), _shell_html(s1, s2, s3, 2)
+    # ── Yield 2: all screens ready, stay on screen 2 — user clicks CTA ──────
+    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1)
 
 
 def on_no():

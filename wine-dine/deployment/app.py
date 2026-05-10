@@ -855,15 +855,30 @@ def on_yes():
     """BiLSTM pass — streams screens 2 then 3 into the shell."""
     food_name = _state.get("food", "")
     food_key  = food_name.lower().replace(" ", "_")
-    cluster, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
+    conf      = _state["conf"]
+    top5      = _state["top5"]
+    display   = food_name.replace("_", " ").title() if "_" in food_name else food_name
 
-    # hide confirm buttons immediately
-    yield gr.update(visible=False), gr.update()
+    s1 = _screen1_html(food_name, conf, top5)
 
-    for html in _wine_card_parts(food_name, _state["conf"], _state["top5"],
-                                 cluster, cluster_name, sims, desc, attn_w):
-        time.sleep(0.5)
-        yield gr.update(visible=False), html
+    # ── Yield 0: show loading spinner on screen 2 BEFORE BiLSTM runs ────────
+    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1)
+
+    # BiLSTM inference (the slow part)
+    cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
+    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims)
+
+    # ── Yield 1: screen 2 ready, show loading spinner for screen 3 ──────────
+    yield gr.update(visible=False), _shell_html(s1, s2, _LOADING_SPINNER, 1)
+
+    # Wine lookup (fast — pre-computed JSON)
+    recs         = RESULTS_ALL.get(food_key, [])
+    safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
+    feel         = _food_feel(safe_cluster)
+    s3           = _screen3_html(display, cluster_name, recs, feel)
+
+    # ── Yield 2: all screens ready, advance to screen 3 ─────────────────────
+    yield gr.update(visible=False), _shell_html(s1, s2, s3, 2)
 
 
 def on_no():

@@ -733,75 +733,85 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
     """
     Full 3-screen shell using CSS radio-tab navigation — zero JavaScript.
     cur = 0/1/2 — which tab is checked on server render.
-    Navigation via <label for="wdtN"> elements throughout.
     """
     unlocked = int(bool(s1)) + int(bool(s2)) + int(bool(s3)) - 1
     c = [" checked" if i == cur else "" for i in range(3)]
 
-    # ── Progress dots ────────────────────────────────────────────────────────
-    prog_items = [
-        ("📷", "identify<br>dish"),
-        ("🫧", "taste<br>fingerprint"),
-        ("🍷", "wine<br>match"),
+    # ── Step bar (numbered circles + connector lines) ─────────────────────────
+    step_labels = [
+        ("1", "Identify dish"),
+        ("2", "Taste fingerprint"),
+        ("3", "Wine pairings"),
     ]
-    dots_html = ""
-    for i, (icon, lbl) in enumerate(prog_items):
+    steps_html = ""
+    for i, (num, lbl) in enumerate(step_labels):
         if i <= unlocked:
-            dot = (
+            circle = (
                 f'<label for="wdt{i}" class="wddt wddt{i}"'
-                f' style="width:28px;height:28px;border-radius:50%;display:flex;'
-                f'align-items:center;justify-content:center;font-size:12px;'
-                f'cursor:pointer;box-sizing:border-box;'
-                f'border:1.5px solid rgba(26,25,23,0.12);background:#fff;'
-                f'color:#9a9895">{icon}</label>'
+                f' style="width:40px;height:40px;border-radius:50%;display:grid;'
+                f'place-items:center;font-size:15px;font-weight:900;cursor:pointer;'
+                f'box-sizing:border-box;position:relative;z-index:2;'
+                f'border:1px solid rgba(64,42,31,0.16);background:rgba(255,255,255,0.82);'
+                f'color:#756b63;box-shadow:0 4px 14px rgba(66,37,20,0.08);'
+                f'transition:all 0.15s">{num}</label>'
             )
         else:
-            dot = (
-                f'<div style="width:28px;height:28px;border-radius:50%;display:flex;'
-                f'align-items:center;justify-content:center;font-size:12px;'
-                f'box-sizing:border-box;border:1.5px solid rgba(26,25,23,0.08);'
-                f'background:#fff;color:#ddd">{icon}</div>'
+            circle = (
+                f'<div style="width:40px;height:40px;border-radius:50%;display:grid;'
+                f'place-items:center;font-size:15px;font-weight:900;'
+                f'box-sizing:border-box;position:relative;z-index:2;'
+                f'border:1px solid rgba(64,42,31,0.08);background:rgba(255,255,255,0.45);'
+                f'color:#ccc">{num}</div>'
             )
-        dots_html += (
-            f'<div style="display:flex;flex-direction:column;align-items:center;gap:4px">'
-            f'{dot}'
-            f'<div style="font-size:9px;color:#9a9895;text-align:center;line-height:1.3">{lbl}</div>'
+        # label text (shown under circle)
+        lbl_c = "#4a1020" if i == cur else ("#756b63" if i < cur else "#b8aaa0")
+        lbl_fw = "900" if i == cur else "600"
+        lbl_dec = "underline;text-underline-offset:3px" if i == cur else "none"
+
+        steps_html += (
+            f'<div style="display:flex;flex-direction:column;align-items:center;gap:8px">'
+            f'{circle}'
+            f'<div style="font-size:11px;font-weight:{lbl_fw};color:{lbl_c};'
+            f'text-align:center;text-decoration:{lbl_dec};white-space:nowrap">{lbl}</div>'
             f'</div>'
         )
         if i < 2:
-            dots_html += (
-                '<div style="flex:1;height:1px;background:rgba(26,25,23,0.10);'
-                'margin-top:14px"></div>'
+            steps_html += (
+                '<div style="flex:1;height:1px;background:rgba(64,42,31,0.16);'
+                'margin-bottom:22px;align-self:center;position:relative;z-index:0"></div>'
             )
 
-    # ── Nav ──────────────────────────────────────────────────────────────────
-    _btn_back = ("padding:8px 16px;border-radius:999px;font-size:13px;display:none;"
-                 "border:0.5px solid rgba(64,42,31,0.18);background:transparent;"
+    # ── Nav buttons ───────────────────────────────────────────────────────────
+    _btn_back = ("padding:10px 20px;border-radius:999px;font-size:13px;display:none;"
+                 "border:1px solid rgba(64,42,31,0.18);background:rgba(255,255,255,0.45);';"
                  "color:#756b63;cursor:pointer;font-weight:700")
-    _btn_next = ("padding:8px 16px;border-radius:999px;font-size:13px;display:none;"
+    _btn_next = ("padding:10px 20px;border-radius:999px;font-size:13px;display:none;"
                  "border:none;background:#7a1f32;color:#fff;cursor:pointer;font-weight:900;"
-                 "box-shadow:0 8px 20px rgba(122,31,50,0.22)")
-    _lock      = "pointer-events:none;opacity:0.25"
-    _ctr       = "font-size:11px;color:#9a9895;display:none"
+                 "box-shadow:0 10px 24px rgba(122,31,50,0.23)")
+    _lock      = "pointer-events:none;opacity:0.28"
+    _ctr       = ("font-size:11px;color:#756b63;display:none;text-transform:uppercase;"
+                  "letter-spacing:0.12em;font-weight:800")
 
-    # CSS — all rules in one <style> block (no JS)
+    # ── CSS (radio-tab logic, active/done dot styles) ─────────────────────────
     css = (
         "<style>"
-        # Screens — only active one visible
         "#wds0,#wds1,#wds2{display:none}"
         "#wdt0:checked~#wds0,#wdt1:checked~#wds1,#wdt2:checked~#wds2{display:block}"
-        # Active dot — wine red
+        # Active step circle — wine red fill + glow
         "#wdt0:checked~#wdprog .wddt0,"
         "#wdt1:checked~#wdprog .wddt1,"
         "#wdt2:checked~#wdprog .wddt2"
-        "{background:#7a1f32!important;border-color:#7a1f32!important;color:#fff!important}"
-        # Done dot — grey fill
+        "{background:#7a1f32!important;color:#fff!important;"
+        "border-color:#7a1f32!important;"
+        "box-shadow:0 10px 24px rgba(122,31,50,0.24)!important}"
+        # Done step circle — muted white
         "#wdt1:checked~#wdprog .wddt0,"
         "#wdt2:checked~#wdprog .wddt0,"
         "#wdt2:checked~#wdprog .wddt1"
-        "{background:#f6f5f1!important;border-color:rgba(26,25,23,0.20)!important;"
-        "color:#5a5855!important}"
-        # Back labels — one visible per screen
+        "{background:rgba(255,255,255,0.82)!important;"
+        "color:#756b63!important;border-color:rgba(64,42,31,0.16)!important;"
+        "box-shadow:none!important}"
+        # Back labels
         "#wdt1:checked~#wdnav #wdb1,"
         "#wdt2:checked~#wdnav #wdb2{display:inline-block}"
         # Next labels
@@ -812,62 +822,104 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
         "#wdt0:checked~#wdnav #wdc0,"
         "#wdt1:checked~#wdnav #wdc1,"
         "#wdt2:checked~#wdnav #wdc2{display:inline}"
+        # Progress pills in nav — active = wine red + wider
+        "#wdt0:checked~* .wddt0,"
+        "#wdt1:checked~* .wddt1,"
+        "#wdt2:checked~* .wddt2"
+        "{background:#7a1f32!important;width:28px!important}"
         "</style>"
     )
 
-    # Lock next labels that lead to unloaded screens
     n0_lock = _lock if unlocked < 1 else ""
     n1_lock = _lock if unlocked < 2 else ""
 
-    return f"""<div id="wdshell" style="font-family:'Segoe UI',Arial,sans-serif;
-     background:linear-gradient(135deg,#f8f3eb 0%,#eee3d6 100%);
-     border-radius:24px;padding:24px 28px;max-width:720px;margin:0 auto;
-     box-shadow:0 24px 70px rgba(66,37,20,0.14);
-     border:1px solid rgba(255,255,255,0.55)">
+    return f"""<div id="wdshell"
+     style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
+            background:radial-gradient(circle at 18% 8%,rgba(189,104,70,0.13),transparent 34%),
+                       radial-gradient(circle at 88% 18%,rgba(122,31,50,0.09),transparent 34%),
+                       linear-gradient(135deg,#f8f3eb 0%,#eee3d6 100%);
+            border-radius:30px;padding:0;max-width:760px;margin:0 auto;
+            box-shadow:0 24px 70px rgba(66,37,20,0.14);
+            border:1px solid rgba(255,255,255,0.62);overflow:hidden">
 {css}
 <input type="radio" id="wdt0" name="wdtab"{c[0]} style="display:none">
 <input type="radio" id="wdt1" name="wdtab"{c[1]} style="display:none">
 <input type="radio" id="wdt2" name="wdtab"{c[2]} style="display:none">
 
-<div style="display:flex;justify-content:space-between;align-items:baseline;
-            padding-bottom:1.25rem;border-bottom:0.5px solid rgba(26,25,23,0.10);
-            margin-bottom:1.75rem">
-  <div style="font-size:20px;font-weight:700;color:#231b17;letter-spacing:-0.6px;
-              font-family:Georgia,'Times New Roman',serif">
-    Wine<span style="color:#7a1f32">&</span>Dine</div>
-  <div style="font-size:10px;color:#7a1f32;letter-spacing:0.12em;text-transform:uppercase;
-              font-weight:800">AI food &amp; wine pairing</div>
+<!-- ── header ───────────────────────────────────────────────────── -->
+<div style="display:grid;grid-template-columns:140px 1fr 120px;
+            align-items:center;gap:16px;
+            padding:22px 32px 18px;
+            border-bottom:1px solid rgba(64,42,31,0.10);
+            background:rgba(255,250,243,0.55)">
+  <div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:26px;
+                font-weight:700;color:#231b17;letter-spacing:-0.8px;line-height:1">
+      Wine<span style="color:#7a1f32">&amp;</span>Dine</div>
+    <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+                color:#7a1f32;font-weight:800;margin-top:4px">AI pairing</div>
+  </div>
+
+  <!-- step bar -->
+  <div id="wdprog"
+       style="display:flex;align-items:flex-start;justify-content:center;gap:0;
+              max-width:480px;margin:0 auto;width:100%">
+    {steps_html}
+  </div>
+
+  <!-- restart -->
+  <label for="wdt0"
+         style="justify-self:end;padding:9px 14px;border-radius:999px;font-size:12px;
+                border:1px solid rgba(64,42,31,0.18);background:rgba(255,255,255,0.45);
+                color:#231b17;cursor:pointer;font-weight:700;white-space:nowrap">
+    &#8635; start over
+  </label>
 </div>
 
-<div id="wdprog" style="display:flex;align-items:flex-start;margin-bottom:1.75rem">
-  {dots_html}
+<!-- ── screens ──────────────────────────────────────────────────── -->
+<div style="padding:28px 32px 24px;background:rgba(255,250,243,0.82)">
+  <div id="wds0">{s1 or ""}</div>
+  <div id="wds1">{s2 or _LOADING_SPINNER}</div>
+  <div id="wds2">{s3 or ""}</div>
 </div>
 
-<div id="wds0">{s1 or ""}</div>
-<div id="wds1">{s2 or _LOADING_SPINNER}</div>
-<div id="wds2">{s3 or ""}</div>
-
-<div id="wdnav" style="display:flex;justify-content:space-between;align-items:center;
-            margin-top:1.5rem;padding-top:1rem;
-            border-top:0.5px solid rgba(26,25,23,0.10)">
+<!-- ── nav bar ──────────────────────────────────────────────────── -->
+<div id="wdnav"
+     style="display:flex;justify-content:space-between;align-items:center;
+            padding:16px 32px;
+            border-top:1px solid rgba(64,42,31,0.10);
+            background:rgba(255,250,243,0.72)">
   <div>
-    <label for="wdt0" id="wdb1" style="{_btn_back}">&larr; back</label>
-    <label for="wdt1" id="wdb2" style="{_btn_back}">&larr; back</label>
+    <label for="wdt0" id="wdb1" style="{_btn_back}">&larr; Back</label>
+    <label for="wdt1" id="wdb2" style="{_btn_back}">&larr; Back</label>
+  </div>
+  <div style="text-align:center">
+    <span id="wdc0" style="{_ctr}">Step 1 of 3</span>
+    <span id="wdc1" style="{_ctr}">Step 2 of 3</span>
+    <span id="wdc2" style="{_ctr}">Step 3 of 3</span>
+    <div style="display:flex;gap:6px;justify-content:center;margin-top:7px">
+      <span class="wddt wddt0"
+            style="display:inline-block;width:24px;height:5px;border-radius:999px;
+                   background:rgba(122,31,50,0.18)"></span>
+      <span class="wddt wddt1"
+            style="display:inline-block;width:24px;height:5px;border-radius:999px;
+                   background:rgba(122,31,50,0.18)"></span>
+      <span class="wddt wddt2"
+            style="display:inline-block;width:24px;height:5px;border-radius:999px;
+                   background:rgba(122,31,50,0.18)"></span>
+    </div>
   </div>
   <div>
-    <span id="wdc0" style="{_ctr}">1 of 3</span>
-    <span id="wdc1" style="{_ctr}">2 of 3</span>
-    <span id="wdc2" style="{_ctr}">3 of 3</span>
-  </div>
-  <div>
-    <label for="wdt1" id="wdn0" style="{_btn_next};{n0_lock}">next &rarr;</label>
-    <label for="wdt2" id="wdn1" style="{_btn_next};{n1_lock}">next &rarr;</label>
-    <span id="wdn2" style="{_btn_next}">done &#10003;</span>
+    <label for="wdt1" id="wdn0" style="{_btn_next};{n0_lock}">Next &rarr;</label>
+    <label for="wdt2" id="wdn1" style="{_btn_next};{n1_lock}">Next &rarr;</label>
+    <span   id="wdn2" style="{_btn_next}">Done &#10003;</span>
   </div>
 </div>
 
-<div style="margin-top:14px;font-size:10px;color:#ccc;text-align:right">
-  Wine &amp; Dine &middot; RSU Advanced ML &middot; 2026
+<div style="padding:10px 32px 14px;background:rgba(255,250,243,0.72);
+            font-size:10px;color:#b8aaa0;text-align:right;
+            border-top:1px solid rgba(64,42,31,0.06)">
+  Wine&amp;Dine &middot; RSU Advanced ML &middot; 2026
 </div>
 </div>"""
 

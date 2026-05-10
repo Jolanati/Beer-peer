@@ -419,80 +419,135 @@ def _tier_card_html(rec: dict, display_name: str, feel: str, conf: float = 0.0) 
 
 
 def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") -> str:
-    """Screen 1 — dish identification result."""
+    """Screen 1 (step 2) — dish detection result matching mockup 'Is this [dish]?' layout."""
     display  = food_name.replace("_", " ").title()
     conf_pct = int(conf * 100)
+    conf_bar = int(conf * 100)   # % used directly in CSS width
 
-    # Photo — real image or gradient placeholder
+    # Photo — real image or placeholder
     if img_b64:
-        photo_inner = (
+        photo_el = (
             f'<img src="data:image/jpeg;base64,{img_b64}"'
-            f' style="width:100%;height:100%;object-fit:cover;display:block">'
+            f' style="width:100%;height:100%;object-fit:cover;display:block;'
+            f'border-radius:20px">'
         )
     else:
-        photo_inner = (
-            '<div style="width:100%;height:100%;display:flex;align-items:center;'
-            'justify-content:center;font-size:56px">🍽️</div>'
+        photo_el = (
+            '<div style="width:100%;height:360px;display:flex;align-items:center;'
+            'justify-content:center;font-size:72px;border-radius:20px;'
+            'background:linear-gradient(135deg,#ede3d8,#ddd0c4)">🍽️</div>'
         )
 
-    # Top-5 bar rows (skipping the top prediction — shown as hero)
+    # Other possibilities (top-5 positions 2–5, skipping top-1)
     others_rows = ""
     for fn, fp in top5[1:]:
-        bar_w = int(fp * 180)
+        bar_pct = int(fp * 100)
         others_rows += (
-            f'<div style="display:grid;grid-template-columns:96px 1fr 38px;'
-            f'gap:10px;align-items:center;font-size:12px;margin-bottom:7px">'
-            f'<span style="color:#756b63;overflow:hidden;text-overflow:ellipsis;'
-            f'white-space:nowrap">{fn}</span>'
-            f'<div style="height:7px;background:#efe8df;border-radius:999px;overflow:hidden">'
-            f'<div style="background:#c69b55;width:{bar_w}px;height:100%;border-radius:999px">'
-            f'</div></div>'
-            f'<span style="color:#756b63;font-weight:700">{fp*100:.1f}%</span>'
+            f'<div style="display:grid;grid-template-columns:1fr auto;'
+            f'gap:10px;align-items:center;margin-bottom:10px">'
+            f'<div>'
+            f'<div style="font-size:12px;color:#756b63;margin-bottom:4px;'
+            f'overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{fn}</div>'
+            f'<div style="height:5px;background:rgba(64,42,31,0.10);'
+            f'border-radius:999px;overflow:hidden">'
+            f'<div style="background:#c9a15d;width:{bar_pct}%;height:100%;'
+            f'border-radius:999px"></div>'
+            f'</div>'
+            f'</div>'
+            f'<span style="font-size:12px;color:#9e9188;font-weight:700;'
+            f'white-space:nowrap">{fp*100:.1f}%</span>'
             f'</div>'
         )
 
     return f"""
-<div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:32px;align-items:center">
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
-  <!-- photo -->
-  <div style="border-radius:18px;overflow:hidden;min-height:320px;
-              background:linear-gradient(rgba(40,16,18,0.06),rgba(40,16,18,0.18)),
-                         #ede3d8">
-    {photo_inner}
-  </div>
+  <!-- step label -->
+  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
+    STEP 2 &middot; DETECT DISH</div>
 
-  <!-- right panel -->
-  <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
-    <div style="font-size:12px;color:#756b63;text-transform:uppercase;
-                letter-spacing:0.12em;font-weight:800;margin-bottom:6px">we think this is</div>
+  <!-- heading -->
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:38px;
+              font-weight:700;color:#211917;letter-spacing:-1.5px;
+              line-height:1;margin-bottom:6px">Is this your dish?</div>
+  <div style="font-size:13px;color:#9e9188;margin-bottom:24px">
+    Please verify what our model detected</div>
 
-    <div style="font-family:Georgia,'Times New Roman',serif;
-                font-size:62px;line-height:0.9;letter-spacing:-2px;
-                color:#4a1020;margin-bottom:18px">{display}</div>
+  <!-- 2-col: photo | info panel -->
+  <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:start">
 
-    <!-- confidence bar -->
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;
-                width:100%;max-width:300px;justify-content:center">
-      <div style="flex:1;height:10px;background:#efe8df;border-radius:999px;overflow:hidden">
-        <div style="background:#7a1f32;width:{conf_pct}%;height:100%;border-radius:999px"></div>
+    <!-- photo -->
+    <div style="border-radius:20px;overflow:hidden;
+                box-shadow:0 18px 48px rgba(52,34,26,0.14)">
+      {photo_el}
+    </div>
+
+    <!-- right panel -->
+    <div style="display:flex;flex-direction:column;gap:0">
+
+      <!-- "we think this is" label -->
+      <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">
+        we think this is</div>
+
+      <!-- dish name -->
+      <div style="font-family:Georgia,'Times New Roman',serif;
+                  font-size:52px;line-height:0.88;letter-spacing:-2px;
+                  color:#42101d;margin-bottom:20px">{display}</div>
+
+      <!-- confidence -->
+      <div style="margin-bottom:22px">
+        <div style="display:flex;justify-content:space-between;
+                    align-items:baseline;margin-bottom:7px">
+          <span style="font-size:11px;color:#9e9188;font-weight:700;
+                       text-transform:uppercase;letter-spacing:0.1em">Confidence</span>
+          <span style="font-family:Georgia,serif;font-size:28px;font-weight:700;
+                       color:#7a1830;letter-spacing:-1px;line-height:1">{conf_pct}%</span>
+        </div>
+        <div style="height:8px;background:rgba(64,42,31,0.10);
+                    border-radius:999px;overflow:hidden">
+          <div style="background:linear-gradient(90deg,#8d1f3a,#c9536e);
+                      width:{conf_bar}%;height:100%;border-radius:999px"></div>
+        </div>
       </div>
-      <strong style="color:#7a1f32;font-family:Georgia,serif;font-size:20px">{conf_pct}%</strong>
-    </div>
 
-    <!-- other possibilities -->
-    <div style="width:100%;max-width:340px;padding:14px 16px;
-                border:1px solid rgba(64,42,31,0.14);border-radius:18px;
-                background:rgba(251,245,238,0.8);text-align:left;margin-bottom:22px">
-      <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;
-                  font-weight:800;color:#b8aaa0;margin-bottom:10px">other possibilities</div>
+      <!-- divider -->
+      <div style="height:1px;background:rgba(63,43,35,0.09);margin-bottom:18px"></div>
+
+      <!-- other possibilities -->
+      <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+                  letter-spacing:0.12em;font-weight:800;margin-bottom:12px">
+        other possibilities</div>
       {others_rows}
-    </div>
 
-    <!-- confirm / correct labels — wired by confirm_row below the shell -->
-    <div style="font-size:12px;color:#b8aaa0;font-style:italic">
-      use the buttons below to confirm or correct
+      <!-- hint -->
+      <div style="margin-top:10px;padding:12px 16px;
+                  background:rgba(122,24,48,0.05);border-radius:12px;
+                  border:1px solid rgba(122,24,48,0.10)">
+        <div style="font-size:12px;color:#7c726b;line-height:1.6">
+          Use the buttons below to confirm or pick a different dish.</div>
+      </div>
     </div>
   </div>
+
+  <!-- "what happens in background" details -->
+  <details style="margin-top:22px;border:1px solid rgba(63,43,35,0.09);
+                  border-radius:14px;overflow:hidden">
+    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
+                    color:#7c726b;cursor:pointer;list-style:none;
+                    background:rgba(251,247,241,0.8)">
+      &#9432; What happens in the background?</summary>
+    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
+                line-height:1.75;background:rgba(251,247,241,0.5)">
+      A <strong style="color:#211917">ResNet-50</strong> trained on Food-101
+      (101 classes, ~75k images) predicts the food category from your photo.
+      The model outputs a probability distribution over all 101 classes &mdash;
+      the top prediction and its confidence score are shown above.
+      Only the top class is passed to the next step.
+    </div>
+  </details>
+
 </div>"""
 
 

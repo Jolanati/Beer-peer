@@ -13,6 +13,8 @@ Pipeline (all inference happens in real time):
 """
 
 import os
+import io
+import base64
 import json
 import time
 import string
@@ -416,56 +418,82 @@ def _tier_card_html(rec: dict, display_name: str, feel: str, conf: float = 0.0) 
     </div>"""
 
 
-def _screen1_html(food_name: str, conf: float, top5: list) -> str:
-    """Screen 1 — dish identification result (matches mockup Screen 1)."""
-    display = food_name.replace("_", " ").title()
+def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") -> str:
+    """Screen 1 — dish identification result."""
+    display  = food_name.replace("_", " ").title()
     conf_pct = int(conf * 100)
-    conf_bar_w = int(conf * 110)
 
-    # Top-5 prediction bars
-    pred_rows = ""
-    for fn, fp in top5:
-        bar_w   = int(fp * 200)
-        is_top  = fn == food_name
-        name_fw = "600" if is_top else "400"
-        name_c  = "#1a1917" if is_top else "#5a5855"
-        bar_c   = "#7a1f32" if is_top else "#d4cfc9"
-        pred_rows += f"""
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px">
-          <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
-                       width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{fn}</span>
-          <div style="flex:1;height:4px;background:#edecea;border-radius:2px;overflow:hidden">
-            <div style="background:{bar_c};width:{bar_w}px;height:4px;border-radius:2px"></div>
-          </div>
-          <span style="font-size:11px;color:#9a9895;width:34px;text-align:right">{fp*100:.0f}%</span>
-        </div>"""
+    # Photo — real image or gradient placeholder
+    if img_b64:
+        photo_inner = (
+            f'<img src="data:image/jpeg;base64,{img_b64}"'
+            f' style="width:100%;height:100%;object-fit:cover;display:block">'
+        )
+    else:
+        photo_inner = (
+            '<div style="width:100%;height:100%;display:flex;align-items:center;'
+            'justify-content:center;font-size:56px">🍽️</div>'
+        )
+
+    # Top-5 bar rows (skipping the top prediction — shown as hero)
+    others_rows = ""
+    for fn, fp in top5[1:]:
+        bar_w = int(fp * 180)
+        others_rows += (
+            f'<div style="display:grid;grid-template-columns:96px 1fr 38px;'
+            f'gap:10px;align-items:center;font-size:12px;margin-bottom:7px">'
+            f'<span style="color:#756b63;overflow:hidden;text-overflow:ellipsis;'
+            f'white-space:nowrap">{fn}</span>'
+            f'<div style="height:7px;background:#efe8df;border-radius:999px;overflow:hidden">'
+            f'<div style="background:#c69b55;width:{bar_w}px;height:100%;border-radius:999px">'
+            f'</div></div>'
+            f'<span style="color:#756b63;font-weight:700">{fp*100:.1f}%</span>'
+            f'</div>'
+        )
 
     return f"""
-    <div id="wd-screen1">
-      <div style="font-size:11px;color:#9a9895;margin-bottom:1rem;line-height:1.7">
-        We think we know what's on your plate. Does this look right?
+<div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:32px;align-items:center">
+
+  <!-- photo -->
+  <div style="border-radius:18px;overflow:hidden;min-height:320px;
+              background:linear-gradient(rgba(40,16,18,0.06),rgba(40,16,18,0.18)),
+                         #ede3d8">
+    {photo_inner}
+  </div>
+
+  <!-- right panel -->
+  <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="font-size:12px;color:#756b63;text-transform:uppercase;
+                letter-spacing:0.12em;font-weight:800;margin-bottom:6px">we think this is</div>
+
+    <div style="font-family:Georgia,'Times New Roman',serif;
+                font-size:62px;line-height:0.9;letter-spacing:-2px;
+                color:#4a1020;margin-bottom:18px">{display}</div>
+
+    <!-- confidence bar -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;
+                width:100%;max-width:300px;justify-content:center">
+      <div style="flex:1;height:10px;background:#efe8df;border-radius:999px;overflow:hidden">
+        <div style="background:#7a1f32;width:{conf_pct}%;height:100%;border-radius:999px"></div>
       </div>
-      <div style="display:flex;gap:16px;align-items:center;margin-bottom:1.5rem">
-        <div style="width:86px;height:86px;border-radius:12px;background:#edecea;
-                    border:0.5px solid rgba(26,25,23,0.10);display:flex;
-                    align-items:center;justify-content:center;font-size:40px;flex-shrink:0">
-          🍽️
-        </div>
-        <div>
-          <div style="font-size:11px;color:#9a9895;margin-bottom:4px">detected dish</div>
-          <div style="font-size:26px;font-weight:600;color:#1a1917;letter-spacing:-0.4px">{display}</div>
-          <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
-            <div style="width:110px;height:5px;background:#edecea;border-radius:3px;overflow:hidden">
-              <div style="background:#6BAA75;width:{conf_bar_w}px;height:5px;border-radius:3px"></div>
-            </div>
-            <span style="font-size:12px;font-weight:500;color:#6BAA75">{conf_pct}% confident</span>
-          </div>
-        </div>
-      </div>
-      <div style="font-size:10px;color:#9a9895;text-transform:uppercase;
-                  letter-spacing:0.06em;margin-bottom:8px">top-5 predictions</div>
-      {pred_rows}
-    </div>"""
+      <strong style="color:#7a1f32;font-family:Georgia,serif;font-size:20px">{conf_pct}%</strong>
+    </div>
+
+    <!-- other possibilities -->
+    <div style="width:100%;max-width:340px;padding:14px 16px;
+                border:1px solid rgba(64,42,31,0.14);border-radius:18px;
+                background:rgba(251,245,238,0.8);text-align:left;margin-bottom:22px">
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;
+                  font-weight:800;color:#b8aaa0;margin-bottom:10px">other possibilities</div>
+      {others_rows}
+    </div>
+
+    <!-- confirm / correct labels — wired by confirm_row below the shell -->
+    <div style="font-size:12px;color:#b8aaa0;font-style:italic">
+      use the buttons below to confirm or correct
+    </div>
+  </div>
+</div>"""
 
 
 def _screen2_html(display: str, desc: str, attn_w,
@@ -964,7 +992,7 @@ def _wine_card_parts(food_name: str, conf: float, top5: list,
 
 
 # ── App state ─────────────────────────────────────────────────────────────────
-_state: dict = {"food": "", "conf": 0.0, "top5": []}
+_state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 
 # ── Event handlers ─────────────────────────────────────────────────────────────
 def on_identify(pil_img):
@@ -973,9 +1001,17 @@ def on_identify(pil_img):
         return "", gr.update(visible=False)
 
     food_name, conf, top5 = identify_food(pil_img)
-    _state.update(food=food_name, conf=conf, top5=top5)
 
-    s1   = _screen1_html(food_name, conf, top5)
+    # encode photo as small JPEG for embedding in HTML
+    thumb = pil_img.convert("RGB")
+    thumb.thumbnail((480, 480))
+    buf = io.BytesIO()
+    thumb.save(buf, format="JPEG", quality=82)
+    img_b64 = base64.b64encode(buf.getvalue()).decode()
+
+    _state.update(food=food_name, conf=conf, top5=top5, img_b64=img_b64)
+
+    s1   = _screen1_html(food_name, conf, top5, img_b64)
     html = _shell_html(s1, "", "", 0)
     return html, gr.update(visible=True)
 
@@ -988,7 +1024,7 @@ def on_yes():
     top5      = _state["top5"]
     display   = food_name.replace("_", " ").title() if "_" in food_name else food_name
 
-    s1 = _screen1_html(food_name, conf, top5)
+    s1 = _screen1_html(food_name, conf, top5, _state.get("img_b64", ""))
 
     # ── Yield 0: show spinner on screen 2 BEFORE BiLSTM runs ────────────────
     yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1)
@@ -1009,7 +1045,7 @@ def on_yes():
 
 def on_no():
     """Reset to blank state."""
-    _state.update(food="", conf=0.0, top5=[])
+    _state.update(food="", conf=0.0, top5=[], img_b64="")
     return "", gr.update(visible=False)
 
 

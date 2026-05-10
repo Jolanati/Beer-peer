@@ -12,7 +12,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.943
     },
     {
       "tier": "HIDDEN GEM",
@@ -26,12 +27,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.908
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 6,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -40,7 +42,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.973
     }
   ],
   "baby_back_ribs": [
@@ -56,12 +59,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.873
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -70,12 +74,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.885
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -84,7 +89,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.95
     }
   ],
   "baklava": [
@@ -100,7 +106,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.73
     },
     {
       "tier": "HIDDEN GEM",
@@ -114,12 +121,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.661
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 1,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -128,7 +136,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.963
     }
   ],
   "beef_carpaccio": [
@@ -144,12 +153,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.88
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 0,
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -158,12 +168,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.395
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 0,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -172,7 +183,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.736
     }
   ],
   "beef_tartare": [
@@ -188,12 +200,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.922
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -202,12 +215,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.775
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -216,7 +230,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.874
     }
   ],
   "beet_salad": [
@@ -232,12 +247,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.676
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -246,12 +262,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.652
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 5,
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -260,7 +277,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "beignets": [
@@ -276,12 +294,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.922
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -290,7 +309,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.718
     },
     {
       "tier": "BOLD MOVE",
@@ -304,7 +324,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "bibimbap": [
@@ -320,12 +341,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.925
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -334,7 +356,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.801
     },
     {
       "tier": "BOLD MOVE",
@@ -348,7 +371,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "bread_pudding": [
@@ -364,12 +388,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.922
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -378,7 +403,8 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.646
     },
     {
       "tier": "BOLD MOVE",
@@ -392,7 +418,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "breakfast_burrito": [
@@ -408,12 +435,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.944
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -422,12 +450,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.845
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -436,7 +465,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.925
     }
   ],
   "bruschetta": [
@@ -452,7 +482,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.901
     },
     {
       "tier": "HIDDEN GEM",
@@ -466,12 +497,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.666
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -480,7 +512,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "caesar_salad": [
@@ -496,12 +529,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.876
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -510,12 +544,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.929
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 3,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -524,7 +559,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.916
     }
   ],
   "cannoli": [
@@ -540,7 +576,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.841
     },
     {
       "tier": "HIDDEN GEM",
@@ -554,12 +591,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.875
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -568,7 +606,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.933
     }
   ],
   "caprese_salad": [
@@ -584,12 +623,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.846
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -598,12 +638,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.798
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -612,7 +653,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "carrot_cake": [
@@ -628,7 +670,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.762
     },
     {
       "tier": "HIDDEN GEM",
@@ -642,12 +685,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.793
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -656,7 +700,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "ceviche": [
@@ -672,7 +717,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.921
     },
     {
       "tier": "HIDDEN GEM",
@@ -686,12 +732,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.885
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -700,7 +747,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.924
     }
   ],
   "cheese_plate": [
@@ -716,12 +764,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.828
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -730,7 +779,8 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.788
     },
     {
       "tier": "BOLD MOVE",
@@ -744,7 +794,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "cheesecake": [
@@ -760,12 +811,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.901
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 6,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -774,12 +826,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.617
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -788,7 +841,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "chicken_curry": [
@@ -804,12 +858,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.753
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -818,12 +873,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.71
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -832,7 +888,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.854
     }
   ],
   "chicken_quesadilla": [
@@ -848,12 +905,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.84
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 4,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -862,7 +920,8 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.88
     },
     {
       "tier": "BOLD MOVE",
@@ -876,7 +935,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "chicken_wings": [
@@ -892,12 +952,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.882
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -906,7 +967,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.821
     },
     {
       "tier": "BOLD MOVE",
@@ -920,7 +982,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "chocolate_cake": [
@@ -936,12 +999,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.801
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -950,7 +1014,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.735
     },
     {
       "tier": "BOLD MOVE",
@@ -964,7 +1029,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "chocolate_mousse": [
@@ -980,12 +1046,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.844
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -994,7 +1061,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.377
     },
     {
       "tier": "BOLD MOVE",
@@ -1008,7 +1076,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "churros": [
@@ -1024,12 +1093,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.875
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1038,7 +1108,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.833
     },
     {
       "tier": "BOLD MOVE",
@@ -1052,7 +1123,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "clam_chowder": [
@@ -1068,12 +1140,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.902
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1082,12 +1155,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.877
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1096,7 +1170,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "club_sandwich": [
@@ -1112,12 +1187,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.856
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1126,12 +1202,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.777
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 6,
+      "cluster": 5,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1140,7 +1217,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.885
     }
   ],
   "crab_cakes": [
@@ -1156,12 +1234,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.906
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1170,12 +1249,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.669
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1184,7 +1264,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "creme_brulee": [
@@ -1200,7 +1281,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.806
     },
     {
       "tier": "HIDDEN GEM",
@@ -1214,12 +1296,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.896
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1228,7 +1311,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.933
     }
   ],
   "croque_madame": [
@@ -1244,7 +1328,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.905
     },
     {
       "tier": "HIDDEN GEM",
@@ -1258,12 +1343,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.82
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1272,7 +1358,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.916
     }
   ],
   "cup_cakes": [
@@ -1288,7 +1375,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.967
     },
     {
       "tier": "HIDDEN GEM",
@@ -1302,12 +1390,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.872
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1316,7 +1405,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.885
     }
   ],
   "deviled_eggs": [
@@ -1332,7 +1422,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.863
     },
     {
       "tier": "HIDDEN GEM",
@@ -1346,12 +1437,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.813
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1360,7 +1452,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "donuts": [
@@ -1376,12 +1469,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.959
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 8,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1390,12 +1484,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.766
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1404,7 +1499,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.95
     }
   ],
   "dumplings": [
@@ -1420,12 +1516,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.885
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -1434,12 +1531,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.646
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1448,7 +1546,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.924
     }
   ],
   "edamame": [
@@ -1464,12 +1563,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.87
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -1478,12 +1578,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.504
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1492,7 +1593,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "eggs_benedict": [
@@ -1508,7 +1610,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.903
     },
     {
       "tier": "HIDDEN GEM",
@@ -1522,12 +1625,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.748
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 2,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1536,7 +1640,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.97
     }
   ],
   "escargots": [
@@ -1552,7 +1657,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.801
     },
     {
       "tier": "HIDDEN GEM",
@@ -1566,12 +1672,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.781
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 2,
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1580,7 +1687,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.973
     }
   ],
   "falafel": [
@@ -1596,12 +1704,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.944
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1610,12 +1719,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.694
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1624,7 +1734,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.925
     }
   ],
   "filet_mignon": [
@@ -1640,12 +1751,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.71
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1654,12 +1766,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.757
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 6,
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1668,7 +1781,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.876
     }
   ],
   "fish_and_chips": [
@@ -1684,12 +1798,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.912
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 0,
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -1698,7 +1813,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.788
     },
     {
       "tier": "BOLD MOVE",
@@ -1712,7 +1828,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "foie_gras": [
@@ -1728,12 +1845,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.871
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 2,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1742,12 +1860,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.704
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1756,7 +1875,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.933
     }
   ],
   "french_fries": [
@@ -1772,7 +1892,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.905
     },
     {
       "tier": "HIDDEN GEM",
@@ -1786,7 +1907,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.437
     },
     {
       "tier": "BOLD MOVE",
@@ -1800,7 +1922,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 1.0
     }
   ],
   "french_onion_soup": [
@@ -1816,12 +1939,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.834
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1830,12 +1954,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.711
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1844,7 +1969,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.933
     }
   ],
   "french_toast": [
@@ -1860,12 +1986,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.857
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1874,12 +2001,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.778
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -1888,7 +2016,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.933
     }
   ],
   "fried_calamari": [
@@ -1904,12 +2033,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.879
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 0,
+      "cluster": 6,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -1918,7 +2048,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.743
     },
     {
       "tier": "BOLD MOVE",
@@ -1932,7 +2063,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "fried_rice": [
@@ -1948,7 +2080,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.915
     },
     {
       "tier": "HIDDEN GEM",
@@ -1962,12 +2095,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.81
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 2,
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -1976,7 +2110,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.876
     }
   ],
   "frozen_yogurt": [
@@ -1992,12 +2127,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.83
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 0,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2006,7 +2142,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.681
     },
     {
       "tier": "BOLD MOVE",
@@ -2020,7 +2157,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "garlic_bread": [
@@ -2036,12 +2174,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.842
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2050,7 +2189,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.876
     },
     {
       "tier": "BOLD MOVE",
@@ -2064,7 +2204,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 1.0
     }
   ],
   "gnocchi": [
@@ -2080,12 +2221,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.897
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 1,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2094,12 +2236,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.785
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2108,7 +2251,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.904
     }
   ],
   "greek_salad": [
@@ -2124,12 +2268,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.855
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2138,12 +2283,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.788
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2152,7 +2298,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.874
     }
   ],
   "grilled_cheese_sandwich": [
@@ -2168,12 +2315,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.854
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 2,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2182,12 +2330,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.805
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2196,7 +2345,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.993
     }
   ],
   "grilled_salmon": [
@@ -2212,7 +2362,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.778
     },
     {
       "tier": "HIDDEN GEM",
@@ -2226,12 +2377,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.772
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2240,7 +2392,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.94
     }
   ],
   "guacamole": [
@@ -2256,7 +2409,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.845
     },
     {
       "tier": "HIDDEN GEM",
@@ -2270,12 +2424,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.806
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2284,7 +2439,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.993
     }
   ],
   "gyoza": [
@@ -2300,12 +2456,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.82
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 0,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2314,12 +2471,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.807
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2328,7 +2486,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.957
     }
   ],
   "hamburger": [
@@ -2344,12 +2503,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.945
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2358,12 +2518,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.725
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2372,7 +2533,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.925
     }
   ],
   "hot_and_sour_soup": [
@@ -2388,12 +2550,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.858
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2402,12 +2565,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.922
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 2,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2416,7 +2580,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.887
     }
   ],
   "hot_dog": [
@@ -2432,12 +2597,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.85
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2446,7 +2612,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.735
     },
     {
       "tier": "BOLD MOVE",
@@ -2460,7 +2627,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 1.0
     }
   ],
   "huevos_rancheros": [
@@ -2476,7 +2644,8 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.897
     },
     {
       "tier": "HIDDEN GEM",
@@ -2490,7 +2659,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.744
     },
     {
       "tier": "BOLD MOVE",
@@ -2504,7 +2674,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "hummus": [
@@ -2520,12 +2691,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.784
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2534,12 +2706,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.778
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 8,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2548,7 +2721,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "ice_cream": [
@@ -2564,12 +2738,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.702
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2578,12 +2753,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.742
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2592,7 +2768,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.933
     }
   ],
   "lasagna": [
@@ -2608,7 +2785,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.844
     },
     {
       "tier": "HIDDEN GEM",
@@ -2622,12 +2800,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.837
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 2,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2636,7 +2815,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.97
     }
   ],
   "lobster_bisque": [
@@ -2652,12 +2832,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.86
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2666,7 +2847,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.737
     },
     {
       "tier": "BOLD MOVE",
@@ -2680,7 +2862,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "lobster_roll_sandwich": [
@@ -2696,7 +2879,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.9
     },
     {
       "tier": "HIDDEN GEM",
@@ -2710,12 +2894,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.807
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2724,7 +2909,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.95
     }
   ],
   "macaroni_and_cheese": [
@@ -2740,12 +2926,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.85
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 7,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2754,7 +2941,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.638
     },
     {
       "tier": "BOLD MOVE",
@@ -2768,7 +2956,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "macarons": [
@@ -2784,12 +2973,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.805
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 0,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2798,12 +2988,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.645
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 7,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -2812,7 +3003,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 1.0
     }
   ],
   "miso_soup": [
@@ -2828,7 +3020,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.822
     },
     {
       "tier": "HIDDEN GEM",
@@ -2842,12 +3035,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.803
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2856,7 +3050,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.925
     }
   ],
   "mussels": [
@@ -2872,12 +3067,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.915
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 0,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -2886,12 +3082,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.661
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -2900,7 +3097,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "nachos": [
@@ -2916,12 +3114,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.883
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -2930,7 +3129,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.842
     },
     {
       "tier": "BOLD MOVE",
@@ -2944,7 +3144,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "omelette": [
@@ -2960,12 +3161,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.828
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -2974,12 +3176,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.804
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 2,
+      "cluster": 5,
       "name": "something rich",
       "keywords": [
         "rich",
@@ -2988,7 +3191,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.916
     }
   ],
   "onion_rings": [
@@ -3004,12 +3208,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.946
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3018,12 +3223,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.699
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3032,7 +3238,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.898
     }
   ],
   "oysters": [
@@ -3048,12 +3255,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.934
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3062,12 +3270,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.605
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 6,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3076,7 +3285,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.901
     }
   ],
   "pad_thai": [
@@ -3092,12 +3302,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.916
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3106,12 +3317,13 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.289
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3120,7 +3332,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "paella": [
@@ -3136,12 +3349,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.814
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3150,12 +3364,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.804
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 2,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3164,7 +3379,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 1.0
     }
   ],
   "pancakes": [
@@ -3180,12 +3396,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.895
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 6,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3194,7 +3411,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.717
     },
     {
       "tier": "BOLD MOVE",
@@ -3208,7 +3426,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.963
     }
   ],
   "panna_cotta": [
@@ -3224,7 +3443,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.85
     },
     {
       "tier": "HIDDEN GEM",
@@ -3238,12 +3458,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.876
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3252,7 +3473,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.885
     }
   ],
   "peking_duck": [
@@ -3268,12 +3490,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.87
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 2,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3282,12 +3505,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.527
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 3,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3296,7 +3520,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "pho": [
@@ -3312,12 +3537,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.795
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 4,
+      "cluster": 3,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3326,12 +3552,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.796
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 6,
+      "cluster": 5,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3340,7 +3567,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.826
     }
   ],
   "pizza": [
@@ -3356,12 +3584,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.821
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 8,
+      "cluster": 2,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3370,7 +3599,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.552
     },
     {
       "tier": "BOLD MOVE",
@@ -3384,7 +3614,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 1.0
     }
   ],
   "pork_chop": [
@@ -3400,12 +3631,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.837
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3414,12 +3646,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.762
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 2,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3428,7 +3661,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.881
     }
   ],
   "poutine": [
@@ -3444,12 +3678,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.838
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 7,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3458,12 +3693,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.871
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3472,7 +3708,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.925
     }
   ],
   "prime_rib": [
@@ -3488,12 +3725,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.876
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3502,12 +3740,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.852
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3516,7 +3755,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.916
     }
   ],
   "pulled_pork_sandwich": [
@@ -3532,12 +3772,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.942
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3546,7 +3787,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.756
     },
     {
       "tier": "BOLD MOVE",
@@ -3560,7 +3802,8 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.973
     }
   ],
   "ramen": [
@@ -3576,12 +3819,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.906
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -3590,7 +3834,8 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.839
     },
     {
       "tier": "BOLD MOVE",
@@ -3604,7 +3849,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "ravioli": [
@@ -3620,12 +3866,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.848
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3634,12 +3881,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.869
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3648,7 +3896,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.94
     }
   ],
   "red_velvet_cake": [
@@ -3664,12 +3913,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.874
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -3678,12 +3928,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.655
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 4,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3692,7 +3943,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.993
     }
   ],
   "risotto": [
@@ -3708,12 +3960,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.911
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3722,12 +3975,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.705
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 0,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3736,7 +3990,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.94
     }
   ],
   "samosa": [
@@ -3752,12 +4007,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.825
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3766,12 +4022,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.802
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 6,
+      "cluster": 2,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -3780,7 +4037,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "sashimi": [
@@ -3796,12 +4054,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.88
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3810,12 +4069,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.892
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3824,7 +4084,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "scallops": [
@@ -3840,7 +4101,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.941
     },
     {
       "tier": "HIDDEN GEM",
@@ -3854,12 +4116,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.859
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3868,7 +4131,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "seaweed_salad": [
@@ -3884,12 +4148,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.773
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3898,12 +4163,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.871
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 1,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3912,7 +4178,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.859
     }
   ],
   "shrimp_and_grits": [
@@ -3928,12 +4195,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.862
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 6,
+      "cluster": 7,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -3942,12 +4210,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.797
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 2,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -3956,7 +4225,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.97
     }
   ],
   "spaghetti_bolognese": [
@@ -3972,12 +4242,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.797
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 3,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -3986,12 +4257,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.843
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 5,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4000,7 +4272,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 1.0
     }
   ],
   "spaghetti_carbonara": [
@@ -4016,12 +4289,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.897
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 1,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4030,12 +4304,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.76
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 4,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4044,7 +4319,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.916
     }
   ],
   "spring_rolls": [
@@ -4060,12 +4336,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.827
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 0,
+      "cluster": 5,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4074,12 +4351,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.881
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 3,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4088,7 +4366,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.904
     }
   ],
   "steak": [
@@ -4104,12 +4383,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.8
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 7,
       "name": "something bold",
       "keywords": [
         "tannins",
@@ -4118,12 +4398,13 @@
       ],
       "wine": "Mottura Stilio Primitivo di Manduria 2018.0",
       "rating": 86,
-      "snippet": "Forest fruits, oily, tannins, long finish, wonderful "
+      "snippet": "Forest fruits, oily, tannins, long finish, wonderful ",
+      "confidence": 0.625
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 1,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4132,7 +4413,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.915
     }
   ],
   "strawberry_shortcake": [
@@ -4148,12 +4430,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.887
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 0,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4162,12 +4445,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.656
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 0,
+      "cluster": 3,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4176,7 +4460,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.904
     }
   ],
   "sushi": [
@@ -4192,12 +4477,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.865
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 5,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4206,7 +4492,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.339
     },
     {
       "tier": "BOLD MOVE",
@@ -4220,7 +4507,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 1.0
     }
   ],
   "tacos": [
@@ -4236,12 +4524,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.865
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4250,7 +4539,8 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.936
     },
     {
       "tier": "BOLD MOVE",
@@ -4264,7 +4554,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 1.0
     }
   ],
   "takoyaki": [
@@ -4280,12 +4571,13 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.757
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 2,
+      "cluster": 8,
       "name": "something earthy & something deep",
       "keywords": [
         "cherry",
@@ -4294,12 +4586,13 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.552
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 6,
+      "cluster": 4,
       "name": "something crispy & something bold",
       "keywords": [
         "acidity",
@@ -4308,7 +4601,8 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.925
     }
   ],
   "tiramisu": [
@@ -4324,12 +4618,13 @@
       ],
       "wine": "Begali Lorenzo Riserva Monte Ca Bianca Amarone della Valpolicella Classico 2015.0",
       "rating": 86,
-      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me "
+      "snippet": "Opulent nose, rich in the mouth but too bitter a finish for me ",
+      "confidence": 0.872
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 7,
+      "cluster": 0,
       "name": "something earthy & something smoky",
       "keywords": [
         "tobacco",
@@ -4338,7 +4633,8 @@
       ],
       "wine": "Masca del Tacco Lu Rappaio Primitivo di Manduria 2019.0",
       "rating": 86,
-      "snippet": " vanilla tobacco leather smoke sage"
+      "snippet": " vanilla tobacco leather smoke sage",
+      "confidence": 0.783
     },
     {
       "tier": "BOLD MOVE",
@@ -4352,7 +4648,8 @@
       ],
       "wine": "Taaibosch Estate Crescendo 2018.0",
       "rating": 86,
-      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi"
+      "snippet": "Good value for this South African Bordeaux blend \n\nColour is dark red to brown \nBold with notes of blackberry, cherry, vanilla, tobacco and some earthy tones \nNice tannins, long fi",
+      "confidence": 0.916
     }
   ],
   "tuna_tartare": [
@@ -4368,12 +4665,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.94
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 3,
+      "cluster": 8,
       "name": "something smoky & something deep",
       "keywords": [
         "vanilla",
@@ -4382,12 +4680,13 @@
       ],
       "wine": "Taron Pantocrator 2010.0",
       "rating": 86,
-      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. "
+      "snippet": "There\u00e2\u20ac\u2122s a lot going on with this wine. Lots of dark fruit. Definitely has hints of oak and a long lasting finish. It got better the more it breathed. ",
+      "confidence": 0.71
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 7,
+      "cluster": 4,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4396,7 +4695,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.955
     }
   ],
   "waffles": [
@@ -4412,12 +4712,13 @@
       ],
       "wine": "Ciacci Piccolomini d'Aragona Rosso di Montalcino 2019.0",
       "rating": 90,
-      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking "
+      "snippet": "Super rosso di Montalcino, better of many  cheap Brunellos, it start soft and clear adding body after one hour from corcking ",
+      "confidence": 0.868
     },
     {
       "tier": "HIDDEN GEM",
       "icon": "\u00f0\u0178\u2019\u017d",
-      "cluster": 5,
+      "cluster": 4,
       "name": "something sweet",
       "keywords": [
         "sweet",
@@ -4426,12 +4727,13 @@
       ],
       "wine": "Feudi Bizantini 8 Limited Edition N.V. 2021.0",
       "rating": 86,
-      "snippet": "Too sweet and too much vanilla for my taste. "
+      "snippet": "Too sweet and too much vanilla for my taste. ",
+      "confidence": 0.655
     },
     {
       "tier": "BOLD MOVE",
       "icon": "\u00f0\u0178\u201d\u00a5",
-      "cluster": 8,
+      "cluster": 0,
       "name": "The Balanced",
       "keywords": [
         "fruity",
@@ -4440,7 +4742,8 @@
       ],
       "wine": "Farnese Edizione Cinque Autoctoni N.V. 2018.0",
       "rating": 86,
-      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes."
+      "snippet": "Fruity, strong and reliable. Good italian wine mixed of various great grapes.",
+      "confidence": 0.898
     }
   ]
 }

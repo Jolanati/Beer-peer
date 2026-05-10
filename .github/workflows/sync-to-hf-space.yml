@@ -16,22 +16,28 @@ jobs:
           fetch-depth: 0
           lfs: false          # weights are NOT in git — upload manually to HF
 
-      - name: Push deployment/ subfolder to HF Space
+      - name: Install huggingface_hub
+        run: pip install --quiet huggingface_hub
+
+      - name: Upload deployment/ to HF Space (preserving weights)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          cd wine-dine/deployment
+          python - <<'PYEOF'
+          import os
+          from huggingface_hub import HfApi
 
-          # Initialise a throwaway git repo for the subfolder
-          git init
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name  "github-actions[bot]"
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          sha = os.environ.get("GITHUB_SHA", "unknown")[:8]
 
-          # Stage everything EXCEPT weights/ — weights live on HF only
-          git add -- . ':!weights/'
-          git commit -m "Sync from GitHub ${GITHUB_SHA::8}"
-
-          # Force-push to the HF Space (main branch)
-          git push --force \
-            https://Jolanati:${HF_TOKEN}@huggingface.co/spaces/Jolanati/wine-dine \
-            HEAD:main
+          # upload_folder is an upsert — existing HF files NOT in the upload
+          # (e.g. weights/) are left untouched.
+          api.upload_folder(
+              folder_path="wine-dine/deployment",
+              repo_id="Jolanati/wine-dine",
+              repo_type="space",
+              ignore_patterns=["weights/**"],
+              commit_message=f"Sync from GitHub {sha}",
+          )
+          print(f"Synced wine-dine/deployment → HF Space (sha={sha})")
+          PYEOF

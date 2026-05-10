@@ -12,6 +12,7 @@ license: mit
 ---
 
 ## 🍽️ Wine & Dine
+<!-- last-sync: 2026-05-10 -->
 
 **Upload a food photo — we identify it, analyze its flavor profile in real time, and recommend your perfect wine.**
 

@@ -250,16 +250,35 @@ _INTENT = {
     "BOLD MOVE":  "goes against it",
 }
 
+# Colours match mockup design tokens
 _TIER_COLOR = {
-    "SAFE BET":   "#2CA02C",
-    "HIDDEN GEM": "#1F77B4",
-    "BOLD MOVE":  "#D62728",
+    "SAFE BET":   "#2E7D52",
+    "HIDDEN GEM": "#3C3489",
+    "BOLD MOVE":  "#993C1D",
 }
 
-_TIER_BORDER = {
-    "SAFE BET":   "#2CA02C",
-    "HIDDEN GEM": "#1F77B4",
-    "BOLD MOVE":  "#D62728",
+_TIER_STRIP_BG = {
+    "SAFE BET":   "#EAF3DE",
+    "HIDDEN GEM": "#EEEDFE",
+    "BOLD MOVE":  "#FAECE7",
+}
+
+_TIER_ICON = {
+    "SAFE BET":   "✅",
+    "HIDDEN GEM": "💎",
+    "BOLD MOVE":  "🔥",
+}
+
+_TIER_CONF_LABEL = {
+    "SAFE BET":   "match",
+    "HIDDEN GEM": "match",
+    "BOLD MOVE":  "contrast",
+}
+
+_TIER_TAG_BG = {
+    "SAFE BET":   "#EAF3DE",
+    "HIDDEN GEM": "#EEEDFE",
+    "BOLD MOVE":  "#FAECE7",
 }
 
 
@@ -283,15 +302,16 @@ def _clip(text: str, max_chars: int = 160) -> str:
     return text[:max_chars].rsplit(" ", 1)[0].rstrip(".,;: ") + "…"
 
 
-def _conf_bar_html(conf: float, color: str) -> str:
+def _conf_bar_html(conf: float, color: str, label: str = "match") -> str:
     pct = int(conf * 100)
-    bar_w = int(conf * 120)
+    bar_w = int(conf * 110)
     return (
-        f'<div style="display:flex;align-items:center;gap:8px;margin:4px 0">'
-        f'<div style="background:#e8e4dd;border-radius:4px;width:120px;height:10px;overflow:hidden">'
-        f'<div style="background:{color};width:{bar_w}px;height:10px;border-radius:4px"></div>'
+        f'<div style="display:flex;align-items:center;gap:8px;margin:3px 0">'
+        f'<div style="background:#e0ddd8;border-radius:3px;width:110px;height:5px;overflow:hidden">'
+        f'<div style="background:{color};width:{bar_w}px;height:5px;border-radius:3px"></div>'
         f'</div>'
-        f'<span style="font-size:12px;color:#888;font-weight:600">{pct}%</span>'
+        f'<span style="font-size:19px;font-weight:600;color:{color};line-height:1">{pct}%</span>'
+        f'<span style="font-size:9px;color:#aaa">{label}</span>'
         f'</div>'
     )
 
@@ -316,49 +336,72 @@ def _top5_bars_html(top5, confirmed_food):
 
 
 def _tier_card_html(rec: dict, display_name: str, feel: str, conf: float = 0.0) -> str:
-    """Build one tier panel — matches notebook print_card style."""
+    """Build one tier card — matches mockup design."""
     tier    = rec.get("tier", "")
-    icon    = rec.get("icon", "")
     name    = rec.get("name", "")
     wine    = rec.get("wine", "—")
     rating  = rec.get("rating", "—")
-    snippet = _clip(rec.get("snippet", ""))
+    snippet = _clip(rec.get("snippet", ""), 120)
     kws     = rec.get("keywords", [])
 
-    color   = _TIER_COLOR.get(tier, "#555")
-    border  = _TIER_BORDER.get(tier, "#ccc")
-    intent  = _INTENT.get(tier, "pairs with")
-    adj     = _cluster_adj(name)
-    kw_str  = " · ".join(kws) if kws else "—"
+    color    = _TIER_COLOR.get(tier, "#555")
+    strip_bg = _TIER_STRIP_BG.get(tier, "#f5f5f5")
+    icon     = _TIER_ICON.get(tier, "")
+    intent   = _INTENT.get(tier, "pairs with")
+    conf_lbl = _TIER_CONF_LABEL.get(tier, "match")
+    tag_bg   = _TIER_TAG_BG.get(tier, "#eee")
+    adj      = _cluster_adj(name)
+    tier_lbl = tier.lower()
+
+    tags_html = ""
+    for i, kw in enumerate(kws[:3]):
+        if i > 0:
+            tags_html += '<span style="font-size:10px;color:#aaa">·</span>'
+        tags_html += (
+            f'<span style="font-size:10px;font-weight:500;padding:2px 7px;'
+            f'border-radius:20px;background:{tag_bg};color:{color}">{kw}</span>'
+        )
+
+    reasoning = (
+        f'Your {display_name.lower()} is {feel} — '
+        + ("this wine matches that energy exactly." if tier == "SAFE BET"
+           else "this wine finds an angle most pairings overlook." if tier == "HIDDEN GEM"
+           else "this wine goes against it entirely. Sometimes contrast is the pairing.")
+    )
 
     return f"""
-    <div style="border-left:4px solid {border};background:#fff;
-                border-radius:0 12px 12px 0;padding:18px 22px;margin:10px 0;
-                box-shadow:0 2px 8px rgba(0,0,0,0.04)">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="font-size:18px">{icon}</span>
-        <span style="font-size:15px;font-weight:700;color:{color}">{tier}</span>
+    <div style="border-radius:12px;overflow:hidden;background:#fff;
+                border:0.5px solid rgba(0,0,0,0.08);margin:0 0 10px 0;
+                box-shadow:0 1px 4px rgba(0,0,0,0.05)">
+      <div style="background:{strip_bg};padding:9px 12px;
+                  display:flex;justify-content:space-between;align-items:flex-start">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;
+                    color:{color};display:flex;align-items:center;gap:4px">
+          {icon} {tier_lbl}
+        </div>
+        <div>
+          {_conf_bar_html(conf, color, conf_lbl)}
+        </div>
       </div>
-      <div style="font-size:11px;color:#aaa;text-transform:uppercase;
-                  letter-spacing:0.8px;margin-bottom:4px">Match confidence</div>
-      {_conf_bar_html(conf, color)}
-      <div style="font-size:13px;color:#444;margin:12px 0 6px;line-height:1.6">
-        As your <strong>{display_name}</strong> is <em>{feel}</em>,<br>
-        we believe you need a wine that
-        <strong style="color:{color}">{intent}</strong> —
-        something <em style="font-weight:600">{adj}</em><br>
-        that plays on
-        <span style="color:#0D7C66;font-weight:600">{kw_str}</span>
-      </div>
-      <hr style="margin:12px 0;border:none;border-top:1px solid #eee">
-      <div style="font-size:11px;color:#aaa;margin-bottom:4px">Wine drinkers suggest:</div>
-      <div style="font-size:14px;font-weight:700;color:#1a1a2e">
-        {wine} &nbsp;⭐ {rating}
-      </div>
-      <div style="font-size:11px;color:#aaa;margin:8px 0 2px">Wine drinkers say:</div>
-      <div style="font-size:12px;color:#666;font-style:italic;
-                  line-height:1.5;padding:6px 0">
-        "{snippet}"
+      <div style="padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:11px;color:#666;font-style:italic;line-height:1.55">
+          {reasoning}
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:10px;color:#aaa">plays on</span>
+          {tags_html}
+        </div>
+        <div style="height:0.5px;background:rgba(0,0,0,0.07)"></div>
+        <div style="font-size:12px;font-weight:600;color:#1a1917;line-height:1.35">{wine}</div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="color:#E6A817;font-size:11px">★</span>
+          <span style="font-size:11px;font-weight:500;color:#1a1917">{rating}</span>
+          <span style="font-size:10px;color:#aaa">/ 100</span>
+        </div>
+        <div style="font-size:10.5px;color:#666;font-style:italic;line-height:1.5;
+                    border-left:2px solid rgba(0,0,0,0.08);padding-left:7px">
+          "{snippet}"
+        </div>
       </div>
     </div>"""
 
@@ -382,9 +425,9 @@ def _wine_card_parts(food_name: str, conf: float, top5,
     display  = food_name.replace("_", " ").title() if "_" in food_name else food_name
 
     WRAP_OPEN = (
-        '<div style="font-family:\'Segoe UI\',Arial,sans-serif;background:#faf7f2;'
-        'border-radius:16px;padding:28px 34px;'
-        'box-shadow:0 4px 20px rgba(0,0,0,0.09)">'
+        '<div style="font-family:\'Segoe UI\',Arial,sans-serif;background:#f6f5f1;'
+        'border-radius:16px;padding:24px 28px;'
+        'box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">'
     )
     FOOTER = (
         '<div style="margin-top:18px;font-size:10px;color:#ccc;text-align:right">'
@@ -507,9 +550,14 @@ def _wine_card_parts(food_name: str, conf: float, top5,
                            'No pairing data available for this food.</div>')
 
     step3 = f"""
-  <div style="font-size:10px;color:#bbb;text-transform:uppercase;
-              letter-spacing:1.2px;margin-bottom:12px">
+  <div style="font-size:10px;color:#aaa;text-transform:uppercase;
+              letter-spacing:1.2px;margin-bottom:8px">
     🍷 Step 3 — Wine Pairings
+  </div>
+  <div style="font-size:13px;color:#5a5855;margin-bottom:12px;line-height:1.6">
+    Your <strong>{display}</strong>'s fingerprint is
+    <strong style="color:#5558A8">{cluster_name}</strong>.
+    We found wines that match it — each from a different angle.
   </div>
   {tier_cards_html}
 """

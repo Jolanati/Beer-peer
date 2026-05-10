@@ -795,37 +795,30 @@ _TIER_INFO = {
 _WINE_INFO = "highest cosine similarity between food taste vector and wine taste vectors within this cluster\u2019s 10-wine pool"
 
 
-def _info_btn(panel_id: str, color: str) -> str:
-    return (
-        f'<button onclick="var p=document.getElementById(\'{panel_id}\'),'
-        f'open=p.style.display===\'block\';'
-        f'p.style.display=open?\'none\':\'block\'" '
-        f'style="width:16px;height:16px;border-radius:50%;border:1px solid {color};'
-        f'background:transparent;color:{color};font-size:9px;cursor:pointer;'
-        f'display:inline-flex;align-items:center;justify-content:center;'
-        f'flex-shrink:0;line-height:1;padding:0">i</button>'
-    )
-
-
 def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str:
-    """Screen 3 — 3-column wine card grid with info buttons (matches mockup Screen 3)."""
+    """Screen 3 (step 4) — wine pairings, redesigned to match mockup. Zero JS."""
 
-    intro = (
-        f'<div style="font-size:13px;color:#5a5855;margin-bottom:1rem;line-height:1.6">'
-        f'Your {display.lower()}\u2019s fingerprint is '
-        f'<strong style="color:#5558A8">{cluster_name}</strong>. '
-        f'We found wines that match it \u2014 each from a different angle.</div>'
-    )
+    # CSS for all info-panel toggles (checkbox trick — no JS, works in Gradio)
+    # Each card has two checkboxes: ckT-{uid} (tier info) and ckW-{uid} (wine info)
+    cb_css_rules = ""
+    for rec in recs[:3]:
+        uid = rec.get("tier", "x").lower().replace(" ", "-")
+        cb_css_rules += (
+            f"#ckT-{uid}{{display:none}}"
+            f"#ckT-{uid}:checked~#panT-{uid}{{display:block!important}}"
+            f"#ckW-{uid}{{display:none}}"
+            f"#ckW-{uid}:checked~#panW-{uid}{{display:block!important}}"
+        )
+    info_css = f"<style>{cb_css_rules}</style>"
 
     cards_html = ""
     for rec in recs[:3]:
-        tier     = rec.get("tier", "")
-        name     = rec.get("name", "")
-        wine     = rec.get("wine", "\u2014")
-        rating   = rec.get("rating", "\u2014")
-        snippet  = _clip(rec.get("snippet", ""), 120)
-        kws      = rec.get("keywords", [])
-        conf     = float(rec.get("confidence", 0.0))
+        tier    = rec.get("tier", "")
+        wine    = rec.get("wine", "\u2014")
+        rating  = rec.get("rating", "\u2014")
+        snippet = _clip(rec.get("snippet", ""), 140)
+        kws     = rec.get("keywords", [])
+        conf    = float(rec.get("confidence", 0.0))
 
         color    = _TIER_COLOR.get(tier, "#555")
         strip_bg = _TIER_STRIP_BG.get(tier, "#f5f5f5")
@@ -833,15 +826,10 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
         conf_lbl = _TIER_CONF_LABEL.get(tier, "match")
         tag_bg   = _TIER_TAG_BG.get(tier, "#eee")
         tier_lbl = tier.lower()
-        adj      = _cluster_adj(name)
 
-        # unique IDs for info panels (avoid collisions if card re-rendered)
-        uid       = tier.lower().replace(" ", "-")
-        tier_pid  = f"wd-info-{uid}"
-        wine_pid  = f"wd-wine-{uid}"
-
-        conf_pct  = int(conf * 100)
-        conf_bar_w = int(conf * 110)
+        uid      = tier.lower().replace(" ", "-")
+        conf_pct = int(conf * 100)
+        conf_bar = int(conf * 100)
 
         reasoning = (
             f"Your {display.lower()} is {feel} \u2014 "
@@ -851,68 +839,162 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
         )
 
         tags_html = ""
-        for i, kw in enumerate(kws[:3]):
-            if i > 0:
-                tags_html += '<span style="font-size:10px;color:#aaa">\u00b7</span>'
+        for kw in kws[:4]:
             tags_html += (
-                f'<span style="font-size:10px;font-weight:500;padding:2px 7px;'
-                f'border-radius:20px;background:{tag_bg};color:{color}">{kw}</span>'
+                f'<span style="font-size:10px;font-weight:600;padding:3px 9px;'
+                f'border-radius:20px;background:{tag_bg};color:{color};'
+                f'white-space:nowrap">{kw}</span>'
             )
 
+        # info labels (pure CSS checkbox toggle — no onclick)
+        tier_lbl_i = (
+            f'<label for="ckT-{uid}"'
+            f' style="width:16px;height:16px;border-radius:50%;display:inline-flex;'
+            f'align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;'
+            f'border:1px solid {color};color:{color};font-size:9px;'
+            f'font-style:italic;font-weight:700;line-height:1">i</label>'
+        )
+        wine_lbl_i = (
+            f'<label for="ckW-{uid}"'
+            f' style="width:14px;height:14px;border-radius:50%;display:inline-flex;'
+            f'align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;'
+            f'border:1px solid #b8aaa0;color:#b8aaa0;font-size:9px;'
+            f'font-style:italic;font-weight:700;line-height:1">i</label>'
+        )
+
         cards_html += f"""
-        <div style="border-radius:12px;overflow:hidden;background:#fff;
-                    border:0.5px solid rgba(0,0,0,0.08);
-                    box-shadow:0 1px 4px rgba(0,0,0,0.05)">
-          <div style="background:{strip_bg};padding:9px 11px;
-                      display:flex;justify-content:space-between;align-items:flex-start">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;
-                        color:{color}">{icon} {tier_lbl}</div>
-            <div style="display:flex;align-items:flex-start;gap:5px">
-              <div>
-                <div style="font-size:19px;font-weight:600;color:{color};line-height:1">{conf_pct}%</div>
-                <div style="font-size:9px;color:#aaa">{conf_lbl}</div>
-              </div>
-              {_info_btn(tier_pid, color)}
-            </div>
-          </div>
-          <div id="{tier_pid}" style="display:none;padding:7px 11px;font-size:10.5px;
-                                      line-height:1.55;background:{strip_bg};color:{color};
-                                      font-family:monospace">{_TIER_INFO.get(tier,"")}</div>
-          <div style="padding:10px 11px;display:flex;flex-direction:column;gap:8px">
-            <div style="font-size:11px;color:#5a5855;font-style:italic;line-height:1.55">
-              {reasoning}
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-              <span style="font-size:10px;color:#9a9895">plays on</span>
-              {tags_html}
-            </div>
-            <div style="height:0.5px;background:rgba(0,0,0,0.07)"></div>
-            <div style="display:flex;align-items:flex-start;gap:5px">
-              <div style="font-size:12px;font-weight:600;color:#1a1917;
-                          line-height:1.35;flex:1">{wine}</div>
-              {_info_btn(wine_pid, "#9a9895")}
-            </div>
-            <div id="{wine_pid}" style="display:none;font-size:10px;color:#9a9895;
-                                        font-family:monospace;line-height:1.5">{_WINE_INFO}</div>
-            <div style="display:flex;align-items:center;gap:4px">
-              <span style="color:#E6A817;font-size:11px">\u2605</span>
-              <span style="font-size:11px;font-weight:500;color:#1a1917">{rating}</span>
-              <span style="font-size:10px;color:#9a9895">/ 100</span>
-            </div>
-            <div style="font-size:10.5px;color:#5a5855;font-style:italic;line-height:1.5;
-                        border-left:2px solid rgba(0,0,0,0.08);padding-left:7px">
-              \u201c{snippet}\u201d
-            </div>
-          </div>
-        </div>"""
+<div style="border-radius:18px;overflow:hidden;background:rgba(255,252,248,0.92);
+            border:1px solid rgba(63,43,35,0.09);
+            box-shadow:0 8px 28px rgba(52,34,26,0.09)">
+
+  <!-- checkboxes must be first children for ~ sibling CSS to reach panels below -->
+  <input type="checkbox" id="ckT-{uid}">
+  <input type="checkbox" id="ckW-{uid}">
+
+  <!-- tier header strip -->
+  <div style="background:{strip_bg};padding:11px 14px;
+              display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:7px">
+      <span style="font-size:13px;font-weight:900;color:{color}">{icon}</span>
+      <span style="font-size:10px;font-weight:800;letter-spacing:0.08em;
+                   text-transform:uppercase;color:{color}">{tier_lbl}</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="text-align:right">
+        <div style="font-family:Georgia,serif;font-size:24px;font-weight:700;
+                    color:{color};line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
+        <div style="font-size:9px;color:#b8aaa0;font-weight:700;
+                    text-transform:uppercase;letter-spacing:0.08em">{conf_lbl}</div>
+      </div>
+      {tier_lbl_i}
+    </div>
+  </div>
+
+  <!-- tier info panel (CSS toggle, sibling of checkboxes) -->
+  <div id="panT-{uid}"
+       style="display:none;padding:9px 14px;font-size:10.5px;line-height:1.6;
+              background:{strip_bg};color:{color};border-bottom:1px solid rgba(0,0,0,0.07)">
+    {_TIER_INFO.get(tier, "")}
+  </div>
+
+  <!-- confidence bar -->
+  <div style="height:3px;background:rgba(64,42,31,0.08)">
+    <div style="background:{color};width:{conf_bar}%;height:100%"></div>
+  </div>
+
+  <!-- card body -->
+  <div style="padding:14px;display:flex;flex-direction:column;gap:10px">
+
+    <!-- reasoning -->
+    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.65">
+      {reasoning}
+    </div>
+
+    <!-- taste tags -->
+    <div style="display:flex;flex-wrap:wrap;gap:5px">
+      {tags_html}
+    </div>
+
+    <!-- divider -->
+    <div style="height:1px;background:rgba(63,43,35,0.09)"></div>
+
+    <!-- wine name + info toggle -->
+    <div style="display:flex;align-items:flex-start;gap:7px">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;
+                  font-weight:700;color:#211917;line-height:1.3;flex:1">{wine}</div>
+      {wine_lbl_i}
+    </div>
+
+    <!-- wine info panel -->
+    <div id="panW-{uid}"
+         style="display:none;font-size:10px;color:#9e9188;line-height:1.6;
+                font-style:italic;padding:6px 10px;background:rgba(64,42,31,0.04);
+                border-radius:8px;border-left:2px solid #b8aaa0">
+      {_WINE_INFO}
+    </div>
+
+    <!-- rating -->
+    <div style="display:flex;align-items:center;gap:5px">
+      <span style="color:#c9a15d;font-size:13px">&#9733;</span>
+      <span style="font-family:Georgia,serif;font-size:14px;font-weight:700;
+                   color:#42101d">{rating}</span>
+      <span style="font-size:11px;color:#b8aaa0">/ 100</span>
+    </div>
+
+    <!-- review quote -->
+    <div style="font-size:11px;color:#7c726b;font-style:italic;line-height:1.65;
+                border-left:2px solid {color};padding-left:10px;
+                border-radius:0 0 0 2px">
+      &ldquo;{snippet}&rdquo;
+    </div>
+
+  </div>
+</div>"""
 
     return f"""
-    <div id="wd-screen3">
-      {intro}
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
-        {cards_html}
-      </div>
-    </div>"""
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
+{info_css}
+
+  <!-- step label + heading -->
+  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
+    STEP 4 &middot; WINE PAIRINGS</div>
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:34px;
+              font-weight:700;color:#211917;letter-spacing:-1.2px;
+              line-height:1;margin-bottom:6px">Your wine pairings</div>
+  <div style="font-size:13px;color:#9e9188;margin-bottom:22px">
+    Taste fingerprint:
+    <strong style="color:#42101d">{cluster_name}</strong>
+    &mdash; three wines, three different angles</div>
+
+  <!-- 3-col card grid -->
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+              gap:14px;margin-bottom:24px">
+    {cards_html}
+  </div>
+
+  <!-- "what happens in background" details -->
+  <details style="border:1px solid rgba(63,43,35,0.09);
+                  border-radius:14px;overflow:hidden">
+    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
+                    color:#7c726b;cursor:pointer;list-style:none;
+                    background:rgba(251,247,241,0.8)">
+      &#9432; What happens in the background?</summary>
+    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
+                line-height:1.75;background:rgba(251,247,241,0.5)">
+      For each tier, a different objective function picks the wine.
+      <strong style="color:#211917">Safe Bet</strong>: nearest cluster centroid by
+      cosine similarity to the dominant flavor description.
+      <strong style="color:#211917">Hidden Gem</strong>: nearest centroid to the
+      &lsquo;surprising pairing&rsquo; description.
+      <strong style="color:#211917">Bold Move</strong>: score = distance &times;
+      (1 + secondary affinity) &mdash; maximises contrast while keeping the wine drinkable.
+      Within each tier, the final wine is the highest cosine-similarity match from a
+      10-wine pool curated for that cluster.
+    </div>
+  </details>
+
+</div>"""
 
 
 def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:

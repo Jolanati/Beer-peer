@@ -497,7 +497,8 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
 
 
 def _screen2_html(display: str, desc: str, attn_w,
-                  cluster_idx: int, cluster_name: str, sims) -> str:
+                  cluster_idx: int, cluster_name: str, sims,
+                  img_b64: str = "") -> str:
     """Screen 2 — taste fingerprint (matches mockup Screen 2)."""
 
     # Attention-highlighted words — wine-red palette (3 heat levels)
@@ -557,8 +558,29 @@ def _screen2_html(display: str, desc: str, attn_w,
         "</style>"
     )
 
+    # Compact food-photo context strip
+    if img_b64:
+        photo_strip = (
+            f'<div style="display:flex;align-items:center;gap:14px;'
+            f'padding:12px 16px;background:rgba(255,250,243,0.9);'
+            f'border-radius:14px;border:1px solid rgba(64,42,31,0.12);'
+            f'margin-bottom:18px">'
+            f'<img src="data:image/jpeg;base64,{img_b64}"'
+            f' style="width:56px;height:56px;border-radius:10px;'
+            f'object-fit:cover;flex-shrink:0">'
+            f'<div>'
+            f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
+            f'letter-spacing:0.12em;font-weight:800">analyzing</div>'
+            f'<div style="font-family:Georgia,serif;font-size:22px;'
+            f'color:#4a1020;letter-spacing:-0.5px;line-height:1.1">{display}</div>'
+            f'</div>'
+            f'</div>'
+        )
+    else:
+        photo_strip = ""
+
     return f"""{css}
-<input type="checkbox" id="wdinf2" style="display:none">
+{photo_strip}<input type="checkbox" id="wdinf2" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:flex-start;
             margin-bottom:0.75rem">
   <div style="font-size:13px;color:#5a5855;line-height:1.7">
@@ -976,7 +998,7 @@ def _wine_card_parts(food_name: str, conf: float, top5: list,
     # ── Yield 0: screen2 is loading ─────────────────────────────────────────
     yield _shell_html(s1, _LOADING_SPINNER, "", 1)
 
-    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims)
+    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, "")
 
     # ── Yield 1: screen2 done, screen3 loading ───────────────────────────────
     yield _shell_html(s1, s2, _LOADING_SPINNER, 1)
@@ -1031,7 +1053,8 @@ def on_yes():
 
     # BiLSTM inference (slow)
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
-    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims)
+    img_b64 = _state.get("img_b64", "")
+    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, img_b64)
 
     # Wine lookup is fast (pre-computed JSON) — build s3 immediately
     recs         = RESULTS_ALL.get(food_key, [])

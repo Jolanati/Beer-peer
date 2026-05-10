@@ -251,22 +251,29 @@ _INTENT = {
 }
 
 # Colours match mockup design tokens
+# ── Design tokens (wine-editorial palette) ──────────────────────────────────
+# Primary:   --wine       #7a1f32  deep wine red
+# Secondary: --olive      #697a54  safe/nature
+#            --lavender   #6961a8  hidden gem / subtle
+#            --terracotta #bd6846  bold / warm contrast
+# Background: --cream     #f8f3eb  warm off-white
+
 _TIER_COLOR = {
-    "SAFE BET":   "#2E7D52",
-    "HIDDEN GEM": "#3C3489",
-    "BOLD MOVE":  "#993C1D",
+    "SAFE BET":   "#697a54",   # olive
+    "HIDDEN GEM": "#6961a8",   # lavender
+    "BOLD MOVE":  "#bd6846",   # terracotta
 }
 
 _TIER_STRIP_BG = {
-    "SAFE BET":   "#EAF3DE",
-    "HIDDEN GEM": "#EEEDFE",
-    "BOLD MOVE":  "#FAECE7",
+    "SAFE BET":   "rgba(105,122,84,0.12)",
+    "HIDDEN GEM": "rgba(105,97,168,0.12)",
+    "BOLD MOVE":  "rgba(189,104,70,0.12)",
 }
 
 _TIER_ICON = {
-    "SAFE BET":   "✅",
-    "HIDDEN GEM": "💎",
-    "BOLD MOVE":  "🔥",
+    "SAFE BET":   "✓",
+    "HIDDEN GEM": "◆",
+    "BOLD MOVE":  "↯",
 }
 
 _TIER_CONF_LABEL = {
@@ -276,10 +283,13 @@ _TIER_CONF_LABEL = {
 }
 
 _TIER_TAG_BG = {
-    "SAFE BET":   "#EAF3DE",
-    "HIDDEN GEM": "#EEEDFE",
-    "BOLD MOVE":  "#FAECE7",
+    "SAFE BET":   "rgba(105,122,84,0.10)",
+    "HIDDEN GEM": "rgba(105,97,168,0.10)",
+    "BOLD MOVE":  "rgba(189,104,70,0.10)",
 }
+
+# Primary action colour used in shell nav, CTA buttons, active dots
+_PRIMARY = "#7a1f32"
 
 
 def _cluster_adj(cluster_name: str) -> str:
@@ -307,11 +317,11 @@ def _conf_bar_html(conf: float, color: str, label: str = "match") -> str:
     bar_w = int(conf * 110)
     return (
         f'<div style="display:flex;align-items:center;gap:8px;margin:3px 0">'
-        f'<div style="background:#e0ddd8;border-radius:3px;width:110px;height:5px;overflow:hidden">'
-        f'<div style="background:{color};width:{bar_w}px;height:5px;border-radius:3px"></div>'
+        f'<div style="background:rgba(64,42,31,0.10);border-radius:999px;width:110px;height:6px;overflow:hidden">'
+        f'<div style="background:{color};width:{bar_w}px;height:6px;border-radius:999px"></div>'
         f'</div>'
-        f'<span style="font-size:19px;font-weight:600;color:{color};line-height:1">{pct}%</span>'
-        f'<span style="font-size:9px;color:#aaa">{label}</span>'
+        f'<span style="font-size:22px;font-weight:900;color:{color};line-height:1;font-family:Georgia,serif">{pct}%</span>'
+        f'<span style="font-size:10px;color:#b8aaa0;font-weight:800;text-transform:uppercase;letter-spacing:0.08em">{label}</span>'
         f'</div>'
     )
 
@@ -321,15 +331,15 @@ def _top5_bars_html(top5, confirmed_food):
     html = ""
     for fn, fp in top5:
         w   = int(fp * 250)
-        col = "#2CA02C" if fn == confirmed_food else "#d4cfc9"
-        fw  = "700"    if fn == confirmed_food else "400"
+        col = "#7a1f32" if fn == confirmed_food else "#ddd5cc"
+        fw  = "900"    if fn == confirmed_food else "400"
         html += (
-            f'<div style="display:flex;align-items:center;margin:3px 0;font-size:12px">'
+            f'<div style="display:flex;align-items:center;margin:4px 0;font-size:12px">'
             f'<span style="width:200px;overflow:hidden;text-overflow:ellipsis;'
-            f'white-space:nowrap;color:#444;font-weight:{fw}">{fn}</span>'
-            f'<div style="background:{col};width:{w}px;height:12px;'
-            f'border-radius:3px;margin:0 8px"></div>'
-            f'<span style="color:#888;font-weight:{fw}">{fp*100:.0f}%</span>'
+            f'white-space:nowrap;color:#4a1020;font-weight:{fw}">{fn}</span>'
+            f'<div style="background:{col};width:{w}px;height:7px;'
+            f'border-radius:999px;margin:0 8px"></div>'
+            f'<span style="color:#756b63;font-weight:{fw}">{fp*100:.0f}%</span>'
             f'</div>'
         )
     return html
@@ -419,7 +429,7 @@ def _screen1_html(food_name: str, conf: float, top5: list) -> str:
         is_top  = fn == food_name
         name_fw = "600" if is_top else "400"
         name_c  = "#1a1917" if is_top else "#5a5855"
-        bar_c   = "#B85C38" if is_top else "#d4cfc9"
+        bar_c   = "#7a1f32" if is_top else "#d4cfc9"
         pred_rows += f"""
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px">
           <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
@@ -462,7 +472,7 @@ def _screen2_html(display: str, desc: str, attn_w,
                   cluster_idx: int, cluster_name: str, sims) -> str:
     """Screen 2 — taste fingerprint (matches mockup Screen 2)."""
 
-    # Attention-highlighted words — orange palette
+    # Attention-highlighted words — wine-red palette (3 heat levels)
     words     = desc.split()[:MAX_SEQ_LEN]
     attn_arr  = attn_w[:len(words)]
     a_min, a_max = attn_arr.min(), attn_arr.max()
@@ -470,11 +480,11 @@ def _screen2_html(display: str, desc: str, attn_w,
     word_html = ""
     for w_txt, a in zip(words, attn_norm):
         if a >= 0.75:
-            style = "background:#B85C38;color:#fff;font-weight:600"
+            style = "background:#7a1f32;color:#fff;font-weight:800"   # hot
         elif a >= 0.40:
-            style = "background:rgba(184,92,56,0.25)"
+            style = "background:rgba(198,155,85,0.32);font-weight:600"  # warm gold
         elif a >= 0.15:
-            style = "background:rgba(184,92,56,0.10)"
+            style = "background:rgba(122,31,50,0.08)"                  # faint blush
         else:
             style = ""
         word_html += (
@@ -489,9 +499,9 @@ def _screen2_html(display: str, desc: str, attn_w,
         sim_val = float(sims[k])
         bar_w   = int(sim_val * 200)
         is_top  = int(k) == cluster_idx
-        name_fw = "600" if is_top else "400"
-        name_c  = "#1a1917" if is_top else "#5a5855"
-        bar_c   = "#B85C38" if is_top else "#d4cfc8"
+        name_fw = "800" if is_top else "400"
+        name_c  = "#4a1020" if is_top else "#756b63"
+        bar_c   = "#7a1f32" if is_top else "#ddd5cc"
         cluster_rows += f"""
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
@@ -533,7 +543,7 @@ def _screen2_html(display: str, desc: str, attn_w,
   <label for="wdinf2"
          style="margin-left:10px;flex-shrink:0;width:18px;height:18px;border-radius:50%;
                 display:flex;align-items:center;justify-content:center;
-                border:1px solid #9a9895;color:#9a9895;font-size:10px;cursor:pointer;
+                border:1px solid rgba(122,31,50,0.35);color:#7a1f32;font-size:10px;cursor:pointer;
                 font-style:italic;font-weight:600;line-height:1">i</label>
 </div>
 <div id="wdinf2panel"
@@ -575,17 +585,18 @@ def _screen2_html(display: str, desc: str, attn_w,
 </div>
 {cluster_rows}
 <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;
-            background:#f6f5f1;border-radius:8px;border-left:3px solid #B85C38;
+            background:rgba(122,31,50,0.06);border-radius:8px;border-left:3px solid #7a1f32;
             margin-top:4px;margin-bottom:1.5rem">
-  <span style="font-size:11px;color:#9a9895">taste fingerprint</span>
-  <span style="font-size:14px;font-weight:600;color:#B85C38">{cluster_name}</span>
+  <span style="font-size:11px;color:#756b63">taste fingerprint</span>
+  <span style="font-size:14px;font-weight:800;color:#4a1020">{cluster_name}</span>
 </div>
 <div style="text-align:center">
   <label for="wdt2"
-         style="display:inline-block;padding:11px 32px;border-radius:10px;
-                background:#B85C38;color:#fff;font-size:14px;font-weight:600;
-                cursor:pointer;letter-spacing:-0.2px;border:none">
-    let&rsquo;s find wine &rarr;
+         style="display:inline-block;padding:11px 32px;border-radius:999px;
+                background:#7a1f32;color:#fff;font-size:14px;font-weight:900;
+                cursor:pointer;letter-spacing:-0.2px;border:none;
+                box-shadow:0 10px 22px rgba(122,31,50,0.22)">
+    find wine pairings &rarr;
   </label>
 </div>"""
 
@@ -764,11 +775,12 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
             )
 
     # ── Nav ──────────────────────────────────────────────────────────────────
-    _btn_back = ("padding:8px 16px;border-radius:8px;font-size:13px;display:none;"
-                 "border:0.5px solid rgba(26,25,23,0.20);background:transparent;"
-                 "color:#5a5855;cursor:pointer")
-    _btn_next = ("padding:8px 16px;border-radius:8px;font-size:13px;display:none;"
-                 "border:0.5px solid #B85C38;background:#B85C38;color:#fff;cursor:pointer")
+    _btn_back = ("padding:8px 16px;border-radius:999px;font-size:13px;display:none;"
+                 "border:0.5px solid rgba(64,42,31,0.18);background:transparent;"
+                 "color:#756b63;cursor:pointer;font-weight:700")
+    _btn_next = ("padding:8px 16px;border-radius:999px;font-size:13px;display:none;"
+                 "border:none;background:#7a1f32;color:#fff;cursor:pointer;font-weight:900;"
+                 "box-shadow:0 8px 20px rgba(122,31,50,0.22)")
     _lock      = "pointer-events:none;opacity:0.25"
     _ctr       = "font-size:11px;color:#9a9895;display:none"
 
@@ -778,11 +790,11 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
         # Screens — only active one visible
         "#wds0,#wds1,#wds2{display:none}"
         "#wdt0:checked~#wds0,#wdt1:checked~#wds1,#wdt2:checked~#wds2{display:block}"
-        # Active dot — terracotta
+        # Active dot — wine red
         "#wdt0:checked~#wdprog .wddt0,"
         "#wdt1:checked~#wdprog .wddt1,"
         "#wdt2:checked~#wdprog .wddt2"
-        "{background:#B85C38!important;border-color:#B85C38!important;color:#fff!important}"
+        "{background:#7a1f32!important;border-color:#7a1f32!important;color:#fff!important}"
         # Done dot — grey fill
         "#wdt1:checked~#wdprog .wddt0,"
         "#wdt2:checked~#wdprog .wddt0,"
@@ -807,9 +819,11 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
     n0_lock = _lock if unlocked < 1 else ""
     n1_lock = _lock if unlocked < 2 else ""
 
-    return f"""<div id="wdshell" style="font-family:'Segoe UI',Arial,sans-serif;background:#f6f5f1;
-     border-radius:16px;padding:24px 28px;max-width:720px;margin:0 auto;
-     box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">
+    return f"""<div id="wdshell" style="font-family:'Segoe UI',Arial,sans-serif;
+     background:linear-gradient(135deg,#f8f3eb 0%,#eee3d6 100%);
+     border-radius:24px;padding:24px 28px;max-width:720px;margin:0 auto;
+     box-shadow:0 24px 70px rgba(66,37,20,0.14);
+     border:1px solid rgba(255,255,255,0.55)">
 {css}
 <input type="radio" id="wdt0" name="wdtab"{c[0]} style="display:none">
 <input type="radio" id="wdt1" name="wdtab"{c[1]} style="display:none">
@@ -818,10 +832,11 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
 <div style="display:flex;justify-content:space-between;align-items:baseline;
             padding-bottom:1.25rem;border-bottom:0.5px solid rgba(26,25,23,0.10);
             margin-bottom:1.75rem">
-  <div style="font-size:19px;font-weight:600;color:#1a1917;letter-spacing:-0.3px">
-    Wine<span style="color:#B85C38"> &amp; </span>Dine</div>
-  <div style="font-size:11px;color:#9a9895;font-style:italic">
-    photo &rarr; fingerprint &rarr; pairing</div>
+  <div style="font-size:20px;font-weight:700;color:#231b17;letter-spacing:-0.6px;
+              font-family:Georgia,'Times New Roman',serif">
+    Wine<span style="color:#7a1f32">&</span>Dine</div>
+  <div style="font-size:10px;color:#7a1f32;letter-spacing:0.12em;text-transform:uppercase;
+              font-weight:800">AI food &amp; wine pairing</div>
 </div>
 
 <div id="wdprog" style="display:flex;align-items:flex-start;margin-bottom:1.75rem">

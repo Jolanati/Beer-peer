@@ -406,164 +406,432 @@ def _tier_card_html(rec: dict, display_name: str, feel: str, conf: float = 0.0) 
     </div>"""
 
 
-def _wine_card_html(food_name: str, conf: float, top5,
-                    cluster_idx: int, cluster_name: str,
-                    sims, desc: str, attn_w) -> str:
-    """Build the full card (non-streaming fallback)."""
-    parts = list(_wine_card_parts(food_name, conf, top5,
-                                  cluster_idx, cluster_name,
-                                  sims, desc, attn_w))
-    return parts[-1] if parts else ""
+def _screen1_html(food_name: str, conf: float, top5: list) -> str:
+    """Screen 1 — dish identification result (matches mockup Screen 1)."""
+    display = food_name.replace("_", " ").title()
+    conf_pct = int(conf * 100)
+    conf_bar_w = int(conf * 110)
+
+    # Top-5 prediction bars
+    pred_rows = ""
+    for fn, fp in top5:
+        bar_w   = int(fp * 200)
+        is_top  = fn == food_name
+        name_fw = "600" if is_top else "400"
+        name_c  = "#1a1917" if is_top else "#5a5855"
+        bar_c   = "#B85C38" if is_top else "#d4cfc9"
+        pred_rows += f"""
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px">
+          <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
+                       width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{fn}</span>
+          <div style="flex:1;height:4px;background:#edecea;border-radius:2px;overflow:hidden">
+            <div style="background:{bar_c};width:{bar_w}px;height:4px;border-radius:2px"></div>
+          </div>
+          <span style="font-size:11px;color:#9a9895;width:34px;text-align:right">{fp*100:.0f}%</span>
+        </div>"""
+
+    return f"""
+    <div id="wd-screen1">
+      <div style="font-size:11px;color:#9a9895;margin-bottom:1rem;line-height:1.7">
+        We think we know what's on your plate. Does this look right?
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:1.5rem">
+        <div style="width:86px;height:86px;border-radius:12px;background:#edecea;
+                    border:0.5px solid rgba(26,25,23,0.10);display:flex;
+                    align-items:center;justify-content:center;font-size:40px;flex-shrink:0">
+          🍽️
+        </div>
+        <div>
+          <div style="font-size:11px;color:#9a9895;margin-bottom:4px">detected dish</div>
+          <div style="font-size:26px;font-weight:600;color:#1a1917;letter-spacing:-0.4px">{display}</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+            <div style="width:110px;height:5px;background:#edecea;border-radius:3px;overflow:hidden">
+              <div style="background:#6BAA75;width:{conf_bar_w}px;height:5px;border-radius:3px"></div>
+            </div>
+            <span style="font-size:12px;font-weight:500;color:#6BAA75">{conf_pct}% confident</span>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#9a9895;text-transform:uppercase;
+                  letter-spacing:0.06em;margin-bottom:8px">top-5 predictions</div>
+      {pred_rows}
+    </div>"""
 
 
-def _wine_card_parts(food_name: str, conf: float, top5,
-                     cluster_idx: int, cluster_name: str,
-                     sims, desc: str, attn_w):
-    """Yield progressively longer HTML — each yield is the full card so far."""
-    food_key = food_name.lower().replace(" ", "_")
-    recs     = RESULTS_ALL.get(food_key, [])
-    display  = food_name.replace("_", " ").title() if "_" in food_name else food_name
+def _screen2_html(display: str, desc: str, attn_w,
+                  cluster_idx: int, cluster_name: str, sims) -> str:
+    """Screen 2 — taste fingerprint (matches mockup Screen 2)."""
 
-    WRAP_OPEN = (
-        '<div style="font-family:\'Segoe UI\',Arial,sans-serif;background:#f6f5f1;'
-        'border-radius:16px;padding:24px 28px;'
-        'box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">'
-    )
-    FOOTER = (
-        '<div style="margin-top:18px;font-size:10px;color:#ccc;text-align:right">'
-        'Wine &amp; Dine · RSU Advanced ML · 2026</div>'
-    )
-
-    # Header (always shown)
-    header = f"""
-  <div style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:2px">
-    🍽️&nbsp; {display}
-    <span style="font-size:12px;font-weight:400;color:#aaa;margin-left:10px">
-      CNN confidence: <strong style="color:#2CA02C">{conf*100:.0f}%</strong>
-    </span>
-  </div>
-  <details style="margin:12px 0 4px">
-    <summary style="cursor:pointer;font-size:11px;color:#bbb;
-                    text-transform:uppercase;letter-spacing:1px">
-      📷 Top-5 CNN predictions
-    </summary>
-    <div style="margin-top:8px">{_top5_bars_html(top5, food_name)}</div>
-  </details>
-  <hr style="margin:18px 0;border:none;border-top:1px solid #e4ddd2">
-"""
-
-    # ── Stage 0: "Computing..." spinner ──────────────────────────────────────
-    spinner = (
-        '<div style="padding:20px;text-align:center;color:#6b3fa0;font-size:14px">'
-        '⏳ Encoding flavor description through BiLSTM…</div>'
-    )
-    yield WRAP_OPEN + header + spinner + FOOTER + '</div>'
-
-    # Attention-highlighted flavor text
-    words    = desc.split()[:MAX_SEQ_LEN]
-    attn_arr = attn_w[:len(words)]
+    # Attention-highlighted words — three opacity levels like mockup
+    words     = desc.split()[:MAX_SEQ_LEN]
+    attn_arr  = attn_w[:len(words)]
     a_min, a_max = attn_arr.min(), attn_arr.max()
     attn_norm = (attn_arr - a_min) / (a_max - a_min + 1e-8)
     word_html = ""
     for w_txt, a in zip(words, attn_norm):
-        alpha = 0.12 + 0.88 * float(a)
+        if a >= 0.75:
+            style = "background:#7A82D0;color:#fff;font-weight:600"
+        elif a >= 0.40:
+            style = "background:rgba(122,130,208,0.32)"
+        elif a >= 0.15:
+            style = "background:rgba(122,130,208,0.15)"
+        else:
+            style = ""
         word_html += (
-            f'<span style="background:rgba(107,63,160,{alpha:.2f});'
-            f'padding:1px 4px;border-radius:3px;margin:1px;font-size:12px">'
-            f'{w_txt}</span> '
+            f'<span style="border-radius:3px;padding:1px 4px;margin:1px;'
+            f'font-size:13px;{style}">{w_txt}</span> '
         )
 
-    step1 = f"""
-  <div style="font-size:10px;color:#bbb;text-transform:uppercase;
-              letter-spacing:1.2px;margin-bottom:6px">
-    🧠 Step 1 — BiLSTM flavor encoding
-  </div>
-  <div style="font-size:12px;color:#888;margin-bottom:6px">
-    Flavor description for <em>{display}</em> tokenised and fed through the trained BiLSTM:
-  </div>
-  <div style="background:#f0ebe0;padding:10px 14px;border-radius:8px;
-              line-height:1.9;margin-bottom:14px">
-    {word_html}
-    <div style="font-size:10px;color:#bbb;margin-top:6px">
-      Word opacity = attention weight (darker = more attended)
+    # Cluster bars — top-5 by cosine sim
+    sorted_k  = np.argsort(sims)[::-1][:5] if len(sims) > 0 else []
+    cluster_rows = ""
+    for k in sorted_k:
+        sim_val = float(sims[k])
+        bar_w   = int(sim_val * 200)
+        is_top  = int(k) == cluster_idx
+        name_fw = "600" if is_top else "400"
+        name_c  = "#1a1917" if is_top else "#5a5855"
+        bar_c   = "#7A82D0" if is_top else "#d4cfc8"
+        cluster_rows += f"""
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="font-size:12px;color:{name_c};font-weight:{name_fw};
+                       width:210px;flex-shrink:0;overflow:hidden;
+                       white-space:nowrap;text-overflow:ellipsis">
+            {CLUSTER_NAMES.get(int(k), str(k))}</span>
+          <div style="flex:1;height:4px;background:#edecea;border-radius:2px;overflow:hidden">
+            <div style="background:{bar_c};width:{bar_w}px;height:4px;border-radius:2px"></div>
+          </div>
+          <span style="font-size:11px;color:#9a9895;width:38px;text-align:right">{sim_val:.3f}</span>
+        </div>"""
+
+    return f"""
+    <div id="wd-screen2">
+      <div style="font-size:13px;color:#5a5855;line-height:1.7;margin-bottom:1rem">
+        Your dish's flavor fingerprint was encoded by our
+        <strong style="color:#1a1917">TasteBiLSTM</strong>
+        to understand how it truly tastes.
+      </div>
+      <div style="display:flex;gap:0;margin-bottom:1rem">
+        <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
+                    background:#f6f5f1;border-radius:8px 0 0 8px;border-right:none">
+          <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
+                      letter-spacing:0.05em;margin-bottom:3px">step 1</div>
+          <div style="font-size:12px;font-weight:600;color:#1a1917">flavor description</div>
+          <div style="font-size:10px;color:#9a9895;margin-top:2px">written by Claude Sonnet</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;
+                    background:#f6f5f1;border-top:0.5px solid rgba(26,25,23,0.10);
+                    border-bottom:0.5px solid rgba(26,25,23,0.10);
+                    color:#9a9895;font-size:14px">→</div>
+        <div style="flex:1;padding:9px 12px;border:0.5px solid rgba(26,25,23,0.10);
+                    background:#f6f5f1;border-radius:0 8px 8px 0">
+          <div style="font-size:9px;color:#9a9895;text-transform:uppercase;
+                      letter-spacing:0.05em;margin-bottom:3px">step 2</div>
+          <div style="font-size:12px;font-weight:600;color:#1a1917">TasteBiLSTM</div>
+          <div style="font-size:10px;color:#9a9895;margin-top:2px">encodes it into a taste vector</div>
+        </div>
+      </div>
+      <div style="background:#f6f5f1;border-radius:8px;padding:12px 14px;
+                  font-size:13px;line-height:2.2;border:0.5px solid rgba(26,25,23,0.10);
+                  margin-bottom:5px">
+        {word_html}
+      </div>
+      <div style="font-size:10px;color:#9a9895;margin-bottom:1.25rem">
+        highlighted words = what the model pays most attention to
+      </div>
+      <div style="font-size:10px;color:#9a9895;text-transform:uppercase;
+                  letter-spacing:0.06em;margin-bottom:8px">
+        how close is your {display.lower()} to each flavor world?
+      </div>
+      {cluster_rows}
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;
+                  background:#f6f5f1;border-radius:8px;border-left:3px solid #7A82D0;
+                  margin-top:4px">
+        <span style="font-size:11px;color:#9a9895">taste fingerprint</span>
+        <span style="font-size:14px;font-weight:600;color:#5558A8">{cluster_name}</span>
+      </div>
+    </div>"""
+
+
+_TIER_INFO = {
+    "SAFE BET":   "nearest cluster centroid by cosine similarity to dominant flavor description",
+    "HIDDEN GEM": "nearest centroid to the \u2018surprising pairing\u2019 flavor description",
+    "BOLD MOVE":  "score = distance \u00d7 (1 + secondary affinity) \u00b7 maximises contrast while keeping the wine drinkable",
+}
+_WINE_INFO = "highest cosine similarity between food taste vector and wine taste vectors within this cluster\u2019s 10-wine pool"
+
+
+def _info_btn(panel_id: str, color: str) -> str:
+    return (
+        f'<button onclick="var p=document.getElementById(\'{panel_id}\'),'
+        f'open=p.style.display===\'block\';'
+        f'p.style.display=open?\'none\':\'block\'" '
+        f'style="width:16px;height:16px;border-radius:50%;border:1px solid {color};'
+        f'background:transparent;color:{color};font-size:9px;cursor:pointer;'
+        f'display:inline-flex;align-items:center;justify-content:center;'
+        f'flex-shrink:0;line-height:1;padding:0">i</button>'
+    )
+
+
+def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str:
+    """Screen 3 — 3-column wine card grid with info buttons (matches mockup Screen 3)."""
+
+    intro = (
+        f'<div style="font-size:13px;color:#5a5855;margin-bottom:1rem;line-height:1.6">'
+        f'Your {display.lower()}\u2019s fingerprint is '
+        f'<strong style="color:#5558A8">{cluster_name}</strong>. '
+        f'We found wines that match it \u2014 each from a different angle.</div>'
+    )
+
+    cards_html = ""
+    for rec in recs[:3]:
+        tier     = rec.get("tier", "")
+        name     = rec.get("name", "")
+        wine     = rec.get("wine", "\u2014")
+        rating   = rec.get("rating", "\u2014")
+        snippet  = _clip(rec.get("snippet", ""), 120)
+        kws      = rec.get("keywords", [])
+        conf     = float(rec.get("confidence", 0.0))
+
+        color    = _TIER_COLOR.get(tier, "#555")
+        strip_bg = _TIER_STRIP_BG.get(tier, "#f5f5f5")
+        icon     = _TIER_ICON.get(tier, "")
+        conf_lbl = _TIER_CONF_LABEL.get(tier, "match")
+        tag_bg   = _TIER_TAG_BG.get(tier, "#eee")
+        tier_lbl = tier.lower()
+        adj      = _cluster_adj(name)
+
+        # unique IDs for info panels (avoid collisions if card re-rendered)
+        uid       = tier.lower().replace(" ", "-")
+        tier_pid  = f"wd-info-{uid}"
+        wine_pid  = f"wd-wine-{uid}"
+
+        conf_pct  = int(conf * 100)
+        conf_bar_w = int(conf * 110)
+
+        reasoning = (
+            f"Your {display.lower()} is {feel} \u2014 "
+            + ("this wine matches that energy exactly." if tier == "SAFE BET"
+               else "this wine finds an angle most pairings overlook." if tier == "HIDDEN GEM"
+               else "this wine goes against it entirely. Sometimes contrast is the pairing.")
+        )
+
+        tags_html = ""
+        for i, kw in enumerate(kws[:3]):
+            if i > 0:
+                tags_html += '<span style="font-size:10px;color:#aaa">\u00b7</span>'
+            tags_html += (
+                f'<span style="font-size:10px;font-weight:500;padding:2px 7px;'
+                f'border-radius:20px;background:{tag_bg};color:{color}">{kw}</span>'
+            )
+
+        cards_html += f"""
+        <div style="border-radius:12px;overflow:hidden;background:#fff;
+                    border:0.5px solid rgba(0,0,0,0.08);
+                    box-shadow:0 1px 4px rgba(0,0,0,0.05)">
+          <div style="background:{strip_bg};padding:9px 11px;
+                      display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;
+                        color:{color}">{icon} {tier_lbl}</div>
+            <div style="display:flex;align-items:flex-start;gap:5px">
+              <div>
+                <div style="font-size:19px;font-weight:600;color:{color};line-height:1">{conf_pct}%</div>
+                <div style="font-size:9px;color:#aaa">{conf_lbl}</div>
+              </div>
+              {_info_btn(tier_pid, color)}
+            </div>
+          </div>
+          <div id="{tier_pid}" style="display:none;padding:7px 11px;font-size:10.5px;
+                                      line-height:1.55;background:{strip_bg};color:{color};
+                                      font-family:monospace">{_TIER_INFO.get(tier,"")}</div>
+          <div style="padding:10px 11px;display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;color:#5a5855;font-style:italic;line-height:1.55">
+              {reasoning}
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+              <span style="font-size:10px;color:#9a9895">plays on</span>
+              {tags_html}
+            </div>
+            <div style="height:0.5px;background:rgba(0,0,0,0.07)"></div>
+            <div style="display:flex;align-items:flex-start;gap:5px">
+              <div style="font-size:12px;font-weight:600;color:#1a1917;
+                          line-height:1.35;flex:1">{wine}</div>
+              {_info_btn(wine_pid, "#9a9895")}
+            </div>
+            <div id="{wine_pid}" style="display:none;font-size:10px;color:#9a9895;
+                                        font-family:monospace;line-height:1.5">{_WINE_INFO}</div>
+            <div style="display:flex;align-items:center;gap:4px">
+              <span style="color:#E6A817;font-size:11px">\u2605</span>
+              <span style="font-size:11px;font-weight:500;color:#1a1917">{rating}</span>
+              <span style="font-size:10px;color:#9a9895">/ 100</span>
+            </div>
+            <div style="font-size:10.5px;color:#5a5855;font-style:italic;line-height:1.5;
+                        border-left:2px solid rgba(0,0,0,0.08);padding-left:7px">
+              \u201c{snippet}\u201d
+            </div>
+          </div>
+        </div>"""
+
+    return f"""
+    <div id="wd-screen3">
+      {intro}
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+        {cards_html}
+      </div>
+    </div>"""
+
+
+def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
+    """
+    Full 3-screen shell with progress dots and nav buttons.
+    cur = 0/1/2 — which screen is currently active.
+    s2/s3 may be empty strings (not yet computed).
+    """
+    unlocked = int(bool(s1)) + int(bool(s2)) + int(bool(s3)) - 1  # highest unlocked index
+
+    screens_html = ""
+    for idx, content in enumerate([s1, s2, s3]):
+        display = "block" if idx == cur else "none"
+        screens_html += (
+            f'<div id="wd-s{idx}" style="display:{display}">'
+            f'{content}</div>'
+        )
+
+    # Progress dots
+    prog_labels = [
+        ("📷", "we identify<br>your dish"),
+        ("🫧", "we find its<br>taste fingerprint"),
+        ("🍷", "we match it<br>to a wine"),
+    ]
+    dots_html = ""
+    for i, (icon, label) in enumerate(prog_labels):
+        if i < cur:
+            dot_bg, dot_c, dot_border = "#f6f5f1", "#5a5855", "rgba(26,25,23,0.20)"
+            lbl_c = "#5a5855"
+        elif i == cur:
+            dot_bg, dot_c, dot_border = "#B85C38", "#fff", "#B85C38"
+            lbl_c = "#B85C38"
+        else:
+            dot_bg, dot_c, dot_border = "#fff", "#9a9895", "rgba(26,25,23,0.10)"
+            lbl_c = "#9a9895"
+
+        connector = (
+            '<div style="flex:1;height:1px;background:rgba(26,25,23,0.10);'
+            'margin-top:-20px;z-index:0"></div>'
+            if i < 2 else ""
+        )
+        dots_html += f"""
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;z-index:1">
+          <div onclick="wdGoTo({i})"
+               style="width:28px;height:28px;border-radius:50%;display:flex;
+                      align-items:center;justify-content:center;font-size:12px;
+                      background:{dot_bg};border:1.5px solid {dot_border};
+                      color:{dot_c};cursor:pointer;z-index:1">{icon}</div>
+          <div style="font-size:10px;color:{lbl_c};text-align:center;
+                      font-weight:500;line-height:1.35">{label}</div>
+        </div>
+        {connector}"""
+
+    # Nav buttons
+    prev_dis = "opacity:0.28;pointer-events:none" if cur == 0 else ""
+    next_dis = "opacity:0.28;pointer-events:none" if cur >= unlocked else ""
+    next_lbl = "done ✓" if cur == 2 else "next →"
+
+    return f"""
+<div style="font-family:'Segoe UI',Arial,sans-serif;background:#f6f5f1;
+            border-radius:16px;padding:24px 28px;max-width:720px;margin:0 auto;
+            box-shadow:0 1px 3px rgba(0,0,0,0.06);border:0.5px solid rgba(26,25,23,0.10)">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;
+              padding-bottom:1.25rem;border-bottom:0.5px solid rgba(26,25,23,0.10);
+              margin-bottom:1.75rem">
+    <div style="font-size:19px;font-weight:600;color:#1a1917;letter-spacing:-0.3px">
+      Wine<span style="color:#B85C38"> &amp; </span>Dine
+    </div>
+    <div style="font-size:11px;color:#9a9895;font-style:italic">
+      photo &rarr; fingerprint &rarr; pairing
     </div>
   </div>
-"""
 
-    # ── Stage 1: show attention map, spinner for clusters ────────────────────
-    spinner2 = (
-        '<div style="padding:16px;text-align:center;color:#6b3fa0;font-size:14px">'
-        '⏳ Computing cosine similarity to 9 flavor clusters…</div>'
-    )
-    yield WRAP_OPEN + header + step1 + spinner2 + FOOTER + '</div>'
-
-    # Cluster similarity bars (top-5)
-    sorted_k = np.argsort(sims)[::-1][:5] if len(sims) > 0 else []
-    sim_bars = ""
-    for k in sorted_k:
-        w   = int(float(sims[k]) * 230)
-        col = "#6b3fa0" if int(k) == cluster_idx else "#d4cfc8"
-        fw  = "700" if int(k) == cluster_idx else "400"
-        sim_bars += (
-            f'<div style="display:flex;align-items:center;margin:2px 0;font-size:11px">'
-            f'<span style="width:190px;overflow:hidden;white-space:nowrap;'
-            f'color:#555;font-weight:{fw}">'
-            f'{CLUSTER_NAMES.get(int(k), str(k))}</span>'
-            f'<div style="background:{col};width:{w}px;height:10px;'
-            f'border-radius:2px;margin:0 6px"></div>'
-            f'<span style="color:#999;font-weight:{fw}">{float(sims[k]):.3f}</span>'
-            f'</div>'
-        )
-
-    step2 = f"""
-  <div style="font-size:10px;color:#bbb;text-transform:uppercase;
-              letter-spacing:1.2px;margin-bottom:6px">
-    🎯 Step 2 — Cosine similarity to 9 flavor clusters
+  <div style="display:flex;align-items:flex-start;margin-bottom:1.75rem;gap:0">
+    {dots_html}
   </div>
-  {sim_bars}
-  <div style="margin-top:10px;margin-bottom:4px;font-size:13px;
-              font-weight:700;color:#6b3fa0">
-    → Primary flavor cluster: <strong>{cluster_name}</strong>
+
+  {screens_html}
+
+  <div style="display:flex;justify-content:space-between;align-items:center;
+              margin-top:1.5rem;padding-top:1rem;
+              border-top:0.5px solid rgba(26,25,23,0.10)">
+    <button onclick="wdGoTo({cur-1})"
+            style="padding:8px 16px;border-radius:8px;border:0.5px solid rgba(26,25,23,0.20);
+                   background:transparent;font-size:13px;color:#5a5855;cursor:pointer;{prev_dis}">
+      &larr; back
+    </button>
+    <span style="font-size:11px;color:#9a9895">{cur+1} of 3</span>
+    <button onclick="wdGoTo({cur+1})"
+            style="padding:8px 16px;border-radius:8px;border:0.5px solid #B85C38;
+                   background:#B85C38;font-size:13px;color:#fff;cursor:pointer;{next_dis}">
+      {next_lbl}
+    </button>
   </div>
-  <hr style="margin:18px 0;border:none;border-top:1px solid #e4ddd2">
-"""
 
-    # ── Stage 2: show clusters, spinner for wines ────────────────────────────
-    spinner3 = (
-        '<div style="padding:16px;text-align:center;color:#6b3fa0;font-size:14px">'
-        '⏳ Selecting wine pairings from cluster pools…</div>'
-    )
-    yield WRAP_OPEN + header + step1 + step2 + spinner3 + FOOTER + '</div>'
+  <div style="margin-top:14px;font-size:10px;color:#ccc;text-align:right">
+    Wine &amp; Dine &middot; RSU Advanced ML &middot; 2026
+  </div>
+</div>
 
-    # Derive food feel from Safe Bet cluster
+<script>
+(function() {{
+  var unlocked = {unlocked};
+  function wdGoTo(n) {{
+    if (n < 0 || n > unlocked) return;
+    for (var i = 0; i < 3; i++) {{
+      var s = document.getElementById('wd-s' + i);
+      if (s) s.style.display = (i === n) ? 'block' : 'none';
+    }}
+  }}
+  window.wdGoTo = wdGoTo;
+}})();
+</script>"""
+
+
+_LOADING_SPINNER = (
+    '<div style="padding:32px;text-align:center;color:#9a9895;font-size:13px">'
+    '⏳ Computing…</div>'
+)
+
+
+def _wine_card_parts(food_name: str, conf: float, top5: list,
+                     cluster_idx: int, cluster_name: str,
+                     sims, desc: str, attn_w):
+    """
+    Generator — yields the full shell HTML, progressively revealing screens.
+
+    Yield 0: screen1 shown, screen2 loading spinner, cur=1  (BiLSTM running)
+    Yield 1: screen2 complete, screen3 loading spinner, cur=1 (wines loading)
+    Yield 2: screen3 complete, cur=2  (all done — user auto-lands on screen 3)
+    """
+    food_key = food_name.lower().replace(" ", "_")
+    display  = food_name.replace("_", " ").title() if "_" in food_name else food_name
+
+    s1 = _screen1_html(food_name, conf, top5)
+
+    # ── Yield 0: screen2 is loading ─────────────────────────────────────────
+    yield _shell_html(s1, _LOADING_SPINNER, "", 1)
+
+    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims)
+
+    # ── Yield 1: screen2 done, screen3 loading ───────────────────────────────
+    yield _shell_html(s1, s2, _LOADING_SPINNER, 1)
+
+    recs = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel = _food_feel(safe_cluster)
+    s3 = _screen3_html(display, cluster_name, recs, feel)
 
-    # Build tier cards (notebook style)
-    tier_cards_html = ""
-    if recs:
-        for rec in recs[:3]:
-            rec_conf = float(rec.get("confidence", 0.0))
-            tier_cards_html += _tier_card_html(rec, display, feel, rec_conf)
-    else:
-        tier_cards_html = ('<div style="padding:20px;color:#bbb;text-align:center">'
-                           'No pairing data available for this food.</div>')
+    # ── Yield 2: all done, advance to screen3 ───────────────────────────────
+    yield _shell_html(s1, s2, s3, 2)
 
-    step3 = f"""
-  <div style="font-size:10px;color:#aaa;text-transform:uppercase;
-              letter-spacing:1.2px;margin-bottom:8px">
-    🍷 Step 3 — Wine Pairings
-  </div>
-  <div style="font-size:13px;color:#5a5855;margin-bottom:12px;line-height:1.6">
-    Your <strong>{display}</strong>'s fingerprint is
-    <strong style="color:#5558A8">{cluster_name}</strong>.
-    We found wines that match it — each from a different angle.
-  </div>
-  {tier_cards_html}
-"""
-
-    # ── Stage 3: complete card ───────────────────────────────────────────────
-    yield WRAP_OPEN + header + step1 + step2 + step3 + FOOTER + '</div>'
 
 
 # ── App state ─────────────────────────────────────────────────────────────────
@@ -571,80 +839,80 @@ _state: dict = {"food": "", "conf": 0.0, "top5": []}
 
 # ── Event handlers ─────────────────────────────────────────────────────────────
 def on_identify(pil_img):
+    """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return (
-            "*Upload a food photo and click **Identify Food** to begin.*",
-            gr.update(visible=False),
-            gr.update(visible=False),
-            "",
-        )
+        return "", gr.update(visible=False)
+
     food_name, conf, top5 = identify_food(pil_img)
     _state.update(food=food_name, conf=conf, top5=top5)
-    runner_up = (
-        f"{top5[1][0]}  ({top5[1][1]*100:.0f}%)" if len(top5) > 1 else "—"
-    )
-    msg = (
-        f"## 🔍 I think this is…\n\n"
-        f"# {food_name}\n\n"
-        f"I'm **{conf*100:.0f}% confident** in that.\n\n"
-        f"*(Runner-up: {runner_up})*\n\n"
-        f"---\n**Is that right?**"
-    )
-    return msg, gr.update(visible=True), gr.update(visible=False), ""
+
+    s1   = _screen1_html(food_name, conf, top5)
+    html = _shell_html(s1, "", "", 0)
+    return html, gr.update(visible=True)
+
 
 def on_yes():
+    """BiLSTM pass — streams screens 2 then 3 into the shell."""
     food_name = _state.get("food", "")
     food_key  = food_name.lower().replace(" ", "_")
     cluster, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
+
+    # hide confirm buttons immediately
+    yield gr.update(visible=False), gr.update()
+
     for html in _wine_card_parts(food_name, _state["conf"], _state["top5"],
                                  cluster, cluster_name, sims, desc, attn_w):
-        time.sleep(0.6)
-        yield gr.update(visible=True), html
+        time.sleep(0.5)
+        yield gr.update(visible=False), html
+
 
 def on_no():
-    return (
-        "*Upload a different photo and click **Identify Food** to try again.*",
-        gr.update(visible=False),
-        gr.update(visible=False),
-        "",
-    )
+    """Reset to blank state."""
+    _state.update(food="", conf=0.0, top5=[])
+    return "", gr.update(visible=False)
+
 
 # ── Gradio UI ─────────────────────────────────────────────────────────────────
 with gr.Blocks(
-    theme=gr.themes.Soft(primary_hue="purple", secondary_hue="orange"),
+    theme=gr.themes.Soft(primary_hue="orange", secondary_hue="orange"),
     title="Wine & Dine 🍷",
+    css=".gradio-container{max-width:760px !important;margin:auto}",
 ) as demo:
 
     gr.Markdown(
-        "# 🍽️ Wine & Dine\n"
-        "**Upload a food photo — we identify it and find your perfect wine pairing.**"
+        "Upload a food photo — we identify it, read its flavor fingerprint,"
+        " and find your perfect wine pairing."
     )
 
     with gr.Row():
-        with gr.Column(scale=1, min_width=300):
-            img_input    = gr.Image(type="pil", label="📷 Food photo", height=340)
-            identify_btn = gr.Button("🔍 Identify Food", variant="primary", size="lg")
+        img_input    = gr.Image(type="pil", label="📷 Food photo", height=280)
+        identify_btn = gr.Button("🔍 Identify", variant="primary", size="lg",
+                                 scale=0, min_width=120)
 
-        with gr.Column(scale=1, min_width=340):
-            prediction_md = gr.Markdown(
-                "*Upload a photo and click **Identify Food** to begin.*"
-            )
-            with gr.Row(visible=False) as confirm_row:
-                yes_btn = gr.Button("✅  Yes — show me wine pairings!", variant="primary")
-                no_btn  = gr.Button("❌  No, try another photo",        variant="secondary")
+    wine_card = gr.HTML()
 
-    with gr.Column(visible=False) as card_group:
-        gr.Markdown("---\n## 🍷 Your Wine Pairings")
-        wine_card = gr.HTML()
+    with gr.Row(visible=False) as confirm_row:
+        yes_btn = gr.Button("✅  yes, that's my dish — show pairings!",
+                            variant="primary")
+        no_btn  = gr.Button("↩  not quite, try again",
+                            variant="secondary")
 
     # wiring
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[prediction_md, confirm_row, card_group, wine_card],
+        outputs=[wine_card, confirm_row],
     )
-    yes_btn.click(on_yes,  inputs=None, outputs=[card_group, wine_card])
-    no_btn.click( on_no,   inputs=None, outputs=[prediction_md, confirm_row, card_group, wine_card])
+    yes_btn.click(
+        on_yes,
+        inputs=None,
+        outputs=[confirm_row, wine_card],
+    )
+    no_btn.click(
+        on_no,
+        inputs=None,
+        outputs=[wine_card, confirm_row],
+    )
 
 if __name__ == "__main__":
     demo.launch()

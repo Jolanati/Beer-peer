@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wine & Dine — UI Mockup</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    /* ── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --color-background-primary:   #ffffff;
+      --color-background-secondary: #f6f5f1;
+      --color-background-tertiary:  #edecea;
+      --color-text-primary:         #1a1917;
+      --color-text-secondary:       #5a5855;
+      --color-text-tertiary:        #9a9895;
+      --color-border-tertiary:      rgba(26,25,23,0.10);
+      --color-border-secondary:     rgba(26,25,23,0.20);
+      --color-border-primary:       rgba(26,25,23,0.32);
+      --font-sans:  'Georgia', 'Times New Roman', system-ui, sans-serif;
+      --font-mono:  'Menlo', 'Monaco', 'Courier New', monospace;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary:   #1c1b19;
+        --color-background-secondary: #252420;
+        --color-background-tertiary:  #2e2d29;
+        --color-text-primary:         #f0ede8;
+        --color-text-secondary:       #a8a49e;
+        --color-text-tertiary:        #6a6762;
+        --color-border-tertiary:      rgba(240,237,232,0.10);
+        --color-border-secondary:     rgba(240,237,232,0.18);
+        --color-border-primary:       rgba(240,237,232,0.28);
+      }
+    }
+
+    /* ── Reset & base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-background-tertiary);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── App shell ─────────────────────────────────────────────── */
+    .app {
+      width: 100%;
+      max-width: 680px;
+      background: var(--color-background-primary);
+      border-radius: 16px;
+      border: 0.5px solid var(--color-border-tertiary);
+      padding: 2rem 2rem 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    /* ── Header ────────────────────────────────────────────────── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1.25rem;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      margin-bottom: 1.75rem;
+    }
+    .wordmark { font-size: 19px; font-weight: 600; color: var(--color-text-primary); letter-spacing: -0.3px; }
+    .wordmark span { color: #B85C38; }
+    .tagline { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; }
+
+    /* ── Progress ──────────────────────────────────────────────── */
+    .progress { display: flex; margin-bottom: 1.75rem; }
+    .prog-step {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      gap: 5px; position: relative; cursor: pointer;
+    }
+    .prog-step:not(:last-child)::after {
+      content: ''; position: absolute; top: 14px; left: 55%;
+      width: 90%; height: 1px; background: var(--color-border-tertiary); z-index: 0;
+    }
+    .prog-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; z-index: 1;
+      border: 1.5px solid var(--color-border-tertiary);
+      background: var(--color-background-primary);
+      color: var(--color-text-tertiary);
+      transition: all 0.2s;
+    }
+    .prog-dot.done  { background: var(--color-background-secondary); border-color: var(--color-border-secondary); color: var(--color-text-secondary); }
+    .prog-dot.active { background: #B85C38; border-color: #B85C38; color: #fff; }
+    .prog-name {
+      font-size: 10px; color: var(--color-text-tertiary);
+      text-align: center; font-weight: 500; line-height: 1.35; transition: color 0.2s;
+    }
+    .prog-name.active { color: #B85C38; }
+    .prog-name.done   { color: var(--color-text-secondary); }
+
+    /* ── Screens ───────────────────────────────────────────────── */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .screen-title-row {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 12px; margin-bottom: 1rem;
+    }
+    .screen-intro {
+      font-size: 13px; color: var(--color-text-secondary);
+      line-height: 1.7; flex: 1;
+    }
+    .screen-intro strong { color: var(--color-text-primary); font-weight: 600; }
+    .screen-intro em { font-style: italic; color: var(--color-text-primary); }
+
+    /* ── Info button ───────────────────────────────────────────── */
+    .info-btn {
+      border-radius: 50%; border: 1px solid var(--color-border-secondary);
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--color-text-tertiary);
+      background: transparent; font-family: var(--font-sans);
+      transition: all 0.15s; line-height: 1;
+    }
+    .info-btn.sm  { width: 16px; height: 16px; font-size: 9px; }
+    .info-btn.md  { width: 20px; height: 20px; font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+    .info-btn:hover { color: var(--color-text-secondary); background: var(--color-background-secondary); }
+    .info-btn.c-safe { color: #2E7D52; border-color: #4CAF7A; }
+    .info-btn.c-gem  { color: #3C3489; border-color: #7A82D0; }
+    .info-btn.c-bold { color: #993C1D; border-color: #C86A3A; }
+
+    /* ── Info panels ───────────────────────────────────────────── */
+    .info-panel {
+      display: none; padding: 9px 12px; border-radius: var(--border-radius-md);
+      font-size: 11px; line-height: 1.6; color: var(--color-text-secondary);
+      font-family: var(--font-mono); margin-bottom: 1rem;
+      background: var(--color-background-secondary);
+      border: 0.5px solid var(--color-border-tertiary);
+    }
+    .info-panel.open { display: block; }
+    .ip-safe { background: #EAF3DE; color: #2E7D52; border-color: #C0DD97; }
+    .ip-gem  { background: #EEEDFE; color: #3C3489; border-color: #AFA9EC; }
+    .ip-bold { background: #FAECE7; color: #993C1D; border-color: #F0997B; }
+
+    /* ── Screen 1 ──────────────────────────────────────────────── */
+    .dish-area { display: flex; gap: 16px; align-items: center; margin-bottom: 1.5rem; }
+    .dish-photo {
+      width: 86px; height: 86px; border-radius: var(--border-radius-lg);
+      background: var(--color-background-secondary);
+      border: 0.5px solid var(--color-border-tertiary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 38px; flex-shrink: 0;
+    }
+    .dish-name-big { font-size: 26px; font-weight: 600; color: var(--color-text-primary); letter-spacing: -0.4px; }
+    .conf-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+    .conf-bar-bg { width: 110px; height: 5px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; }
+    .conf-bar-fill { height: 100%; background: #6BAA75; border-radius: 3px; }
+    .conf-label { font-size: 12px; font-weight: 500; color: #6BAA75; }
+    .top5-label { font-size: 10px; color: var(--color-text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .pred-row { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+    .pred-name { font-size: 12px; color: var(--color-text-secondary); width: 120px; flex-shrink: 0; }
+    .pred-name.top { color: var(--color-text-primary); font-weight: 500; }
+    .pred-bar-bg { flex: 1; height: 4px; background: var(--color-background-secondary); border-radius: 2px; overflow: hidden; }
+    .pred-fill { height: 100%; border-radius: 2px; background: var(--color-border-secondary); }
+    .pred-fill.top { background: #B85C38; }
+    .pred-pct { font-size: 11px; color: var(--color-text-tertiary); width: 34px; text-align: right; }
+
+    .confirm-btn {
+      width: 100%; margin-top: 1.5rem; padding: 12px;
+      border-radius: var(--border-radius-md);
+      background: #B85C38; color: #fff; border: none;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      font-family: var(--font-sans); transition: opacity 0.15s;
+    }
+    .confirm-btn:hover { opacity: 0.88; }
+    .not-btn {
+      display: block; text-align: center; margin-top: 8px;
+      font-size: 12px; color: var(--color-text-tertiary);
+      cursor: pointer; font-family: var(--font-sans);
+    }
+    .not-btn:hover { color: var(--color-text-secondary); }
+
+    .correction-box {
+      display: none; margin-top: 1rem; padding: 14px;
+      background: var(--color-background-secondary);
+      border-radius: var(--border-radius-lg);
+      border: 0.5px solid var(--color-border-secondary);
+    }
+    .correction-box.open { display: block; }
+    .correction-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px; }
+    .correction-row { display: flex; gap: 8px; }
+    .correction-input {
+      flex: 1; padding: 8px 12px; border-radius: var(--border-radius-md);
+      border: 0.5px solid var(--color-border-secondary);
+      background: var(--color-background-primary);
+      font-size: 13px; color: var(--color-text-primary);
+      font-family: var(--font-sans); outline: none;
+    }
+    .correction-input:focus { border-color: #B85C38; }
+    .correction-submit {
+      padding: 8px 14px; border-radius: var(--border-radius-md);
+      background: #B85C38; color: #fff; border: none;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      font-family: var(--font-sans); white-space: nowrap;
+    }
+
+    /* ── Screen 2 ──────────────────────────────────────────────── */
+    .two-step { display: flex; gap: 0; margin-bottom: 1rem; }
+    .step-pill {
+      flex: 1; padding: 9px 12px; font-size: 11px; line-height: 1.5;
+      border: 0.5px solid var(--color-border-tertiary);
+      background: var(--color-background-secondary);
+      color: var(--color-text-secondary);
+    }
+    .step-pill:first-child { border-radius: var(--border-radius-md) 0 0 var(--border-radius-md); border-right: none; }
+    .step-pill:last-child  { border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; }
+    .step-pill-num { font-size: 9px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+    .step-pill-name { font-weight: 600; color: var(--color-text-primary); font-size: 12px; }
+    .step-pill-sub { font-size: 10px; color: var(--color-text-tertiary); margin-top: 2px; }
+    .step-arrow {
+      display: flex; align-items: center; padding: 0 6px;
+      color: var(--color-text-tertiary); font-size: 14px;
+      background: var(--color-background-secondary);
+      border-top: 0.5px solid var(--color-border-tertiary);
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+    }
+
+    .attn-box {
+      background: var(--color-background-secondary);
+      border-radius: var(--border-radius-md);
+      padding: 12px 14px; font-size: 13px; line-height: 2.2;
+      border: 0.5px solid var(--color-border-tertiary); margin-bottom: 5px;
+    }
+    .w { display: inline; border-radius: 3px; padding: 1px 3px; margin: 0 1px; }
+    .w-hi3 { background: #7A82D0; color: #fff; font-weight: 600; }
+    .w-hi2 { background: rgba(122,130,208,0.32); }
+    .w-hi1 { background: rgba(122,130,208,0.15); }
+    .attn-hint { font-size: 10px; color: var(--color-text-tertiary); margin-bottom: 1.25rem; }
+    .sub-label { font-size: 10px; color: var(--color-text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+
+    .cluster-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .crow { display: flex; align-items: center; gap: 10px; }
+    .cname { font-size: 12px; color: var(--color-text-secondary); width: 210px; flex-shrink: 0; }
+    .cname.top { color: var(--color-text-primary); font-weight: 500; }
+    .cbar-bg { flex: 1; height: 4px; background: var(--color-background-secondary); border-radius: 2px; overflow: hidden; }
+    .cbar-fill { height: 100%; border-radius: 2px; background: var(--color-border-secondary); }
+    .cbar-fill.top { background: #7A82D0; }
+    .cscore { font-size: 11px; color: var(--color-text-tertiary); width: 34px; text-align: right; }
+
+    .fingerprint-pill {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; background: var(--color-background-secondary);
+      border-radius: var(--border-radius-md); border-left: 3px solid #7A82D0;
+    }
+    .fp-label { font-size: 11px; color: var(--color-text-tertiary); }
+    .fp-value { font-size: 14px; font-weight: 600; color: #5558A8; }
+
+    /* ── Screen 3 ──────────────────────────────────────────────── */
+    .s3-intro { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+    .s3-intro strong { color: #5558A8; font-weight: 600; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+    .wine-card { border-radius: var(--border-radius-lg); overflow: hidden; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); }
+    .card-strip { padding: 9px 11px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .strip-safe { background: #EAF3DE; }
+    .strip-gem  { background: #EEEDFE; }
+    .strip-bold { background: #FAECE7; }
+    .intent { font-size: 10px; font-weight: 600; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; }
+    .intent i { font-size: 11px; }
+    .int-safe { color: #2E7D52; }
+    .int-gem  { color: #3C3489; }
+    .int-bold { color: #993C1D; }
+    .strip-right { display: flex; align-items: flex-start; gap: 5px; }
+    .match-num { font-size: 19px; font-weight: 600; line-height: 1; }
+    .mn-safe { color: #2E7D52; }
+    .mn-gem  { color: #3C3489; }
+    .mn-bold { color: #993C1D; }
+    .match-lbl { font-size: 9px; color: var(--color-text-tertiary); }
+
+    .card-info-panel { display: none; padding: 7px 11px; font-size: 10.5px; line-height: 1.55; font-family: var(--font-mono); }
+    .card-info-panel.open { display: block; }
+    .cip-safe { background: #EAF3DE; color: #2E7D52; }
+    .cip-gem  { background: #EEEDFE; color: #3C3489; }
+    .cip-bold { background: #FAECE7; color: #993C1D; }
+
+    .card-body { padding: 10px 11px; display: flex; flex-direction: column; gap: 8px; }
+    .reasoning { font-size: 11px; color: var(--color-text-secondary); font-style: italic; line-height: 1.55; }
+
+    .plays-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .plays-label { font-size: 10px; color: var(--color-text-tertiary); }
+    .taste-tag { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; }
+    .tt-safe { background: #EAF3DE; color: #2E7D52; }
+    .tt-gem  { background: #EEEDFE; color: #3C3489; }
+    .tt-bold { background: #FAECE7; color: #993C1D; }
+    .tag-dot { font-size: 10px; color: var(--color-text-tertiary); }
+
+    .divider { height: 0.5px; background: var(--color-border-tertiary); }
+    .wine-name-row { display: flex; align-items: flex-start; gap: 5px; }
+    .wine-name { font-size: 12px; font-weight: 600; color: var(--color-text-primary); line-height: 1.35; flex: 1; }
+    .wine-name-info { display: none; margin-top: 4px; font-size: 10.5px; color: var(--color-text-tertiary); font-family: var(--font-mono); line-height: 1.5; }
+    .wine-name-info.open { display: block; }
+    .wine-meta { font-size: 11px; color: var(--color-text-tertiary); }
+    .score-row { display: flex; align-items: center; gap: 4px; }
+    .star { color: #E6A817; font-size: 11px; }
+    .score-v { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+    .score-c { font-size: 10px; color: var(--color-text-tertiary); }
+    .review { font-size: 10.5px; color: var(--color-text-secondary); font-style: italic; line-height: 1.5; border-left: 2px solid var(--color-border-tertiary); padding-left: 7px; }
+
+    /* ── Nav ───────────────────────────────────────────────────── */
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; padding-top: 1rem;
+      border-top: 0.5px solid var(--color-border-tertiary);
+    }
+    .nav-btn {
+      padding: 8px 16px; border-radius: var(--border-radius-md);
+      border: 0.5px solid var(--color-border-secondary);
+      background: transparent; font-size: 13px;
+      color: var(--color-text-secondary); cursor: pointer;
+      font-family: var(--font-sans); transition: background 0.15s;
+    }
+    .nav-btn:hover { background: var(--color-background-secondary); }
+    .nav-btn.primary { background: #B85C38; color: #fff; border-color: #B85C38; }
+    .nav-btn.primary:hover { opacity: 0.88; }
+    .nav-btn:disabled { opacity: 0.28; cursor: default; pointer-events: none; }
+    .nav-counter { font-size: 11px; color: var(--color-text-tertiary); }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="wordmark">Wine<span> & </span>Dine</div>
+    <div class="tagline">photo → fingerprint → pairing</div>
+  </div>
+
+  <div class="progress">
+    <div class="prog-step" onclick="goTo(0)">
+      <div class="prog-dot active" id="pd0"><i class="ti ti-camera"></i></div>
+      <div class="prog-name active" id="pn0">we identify<br>your dish</div>
+    </div>
+    <div class="prog-step" onclick="goTo(1)">
+      <div class="prog-dot" id="pd1"><i class="ti ti-fingerprint"></i></div>
+      <div class="prog-name" id="pn1">we find its<br>taste fingerprint</div>
+    </div>
+    <div class="prog-step" onclick="goTo(2)">
+      <div class="prog-dot" id="pd2"><i class="ti ti-wine"></i></div>
+      <div class="prog-name" id="pn2">we match it<br>to a wine</div>
+    </div>
+  </div>
+
+  <!-- ── Screen 1 ── -->
+  <div class="screen active" id="screen0">
+    <div class="screen-title-row">
+      <div class="screen-intro">We think we know what's on your plate. Does this look right?</div>
+      <button class="info-btn md" onclick="toggleInfo('info-s1')">ⓘ</button>
+    </div>
+    <div class="info-panel" id="info-s1">ResNet-50 · two-phase fine-tuning on Food-101 · 101k images · 101 classes · 76.5% top-1 test accuracy</div>
+
+    <div class="dish-area">
+      <div class="dish-photo">🍕</div>
+      <div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px">detected dish</div>
+        <div class="dish-name-big" id="dish-display">Pizza</div>
+        <div class="conf-row">
+          <div class="conf-bar-bg"><div class="conf-bar-fill" style="width:99%"></div></div>
+          <div class="conf-label">99% confident</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top5-label">top-5 predictions</div>
+    <div class="pred-row"><div class="pred-name top">pizza</div><div class="pred-bar-bg"><div class="pred-fill top" style="width:99%"></div></div><div class="pred-pct">99%</div></div>
+    <div class="pred-row"><div class="pred-name">bruschetta</div><div class="pred-bar-bg"><div class="pred-fill" style="width:38%"></div></div><div class="pred-pct">0.4%</div></div>
+    <div class="pred-row"><div class="pred-name">flatbread</div><div class="pred-bar-bg"><div class="pred-fill" style="width:18%"></div></div><div class="pred-pct">0.2%</div></div>
+    <div class="pred-row"><div class="pred-name">calzone</div><div class="pred-bar-bg"><div class="pred-fill" style="width:10%"></div></div><div class="pred-pct">0.1%</div></div>
+    <div class="pred-row"><div class="pred-name">focaccia</div><div class="pred-bar-bg"><div class="pred-fill" style="width:7%"></div></div><div class="pred-pct">0.1%</div></div>
+
+    <button class="confirm-btn" onclick="move(1)">yes, that's my dish →</button>
+    <span class="not-btn" onclick="toggleCorrection()">not quite — let me correct it</span>
+
+    <div class="correction-box" id="correction-box">
+      <div class="correction-label">what dish is it? we'll use your name to find the right flavor profile.</div>
+      <div class="correction-row">
+        <input class="correction-input" id="correction-input" type="text" placeholder="e.g. mushroom risotto" />
+        <button class="correction-submit" onclick="applyCorrection()">confirm →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Screen 2 ── -->
+  <div class="screen" id="screen1">
+    <div class="screen-title-row">
+      <div class="screen-intro">Your dish's flavor fingerprint was <em>written by Claude Sonnet</em> — then run through our <strong>TasteBiLSTM</strong> to understand how it truly tastes.</div>
+      <button class="info-btn md" onclick="toggleInfo('info-s2')">ⓘ</button>
+    </div>
+    <div class="info-panel" id="info-s2">flavor description generated by Claude Sonnet 4.6 · encoded by TasteBiLSTM + Bahdanau attention · trained on 10 sensory taste axes: acidity · tannin · red fruit · dark fruit · earthy · sweet · body · oaky · floral · mineral · output: 512-d L2-normalised taste vector · BisectingKMeans K=9 · cluster names auto-generated by TF-IDF · WineSensed dataset (NeurIPS 2023) · 824,000 reviews</div>
+
+    <div class="two-step">
+      <div class="step-pill">
+        <div class="step-pill-num">step 1</div>
+        <div class="step-pill-name">Claude Sonnet</div>
+        <div class="step-pill-sub">writes the flavor description</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-pill">
+        <div class="step-pill-num">step 2</div>
+        <div class="step-pill-name">TasteBiLSTM</div>
+        <div class="step-pill-sub">encodes it into a taste vector</div>
+      </div>
+    </div>
+
+    <div class="attn-box">
+      <span class="w">A</span> <span class="w">wood-fired</span> <span class="w">dough</span> <span class="w">base</span> <span class="w">with</span> <span class="w">a</span> <span class="w">charred,</span> <span class="w w-hi3">crispy</span> <span class="w">crust,</span> <span class="w">spread</span> <span class="w">with</span> <span class="w w-hi3">bright</span> <span class="w">tomato</span> <span class="w">sauce,</span> <span class="w">melted</span> <span class="w">mozzarella</span> <span class="w">and</span> <span class="w">fresh</span> <span class="w w-hi1">basil.</span> <span class="w">The</span> <span class="w">flavors</span> <span class="w">are</span> <span class="w w-hi1">simple,</span> <span class="w w-hi2">salty,</span> <span class="w">satisfying</span> <span class="w">with</span> <span class="w">a</span> <span class="w w-hi2">smoky</span> <span class="w w-hi1">char.</span>
+    </div>
+    <div class="attn-hint">highlighted words = what the model pays most attention to</div>
+
+    <div class="sub-label">how close is your pizza to each flavor world?</div>
+    <div class="cluster-rows">
+      <div class="crow"><div class="cname top">something crispy &amp; something bold</div><div class="cbar-bg"><div class="cbar-fill top" style="width:82%"></div></div><div class="cscore">0.821</div></div>
+      <div class="crow"><div class="cname">something rich</div><div class="cbar-bg"><div class="cbar-fill" style="width:58%"></div></div><div class="cscore">0.581</div></div>
+      <div class="crow"><div class="cname">something juicy &amp; something smoky</div><div class="cbar-bg"><div class="cbar-fill" style="width:48%"></div></div><div class="cscore">0.480</div></div>
+      <div class="crow"><div class="cname">something smoky &amp; something deep</div><div class="cbar-bg"><div class="cbar-fill" style="width:44%"></div></div><div class="cscore">0.444</div></div>
+      <div class="crow"><div class="cname">something earthy &amp; something smoky</div><div class="cbar-bg"><div class="cbar-fill" style="width:40%"></div></div><div class="cscore">0.399</div></div>
+    </div>
+    <div class="fingerprint-pill">
+      <div class="fp-label">taste fingerprint</div>
+      <div class="fp-value">something crispy &amp; something bold</div>
+    </div>
+  </div>
+
+  <!-- ── Screen 3 ── -->
+  <div class="screen" id="screen2">
+    <div class="s3-intro">Your pizza's fingerprint is <strong>something crispy &amp; something bold</strong>. We found wines that match it — each from a different angle.</div>
+    <div class="cards">
+
+      <div class="wine-card">
+        <div class="card-strip strip-safe">
+          <div class="intent int-safe"><i class="ti ti-shield-check"></i>safe bet</div>
+          <div class="strip-right">
+            <div><div class="match-num mn-safe">82%</div><div class="match-lbl">match</div></div>
+            <button class="info-btn sm c-safe" onclick="toggleInfo('info-safe')">ⓘ</button>
+          </div>
+        </div>
+        <div class="card-info-panel cip-safe" id="info-safe">nearest cluster centroid by cosine similarity to dominant flavor description</div>
+        <div class="card-body">
+          <div class="reasoning">Your pizza is crispy and direct — this wine matches that energy exactly.</div>
+          <div class="plays-row">
+            <span class="plays-label">plays on</span>
+            <span class="taste-tag tt-safe">acidity</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-safe">tannins</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-safe">red fruit</span>
+          </div>
+          <div class="divider"></div>
+          <div class="wine-name-row">
+            <div>
+              <div class="wine-name">Ciacci Piccolomini d'Aragona Rosso di Montalcino</div>
+              <div class="wine-name-info" id="wni-safe">highest cosine similarity between food taste vector and wine taste vectors within this cluster's 10-wine pool</div>
+            </div>
+            <button class="info-btn sm c-safe" style="margin-top:2px;flex-shrink:0" onclick="toggleInfo('wni-safe')">ⓘ</button>
+          </div>
+          <div class="wine-meta">2019 · Tuscany, Italy</div>
+          <div class="score-row"><span class="star">★</span><span class="score-v">90</span><span class="score-c">/ 100</span></div>
+          <div class="review">"Starts soft, builds body beautifully after an hour."</div>
+        </div>
+      </div>
+
+      <div class="wine-card">
+        <div class="card-strip strip-gem">
+          <div class="intent int-gem"><i class="ti ti-diamond"></i>hidden gem</div>
+          <div class="strip-right">
+            <div><div class="match-num mn-gem">58%</div><div class="match-lbl">match</div></div>
+            <button class="info-btn sm c-gem" onclick="toggleInfo('info-gem')">ⓘ</button>
+          </div>
+        </div>
+        <div class="card-info-panel cip-gem" id="info-gem">nearest centroid to the "surprising pairing" flavor description</div>
+        <div class="card-body">
+          <div class="reasoning">Your pizza has smoky undertones most pairings overlook — this wine goes there instead.</div>
+          <div class="plays-row">
+            <span class="plays-label">plays on</span>
+            <span class="taste-tag tt-gem">body</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-gem">dark fruit</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-gem">earthy</span>
+          </div>
+          <div class="divider"></div>
+          <div class="wine-name-row">
+            <div>
+              <div class="wine-name">Farnese Edizione Cinque Autoctoni N.V.</div>
+              <div class="wine-name-info" id="wni-gem">highest cosine similarity between food taste vector and wine taste vectors within this cluster's 10-wine pool</div>
+            </div>
+            <button class="info-btn sm c-gem" style="margin-top:2px;flex-shrink:0" onclick="toggleInfo('wni-gem')">ⓘ</button>
+          </div>
+          <div class="wine-meta">2018 · Abruzzo, Italy</div>
+          <div class="score-row"><span class="star">★</span><span class="score-v">86</span><span class="score-c">/ 100</span></div>
+          <div class="review">"Fruity, strong and reliable — a blend of great grapes."</div>
+        </div>
+      </div>
+
+      <div class="wine-card">
+        <div class="card-strip strip-bold">
+          <div class="intent int-bold"><i class="ti ti-flame"></i>bold move</div>
+          <div class="strip-right">
+            <div><div class="match-num mn-bold">24%</div><div class="match-lbl">contrast</div></div>
+            <button class="info-btn sm c-bold" onclick="toggleInfo('info-bold')">ⓘ</button>
+          </div>
+        </div>
+        <div class="card-info-panel cip-bold" id="info-bold">score = distance × (1 + secondary affinity) · maximises contrast while keeping the wine drinkable</div>
+        <div class="card-body">
+          <div class="reasoning">This wine goes against your pizza's brightness entirely. Sometimes contrast is the pairing.</div>
+          <div class="plays-row">
+            <span class="plays-label">plays on</span>
+            <span class="taste-tag tt-bold">tobacco</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-bold">oaky</span>
+            <span class="tag-dot">·</span>
+            <span class="taste-tag tt-bold">earthy</span>
+          </div>
+          <div class="divider"></div>
+          <div class="wine-name-row">
+            <div>
+              <div class="wine-name">Masca del Tacco Lu Rappaio Primitivo di Manduria</div>
+              <div class="wine-name-info" id="wni-bold">highest cosine similarity between food taste vector and wine taste vectors within this cluster's 10-wine pool</div>
+            </div>
+            <button class="info-btn sm c-bold" style="margin-top:2px;flex-shrink:0" onclick="toggleInfo('wni-bold')">ⓘ</button>
+          </div>
+          <div class="wine-meta">2019 · Puglia, Italy</div>
+          <div class="score-row"><span class="star">★</span><span class="score-v">86</span><span class="score-c">/ 100</span></div>
+          <div class="review">"Big and dark. Goes against the food — that's the point."</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" id="btn-prev" onclick="move(-1)" disabled>← back</button>
+    <div class="nav-counter" id="counter">1 of 3</div>
+    <button class="nav-btn primary" id="btn-next" onclick="move(1)" style="display:none">next →</button>
+  </div>
+
+</div>
+
+<script>
+  let cur = 0;
+  const total = 3;
+
+  function goTo(n) {
+    document.getElementById('screen' + cur).classList.remove('active');
+    for (let i = 0; i < total; i++) {
+      const d = document.getElementById('pd' + i);
+      const l = document.getElementById('pn' + i);
+      d.className = 'prog-dot' + (i < n ? ' done' : i === n ? ' active' : '');
+      l.className = 'prog-name' + (i < n ? ' done' : i === n ? ' active' : '');
+    }
+    cur = n;
+    document.getElementById('screen' + cur).classList.add('active');
+    document.getElementById('btn-prev').disabled = cur === 0;
+    const nx = document.getElementById('btn-next');
+    nx.style.display = cur === 0 ? 'none' : 'inline-block';
+    nx.disabled = cur === total - 1;
+    nx.textContent = cur === total - 1 ? 'done ✓' : 'next →';
+    document.getElementById('counter').textContent = (cur + 1) + ' of ' + total;
+  }
+
+  function move(d) {
+    if (cur + d >= 0 && cur + d < total) goTo(cur + d);
+  }
+
+  function toggleInfo(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  function toggleCorrection() {
+    const box = document.getElementById('correction-box');
+    box.classList.toggle('open');
+    if (box.classList.contains('open')) document.getElementById('correction-input').focus();
+  }
+
+  function applyCorrection() {
+    const val = document.getElementById('correction-input').value.trim();
+    if (val) {
+      document.getElementById('dish-display').textContent = val.charAt(0).toUpperCase() + val.slice(1);
+      document.getElementById('correction-box').classList.remove('open');
+    }
+  }
+
+  document.getElementById('correction-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') applyCorrection();
+  });
+</script>
+</body>
+</html>

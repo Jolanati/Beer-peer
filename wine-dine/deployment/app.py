@@ -1020,7 +1020,7 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 def on_identify(pil_img):
     """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return "", gr.update(visible=False)
+        return "", gr.update(visible=False), gr.update(visible=True)
 
     food_name, conf, top5 = identify_food(pil_img)
 
@@ -1035,7 +1035,8 @@ def on_identify(pil_img):
 
     s1   = _screen1_html(food_name, conf, top5, img_b64)
     html = _shell_html(s1, "", "", 0)
-    return html, gr.update(visible=True)
+    # hide upload screen, show result card + confirm buttons
+    return gr.update(value=html, visible=True), gr.update(visible=True), gr.update(visible=False)
 
 
 def on_yes():
@@ -1067,41 +1068,204 @@ def on_yes():
 
 
 def on_no():
-    """Reset to blank state."""
+    """Reset to blank state — show upload screen again."""
     _state.update(food="", conf=0.0, top5=[], img_b64="")
-    return "", gr.update(visible=False)
+    return "", gr.update(visible=False), gr.update(visible=True)
+
+
+# ── Full-screen app CSS ────────────────────────────────────────────────────────
+_APP_CSS = """
+html, body {
+  margin: 0 !important; padding: 0 !important;
+  background:
+    radial-gradient(circle at 12% 6%, rgba(255,255,255,0.90), transparent 28%),
+    radial-gradient(circle at 18% 10%, rgba(198,112,103,0.13), transparent 34%),
+    radial-gradient(circle at 86% 12%, rgba(122,24,48,0.14), transparent 32%),
+    radial-gradient(circle at 70% 88%, rgba(201,161,93,0.16), transparent 36%),
+    linear-gradient(135deg, #fcf8f2 0%, #f3ebe2 46%, #efe3da 100%) !important;
+  min-height: 100vh;
+}
+.gradio-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 32px 18px !important;
+  background: transparent !important;
+  min-height: 100vh;
+}
+footer { display: none !important; }
+div.main { padding: 0 !important; background: transparent !important; }
+.block, .form {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+.gap { gap: 0 !important; }
+/* Image upload zone */
+#wdfood .upload-container, #wdfood [data-testid="image"] {
+  border: 1.5px dashed rgba(122,24,48,0.22) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(145deg,rgba(255,255,255,0.56),rgba(251,245,238,0.72)) !important;
+  min-height: 220px !important;
+}
+/* Analyze button */
+#wdanalyze button {
+  background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
+  color: #fff !important; border: none !important; border-radius: 999px !important;
+  font-size: 15px !important; font-weight: 900 !important;
+  padding: 14px 32px !important;
+  box-shadow: 0 14px 30px rgba(122,24,48,0.22) !important;
+  letter-spacing: -0.2px !important;
+}
+#wdanalyze button:hover { opacity: 0.88 !important; }
+/* Confirm buttons */
+#wdyes button {
+  background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
+  color: #fff !important; border: none !important; border-radius: 999px !important;
+  font-weight: 900 !important; padding: 13px 28px !important;
+  box-shadow: 0 10px 24px rgba(122,24,48,0.22) !important;
+}
+#wdno button {
+  background: rgba(255,255,255,0.62) !important; color: #42101d !important;
+  border: 1px solid rgba(122,24,48,0.30) !important; border-radius: 999px !important;
+  font-weight: 800 !important; padding: 13px 24px !important;
+}
+/* Card + confirm row inner padding */
+#wdcard > .wrap { padding: 0 !important; background: transparent !important; }
+#wdconfirm > .wrap { padding: 16px 0 0 !important; gap: 12px !important; }
+"""
+
+_UPLOAD_HEADER_HTML = """
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
+            background:rgba(255,250,244,0.72);
+            backdrop-filter:blur(28px) saturate(1.08);
+            border:1px solid rgba(255,255,255,0.72);
+            border-radius:34px;
+            box-shadow:0 34px 90px rgba(52,34,26,0.10),inset 0 1px 0 rgba(255,255,255,0.75);
+            overflow:hidden">
+
+  <!-- header row: brand | step bar | restart -->
+  <div style="display:grid;grid-template-columns:180px 1fr 160px;
+              align-items:start;gap:24px;padding:24px 34px 18px;
+              border-bottom:1px solid rgba(63,43,35,0.09)">
+    <div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;
+                  letter-spacing:-0.8px;font-weight:700;white-space:nowrap;color:#211917">
+        Wine<span style="color:#7a1830">&amp;</span>Dine</div>
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+                  color:#42101d;font-weight:800;margin-top:6px">AI food &amp; wine pairing</div>
+    </div>
+    <!-- 5-step indicator -->
+    <div style="display:grid;grid-template-columns:repeat(9,auto);
+                align-items:center;justify-content:center;gap:0;max-width:660px;margin:0 auto">
+      <!-- step 1 active -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:linear-gradient(135deg,#8d1f3a,#5a1024);
+                    color:#fff;font-size:16px;font-weight:900;
+                    box-shadow:0 10px 28px rgba(122,24,48,0.24)">1</div>
+        <div style="font-size:11px;font-weight:800;color:#42101d;
+                    text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Upload</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 2 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">2</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">3</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 4 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">4</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 5 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">5</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
+      </div>
+    </div>
+    <div style="justify-self:end;align-self:center">
+      <div style="background:rgba(255,255,255,0.45);border:1px solid rgba(63,43,35,0.09);
+                  color:#211917;padding:10px 16px;border-radius:999px;
+                  font-size:13px;font-weight:700;white-space:nowrap">&#8635; start over</div>
+    </div>
+  </div>
+
+  <!-- intro copy -->
+  <div style="padding:36px 34px 28px">
+    <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+                letter-spacing:0.14em;font-weight:800;margin-bottom:10px">STEP 1 &middot; UPLOAD</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:46px;
+                font-weight:700;color:#211917;letter-spacing:-2px;line-height:0.95;
+                margin-bottom:16px">What are you<br>eating?</div>
+    <div style="font-size:14px;color:#7c726b;line-height:1.7;max-width:520px">
+      Upload a food photo and the app will identify the dish,
+      build a taste fingerprint and suggest wines that fit the experience.
+    </div>
+  </div>
+</div>
+"""
 
 
 # ── Gradio UI ─────────────────────────────────────────────────────────────────
 with gr.Blocks(
-    theme=gr.themes.Soft(primary_hue="orange", secondary_hue="orange"),
+    theme=gr.themes.Base(),
     title="Wine & Dine 🍷",
-    css=".gradio-container{max-width:760px !important;margin:auto}",
+    css=_APP_CSS,
 ) as demo:
 
-    gr.Markdown(
-        "Upload a food photo — we identify it, read its flavor fingerprint,"
-        " and find your perfect wine pairing."
-    )
+    # ── Upload screen (screen 0) ──────────────────────────────────────────────
+    with gr.Column(visible=True) as upload_col:
+        gr.HTML(_UPLOAD_HEADER_HTML)
+        img_input = gr.Image(
+            type="pil", label="", show_label=False,
+            height=240, elem_id="wdfood",
+            sources=["upload", "clipboard"],
+        )
+        with gr.Row():
+            identify_btn = gr.Button(
+                "Analyze dish →", variant="primary",
+                elem_id="wdanalyze", scale=0, min_width=180,
+            )
 
-    with gr.Row():
-        img_input    = gr.Image(type="pil", label="📷 Food photo", height=280)
-        identify_btn = gr.Button("🔍 Identify", variant="primary", size="lg",
-                                 scale=0, min_width=120)
+    # ── Result card (screens 1–4) ─────────────────────────────────────────────
+    wine_card = gr.HTML(visible=False, elem_id="wdcard")
 
-    wine_card = gr.HTML()
+    with gr.Row(visible=False, elem_id="wdconfirm") as confirm_row:
+        yes_btn = gr.Button(
+            "✓  Yes, that's my dish — show pairings!",
+            variant="primary", elem_id="wdyes",
+        )
+        no_btn = gr.Button(
+            "↩  Not quite, try again",
+            variant="secondary", elem_id="wdno",
+        )
 
-    with gr.Row(visible=False) as confirm_row:
-        yes_btn = gr.Button("✅  yes, that's my dish — show pairings!",
-                            variant="primary")
-        no_btn  = gr.Button("↩  not quite, try again",
-                            variant="secondary")
-
-    # wiring
+    # ── Event wiring ──────────────────────────────────────────────────────────
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, confirm_row],
+        outputs=[wine_card, confirm_row, upload_col],
     )
     yes_btn.click(
         on_yes,
@@ -1111,7 +1275,7 @@ with gr.Blocks(
     no_btn.click(
         on_no,
         inputs=None,
-        outputs=[wine_card, confirm_row],
+        outputs=[wine_card, confirm_row, upload_col],
     )
 
 if __name__ == "__main__":

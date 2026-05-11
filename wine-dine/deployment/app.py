@@ -787,6 +787,144 @@ def _screen2_html(display: str, desc: str, attn_w,
 </div>"""
 
 
+def _screen4_html() -> str:
+    """Screen 4 (step 5) — The Story: project narrative, architecture diagrams, pipeline overview."""
+    return """
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
+
+  <!-- step label + heading -->
+  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
+    STEP 5 &middot; THE STORY</div>
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:34px;
+              font-weight:700;color:#211917;letter-spacing:-1.2px;
+              line-height:1;margin-bottom:6px">How it works</div>
+  <div style="font-size:13px;color:#9e9188;margin-bottom:28px">
+    RSU Advanced ML final project &mdash; two models, one pipeline</div>
+
+  <!-- 2-col problem / approach -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px">
+    <div style="padding:20px 22px;border-radius:20px;
+                background:rgba(122,24,48,0.06);
+                border:1px solid rgba(122,24,48,0.10)">
+      <div style="font-size:10px;color:#7a1830;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">The problem</div>
+      <div style="font-size:13px;color:#42101d;line-height:1.75">
+        Given a food photo, recommend wines that actually fit the
+        <em>taste experience</em> &mdash; not just cuisine-level heuristics
+        from a lookup table.
+      </div>
+    </div>
+    <div style="padding:20px 22px;border-radius:20px;
+                background:rgba(105,97,168,0.06);
+                border:1px solid rgba(105,97,168,0.10)">
+      <div style="font-size:10px;color:#6961a8;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">The approach</div>
+      <div style="font-size:13px;color:#42101d;line-height:1.75">
+        Encode food&rsquo;s <em>flavor description</em> with a BiLSTM into a
+        512-d taste vector, cluster foods by taste, then retrieve wines per cluster
+        using three intentional pairing strategies.
+      </div>
+    </div>
+  </div>
+
+  <!-- pipeline steps -->
+  <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+              letter-spacing:0.12em;font-weight:800;margin-bottom:12px">Pipeline</div>
+  <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+              gap:0;margin-bottom:28px;border:1px solid rgba(63,43,35,0.10);
+              border-radius:16px;overflow:hidden">
+    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
+      <div style="font-size:18px;margin-bottom:6px">&#128247;</div>
+      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Food photo</div>
+      <div style="font-size:10px;color:#9e9188;line-height:1.55">User uploads any food image</div>
+    </div>
+    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
+      <div style="font-size:18px;margin-bottom:6px">&#127754;</div>
+      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">ResNet-50</div>
+      <div style="font-size:10px;color:#9e9188;line-height:1.55">101-class Food-101 classifier, fine-tuned from ImageNet</div>
+    </div>
+    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
+      <div style="font-size:18px;margin-bottom:6px">&#129502;</div>
+      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">TasteBiLSTM</div>
+      <div style="font-size:10px;color:#9e9188;line-height:1.55">Bidirectional LSTM + Bahdanau attention encodes flavor text &rarr; 512-d vector</div>
+    </div>
+    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
+      <div style="font-size:18px;margin-bottom:6px">&#127381;</div>
+      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Clustering</div>
+      <div style="font-size:10px;color:#9e9188;line-height:1.55">BisectingKMeans (k=9) on taste vectors &mdash; TF-IDF named clusters</div>
+    </div>
+    <div style="padding:14px 14px;background:rgba(251,247,241,0.9)">
+      <div style="font-size:18px;margin-bottom:6px">&#127863;</div>
+      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Wine retrieval</div>
+      <div style="font-size:10px;color:#9e9188;line-height:1.55">3 tiers &times; cosine-similarity lookup in Vivino top-wine pool</div>
+    </div>
+  </div>
+
+  <!-- architecture cards -->
+  <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+              letter-spacing:0.12em;font-weight:800;margin-bottom:12px">Architecture</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px">
+
+    <!-- ResNet card -->
+    <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(63,43,35,0.09);
+                box-shadow:0 4px 16px rgba(52,34,26,0.07)">
+      <div style="background:rgba(122,24,48,0.08);padding:14px 16px;
+                  border-bottom:1px solid rgba(63,43,35,0.09)">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;
+                    letter-spacing:0.1em;color:#7a1830;margin-bottom:3px">ResNet-50</div>
+        <div style="font-size:13px;font-weight:700;color:#211917">Image classifier</div>
+      </div>
+      <div style="padding:14px 16px;font-size:12px;color:#7c726b;line-height:1.75">
+        <strong style="color:#211917">Backbone:</strong> torchvision ResNet-50, ImageNet pretrained<br>
+        <strong style="color:#211917">Head:</strong> Linear(2048, 101) — Food-101 classes<br>
+        <strong style="color:#211917">Training:</strong> fine-tuned on ~75k Food-101 images<br>
+        <strong style="color:#211917">Output:</strong> softmax probability distribution, top-5<br>
+        <strong style="color:#211917">Normalisation:</strong> ImageNet mean/std
+      </div>
+    </div>
+
+    <!-- BiLSTM card -->
+    <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(63,43,35,0.09);
+                box-shadow:0 4px 16px rgba(52,34,26,0.07)">
+      <div style="background:rgba(105,97,168,0.08);padding:14px 16px;
+                  border-bottom:1px solid rgba(63,43,35,0.09)">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;
+                    letter-spacing:0.1em;color:#6961a8;margin-bottom:3px">TasteBiLSTM</div>
+        <div style="font-size:13px;font-weight:700;color:#211917">Flavor encoder</div>
+      </div>
+      <div style="padding:14px 16px;font-size:12px;color:#7c726b;line-height:1.75">
+        <strong style="color:#211917">Embedding:</strong> 4294 &times; 100 (min_freq=3 vocab)<br>
+        <strong style="color:#211917">LSTM:</strong> BiLSTM hidden=256, 2 layers, dropout=0.4<br>
+        <strong style="color:#211917">Attention:</strong> Bahdanau additive attention<br>
+        <strong style="color:#211917">Output:</strong> 512-d context vector, attention weights<br>
+        <strong style="color:#211917">Clusters:</strong> 9 BisectingKMeans centroids (.npy)
+      </div>
+    </div>
+  </div>
+
+  <!-- data sources -->
+  <details style="border:1px solid rgba(63,43,35,0.09);border-radius:14px;overflow:hidden">
+    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
+                    color:#7c726b;cursor:pointer;list-style:none;
+                    background:rgba(251,247,241,0.8)">
+      &#9432; Data sources &amp; training details</summary>
+    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
+                line-height:1.75;background:rgba(251,247,241,0.5)">
+      <strong style="color:#211917">Food images:</strong>
+      Food-101 dataset (101 classes, ~1000 images/class).<br>
+      <strong style="color:#211917">Flavor descriptions:</strong>
+      LLM-generated (Claude Sonnet) classic + surprising pairing descriptions per dish.<br>
+      <strong style="color:#211917">Wine pool:</strong>
+      Vivino top-rated wines (pre-scraped, taste-vectorised, stored as results_all.json).<br>
+      <strong style="color:#211917">Cluster names:</strong>
+      TF-IDF top-bigrams per cluster &rarr; human-readable in cluster_names.json.
+    </div>
+  </details>
+
+</div>"""
+
+
 _TIER_INFO = {
     "SAFE BET":   "nearest cluster centroid by cosine similarity to dominant flavor description",
     "HIDDEN GEM": "nearest centroid to the \u2018surprising pairing\u2019 flavor description",
@@ -997,64 +1135,77 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
 </div>"""
 
 
-def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
+def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     """
-    Full 3-screen shell: 5-step header, glassmorphism card, CSS radio-tab nav — zero JS.
-    Screens: 0=Detect Dish (step 2), 1=Taste Fingerprint (step 3), 2=Wine Pairings (step 4).
-    cur = 0/1/2 — which tab is active on server render.
+    Full 4-screen shell: 5-step header, glassmorphism card, CSS radio-tab nav — zero JS.
+    Screens: 0=Detect Dish (step 2), 1=Taste Fingerprint (step 3),
+             2=Wine Pairings (step 4), 3=The Story (step 5).
+    cur = 0/1/2/3 — which tab is active on server render.
 
-    IMPORTANT: #wds0/1/2 are DIRECT children of #wdshell (siblings of radio inputs)
+    IMPORTANT: #wds0/1/2/3 are DIRECT children of #wdshell (siblings of radio inputs)
     so that `#wdt0:checked ~ #wds0 { display:block }` works correctly.
     """
     unlocked = int(bool(s1)) + int(bool(s2)) + int(bool(s3)) - 1
-    c = [" checked" if i == cur else "" for i in range(3)]
+    c = [" checked" if i == cur else "" for i in range(4)]
     _lock = "pointer-events:none;opacity:0.32"
 
     # ── CSS ───────────────────────────────────────────────────────────────────
     css = (
         "<style>"
         # Screen visibility — wds0/1/2 are DIRECT siblings of radio inputs ✓
-        "#wds0,#wds1,#wds2{display:none}"
+        "#wds0,#wds1,#wds2,#wds3{display:none}"
         "#wdt0:checked~#wds0,"
         "#wdt1:checked~#wds1,"
-        "#wdt2:checked~#wds2{display:block}"
+        "#wdt2:checked~#wds2,"
+        "#wdt3:checked~#wds3{display:block}"
         # Active step circle (wine-red gradient)
         "#wdt0:checked~#wdhdr .wds2circ,"
         "#wdt1:checked~#wdhdr .wds3circ,"
-        "#wdt2:checked~#wdhdr .wds4circ"
+        "#wdt2:checked~#wdhdr .wds4circ,"
+        "#wdt3:checked~#wdhdr .wds5circ"
         "{background:linear-gradient(135deg,#8d1f3a,#5a1024)!important;"
         "color:#fff!important;border-color:transparent!important;"
         "box-shadow:0 10px 28px rgba(122,24,48,0.24)!important}"
         # Done step circle (muted white)
         "#wdt1:checked~#wdhdr .wds2circ,"
         "#wdt2:checked~#wdhdr .wds2circ,"
-        "#wdt2:checked~#wdhdr .wds3circ"
+        "#wdt2:checked~#wdhdr .wds3circ,"
+        "#wdt3:checked~#wdhdr .wds2circ,"
+        "#wdt3:checked~#wdhdr .wds3circ,"
+        "#wdt3:checked~#wdhdr .wds4circ"
         "{background:rgba(255,255,255,0.82)!important;"
         "color:#756b63!important;border:1px solid rgba(64,42,31,0.16)!important;"
         "box-shadow:none!important}"
         # Active step label (underlined)
         "#wdt0:checked~#wdhdr .wds2lbl,"
         "#wdt1:checked~#wdhdr .wds3lbl,"
-        "#wdt2:checked~#wdhdr .wds4lbl"
+        "#wdt2:checked~#wdhdr .wds4lbl,"
+        "#wdt3:checked~#wdhdr .wds5lbl"
         "{color:#42101d!important;text-decoration:underline;"
         "text-underline-offset:4px}"
         # Done step label (muted)
         "#wdt1:checked~#wdhdr .wds2lbl,"
         "#wdt2:checked~#wdhdr .wds2lbl,"
-        "#wdt2:checked~#wdhdr .wds3lbl"
+        "#wdt2:checked~#wdhdr .wds3lbl,"
+        "#wdt3:checked~#wdhdr .wds2lbl,"
+        "#wdt3:checked~#wdhdr .wds3lbl,"
+        "#wdt3:checked~#wdhdr .wds4lbl"
         "{color:#756b63!important;text-decoration:none!important}"
         # Back nav labels
         "#wdt1:checked~#wdnav #wdb1,"
-        "#wdt2:checked~#wdnav #wdb2{display:inline-block!important}"
+        "#wdt2:checked~#wdnav #wdb2,"
+        "#wdt3:checked~#wdnav #wdb3{display:inline-block!important}"
         # Next nav labels
         "#wdt0:checked~#wdnav #wdn0,"
-        "#wdt1:checked~#wdnav #wdn1{display:inline-block!important}"
+        "#wdt1:checked~#wdnav #wdn1,"
+        "#wdt2:checked~#wdnav #wdn2{display:inline-block!important}"
         # Done indicator
-        "#wdt2:checked~#wdnav #wdndone{display:inline-block!important}"
+        "#wdt3:checked~#wdnav #wdndone{display:inline-block!important}"
         # Step counters
         "#wdt0:checked~#wdnav #wdc0,"
         "#wdt1:checked~#wdnav #wdc1,"
-        "#wdt2:checked~#wdnav #wdc2{display:block!important}"
+        "#wdt2:checked~#wdnav #wdc2,"
+        "#wdt3:checked~#wdnav #wdc3{display:block!important}"
         # Info panel toggles in screens (checkbox trick)
         "#wdinf2panel{display:none}"
         "#wdinf2:checked~#wdinf2panel{display:block}"
@@ -1112,7 +1263,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
         + _step("2", "Detect Dish",    "wds2circ", "wds2lbl", "wdt0") + _sep
         + _step("3", "Fingerprint",    "wds3circ", "wds3lbl", "wdt1", unlocked < 1) + _sep
         + _step("4", "Wine Pairings",  "wds4circ", "wds4lbl", "wdt2", unlocked < 2) + _sep
-        + _step("5", "The Story",      "wds5circ", "wds5lbl", None, True)
+        + _step("5", "The Story",       "wds5circ", "wds5lbl", "wdt3", unlocked < 3)
     )
 
     # ── Nav button styles ─────────────────────────────────────────────────────
@@ -1133,6 +1284,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
     )
     n1_lock = f";{_lock}" if unlocked < 1 else ""
     n2_lock = f";{_lock}" if unlocked < 2 else ""
+    n3_lock = f";{_lock}" if unlocked < 3 else ""
 
     return f"""<div id="wdshell"
      style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
@@ -1147,6 +1299,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
 <input type="radio" id="wdt0" name="wdtab"{c[0]} style="display:none">
 <input type="radio" id="wdt1" name="wdtab"{c[1]} style="display:none">
 <input type="radio" id="wdt2" name="wdtab"{c[2]} style="display:none">
+<input type="radio" id="wdt3" name="wdtab"{c[3]} style="display:none">
 
 <!-- ── header ─────────────────────────────────────────────────────── -->
 <div id="wdhdr" style="display:grid;grid-template-columns:180px 1fr 160px;
@@ -1176,6 +1329,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
 <div id="wds0" style="padding:28px 34px 20px">{s1 or ""}</div>
 <div id="wds1" style="padding:28px 34px 20px">{s2 or _LOADING_SPINNER}</div>
 <div id="wds2" style="padding:28px 34px 20px">{s3 or ""}</div>
+<div id="wds3" style="padding:28px 34px 20px">{s4 or ""}</div>
 
 <!-- ── nav bar ──────────────────────────────────────────────────────── -->
 <div id="wdnav" style="display:flex;justify-content:space-between;align-items:center;
@@ -1183,15 +1337,18 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int) -> str:
   <div>
     <label for="wdt0" id="wdb1" style="{_btn_back}">&larr; Back</label>
     <label for="wdt1" id="wdb2" style="{_btn_back}">&larr; Back</label>
+    <label for="wdt2" id="wdb3" style="{_btn_back}">&larr; Back</label>
   </div>
   <div>
-    <div id="wdc0" style="{_ctr}">Step 2 of 4</div>
-    <div id="wdc1" style="{_ctr}">Step 3 of 4</div>
-    <div id="wdc2" style="{_ctr}">Step 4 of 4</div>
+    <div id="wdc0" style="{_ctr}">Step 2 of 5</div>
+    <div id="wdc1" style="{_ctr}">Step 3 of 5</div>
+    <div id="wdc2" style="{_ctr}">Step 4 of 5</div>
+    <div id="wdc3" style="{_ctr}">Step 5 of 5</div>
   </div>
   <div>
     <label for="wdt1" id="wdn0" style="{_btn_next}{n1_lock}">Next &rarr;</label>
     <label for="wdt2" id="wdn1" style="{_btn_next}{n2_lock}">Next &rarr;</label>
+    <label for="wdt3" id="wdn2" style="{_btn_next}{n3_lock}">The Story &rarr;</label>
     <span id="wdndone" style="{_btn_next}">Done &#10003;</span>
   </div>
 </div>
@@ -1237,8 +1394,10 @@ def _wine_card_parts(food_name: str, conf: float, top5: list,
     feel = _food_feel(safe_cluster)
     s3 = _screen3_html(display, cluster_name, recs, feel)
 
+    s4 = _screen4_html()
+
     # ── Yield 2: all done, advance to screen3 ───────────────────────────────
-    yield _shell_html(s1, s2, s3, 2)
+    yield _shell_html(s1, s2, s3, 2, s4)
 
 
 
@@ -1263,7 +1422,7 @@ def on_identify(pil_img):
     _state.update(food=food_name, conf=conf, top5=top5, img_b64=img_b64)
 
     s1   = _screen1_html(food_name, conf, top5, img_b64)
-    html = _shell_html(s1, "", "", 0)
+    html = _shell_html(s1, "", "", 0, "")
     # hide upload screen, show result card + confirm buttons
     return gr.update(value=html, visible=True), gr.update(visible=True), gr.update(visible=False)
 
@@ -1279,7 +1438,7 @@ def on_yes():
     s1 = _screen1_html(food_name, conf, top5, _state.get("img_b64", ""))
 
     # ── Yield 0: show spinner on screen 2 BEFORE BiLSTM runs ────────────────
-    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1)
+    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, "")
 
     # BiLSTM inference (slow)
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
@@ -1291,9 +1450,10 @@ def on_yes():
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel         = _food_feel(safe_cluster)
     s3           = _screen3_html(display, cluster_name, recs, feel)
+    s4           = _screen4_html()
 
     # ── Yield 1: both screens ready; user reads screen 2, clicks CTA for 3 ──
-    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1)
+    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4)
 
 
 def on_no():

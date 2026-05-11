@@ -1533,7 +1533,12 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdconfirm > .wrap {
   padding: 10px 0 0 !important;
   gap: 12px !important;
+  flex-direction: column !important;
   justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+#wdconfirm > .wrap > * {
+  width: 100% !important;
 }
 """
 
@@ -1653,7 +1658,7 @@ with gr.Blocks(
     # ── Result card (screens 1–4) ─────────────────────────────────────────────
     wine_card = gr.HTML(visible=False, elem_id="wdcard")
 
-    with gr.Row(visible=False, elem_id="wdconfirm") as confirm_row:
+    with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
         yes_btn = gr.Button(
             "✓  Yes, that's my dish — show pairings!",
             variant="primary", elem_id="wdyes",

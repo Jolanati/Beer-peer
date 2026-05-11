@@ -1329,14 +1329,9 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 .gap { gap: 0 !important; }
 
-/* Upload screen layout */
-#wdupload {
-  display: flex;
-  flex-direction: column !important;
-  gap: 14px !important;
-}
+/* Upload screen layout — NO display:flex so Gradio's .hidden can hide this column */
 #wdfood {
-  margin-top: 6px !important;
+  margin-top: 14px !important;
 }
 #wdfood > .wrap {
   border-radius: 28px !important;

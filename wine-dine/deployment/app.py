@@ -1514,14 +1514,27 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-weight: 900 !important; padding: 13px 28px !important;
   box-shadow: 0 10px 24px rgba(122,24,48,0.22) !important;
 }
+#wdyes button:hover,
+#wdanalyze button:hover {
+  filter: brightness(0.96) saturate(1.02) !important;
+  opacity: 1 !important;
+}
 #wdno button {
-  background: rgba(255,255,255,0.62) !important; color: #42101d !important;
-  border: 1px solid rgba(122,24,48,0.30) !important; border-radius: 999px !important;
+  background: rgba(122,24,48,0.07) !important; color: #5a1024 !important;
+  border: 1px solid rgba(122,24,48,0.34) !important; border-radius: 999px !important;
   font-weight: 800 !important; padding: 13px 24px !important;
 }
 /* Card + confirm row inner padding */
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
-#wdconfirm > .wrap { padding: 16px 0 0 !important; gap: 12px !important; }
+#wdconfirm {
+  width: min(520px, calc(100% - 68px)) !important;
+  margin: 14px 0 0 34px !important;
+}
+#wdconfirm > .wrap {
+  padding: 10px 0 0 !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+}
 """
 
 _UPLOAD_HEADER_HTML = """

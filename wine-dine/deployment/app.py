@@ -1310,7 +1310,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
                 letter-spacing:-0.8px;font-weight:700;white-space:nowrap;color:#211917">
       Wine<span style="color:#7a1830">&amp;</span>Dine</div>
     <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-                color:#42101d;font-weight:800;margin-top:6px">AI food &amp; wine pairing</div>
+                color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
   </div>
   <div style="display:flex;align-items:flex-start;gap:0;
               max-width:680px;margin:0 auto;width:100%">
@@ -1502,7 +1502,8 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdfood > .wrap {
   border-radius: 24px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  padding-bottom: 10px !important;
 }
 /* Image upload zone */
 #wdfood .upload-container, #wdfood [data-testid="image"] {
@@ -1529,6 +1530,9 @@ div.main { padding: 0 !important; background: transparent !important; }
   padding: 14px 32px !important;
   box-shadow: 0 14px 30px rgba(122,24,48,0.22) !important;
   letter-spacing: -0.2px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
 }
 #wdanalyze:hover,
 #wdanalyze button:hover { opacity: 0.88 !important; }
@@ -1559,9 +1563,10 @@ div.main { padding: 0 !important; background: transparent !important; }
   justify-content: flex-start !important;
   align-items: center !important;
   padding-top: 8px !important;
+  width: 100% !important;
 }
 #wdanalyze {
-  min-width: 220px !important;
+  min-width: 0 !important;
 }
 /* Card + confirm row inner padding */
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
@@ -1599,7 +1604,7 @@ _UPLOAD_HEADER_HTML = """
                   letter-spacing:-0.8px;font-weight:700;white-space:nowrap;color:#211917">
         Wine<span style="color:#7a1830">&amp;</span>Dine</div>
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-                  color:#42101d;font-weight:800;margin-top:6px">AI food &amp; wine pairing</div>
+                  color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
     </div>
     <!-- 5-step indicator -->
     <div style="display:grid;grid-template-columns:repeat(9,auto);

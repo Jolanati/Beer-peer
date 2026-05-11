@@ -1240,7 +1240,7 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 def on_identify(pil_img):
     """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return "", gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update()
+        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update()
 
     food_name, conf, top5 = identify_food(pil_img)
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
@@ -1257,9 +1257,10 @@ def on_identify(pil_img):
     s1   = _screen1_html(food_name, conf, top5, img_b64)
     html = _shell_html(s1, "", "", 0, "")
     return (
-        gr.update(value=html, visible=True),
-        gr.update(visible=True),
-        gr.update(visible=False),
+        gr.update(value=html),          # wine_card — update content
+        gr.update(visible=True),         # result_col — show glass card
+        gr.update(visible=True),         # confirm_row — show Yes/No
+        gr.update(visible=False),        # upload_col — hide upload
         gr.update(value=f"✓  Yes, it's {display}"),
         gr.update(value="✗  No, correct dish"),
     )
@@ -1297,7 +1298,7 @@ def on_yes():
 def on_no():
     """Reset to blank state — show upload screen again."""
     _state.update(food="", conf=0.0, top5=[], img_b64="")
-    return "", gr.update(visible=False), gr.update(visible=True)
+    return gr.update(visible=False), gr.update(visible=True)
 
 
 # ── Full-screen app CSS ────────────────────────────────────────────
@@ -1537,24 +1538,24 @@ with gr.Blocks(
                 elem_id="wdanalyze",
             )
 
-    # ── Result card (screens 1–4) ─────────────────────────────────────────────
-    wine_card = gr.HTML(visible=False, elem_id="wdcard")
-
-    with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
-        yes_btn = gr.Button(
-            "✓  Yes, it's my dish",
-            variant="primary", elem_id="wdyes",
-        )
-        no_btn = gr.Button(
-            "✗  No, correct dish",
-            variant="secondary", elem_id="wdno",
-        )
+    # ── Result card + confirm (all inside one glass card) ─────────────────────
+    with gr.Column(visible=False, elem_id="wdcard_outer") as result_col:
+        wine_card = gr.HTML(value="", elem_id="wdcard")
+        with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
+            yes_btn = gr.Button(
+                "✓  Yes, it's my dish",
+                variant="primary", elem_id="wdyes",
+            )
+            no_btn = gr.Button(
+                "✗  No, correct dish",
+                variant="secondary", elem_id="wdno",
+            )
 
     # ── Event wiring ──────────────────────────────────────────────────────────
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, confirm_row, upload_col, yes_btn, no_btn],
+        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn],
     )
     yes_btn.click(
         on_yes,
@@ -1564,7 +1565,7 @@ with gr.Blocks(
     no_btn.click(
         on_no,
         inputs=None,
-        outputs=[wine_card, confirm_row, upload_col],
+        outputs=[result_col, upload_col],
     )
 
 if __name__ == "__main__":

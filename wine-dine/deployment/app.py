@@ -678,7 +678,7 @@ def _screen2_html(display: str, desc: str, attn_w,
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
   <!-- step label + heading -->
-  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+  <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
               letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
     STEP 3 &middot; TASTE FINGERPRINT</div>
   <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;
@@ -687,9 +687,9 @@ def _screen2_html(display: str, desc: str, attn_w,
   <div style="font-size:13px;color:#9e9188;margin-bottom:24px">
     We turn the verified dish into a flavor profile the wine matcher can use.</div>
 
-  <!-- 2-col layout: photo LEFT | heatmap + bars RIGHT -->
-  <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;
-              align-items:start;margin-bottom:24px">
+  <!-- 2-col layout: photo LEFT | badge + bars RIGHT -->
+  <div style="display:grid;grid-template-columns:1fr 0.85fr;gap:28px;
+              align-items:start;margin-bottom:20px">
 
     <!-- LEFT: food photo -->
     <div style="border-radius:16px;overflow:hidden;
@@ -698,8 +698,8 @@ def _screen2_html(display: str, desc: str, attn_w,
       {photo_el}
     </div>
 
-    <!-- RIGHT: heatmap + cluster bars -->
-    <div style="display:flex;flex-direction:column;gap:22px">
+    <!-- RIGHT: badge + cluster bars -->
+    <div style="display:flex;flex-direction:column;gap:18px">
 
       <!-- taste fingerprint badge -->
       <div style="padding:14px 16px;background:rgba(122,24,48,0.06);
@@ -710,29 +710,6 @@ def _screen2_html(display: str, desc: str, attn_w,
         <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;
                     font-weight:700;color:#42101d;letter-spacing:-0.5px;
                     line-height:1.2">{cluster_name}</div>
-      </div>
-
-      <!-- attention heatmap -->
-      <div>
-        <div style="display:flex;justify-content:space-between;
-                    align-items:center;margin-bottom:8px">
-          <div style="font-size:11px;color:#9e9188;text-transform:uppercase;
-                      letter-spacing:0.1em;font-weight:800">Attention heatmap</div>
-          <div style="font-size:10px;color:#b8aaa0;display:flex;align-items:center;gap:6px">
-            <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
-                         background:#7a1830;vertical-align:middle"></span>high
-            <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
-                         background:rgba(201,161,93,0.28);vertical-align:middle;
-                         margin-left:6px"></span>medium
-          </div>
-        </div>
-        <div style="background:rgba(251,247,241,0.8);border-radius:14px;
-                    padding:12px 14px;border:1px solid rgba(63,43,35,0.09);
-                    line-height:2;min-height:72px">
-          {word_html}
-        </div>
-        <div style="font-size:10px;color:#b8aaa0;margin-top:5px">
-          Word warmth = Bahdanau attention weight &middot; darker = more influential</div>
       </div>
 
       <!-- cluster similarity bars -->
@@ -746,21 +723,49 @@ def _screen2_html(display: str, desc: str, attn_w,
     </div>
   </div>
 
-  <!-- "what happens in background" details -->
-  <details style="margin-bottom:22px;border:1px solid rgba(63,43,35,0.09);
-                  border-radius:14px;overflow:hidden">
-    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
-                    color:#7c726b;cursor:pointer;list-style:none;
-                    background:rgba(251,247,241,0.8)">
-      + What happens in the background?</summary>
-    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
-                line-height:1.75;background:rgba(251,247,241,0.5)">
-      Claude generates three flavor descriptions for the detected dish. These are read by a
-      language model that focuses on the most taste-defining words, translates them into a
-      shared taste space, and finds the closest match among 9 pre-learned flavor profiles —
-      that match becomes the dish's flavor fingerprint.
+  <!-- full-width attention heatmap -->
+  <div style="margin-bottom:20px">
+    <div style="display:flex;justify-content:space-between;
+                align-items:center;margin-bottom:8px">
+      <div style="font-size:11px;color:#9e9188;text-transform:uppercase;
+                  letter-spacing:0.1em;font-weight:800">Attention heatmap</div>
+      <div style="font-size:10px;color:#b8aaa0;display:flex;align-items:center;gap:6px">
+        <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
+                     background:#7a1830;vertical-align:middle"></span>high
+        <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
+                     background:rgba(201,161,93,0.28);vertical-align:middle;
+                     margin-left:6px"></span>medium
+      </div>
     </div>
-  </details>
+    <div style="background:rgba(251,247,241,0.8);border-radius:14px;
+                padding:14px 16px;border:1px solid rgba(63,43,35,0.09);
+                line-height:2">
+      {word_html}
+    </div>
+    <div style="font-size:10px;color:#b8aaa0;margin-top:5px">
+      Word warmth = Bahdanau attention weight &middot; darker = more influential</div>
+  </div>
+
+  <!-- "what happens in background" — styled like Detect Dish info card -->
+  <div style="margin-bottom:22px;border-radius:16px;overflow:hidden;
+              background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.08));
+              border:1px solid rgba(122,24,48,0.12);
+              font-family:'Segoe UI',system-ui,Arial,sans-serif">
+    <details>
+      <summary style="display:flex;align-items:center;gap:10px;
+                      padding:15px 22px;cursor:pointer;list-style:none;
+                      font-size:13px;font-weight:700;color:#42101d">
+        What happens in the background?
+        <span style="margin-left:auto;font-size:16px;color:#9e9188;font-weight:400;line-height:1">+</span>
+      </summary>
+      <div style="padding:0 22px 18px;font-size:12px;color:#7c726b;line-height:1.75">
+        Claude generates three flavor descriptions for the detected dish. These are read by a
+        language model that focuses on the most taste-defining words, translates them into a
+        shared taste space, and finds the closest match among 9 pre-learned flavor profiles &mdash;
+        that match becomes the dish&rsquo;s flavor fingerprint.
+      </div>
+    </details>
+  </div>
 
   <!-- CTA -->
   <div style="text-align:center">
@@ -1086,7 +1091,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     # ── 5-step bar builder ────────────────────────────────────────────────────
     _sep = (
         '<div style="flex:1;height:1px;background:rgba(64,42,31,0.18);'
-        'min-width:24px;margin-bottom:20px;align-self:center"></div>'
+        'min-width:12px;max-width:40px;margin-bottom:22px;align-self:center"></div>'
     )
 
     def _step(num, label, circ_cls, lbl_cls, for_id=None, locked=False):
@@ -1094,16 +1099,16 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
         if for_id and not locked:
             circ_el = (
                 f'<label for="{for_id}" class="{circ_cls}"'
-                f' style="width:40px;height:40px;border-radius:999px;display:grid;'
-                f'place-items:center;font-size:16px;font-weight:900;cursor:pointer;'
+                f' style="width:48px;height:48px;border-radius:999px;display:grid;'
+                f'place-items:center;font-size:17px;font-weight:900;cursor:pointer;'
                 f'background:rgba(255,255,255,0.58);color:#9e9188;'
                 f'border:1px solid rgba(200,190,180,0.5);box-sizing:border-box">{num}</label>'
             )
         else:
             circ_el = (
                 f'<div class="{circ_cls}"'
-                f' style="width:40px;height:40px;border-radius:999px;display:grid;'
-                f'place-items:center;font-size:16px;font-weight:900;'
+                f' style="width:48px;height:48px;border-radius:999px;display:grid;'
+                f'place-items:center;font-size:17px;font-weight:900;'
                 f'background:rgba(255,255,255,0.58);color:#9e9188;'
                 f'border:1px solid rgba(200,190,180,0.5);box-sizing:border-box">{num}</div>'
             )
@@ -1112,7 +1117,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
             f'gap:8px;{wrap_style}">'
             f'{circ_el}'
             f'<div class="{lbl_cls}"'
-            f' style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">'
+            f' style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">'
             f'{label}</div>'
             f'</div>'
         )
@@ -1120,11 +1125,11 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     # Step 1 (Upload) — always shown as completed
     _step1_done = (
         '<div style="display:flex;flex-direction:column;align-items:center;gap:8px">'
-        '<div style="width:40px;height:40px;border-radius:999px;display:grid;'
-        'place-items:center;font-size:14px;font-weight:900;'
+        '<div style="width:48px;height:48px;border-radius:999px;display:grid;'
+        'place-items:center;font-size:16px;font-weight:900;'
         'background:rgba(255,255,255,0.82);color:#756b63;'
         'border:1px solid rgba(64,42,31,0.16)">&#10003;</div>'
-        '<div style="font-size:11px;font-weight:800;color:#756b63;'
+        '<div style="font-size:12px;font-weight:800;color:#756b63;'
         'white-space:nowrap">Upload</div>'
         '</div>'
     )
@@ -1165,7 +1170,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
 <input type="radio" id="wdt3" name="wdtab"{c[3]} style="display:none">
 
 <!-- ── header ─────────────────────────────────────────────────────── -->
-<div id="wdhdr" style="display:grid;grid-template-columns:180px 1fr 160px;
+<div id="wdhdr" style="display:grid;grid-template-columns:auto 1fr auto;
      align-items:start;gap:24px;padding:24px 34px 18px;
      border-bottom:1px solid rgba(63,43,35,0.09)">
   <div>
@@ -1175,19 +1180,10 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
                 color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
   </div>
-  <div style="display:flex;align-items:flex-start;gap:0;
-              max-width:680px;margin:0 auto;width:100%">
+  <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;width:100%">
     {steps_html}
   </div>
-  <div style="justify-self:end;align-self:center">
-    <label for="wdt0"
-      style="display:block;background:linear-gradient(135deg,#8d1f3a,#5a1024);
-             color:#fff;padding:13px 24px;border-radius:999px;
-             font-size:14px;font-weight:800;white-space:nowrap;cursor:pointer;
-             box-shadow:0 8px 20px rgba(122,24,48,0.22)">
-      &#8635; Start Over
-    </label>
-  </div>
+  <div style="width:140px"></div>
 </div>
 
 <!-- ── screens — DIRECT children of #wdshell (CSS sibling selector requirement) -->
@@ -1277,6 +1273,7 @@ def on_identify(pil_img):
         gr.update(visible=True),  gr.update(), gr.update(),
         gr.update(visible=False), gr.update(visible=False),
         gr.update(), gr.update(), gr.update(),
+        gr.update(visible=False),
     )
     if pil_img is None:
         return _nil
@@ -1304,6 +1301,7 @@ def on_identify(pil_img):
         gr.update(value=_s1_head_html(food_name)),                 # screen1_head
         gr.update(value=_s1_photo_html(img_b64)),                  # screen1_photo
         gr.update(value=_s1_info_html(food_name, conf, top5)),     # screen1_info
+        gr.update(visible=True),                                    # start_over_btn
     )
 
 
@@ -1335,6 +1333,17 @@ def on_yes():
 def on_no():
     """Hide Yes/No confirm row, show manual dish input row. Info card stays visible."""
     return gr.update(visible=False), gr.update(visible=True), gr.update()
+
+
+def on_start_over():
+    """Reset all state and return to the upload screen."""
+    _state.update(food="", conf=0.0, top5=[], img_b64="")
+    return (
+        gr.update(visible=True),   # upload_col
+        gr.update(visible=False),  # result_col
+        gr.update(visible=False),  # info_card
+        gr.update(visible=False),  # start_over_btn
+    )
 
 
 def on_confirm_dish(dish_text: str):
@@ -1563,6 +1572,26 @@ div.main { padding: 0 !important; background: transparent !important; }
   outline: none !important;
   box-shadow: 0 0 0 3px rgba(122,24,48,0.10) !important;
 }
+/* Start Over button — fixed in top-right corner when result screens are visible */
+#wdstartover button {
+  position: fixed !important;
+  top: 28px !important;
+  right: 40px !important;
+  z-index: 9999 !important;
+  background: linear-gradient(135deg,#8d1f3a,#5a1024) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 8px 20px rgba(122,24,48,0.22) !important;
+  cursor: pointer !important;
+}
+#wdstartover button:hover {
+  background: linear-gradient(135deg,#a0243f,#6e1430) !important;
+}
 /* Confirm dish button — wine-red */
 #wdconfirmdish button {
   background: linear-gradient(135deg,#8d1f3a,#5a1024) !important;
@@ -1583,8 +1612,8 @@ _UPLOAD_HEADER_HTML = """
             box-shadow:0 34px 90px rgba(52,34,26,0.10),inset 0 1px 0 rgba(255,255,255,0.75);
             overflow:hidden">
 
-  <!-- header row: brand | step bar | restart -->
-  <div style="display:grid;grid-template-columns:180px 1fr 160px;
+  <!-- header row: brand | step bar | spacer -->
+  <div style="display:grid;grid-template-columns:auto 1fr auto;
               align-items:start;gap:24px;padding:24px 34px 18px;
               border-bottom:1px solid rgba(63,43,35,0.09)">
     <div>
@@ -1595,60 +1624,54 @@ _UPLOAD_HEADER_HTML = """
                   color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
     </div>
     <!-- 5-step indicator -->
-    <div style="display:grid;grid-template-columns:repeat(9,auto);
-                align-items:center;justify-content:center;gap:0;max-width:660px;margin:0 auto">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0">
       <!-- step 1 active -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+        <div style="width:48px;height:48px;border-radius:999px;display:grid;
                     place-items:center;background:linear-gradient(135deg,#8d1f3a,#5a1024);
-                    color:#fff;font-size:16px;font-weight:900;
+                    color:#fff;font-size:17px;font-weight:900;
                     box-shadow:0 10px 28px rgba(122,24,48,0.24)">1</div>
-        <div style="font-size:11px;font-weight:800;color:#42101d;
+        <div style="font-size:12px;font-weight:800;color:#42101d;
                     text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Upload</div>
       </div>
-      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 2 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+        <div style="width:48px;height:48px;border-radius:999px;display:grid;
                     place-items:center;background:rgba(255,255,255,0.58);
-                    color:#9e9188;font-size:16px;font-weight:900;
+                    color:#9e9188;font-size:17px;font-weight:900;
                     border:1px solid rgba(200,190,180,0.5)">2</div>
-        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
+        <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
       </div>
-      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 3 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+        <div style="width:48px;height:48px;border-radius:999px;display:grid;
                     place-items:center;background:rgba(255,255,255,0.58);
-                    color:#9e9188;font-size:16px;font-weight:900;
+                    color:#9e9188;font-size:17px;font-weight:900;
                     border:1px solid rgba(200,190,180,0.5)">3</div>
-        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
+        <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
       </div>
-      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 4 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+        <div style="width:48px;height:48px;border-radius:999px;display:grid;
                     place-items:center;background:rgba(255,255,255,0.58);
-                    color:#9e9188;font-size:16px;font-weight:900;
+                    color:#9e9188;font-size:17px;font-weight:900;
                     border:1px solid rgba(200,190,180,0.5)">4</div>
-        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
+        <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
       </div>
-      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 5 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+        <div style="width:48px;height:48px;border-radius:999px;display:grid;
                     place-items:center;background:rgba(255,255,255,0.58);
-                    color:#9e9188;font-size:16px;font-weight:900;
+                    color:#9e9188;font-size:17px;font-weight:900;
                     border:1px solid rgba(200,190,180,0.5)">5</div>
-        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
+        <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
       </div>
     </div>
-    <div style="justify-self:end;align-self:center">
-      <div style="background:linear-gradient(135deg,#8d1f3a,#5a1024);
-                  color:#fff;padding:13px 24px;border-radius:999px;
-                  font-size:14px;font-weight:800;white-space:nowrap;
-                  box-shadow:0 8px 20px rgba(122,24,48,0.22)">&#8635; Start Over</div>
-    </div>
+    <div style="width:140px"></div>
   </div>
 
   <!-- intro copy -->
@@ -1721,6 +1744,7 @@ with gr.Blocks(
 
         # Screens 2/3/4 carousel (shown after Yes is confirmed)
         wine_card = gr.HTML(value="", elem_id="wdcard")
+        start_over_btn = gr.Button("↺  Start Over", elem_id="wdstartover", visible=False)
 
     # ── Info card — outside the glass card, shown only on Detect Dish screen ──
     info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)
@@ -1731,7 +1755,7 @@ with gr.Blocks(
         inputs=[img_input],
         outputs=[result_col, detect_col, confirm_row, upload_col,
                  yes_btn, no_btn, info_card, manual_row,
-                 screen1_head, screen1_photo, screen1_info],
+                 screen1_head, screen1_photo, screen1_info, start_over_btn],
     )
     yes_btn.click(
         on_yes,
@@ -1747,6 +1771,11 @@ with gr.Blocks(
         on_confirm_dish,
         inputs=[dish_input],
         outputs=[manual_row, detect_col, wine_card, info_card],
+    )
+    start_over_btn.click(
+        on_start_over,
+        inputs=None,
+        outputs=[upload_col, result_col, info_card, start_over_btn],
     )
 
 if __name__ == "__main__":

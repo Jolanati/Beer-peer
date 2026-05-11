@@ -521,25 +521,38 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
         other possibilities</div>
       {others_rows}
 
-      <div style="margin-top:10px;font-size:12px;color:#b8aaa0;line-height:1.6">
-        Use the buttons below to confirm or pick a different dish.</div>
     </div>
   </div>
 
-  <!-- "what happens in background" details -->
-  <details style="margin-top:22px;border:1px solid rgba(63,43,35,0.09);
-                  border-radius:14px;overflow:hidden">
-    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
-                    color:#7c726b;cursor:pointer;list-style:none;
-                    background:rgba(251,247,241,0.8)">
-      &#9432; What happens in the background?</summary>
-    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
-                line-height:1.75;background:rgba(251,247,241,0.5)">
-      A <strong style="color:#211917">ResNet-50</strong> trained on Food-101
-      (101 classes, ~75k images) predicts the food category from your photo.
-      The model outputs a probability distribution over all 101 classes &mdash;
-      the top prediction and its confidence score are shown above.
-      Only the top class is passed to the next step.
+  <!-- "what happens in background" — modern info tiles -->
+  <details style="margin-top:22px;border-radius:16px;overflow:hidden;
+                  background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.07));
+                  border:1px solid rgba(122,24,48,0.10)">
+    <summary style="display:flex;align-items:center;gap:10px;
+                    padding:14px 20px;cursor:pointer;list-style:none;
+                    font-size:13px;font-weight:700;color:#42101d">
+      <span style="width:26px;height:26px;background:rgba(122,24,48,0.12);
+                   border-radius:999px;display:grid;place-items:center;
+                   font-size:13px;flex-shrink:0">&#128300;</span>
+      What happens in the background?
+      <span style="margin-left:auto;font-size:10px;color:#9e9188;
+                   font-weight:600;text-transform:uppercase;letter-spacing:0.08em">expand</span>
+    </summary>
+    <div style="padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="background:rgba(255,255,255,0.72);border-radius:12px;padding:14px">
+        <div style="font-size:9px;font-weight:800;color:#7a1830;
+                    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:7px">Model</div>
+        <div style="font-size:13px;color:#211917;font-weight:700;margin-bottom:4px">ResNet-50</div>
+        <div style="font-size:11px;color:#7c726b;line-height:1.5">
+          Food-101 &middot; 101 classes &middot; 78.4% top-1 accuracy</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.72);border-radius:12px;padding:14px">
+        <div style="font-size:9px;font-weight:800;color:#7a1830;
+                    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:7px">Output</div>
+        <div style="font-size:13px;color:#211917;font-weight:700;margin-bottom:4px">Probability scores</div>
+        <div style="font-size:11px;color:#7c726b;line-height:1.5">
+          Softmax over 101 classes &middot; top-1 passed to next step</div>
+      </div>
     </div>
   </details>
 
@@ -1033,6 +1046,9 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
         "#wdt2:checked~#wdnav #wdn2{display:inline-block!important}"
         # Done indicator
         "#wdt3:checked~#wdnav #wdndone{display:inline-block!important}"
+        # Hide nav + footer on Detect Dish screen — confirm buttons are the CTA
+        "#wdt0:checked~#wdnav{display:none!important}"
+        "#wdt0:checked~#wdfooter{display:none!important}"
         # Step counters
         "#wdt0:checked~#wdnav #wdc0,"
         "#wdt1:checked~#wdnav #wdc1,"
@@ -1118,15 +1134,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     n2_lock = f";{_lock}" if unlocked < 2 else ""
     n3_lock = f";{_lock}" if not s4 else ""
 
-    return f"""<div id="wdshell"
-     style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
-            background:rgba(255,250,244,0.72);
-            backdrop-filter:blur(28px) saturate(1.08);
-            border:1px solid rgba(255,255,255,0.72);
-            border-radius:34px;
-            box-shadow:0 34px 90px rgba(52,34,26,0.10),
-                       inset 0 1px 0 rgba(255,255,255,0.75);
-            overflow:hidden">
+    return f"""<div id="wdshell" style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 {css}
 <input type="radio" id="wdt0" name="wdtab"{c[0]} style="display:none">
 <input type="radio" id="wdt1" name="wdtab"{c[1]} style="display:none">
@@ -1149,10 +1157,12 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     {steps_html}
   </div>
   <div style="justify-self:end;align-self:center">
-    <label for="wdt0" style="display:block;background:rgba(255,255,255,0.45);
-      border:1px solid rgba(63,43,35,0.09);color:#211917;padding:10px 16px;
-      border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer">
-      &#8635; start over
+    <label for="wdt0"
+      style="display:block;background:linear-gradient(135deg,#8d1f3a,#5a1024);
+             color:#fff;padding:13px 24px;border-radius:999px;
+             font-size:14px;font-weight:800;white-space:nowrap;cursor:pointer;
+             box-shadow:0 8px 20px rgba(122,24,48,0.22)">
+      &#8635; Start Over
     </label>
   </div>
 </div>
@@ -1185,7 +1195,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
   </div>
 </div>
 
-<div style="padding:10px 34px 14px;font-size:10px;color:#b8aaa0;text-align:right;
+<div id="wdfooter" style="padding:10px 34px 14px;font-size:10px;color:#b8aaa0;text-align:right;
             border-top:1px solid rgba(63,43,35,0.06)">
   Wine&amp;Dine &middot; RSU Advanced ML &middot; 2026
 </div>
@@ -1410,17 +1420,31 @@ div.main { padding: 0 !important; background: transparent !important; }
   width: 100% !important;
   min-width: 0 !important;
 }
-/* Card + confirm row */
+/* Result card — glass wrapper (Gradio Column) */
+#wdcard_outer {
+  background: rgba(255,250,244,0.72) !important;
+  backdrop-filter: blur(28px) saturate(1.08) !important;
+  border: 1px solid rgba(255,255,255,0.72) !important;
+  border-radius: 34px !important;
+  box-shadow: 0 34px 90px rgba(52,34,26,0.10),
+              inset 0 1px 0 rgba(255,255,255,0.75) !important;
+  overflow: hidden !important;
+}
+#wdcard_outer > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
+}
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
+
+/* Confirm buttons — inside the glass card */
 #wdconfirm {
-  width: min(520px, calc(100% - 68px)) !important;
-  margin: 14px 0 0 34px !important;
+  border-top: 1px solid rgba(63,43,35,0.09) !important;
+  padding: 20px 34px 28px !important;
 }
 #wdconfirm > .wrap {
-  padding: 10px 0 !important;
+  padding: 0 !important;
   gap: 12px !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
   align-items: stretch !important;
 }
 #wdconfirm > .wrap > * { width: 100% !important; }

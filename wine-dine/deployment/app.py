@@ -1490,14 +1490,38 @@ div.main { padding: 0 !important; background: transparent !important; }
   padding: 0 !important;
 }
 .gap { gap: 0 !important; }
+
+/* Upload screen layout polish */
+#wdupload {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+#wdfood {
+  margin-top: 6px !important;
+}
+#wdfood > .wrap {
+  border-radius: 24px !important;
+  overflow: hidden !important;
+}
 /* Image upload zone */
 #wdfood .upload-container, #wdfood [data-testid="image"] {
-  border: 1.5px dashed rgba(122,24,48,0.22) !important;
-  border-radius: 20px !important;
-  background: linear-gradient(145deg,rgba(255,255,255,0.56),rgba(251,245,238,0.72)) !important;
-  min-height: 220px !important;
+  border: 1.5px dashed rgba(122,24,48,0.26) !important;
+  border-radius: 24px !important;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,0.86), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.58), rgba(251,245,238,0.78)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.72),
+    0 10px 28px rgba(64,42,31,0.07) !important;
+  min-height: 240px !important;
+}
+#wdfood .upload-container:hover,
+#wdfood [data-testid="image"]:hover {
+  border-color: rgba(122,24,48,0.42) !important;
 }
 /* Analyze button */
+#wdanalyze,
 #wdanalyze button {
   background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
   color: #fff !important; border: none !important; border-radius: 999px !important;
@@ -1506,23 +1530,38 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 14px 30px rgba(122,24,48,0.22) !important;
   letter-spacing: -0.2px !important;
 }
+#wdanalyze:hover,
 #wdanalyze button:hover { opacity: 0.88 !important; }
 /* Confirm buttons */
+#wdyes,
 #wdyes button {
   background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
   color: #fff !important; border: none !important; border-radius: 999px !important;
   font-weight: 900 !important; padding: 13px 28px !important;
   box-shadow: 0 10px 24px rgba(122,24,48,0.22) !important;
 }
+#wdyes:hover,
 #wdyes button:hover,
+#wdanalyze:hover,
 #wdanalyze button:hover {
   filter: brightness(0.96) saturate(1.02) !important;
   opacity: 1 !important;
 }
+#wdno,
 #wdno button {
   background: rgba(122,24,48,0.07) !important; color: #5a1024 !important;
   border: 1px solid rgba(122,24,48,0.34) !important; border-radius: 999px !important;
   font-weight: 800 !important; padding: 13px 24px !important;
+}
+
+/* Upload CTA alignment */
+#wduploadcta > .wrap {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding-top: 8px !important;
+}
+#wdanalyze {
+  min-width: 220px !important;
 }
 /* Card + confirm row inner padding */
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
@@ -1642,14 +1681,14 @@ with gr.Blocks(
 ) as demo:
 
     # ── Upload screen (screen 0) ──────────────────────────────────────────────
-    with gr.Column(visible=True) as upload_col:
+    with gr.Column(visible=True, elem_id="wdupload") as upload_col:
         gr.HTML(_UPLOAD_HEADER_HTML)
         img_input = gr.Image(
             type="pil", label="", show_label=False,
             height=240, elem_id="wdfood",
             sources=["upload", "clipboard"],
         )
-        with gr.Row():
+        with gr.Row(elem_id="wduploadcta"):
             identify_btn = gr.Button(
                 "Analyze dish →", variant="primary",
                 elem_id="wdanalyze", scale=0, min_width=180,

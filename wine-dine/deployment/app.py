@@ -1329,62 +1329,51 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 .gap { gap: 0 !important; }
 
-/* Upload screen — #wdupload IS the card.
-   No display:flex !important so Gradio can hide it with display:none. */
+/* Upload screen layout */
 #wdupload {
-  background: rgba(255,250,244,0.92) !important;
-  border: 1px solid rgba(255,255,255,0.72) !important;
-  border-radius: 28px !important;
-  box-shadow: 0 24px 64px rgba(52,34,26,0.10),
-              inset 0 1px 0 rgba(255,255,255,0.75) !important;
-  overflow: hidden !important;
+  display: flex;
+  flex-direction: column !important;
+  gap: 14px !important;
 }
-#wdupload > .wrap,
-#wdupload > div {
-  gap: 0 !important;
-  padding: 0 !important;
-}
-
-/* Image upload zone */
 #wdfood {
-  padding: 0 28px !important;
+  margin-top: 6px !important;
 }
 #wdfood > .wrap {
-  padding: 0 !important;
-  background: transparent !important;
+  border-radius: 24px !important;
+  overflow: visible !important;
+  padding-bottom: 10px !important;
 }
-#wdfood .upload-container,
-#wdfood [data-testid="image"] {
+/* Image upload zone */
+#wdfood .upload-container, #wdfood [data-testid="image"] {
   border: 1.5px dashed rgba(122,24,48,0.26) !important;
-  border-radius: 16px !important;
-  background: rgba(251,247,241,0.5) !important;
-  min-height: 220px !important;
-  box-shadow: none !important;
+  border-radius: 24px !important;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,0.86), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.58), rgba(251,245,238,0.78)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.72),
+    0 10px 28px rgba(64,42,31,0.07) !important;
+  min-height: 240px !important;
 }
 #wdfood .upload-container:hover,
 #wdfood [data-testid="image"]:hover {
-  border-color: rgba(122,24,48,0.44) !important;
+  border-color: rgba(122,24,48,0.42) !important;
 }
-
 /* Analyze button */
-#wduploadcta {
-  padding: 14px 28px 28px !important;
-}
-#wduploadcta > .wrap {
-  padding: 0 !important;
-  gap: 0 !important;
-}
 #wdanalyze,
 #wdanalyze button {
   background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
   color: #fff !important; border: none !important; border-radius: 999px !important;
   font-size: 15px !important; font-weight: 900 !important;
   padding: 14px 32px !important;
-  box-shadow: 0 10px 24px rgba(122,24,48,0.22) !important;
-  width: 100% !important; min-width: 0 !important;
+  box-shadow: 0 14px 30px rgba(122,24,48,0.22) !important;
+  letter-spacing: -0.2px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
 }
+#wdanalyze:hover,
 #wdanalyze button:hover { opacity: 0.88 !important; }
-
 /* Confirm buttons */
 #wdyes,
 #wdyes button {
@@ -1393,7 +1382,13 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-weight: 900 !important; padding: 13px 28px !important;
   box-shadow: 0 10px 24px rgba(122,24,48,0.22) !important;
 }
-#wdyes button:hover { filter: brightness(0.94) !important; }
+#wdyes:hover,
+#wdyes button:hover,
+#wdanalyze:hover,
+#wdanalyze button:hover {
+  filter: brightness(0.96) saturate(1.02) !important;
+  opacity: 1 !important;
+}
 #wdno,
 #wdno button {
   background: rgba(122,24,48,0.07) !important; color: #5a1024 !important;
@@ -1401,14 +1396,24 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-weight: 800 !important; padding: 13px 24px !important;
 }
 
-/* Result card */
+/* Upload CTA alignment */
+#wduploadcta > .wrap {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding-top: 8px !important;
+  width: 100% !important;
+}
+#wdanalyze {
+  min-width: 0 !important;
+}
+/* Card + confirm row */
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
 #wdconfirm {
   width: min(520px, calc(100% - 68px)) !important;
   margin: 14px 0 0 34px !important;
 }
 #wdconfirm > .wrap {
-  padding: 10px 0 0 !important;
+  padding: 10px 0 !important;
   gap: 12px !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
@@ -1417,78 +1422,92 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdconfirm > .wrap > * { width: 100% !important; }
 """
 _UPLOAD_HEADER_HTML = """
-<div style="display:grid;grid-template-columns:180px 1fr 160px;
-     align-items:start;gap:24px;padding:24px 28px 18px;
-     border-bottom:1px solid rgba(63,43,35,0.09)">
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
+            background:rgba(255,250,244,0.72);
+            backdrop-filter:blur(28px) saturate(1.08);
+            border:1px solid rgba(255,255,255,0.72);
+            border-radius:34px;
+            box-shadow:0 34px 90px rgba(52,34,26,0.10),inset 0 1px 0 rgba(255,255,255,0.75);
+            overflow:hidden">
 
-  <div>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:28px;
-                letter-spacing:-0.8px;font-weight:700;color:#211917;white-space:nowrap">
-      Wine<span style="color:#7a1830">&amp;</span>Dine</div>
-    <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-                color:#9e9188;font-weight:700;margin-top:5px">AI Food &amp; Wine Pairing</div>
+  <!-- header row: brand | step bar | restart -->
+  <div style="display:grid;grid-template-columns:180px 1fr 160px;
+              align-items:start;gap:24px;padding:24px 34px 18px;
+              border-bottom:1px solid rgba(63,43,35,0.09)">
+    <div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;
+                  letter-spacing:-0.8px;font-weight:700;white-space:nowrap;color:#211917">
+        Wine<span style="color:#7a1830">&amp;</span>Dine</div>
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+                  color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
+    </div>
+    <!-- 5-step indicator -->
+    <div style="display:grid;grid-template-columns:repeat(9,auto);
+                align-items:center;justify-content:center;gap:0;max-width:660px;margin:0 auto">
+      <!-- step 1 active -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:linear-gradient(135deg,#8d1f3a,#5a1024);
+                    color:#fff;font-size:16px;font-weight:900;
+                    box-shadow:0 10px 28px rgba(122,24,48,0.24)">1</div>
+        <div style="font-size:11px;font-weight:800;color:#42101d;
+                    text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Upload</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 2 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">2</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">3</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 4 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">4</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
+      </div>
+      <div style="width:48px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:20px"></div>
+      <!-- step 5 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:40px;height:40px;border-radius:999px;display:grid;
+                    place-items:center;background:rgba(255,255,255,0.58);
+                    color:#9e9188;font-size:16px;font-weight:900;
+                    border:1px solid rgba(200,190,180,0.5)">5</div>
+        <div style="font-size:11px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
+      </div>
+    </div>
+    <div style="justify-self:end;align-self:center">
+      <div style="background:rgba(255,255,255,0.45);border:1px solid rgba(63,43,35,0.09);
+                  color:#211917;padding:10px 16px;border-radius:999px;
+                  font-size:13px;font-weight:700;white-space:nowrap">&#8635; start over</div>
+    </div>
   </div>
 
-  <div style="display:flex;align-items:flex-start;justify-content:center;
-              gap:0;max-width:640px;margin:0 auto;width:100%">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-      <div style="width:36px;height:36px;border-radius:999px;display:grid;
-                  place-items:center;background:linear-gradient(135deg,#8d1f3a,#5a1024);
-                  color:#fff;font-size:14px;font-weight:900;
-                  box-shadow:0 8px 20px rgba(122,24,48,0.24)">1</div>
-      <div style="font-size:10px;font-weight:800;color:#42101d;
-                  text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Upload</div>
+  <!-- intro copy -->
+  <div style="padding:36px 34px 28px">
+    <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+                letter-spacing:0.14em;font-weight:800;margin-bottom:10px">STEP 1 &middot; UPLOAD</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:46px;
+                font-weight:700;color:#211917;letter-spacing:-2px;line-height:0.95;
+                margin-bottom:16px">What are you<br>eating?</div>
+    <div style="font-size:14px;color:#7c726b;line-height:1.7;max-width:520px">
+      Upload a food photo and the app will identify the dish,
+      build a taste fingerprint and suggest wines that fit the experience.
     </div>
-    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);margin:17px 6px 0;max-width:60px"></div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-      <div style="width:36px;height:36px;border-radius:999px;display:grid;
-                  place-items:center;background:rgba(255,255,255,0.58);
-                  color:#9e9188;font-size:14px;font-weight:900;
-                  border:1px solid rgba(200,190,180,0.5)">2</div>
-      <div style="font-size:10px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
-    </div>
-    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);margin:17px 6px 0;max-width:60px"></div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-      <div style="width:36px;height:36px;border-radius:999px;display:grid;
-                  place-items:center;background:rgba(255,255,255,0.58);
-                  color:#9e9188;font-size:14px;font-weight:900;
-                  border:1px solid rgba(200,190,180,0.5)">3</div>
-      <div style="font-size:10px;font-weight:800;color:#9e9188;white-space:nowrap">Taste Fingerprint</div>
-    </div>
-    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);margin:17px 6px 0;max-width:60px"></div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-      <div style="width:36px;height:36px;border-radius:999px;display:grid;
-                  place-items:center;background:rgba(255,255,255,0.58);
-                  color:#9e9188;font-size:14px;font-weight:900;
-                  border:1px solid rgba(200,190,180,0.5)">4</div>
-      <div style="font-size:10px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
-    </div>
-    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);margin:17px 6px 0;max-width:60px"></div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-      <div style="width:36px;height:36px;border-radius:999px;display:grid;
-                  place-items:center;background:rgba(255,255,255,0.58);
-                  color:#9e9188;font-size:14px;font-weight:900;
-                  border:1px solid rgba(200,190,180,0.5)">5</div>
-      <div style="font-size:10px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
-    </div>
-  </div>
-
-  <div style="justify-self:end;align-self:center">
-    <div style="background:rgba(255,255,255,0.45);border:1px solid rgba(63,43,35,0.09);
-                color:#9e9188;padding:9px 16px;border-radius:999px;
-                font-size:12px;font-weight:700;white-space:nowrap">&#8635; Start over</div>
-  </div>
-</div>
-
-<div style="padding:32px 28px 20px">
-  <div style="font-size:10px;color:#7a1830;text-transform:uppercase;
-              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">STEP 1 &middot; UPLOAD</div>
-  <div style="font-family:Georgia,'Times New Roman',serif;font-size:44px;
-              font-weight:700;color:#211917;letter-spacing:-2px;line-height:0.96;
-              margin-bottom:14px">What are you<br>eating?</div>
-  <div style="font-size:14px;color:#7c726b;line-height:1.7;max-width:500px">
-    Upload a food photo and the app will identify the dish,
-    build a taste fingerprint and suggest wines that fit the experience.
   </div>
 </div>
 """

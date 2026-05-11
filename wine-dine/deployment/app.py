@@ -1396,14 +1396,17 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-weight: 800 !important; padding: 13px 24px !important;
 }
 
-/* Upload CTA alignment */
+/* Upload CTA */
+#wduploadcta {
+  padding: 12px 0 0 !important;
+}
 #wduploadcta > .wrap {
-  justify-content: flex-start !important;
-  align-items: center !important;
-  padding-top: 8px !important;
+  padding: 0 !important;
   width: 100% !important;
+  flex-direction: column !important;
 }
 #wdanalyze {
+  width: 100% !important;
   min-width: 0 !important;
 }
 /* Card + confirm row */
@@ -1530,7 +1533,7 @@ with gr.Blocks(
         with gr.Row(elem_id="wduploadcta"):
             identify_btn = gr.Button(
                 "Analyze dish →", variant="primary",
-                elem_id="wdanalyze", scale=0, min_width=180,
+                elem_id="wdanalyze",
             )
 
     # ── Result card (screens 1–4) ─────────────────────────────────────────────

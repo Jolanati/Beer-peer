@@ -1218,7 +1218,7 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 def on_identify(pil_img):
     """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update(), gr.update(visible=False)
+        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update(), gr.update(visible=False), gr.update(visible=False)
 
     food_name, conf, top5 = identify_food(pil_img)
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
@@ -1242,6 +1242,7 @@ def on_identify(pil_img):
         gr.update(value=f"✓  Yes, it's {display}"),
         gr.update(value="✗  No, correct dish"),
         gr.update(value=_INFO_CARD_HTML, visible=True),  # info_card — show below card
+        gr.update(visible=False),        # manual_row — keep hidden
     )
 
 
@@ -1275,9 +1276,40 @@ def on_yes():
 
 
 def on_no():
-    """Reset to blank state — show upload screen again."""
-    _state.update(food="", conf=0.0, top5=[], img_b64="")
+    """Hide Yes/No, show manual dish input inside the same glass card."""
     return gr.update(visible=False), gr.update(visible=True), gr.update(visible=False)
+
+
+def on_confirm_dish(dish_text: str):
+    """Run the full BiLSTM + wine pipeline from a manually entered dish name."""
+    raw = dish_text.strip()
+    if not raw:
+        yield gr.update(visible=True), gr.update(), gr.update()
+        return
+
+    # Normalize to food_key format (lowercase, spaces → underscores)
+    food_key = raw.lower().replace(" ", "_")
+    display  = raw.title()
+
+    # Yield spinner while BiLSTM runs
+    img_b64 = _state.get("img_b64", "")
+    top5    = _state.get("top5", [])
+    conf    = _state.get("conf", 0.0)
+    s1      = _screen1_html(food_key, conf, top5, img_b64) if img_b64 else \
+              _screen1_html(food_key, 0.0, [(food_key, 1.0)], "")
+    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
+
+    # BiLSTM inference
+    cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
+    s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, img_b64)
+
+    recs         = RESULTS_ALL.get(food_key, [])
+    safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
+    feel         = _food_feel(safe_cluster)
+    s3           = _screen3_html(display, cluster_name, recs, feel)
+    s4           = _screen4_html()
+
+    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
 
 
 # ── Info card — shown below the glass card on Detect Dish screen only ─────────
@@ -1458,6 +1490,34 @@ div.main { padding: 0 !important; background: transparent !important; }
   align-items: stretch !important;
 }
 #wdconfirm > .wrap > * { width: 100% !important; }
+#wdmanual {
+  display: grid !important;
+  grid-template-columns: 1.1fr 0.9fr !important;
+  gap: 28px !important;
+  padding: 16px 34px 28px !important;
+  border-top: 1px solid rgba(63,43,35,0.09) !important;
+}
+#wdmanual > .wrap {
+  grid-column: 2 !important;
+  padding: 0 !important;
+  gap: 10px !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+#wdmanual > .wrap > * { width: 100% !important; }
+#wddishinput textarea {
+  border-radius: 12px !important;
+  border: 1.5px solid rgba(122,24,48,0.22) !important;
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+  background: rgba(255,255,255,0.85) !important;
+  resize: none !important;
+}
+#wddishinput textarea:focus {
+  border-color: rgba(122,24,48,0.55) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(122,24,48,0.10) !important;
+}
 """
 _UPLOAD_HEADER_HTML = """
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
@@ -1584,6 +1644,17 @@ with gr.Blocks(
                 "✗  No, correct dish",
                 variant="secondary", elem_id="wdno",
             )
+        with gr.Column(visible=False, elem_id="wdmanual") as manual_row:
+            dish_input = gr.Textbox(
+                placeholder="e.g. pasta, sushi, burger…",
+                label="", show_label=False,
+                lines=1, max_lines=1,
+                elem_id="wddishinput",
+            )
+            confirm_dish_btn = gr.Button(
+                "Confirm dish →",
+                variant="primary", elem_id="wdconfirmdish",
+            )
 
     # ── Info card — outside the glass card, shown only on Detect Dish screen ──
     info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)
@@ -1592,7 +1663,7 @@ with gr.Blocks(
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn, info_card],
+        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn, info_card, manual_row],
     )
     yes_btn.click(
         on_yes,
@@ -1602,7 +1673,12 @@ with gr.Blocks(
     no_btn.click(
         on_no,
         inputs=None,
-        outputs=[result_col, upload_col, info_card],
+        outputs=[confirm_row, manual_row, info_card],
+    )
+    confirm_dish_btn.click(
+        on_confirm_dish,
+        inputs=[dish_input],
+        outputs=[manual_row, wine_card, info_card],
     )
 
 if __name__ == "__main__":

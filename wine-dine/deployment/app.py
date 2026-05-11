@@ -613,7 +613,7 @@ def _screen2_html(display: str, desc: str, attn_w,
     We turn the verified dish into a flavor profile the wine matcher can use.</div>
 
   <!-- 2-col layout: photo LEFT | heatmap + bars RIGHT -->
-  <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:28px;
+  <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;
               align-items:start;margin-bottom:24px">
 
     <!-- LEFT: food photo -->
@@ -680,13 +680,10 @@ def _screen2_html(display: str, desc: str, attn_w,
       + What happens in the background?</summary>
     <div style="padding:14px 18px;font-size:12px;color:#7c726b;
                 line-height:1.75;background:rgba(251,247,241,0.5)">
-      The flavor description is tokenised and passed through a
-      <strong style="color:#211917">bidirectional LSTM</strong> with
-      <strong style="color:#211917">Bahdanau attention</strong>
-      (hidden=256, 2 layers, dropout=0.4, vocab=4294, max_seq=64).
-      The attention-weighted context vector (512-d) is L2-normalised and compared
-      by cosine similarity to 9 pre-computed cluster centroids
-      (BisectingKMeans, TF-IDF named) — the closest cluster becomes the flavor profile.
+      Claude generates three flavor descriptions for the detected dish. These are read by a
+      language model that focuses on the most taste-defining words, translates them into a
+      shared taste space, and finds the closest match among 9 pre-learned flavor profiles —
+      that match becomes the dish's flavor fingerprint.
     </div>
   </details>
 

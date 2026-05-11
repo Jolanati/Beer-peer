@@ -527,6 +527,81 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
 </div>"""
 
 
+def _s1_head_html(food_name: str) -> str:
+    display = food_name.replace("_", " ").title() if "_" in food_name else food_name
+    return (
+        f'<div style="font-family:\'Segoe UI\',system-ui,Arial,sans-serif">'
+        f'<div style="font-size:11px;color:#7a1830;text-transform:uppercase;'
+        f'letter-spacing:0.14em;font-weight:800;margin-bottom:10px">'
+        f'STEP 2 &middot; DETECT DISH</div>'
+        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:38px;'
+        f'font-weight:700;color:#211917;letter-spacing:-1.5px;line-height:1;'
+        f'margin-bottom:6px">Is this {display}?</div>'
+        f'<div style="font-size:13px;color:#9e9188">Please verify the detected dish</div>'
+        f'</div>'
+    )
+
+
+def _s1_photo_html(img_b64: str) -> str:
+    if img_b64:
+        inner = (
+            f'<img src="data:image/jpeg;base64,{img_b64}"'
+            f' style="width:100%;height:100%;object-fit:cover;display:block;border-radius:20px">'
+        )
+    else:
+        inner = (
+            '<div style="width:100%;height:360px;display:flex;align-items:center;'
+            'justify-content:center;font-size:72px;border-radius:20px;'
+            'background:linear-gradient(135deg,#ede3d8,#ddd0c4)">🍽️</div>'
+        )
+    return (
+        f'<div style="border-radius:20px;overflow:hidden;'
+        f'box-shadow:0 18px 48px rgba(52,34,26,0.14)">{inner}</div>'
+    )
+
+
+def _s1_info_html(food_name: str, conf: float, top5: list) -> str:
+    display  = food_name.replace("_", " ").title() if "_" in food_name else food_name
+    conf_pct = int(conf * 100)
+    others   = ""
+    for fn, fp in top5[1:]:
+        bar_pct = int(fp * 100)
+        others += (
+            f'<div style="display:grid;grid-template-columns:1fr auto;'
+            f'gap:10px;align-items:center;margin-bottom:10px">'
+            f'<div>'
+            f'<div style="font-size:12px;color:#756b63;margin-bottom:4px;'
+            f'overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{fn}</div>'
+            f'<div style="height:5px;background:rgba(64,42,31,0.10);'
+            f'border-radius:999px;overflow:hidden">'
+            f'<div style="background:#c9a15d;width:{bar_pct}%;height:100%;'
+            f'border-radius:999px"></div></div></div>'
+            f'<span style="font-size:12px;color:#9e9188;font-weight:700;'
+            f'white-space:nowrap">{fp*100:.1f}%</span></div>'
+        )
+    return (
+        f'<div style="font-family:\'Segoe UI\',system-ui,Arial,sans-serif;'
+        f'display:flex;flex-direction:column;gap:0">'
+        f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
+        f'letter-spacing:0.14em;font-weight:800;margin-bottom:8px">we think this is</div>'
+        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:52px;'
+        f'line-height:0.88;letter-spacing:-2px;color:#42101d;margin-bottom:20px">{display}</div>'
+        f'<div style="margin-bottom:22px">'
+        f'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px">'
+        f'<span style="font-size:11px;color:#9e9188;font-weight:700;text-transform:uppercase;'
+        f'letter-spacing:0.1em">Confidence</span>'
+        f'<span style="font-family:Georgia,serif;font-size:28px;font-weight:700;'
+        f'color:#7a1830;letter-spacing:-1px;line-height:1">{conf_pct}%</span></div>'
+        f'<div style="height:8px;background:rgba(64,42,31,0.10);border-radius:999px;overflow:hidden">'
+        f'<div style="background:linear-gradient(90deg,#8d1f3a,#c9536e);'
+        f'width:{conf_pct}%;height:100%;border-radius:999px"></div></div></div>'
+        f'<div style="height:1px;background:rgba(63,43,35,0.09);margin-bottom:18px"></div>'
+        f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
+        f'letter-spacing:0.12em;font-weight:800;margin-bottom:12px">other possibilities</div>'
+        f'{others}</div>'
+    )
+
+
 def _screen2_html(display: str, desc: str, attn_w,
                   cluster_idx: int, cluster_name: str, sims,
                   img_b64: str = "") -> str:
@@ -539,13 +614,13 @@ def _screen2_html(display: str, desc: str, attn_w,
     attn_norm = (attn_arr - a_min) / (a_max - a_min + 1e-8)
     word_html = ""
     for w_txt, a in zip(words, attn_norm):
-        if a >= 0.75:
+        if a >= 0.60:
             chip = ("background:#7a1830;color:#fff;font-weight:800;"
                     "border:1px solid transparent")
-        elif a >= 0.40:
+        elif a >= 0.30:
             chip = ("background:rgba(201,161,93,0.28);color:#42101d;"
                     "font-weight:600;border:1px solid rgba(201,161,93,0.4)")
-        elif a >= 0.15:
+        elif a >= 0.10:
             chip = ("background:rgba(122,24,48,0.07);color:#42101d;"
                     "border:1px solid rgba(122,24,48,0.12)")
         else:
@@ -803,7 +878,6 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     for rec in recs[:3]:
         tier     = rec.get("tier", "")
         wine     = rec.get("wine", "—")
-        rating   = rec.get("rating", "—")
         snippet  = _clip(rec.get("snippet", ""), 140)
         kws      = rec.get("keywords", [])
         conf     = float(rec.get("confidence", 0.0))
@@ -828,9 +902,9 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
         )
 
         tags_html = ""
-        for kw in kws[:3]:
+        for kw in kws[:5]:
             tags_html += (
-                f'<span style="font-size:10px;font-weight:600;padding:3px 9px;'
+                f'<span style="font-size:11px;font-weight:600;padding:4px 10px;'
                 f'border-radius:20px;background:{tag_bg};color:{color};'
                 f'white-space:nowrap">{kw}</span>'
             )
@@ -840,59 +914,43 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
             border:1px solid rgba(63,43,35,0.09);
             box-shadow:0 4px 16px rgba(52,34,26,0.07)">
 
-  <!-- tier header strip -->
-  <div style="background:{strip_bg};padding:10px 14px;
+  <!-- tier header: badge left, % right -->
+  <div style="background:{strip_bg};padding:14px 16px;
               display:flex;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:6px">
-      <span style="font-size:11px;font-weight:900;color:{color}">{icon}</span>
-      <span style="font-size:10px;font-weight:800;letter-spacing:0.08em;
+      <span style="font-size:12px;font-weight:900;color:{color}">{icon}</span>
+      <span style="font-size:11px;font-weight:800;letter-spacing:0.08em;
                    text-transform:uppercase;color:{color}">{tier_lbl}</span>
     </div>
     <div style="text-align:right">
-      <div style="font-family:Georgia,serif;font-size:22px;font-weight:700;
-                  color:{color};line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
+      <div style="font-family:Georgia,serif;font-size:26px;font-weight:700;
+                  color:#7a1830;line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
       <div style="font-size:9px;color:#b8aaa0;font-weight:700;
                   text-transform:uppercase;letter-spacing:0.08em">{conf_lbl}</div>
     </div>
   </div>
 
-  <!-- confidence bar -->
-  <div style="height:3px;background:rgba(64,42,31,0.08)">
-    <div style="background:{color};width:{conf_pct}%;height:100%"></div>
-  </div>
-
   <!-- card body -->
-  <div style="padding:14px;display:flex;flex-direction:column;gap:9px">
+  <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
 
     <!-- wine name + year -->
     <div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;
-                  font-weight:700;color:#211917;line-height:1.25">{wine_name}</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;
+                  font-weight:700;color:#211917;line-height:1.2">{wine_name}</div>
       {year_html}
     </div>
 
-    <!-- reasoning -->
-    <div style="font-size:12px;color:#7c726b;line-height:1.6">
-      {reasoning}
-    </div>
+    <!-- pairing reasoning -->
+    <div style="font-size:13px;color:#7c726b;line-height:1.6">{reasoning}</div>
 
-    <!-- taste tags -->
-    <div style="display:flex;flex-wrap:wrap;gap:5px">
-      {tags_html}
-    </div>
+    <!-- flavor notes -->
+    <div style="display:flex;flex-wrap:wrap;gap:5px">{tags_html}</div>
 
     <!-- divider -->
     <div style="height:1px;background:rgba(63,43,35,0.09)"></div>
 
-    <!-- rating -->
-    <div style="display:flex;align-items:center;gap:4px">
-      <span style="color:#c9a15d;font-size:12px">&#9733;</span>
-      <span style="font-size:13px;font-weight:700;color:#42101d">{rating}</span>
-      <span style="font-size:10px;color:#b8aaa0">/ 100</span>
-    </div>
-
     <!-- review quote -->
-    <div style="font-size:11px;color:#7c726b;font-style:italic;line-height:1.65;
+    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.7;
                 border-left:2px solid {color};padding-left:10px">
       &ldquo;{snippet}&rdquo;
     </div>
@@ -1213,14 +1271,19 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 
 # ── Event handlers ─────────────────────────────────────────────────────────────
 def on_identify(pil_img):
-    """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
+    """CNN pass — populates detect-dish section and shows yes/no confirm row."""
+    _nil = (
+        gr.update(visible=False), gr.update(visible=False), gr.update(visible=False),
+        gr.update(visible=True),  gr.update(), gr.update(),
+        gr.update(visible=False), gr.update(visible=False),
+        gr.update(), gr.update(), gr.update(),
+    )
     if pil_img is None:
-        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update(), gr.update(visible=False), gr.update(visible=False)
+        return _nil
 
     food_name, conf, top5 = identify_food(pil_img)
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
 
-    # encode photo as small JPEG for embedding in HTML
     thumb = pil_img.convert("RGB")
     thumb.thumbnail((480, 480))
     buf = io.BytesIO()
@@ -1229,22 +1292,23 @@ def on_identify(pil_img):
 
     _state.update(food=food_name, conf=conf, top5=top5, img_b64=img_b64)
 
-    s1   = _screen1_html(food_name, conf, top5, img_b64)
-    html = _shell_html(s1, "", "", 0, "")
     return (
-        gr.update(value=html),          # wine_card — update content
-        gr.update(visible=True),         # result_col — show glass card
-        gr.update(visible=True),         # confirm_row — show Yes/No
-        gr.update(visible=False),        # upload_col — hide upload
-        gr.update(value=f"✓  Yes, it's {display}"),
-        gr.update(value="✗  No, correct dish"),
-        gr.update(value=_INFO_CARD_HTML, visible=True),  # info_card — show below card
-        gr.update(visible=False),        # manual_row — keep hidden
+        gr.update(visible=True),                                    # result_col
+        gr.update(visible=True),                                    # detect_col
+        gr.update(visible=True),                                    # confirm_row
+        gr.update(visible=False),                                   # upload_col
+        gr.update(value=f"✓  Yes, it's {display}"),                # yes_btn
+        gr.update(value="✗  No, correct dish"),                    # no_btn
+        gr.update(value=_INFO_CARD_HTML, visible=True),            # info_card
+        gr.update(visible=False),                                   # manual_row
+        gr.update(value=_s1_head_html(food_name)),                 # screen1_head
+        gr.update(value=_s1_photo_html(img_b64)),                  # screen1_photo
+        gr.update(value=_s1_info_html(food_name, conf, top5)),     # screen1_info
     )
 
 
 def on_yes():
-    """BiLSTM pass — 2 yields: spinner → fully ready (screen 2 + 3 in one shot)."""
+    """BiLSTM pass — 2 yields: spinner → fully ready."""
     food_name = _state.get("food", "")
     food_key  = food_name.lower().replace(" ", "_")
     conf      = _state["conf"]
@@ -1253,23 +1317,19 @@ def on_yes():
 
     s1 = _screen1_html(food_name, conf, top5, _state.get("img_b64", ""))
 
-    # ── Yield 0: show spinner on screen 2 BEFORE BiLSTM runs ────────────────
-    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
+    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
 
-    # BiLSTM inference (slow)
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
     img_b64 = _state.get("img_b64", "")
     s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, img_b64)
 
-    # Wine lookup is fast (pre-computed JSON) — build s3 immediately
     recs         = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel         = _food_feel(safe_cluster)
     s3           = _screen3_html(display, cluster_name, recs, feel)
     s4           = _screen4_html()
 
-    # ── Yield 1: both screens ready; user reads screen 2, clicks CTA for 3 ──
-    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
+    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
 
 
 def on_no():
@@ -1281,22 +1341,19 @@ def on_confirm_dish(dish_text: str):
     """Run the full BiLSTM + wine pipeline from a manually entered dish name."""
     raw = dish_text.strip()
     if not raw:
-        yield gr.update(visible=True), gr.update(), gr.update()
+        yield gr.update(visible=True), gr.update(), gr.update(), gr.update()
         return
 
-    # Normalize to food_key format (lowercase, spaces → underscores)
     food_key = raw.lower().replace(" ", "_")
     display  = raw.title()
 
-    # Yield spinner while BiLSTM runs
     img_b64 = _state.get("img_b64", "")
     top5    = _state.get("top5", [])
     conf    = _state.get("conf", 0.0)
     s1      = _screen1_html(food_key, conf, top5, img_b64) if img_b64 else \
               _screen1_html(food_key, 0.0, [(food_key, 1.0)], "")
-    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
+    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
 
-    # BiLSTM inference
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
     s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, img_b64)
 
@@ -1306,7 +1363,7 @@ def on_confirm_dish(dish_text: str):
     s3           = _screen3_html(display, cluster_name, recs, feel)
     s4           = _screen4_html()
 
-    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
+    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
 
 
 # ── Info card — shown below the glass card on Detect Dish screen only ─────────
@@ -1355,7 +1412,7 @@ html, body {
   min-height: 100vh;
 }
 .gradio-container {
-  max-width: 1140px !important;
+  max-width: 960px !important;
   margin: 0 auto !important;
   padding: 32px 18px !important;
   background: transparent !important;
@@ -1467,29 +1524,30 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
 
-/* Confirm buttons row — NO display property so Gradio's .hidden works */
-#wdconfirm {
-  padding: 16px 34px 28px !important;
-  border-top: 1px solid rgba(63,43,35,0.09) !important;
-  align-items: stretch !important;
+/* Screen 1: detect-dish layout inside the glass card */
+#wddetect {
+  padding: 34px 34px 28px !important;
 }
-#wdconfirmbtngroup > .wrap {
+#wds1body > .wrap {
   padding: 0 !important;
-  gap: 10px !important;
+  gap: 28px !important;
+  align-items: start !important;
 }
-#wdconfirmbtngroup > .wrap > * { width: 100% !important; }
+#wds1photocol > .wrap,
+#wds1right > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
+}
 
-/* Manual input row — NO display property so Gradio's .hidden works */
-#wdmanual {
-  padding: 16px 34px 28px !important;
-  border-top: 1px solid rgba(63,43,35,0.09) !important;
-  align-items: stretch !important;
-}
-#wdmanualbtngroup > .wrap {
-  padding: 0 !important;
+/* Confirm and manual — stacked vertically inside right column, no spacer needed */
+#wdconfirm > .wrap,
+#wdmanual > .wrap {
+  padding: 16px 0 0 !important;
   gap: 10px !important;
+  flex-direction: column !important;
 }
-#wdmanualbtngroup > .wrap > * { width: 100% !important; }
+#wdconfirm > .wrap > *,
+#wdmanual > .wrap > * { width: 100% !important; }
 
 /* Text input styling */
 #wddishinput textarea {
@@ -1595,12 +1653,12 @@ _UPLOAD_HEADER_HTML = """
 
   <!-- intro copy -->
   <div style="padding:36px 34px 28px">
-    <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
-                letter-spacing:0.14em;font-weight:800;margin-bottom:10px">STEP 1 &middot; UPLOAD</div>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:46px;
+    <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
+                letter-spacing:0.14em;font-weight:800;margin-bottom:12px">STEP 1 &middot; UPLOAD</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:50px;
                 font-weight:700;color:#211917;letter-spacing:-2px;line-height:0.95;
-                margin-bottom:16px">What are you<br>eating?</div>
-    <div style="font-size:14px;color:#7c726b;line-height:1.7;max-width:520px">
+                margin-bottom:18px">What are you<br>eating?</div>
+    <div style="font-size:16px;color:#7c726b;line-height:1.7;max-width:520px">
       Upload a food photo and the app will identify the dish,
       build a taste fingerprint and suggest wines that fit the experience.
     </div>
@@ -1629,35 +1687,40 @@ with gr.Blocks(
                 elem_id="wdanalyze",
             )
 
-    # ── Result card + confirm (all inside one glass card) ─────────────────────
+    # ── Result card (glass card wrapper) ─────────────────────────────────────
     with gr.Column(visible=False, elem_id="wdcard_outer") as result_col:
+
+        # Detect Dish section — photo left, info+buttons right
+        with gr.Column(visible=False, elem_id="wddetect") as detect_col:
+            screen1_head  = gr.HTML(value="", elem_id="wds1head")
+            with gr.Row(elem_id="wds1body"):
+                with gr.Column(scale=11, elem_id="wds1photocol"):
+                    screen1_photo = gr.HTML(value="", elem_id="wds1photo")
+                with gr.Column(scale=9, elem_id="wds1right"):
+                    screen1_info = gr.HTML(value="", elem_id="wds1info")
+                    with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
+                        yes_btn = gr.Button(
+                            "✓  Yes, it's my dish",
+                            variant="primary", elem_id="wdyes",
+                        )
+                        no_btn = gr.Button(
+                            "✗  No, correct dish",
+                            variant="secondary", elem_id="wdno",
+                        )
+                    with gr.Column(visible=False, elem_id="wdmanual") as manual_row:
+                        dish_input = gr.Textbox(
+                            placeholder="e.g. pasta, sushi, burger…",
+                            label="", show_label=False,
+                            lines=1, max_lines=1,
+                            elem_id="wddishinput",
+                        )
+                        confirm_dish_btn = gr.Button(
+                            "Confirm dish →",
+                            variant="primary", elem_id="wdconfirmdish",
+                        )
+
+        # Screens 2/3/4 carousel (shown after Yes is confirmed)
         wine_card = gr.HTML(value="", elem_id="wdcard")
-        with gr.Row(visible=False, elem_id="wdconfirm") as confirm_row:
-            with gr.Column(scale=11, min_width=0):
-                pass
-            with gr.Column(scale=9, elem_id="wdconfirmbtngroup"):
-                yes_btn = gr.Button(
-                    "✓  Yes, it's my dish",
-                    variant="primary", elem_id="wdyes",
-                )
-                no_btn = gr.Button(
-                    "✗  No, correct dish",
-                    variant="secondary", elem_id="wdno",
-                )
-        with gr.Row(visible=False, elem_id="wdmanual") as manual_row:
-            with gr.Column(scale=11, min_width=0):
-                pass
-            with gr.Column(scale=9, elem_id="wdmanualbtngroup"):
-                dish_input = gr.Textbox(
-                    placeholder="e.g. pasta, sushi, burger…",
-                    label="", show_label=False,
-                    lines=1, max_lines=1,
-                    elem_id="wddishinput",
-                )
-                confirm_dish_btn = gr.Button(
-                    "Confirm dish →",
-                    variant="primary", elem_id="wdconfirmdish",
-                )
 
     # ── Info card — outside the glass card, shown only on Detect Dish screen ──
     info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)
@@ -1666,12 +1729,14 @@ with gr.Blocks(
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn, info_card, manual_row],
+        outputs=[result_col, detect_col, confirm_row, upload_col,
+                 yes_btn, no_btn, info_card, manual_row,
+                 screen1_head, screen1_photo, screen1_info],
     )
     yes_btn.click(
         on_yes,
         inputs=None,
-        outputs=[confirm_row, wine_card, info_card],
+        outputs=[confirm_row, detect_col, wine_card, info_card],
     )
     no_btn.click(
         on_no,
@@ -1681,7 +1746,7 @@ with gr.Blocks(
     confirm_dish_btn.click(
         on_confirm_dish,
         inputs=[dish_input],
-        outputs=[manual_row, wine_card, info_card],
+        outputs=[manual_row, detect_col, wine_card, info_card],
     )
 
 if __name__ == "__main__":

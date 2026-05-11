@@ -1349,7 +1349,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     <label for="wdt1" id="wdn0" style="{_btn_next}{n1_lock}">Next &rarr;</label>
     <label for="wdt2" id="wdn1" style="{_btn_next}{n2_lock}">Next &rarr;</label>
     <label for="wdt3" id="wdn2" style="{_btn_next}{n3_lock}">The Story &rarr;</label>
-    <span id="wdndone" style="{_btn_next}">Done &#10003;</span>
+    <label for="wdt0" id="wdndone" style="{_btn_next}">Done &#10003;</label>
   </div>
 </div>
 

@@ -524,38 +524,6 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
     </div>
   </div>
 
-  <!-- "what happens in background" — modern info tiles -->
-  <details style="margin-top:22px;border-radius:16px;overflow:hidden;
-                  background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.07));
-                  border:1px solid rgba(122,24,48,0.10)">
-    <summary style="display:flex;align-items:center;gap:10px;
-                    padding:14px 20px;cursor:pointer;list-style:none;
-                    font-size:13px;font-weight:700;color:#42101d">
-      <span style="width:26px;height:26px;background:rgba(122,24,48,0.12);
-                   border-radius:999px;display:grid;place-items:center;
-                   font-size:13px;flex-shrink:0">&#128300;</span>
-      What happens in the background?
-      <span style="margin-left:auto;font-size:10px;color:#9e9188;
-                   font-weight:600;text-transform:uppercase;letter-spacing:0.08em">expand</span>
-    </summary>
-    <div style="padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div style="background:rgba(255,255,255,0.72);border-radius:12px;padding:14px">
-        <div style="font-size:9px;font-weight:800;color:#7a1830;
-                    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:7px">Model</div>
-        <div style="font-size:13px;color:#211917;font-weight:700;margin-bottom:4px">ResNet-50</div>
-        <div style="font-size:11px;color:#7c726b;line-height:1.5">
-          Food-101 &middot; 101 classes &middot; 78.4% top-1 accuracy</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.72);border-radius:12px;padding:14px">
-        <div style="font-size:9px;font-weight:800;color:#7a1830;
-                    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:7px">Output</div>
-        <div style="font-size:13px;color:#211917;font-weight:700;margin-bottom:4px">Probability scores</div>
-        <div style="font-size:11px;color:#7c726b;line-height:1.5">
-          Softmax over 101 classes &middot; top-1 passed to next step</div>
-      </div>
-    </div>
-  </details>
-
 </div>"""
 
 
@@ -1250,7 +1218,7 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 def on_identify(pil_img):
     """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update()
+        return "", gr.update(visible=False), gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update(), gr.update(visible=False)
 
     food_name, conf, top5 = identify_food(pil_img)
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
@@ -1273,6 +1241,7 @@ def on_identify(pil_img):
         gr.update(visible=False),        # upload_col — hide upload
         gr.update(value=f"✓  Yes, it's {display}"),
         gr.update(value="✗  No, correct dish"),
+        gr.update(value=_INFO_CARD_HTML, visible=True),  # info_card — show below card
     )
 
 
@@ -1287,7 +1256,7 @@ def on_yes():
     s1 = _screen1_html(food_name, conf, top5, _state.get("img_b64", ""))
 
     # ── Yield 0: show spinner on screen 2 BEFORE BiLSTM runs ────────────────
-    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, "")
+    yield gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
 
     # BiLSTM inference (slow)
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
@@ -1302,14 +1271,51 @@ def on_yes():
     s4           = _screen4_html()
 
     # ── Yield 1: both screens ready; user reads screen 2, clicks CTA for 3 ──
-    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4)
+    yield gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
 
 
 def on_no():
     """Reset to blank state — show upload screen again."""
     _state.update(food="", conf=0.0, top5=[], img_b64="")
-    return gr.update(visible=False), gr.update(visible=True)
+    return gr.update(visible=False), gr.update(visible=True), gr.update(visible=False)
 
+
+# ── Info card — shown below the glass card on Detect Dish screen only ─────────
+_INFO_CARD_HTML = """
+<div style="margin-top:14px;border-radius:16px;overflow:hidden;
+            background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.08));
+            border:1px solid rgba(122,24,48,0.12);
+            font-family:'Segoe UI',system-ui,Arial,sans-serif">
+  <details>
+    <summary style="display:flex;align-items:center;gap:10px;
+                    padding:15px 22px;cursor:pointer;list-style:none;
+                    font-size:13px;font-weight:700;color:#42101d">
+      <span style="width:28px;height:28px;background:rgba(122,24,48,0.12);
+                   border-radius:999px;display:grid;place-items:center;
+                   font-size:14px;flex-shrink:0">&#128300;</span>
+      What happens in the background?
+      <span style="margin-left:auto;font-size:10px;color:#9e9188;
+                   font-weight:600;text-transform:uppercase;letter-spacing:0.08em">expand</span>
+    </summary>
+    <div style="padding:0 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:rgba(255,255,255,0.80);border-radius:14px;padding:18px">
+        <div style="font-size:9px;font-weight:800;color:#7a1830;text-transform:uppercase;
+                    letter-spacing:0.13em;margin-bottom:8px">MODEL</div>
+        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">ResNet-50</div>
+        <div style="font-size:12px;color:#7c726b;line-height:1.6">
+          A deep learning model trained to recognise 101 different dishes from a single photo</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.80);border-radius:14px;padding:18px">
+        <div style="font-size:9px;font-weight:800;color:#7a1830;text-transform:uppercase;
+                    letter-spacing:0.13em;margin-bottom:8px">OUTPUT</div>
+        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">Probability scores</div>
+        <div style="font-size:12px;color:#7c726b;line-height:1.6">
+          The most probable dish detected in your photo, and other runner ups</div>
+      </div>
+    </div>
+  </details>
+</div>
+"""
 
 # ── Full-screen app CSS ────────────────────────────────────────────
 _APP_CSS = """
@@ -1436,14 +1442,18 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
 
-/* Confirm buttons — inside the glass card */
+/* Confirm buttons — inside card, right-column aligned */
 #wdconfirm {
+  display: grid !important;
+  grid-template-columns: 1.1fr 0.9fr !important;
+  gap: 28px !important;
+  padding: 16px 34px 28px !important;
   border-top: 1px solid rgba(63,43,35,0.09) !important;
-  padding: 20px 34px 28px !important;
 }
 #wdconfirm > .wrap {
+  grid-column: 2 !important;
   padding: 0 !important;
-  gap: 12px !important;
+  gap: 10px !important;
   flex-direction: column !important;
   align-items: stretch !important;
 }
@@ -1575,21 +1585,24 @@ with gr.Blocks(
                 variant="secondary", elem_id="wdno",
             )
 
+    # ── Info card — outside the glass card, shown only on Detect Dish screen ──
+    info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)
+
     # ── Event wiring ──────────────────────────────────────────────────────────
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn],
+        outputs=[wine_card, result_col, confirm_row, upload_col, yes_btn, no_btn, info_card],
     )
     yes_btn.click(
         on_yes,
         inputs=None,
-        outputs=[confirm_row, wine_card],
+        outputs=[confirm_row, wine_card, info_card],
     )
     no_btn.click(
         on_no,
         inputs=None,
-        outputs=[result_col, upload_col],
+        outputs=[result_col, upload_col, info_card],
     )
 
 if __name__ == "__main__":

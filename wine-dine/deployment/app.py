@@ -1276,8 +1276,8 @@ def on_yes():
 
 
 def on_no():
-    """Hide Yes/No, show manual dish input inside the same glass card."""
-    return gr.update(visible=False), gr.update(visible=True), gr.update(visible=False)
+    """Hide Yes/No confirm row, show manual dish input row. Info card stays visible."""
+    return gr.update(visible=False), gr.update(visible=True), gr.update()
 
 
 def on_confirm_dish(dish_text: str):
@@ -1322,12 +1322,8 @@ _INFO_CARD_HTML = """
     <summary style="display:flex;align-items:center;gap:10px;
                     padding:15px 22px;cursor:pointer;list-style:none;
                     font-size:13px;font-weight:700;color:#42101d">
-      <span style="width:28px;height:28px;background:rgba(122,24,48,0.12);
-                   border-radius:999px;display:grid;place-items:center;
-                   font-size:14px;flex-shrink:0">&#128300;</span>
       What happens in the background?
-      <span style="margin-left:auto;font-size:10px;color:#9e9188;
-                   font-weight:600;text-transform:uppercase;letter-spacing:0.08em">expand</span>
+      <span style="margin-left:auto;font-size:16px;color:#9e9188;font-weight:400;line-height:1">+</span>
     </summary>
     <div style="padding:0 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div style="background:rgba(255,255,255,0.80);border-radius:14px;padding:18px">
@@ -1474,37 +1470,31 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
 
-/* Confirm buttons — inside card, right-column aligned */
+/* Confirm buttons row — NO display property so Gradio's .hidden works */
 #wdconfirm {
-  display: grid !important;
-  grid-template-columns: 1.1fr 0.9fr !important;
-  gap: 28px !important;
   padding: 16px 34px 28px !important;
   border-top: 1px solid rgba(63,43,35,0.09) !important;
-}
-#wdconfirm > .wrap {
-  grid-column: 2 !important;
-  padding: 0 !important;
-  gap: 10px !important;
-  flex-direction: column !important;
   align-items: stretch !important;
 }
-#wdconfirm > .wrap > * { width: 100% !important; }
+#wdconfirmbtngroup > .wrap {
+  padding: 0 !important;
+  gap: 10px !important;
+}
+#wdconfirmbtngroup > .wrap > * { width: 100% !important; }
+
+/* Manual input row — NO display property so Gradio's .hidden works */
 #wdmanual {
-  display: grid !important;
-  grid-template-columns: 1.1fr 0.9fr !important;
-  gap: 28px !important;
   padding: 16px 34px 28px !important;
   border-top: 1px solid rgba(63,43,35,0.09) !important;
-}
-#wdmanual > .wrap {
-  grid-column: 2 !important;
-  padding: 0 !important;
-  gap: 10px !important;
-  flex-direction: column !important;
   align-items: stretch !important;
 }
-#wdmanual > .wrap > * { width: 100% !important; }
+#wdmanualbtngroup > .wrap {
+  padding: 0 !important;
+  gap: 10px !important;
+}
+#wdmanualbtngroup > .wrap > * { width: 100% !important; }
+
+/* Text input styling */
 #wddishinput textarea {
   border-radius: 12px !important;
   border: 1.5px solid rgba(122,24,48,0.22) !important;
@@ -1517,6 +1507,16 @@ div.main { padding: 0 !important; background: transparent !important; }
   border-color: rgba(122,24,48,0.55) !important;
   outline: none !important;
   box-shadow: 0 0 0 3px rgba(122,24,48,0.10) !important;
+}
+/* Confirm dish button — wine-red */
+#wdconfirmdish button {
+  background: linear-gradient(135deg,#8d1f3a,#5a1024) !important;
+  border: none !important; color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 14px !important; font-weight: 800 !important;
+}
+#wdconfirmdish button:hover {
+  background: linear-gradient(135deg,#a0243f,#6e1430) !important;
 }
 """
 _UPLOAD_HEADER_HTML = """
@@ -1635,26 +1635,32 @@ with gr.Blocks(
     # ── Result card + confirm (all inside one glass card) ─────────────────────
     with gr.Column(visible=False, elem_id="wdcard_outer") as result_col:
         wine_card = gr.HTML(value="", elem_id="wdcard")
-        with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
-            yes_btn = gr.Button(
-                "✓  Yes, it's my dish",
-                variant="primary", elem_id="wdyes",
-            )
-            no_btn = gr.Button(
-                "✗  No, correct dish",
-                variant="secondary", elem_id="wdno",
-            )
-        with gr.Column(visible=False, elem_id="wdmanual") as manual_row:
-            dish_input = gr.Textbox(
-                placeholder="e.g. pasta, sushi, burger…",
-                label="", show_label=False,
-                lines=1, max_lines=1,
-                elem_id="wddishinput",
-            )
-            confirm_dish_btn = gr.Button(
-                "Confirm dish →",
-                variant="primary", elem_id="wdconfirmdish",
-            )
+        with gr.Row(visible=False, elem_id="wdconfirm") as confirm_row:
+            with gr.Column(scale=11, min_width=0):
+                pass
+            with gr.Column(scale=9, elem_id="wdconfirmbtngroup"):
+                yes_btn = gr.Button(
+                    "✓  Yes, it's my dish",
+                    variant="primary", elem_id="wdyes",
+                )
+                no_btn = gr.Button(
+                    "✗  No, correct dish",
+                    variant="secondary", elem_id="wdno",
+                )
+        with gr.Row(visible=False, elem_id="wdmanual") as manual_row:
+            with gr.Column(scale=11, min_width=0):
+                pass
+            with gr.Column(scale=9, elem_id="wdmanualbtngroup"):
+                dish_input = gr.Textbox(
+                    placeholder="e.g. pasta, sushi, burger…",
+                    label="", show_label=False,
+                    lines=1, max_lines=1,
+                    elem_id="wddishinput",
+                )
+                confirm_dish_btn = gr.Button(
+                    "Confirm dish →",
+                    variant="primary", elem_id="wdconfirmdish",
+                )
 
     # ── Info card — outside the glass card, shown only on Detect Dish screen ──
     info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)

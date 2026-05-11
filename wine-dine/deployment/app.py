@@ -470,9 +470,9 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
   <!-- heading -->
   <div style="font-family:Georgia,'Times New Roman',serif;font-size:38px;
               font-weight:700;color:#211917;letter-spacing:-1.5px;
-              line-height:1;margin-bottom:6px">Is this your dish?</div>
+              line-height:1;margin-bottom:6px">Is this {display}?</div>
   <div style="font-size:13px;color:#9e9188;margin-bottom:24px">
-    Please verify what our model detected</div>
+    Please verify the detected dish</div>
 
   <!-- 2-col: photo | info panel -->
   <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:start">
@@ -521,13 +521,8 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
         other possibilities</div>
       {others_rows}
 
-      <!-- hint -->
-      <div style="margin-top:10px;padding:12px 16px;
-                  background:rgba(122,24,48,0.05);border-radius:12px;
-                  border:1px solid rgba(122,24,48,0.10)">
-        <div style="font-size:12px;color:#7c726b;line-height:1.6">
-          Use the buttons below to confirm or pick a different dish.</div>
-      </div>
+      <div style="margin-top:10px;font-size:12px;color:#b8aaa0;line-height:1.6">
+        Use the buttons below to confirm or pick a different dish.</div>
     </div>
   </div>
 
@@ -554,7 +549,7 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
 def _screen2_html(display: str, desc: str, attn_w,
                   cluster_idx: int, cluster_name: str, sims,
                   img_b64: str = "") -> str:
-    """Screen 2 (step 3) — taste fingerprint, redesigned to match mockup."""
+    """Screen 2 (step 3) — taste fingerprint: photo left, heatmap + bars right."""
 
     # ── Attention-highlighted word chips ─────────────────────────────────────
     words    = desc.split()[:MAX_SEQ_LEN]
@@ -580,20 +575,20 @@ def _screen2_html(display: str, desc: str, attn_w,
             f'line-height:1.5;cursor:default;{chip}">{w_txt}</span>'
         )
 
-    # ── Cluster similarity bars ───────────────────────────────────────────────
-    sorted_k = np.argsort(sims)[::-1][:5] if len(sims) > 0 else []
+    # ── Cluster similarity bars (top 3 only) ─────────────────────────────────
+    sorted_k = np.argsort(sims)[::-1][:3] if len(sims) > 0 else []
     cluster_rows = ""
     for k in sorted_k:
         sim_val = float(sims[k])
         bar_pct = int(sim_val * 100)
         is_top  = int(k) == cluster_idx
         name_c  = "#42101d" if is_top else "#9e9188"
-        name_fw = "800"     if is_top else "500"
-        bar_c   = "linear-gradient(90deg,#8d1f3a,#c9536e)" if is_top else "#ddd5c8"
+        name_fw = "700"     if is_top else "500"
+        bar_c   = "#8d1f3a" if is_top else "#ddd5c8"
         lbl     = CLUSTER_NAMES.get(int(k), str(k))
         cluster_rows += (
             f'<div style="display:grid;grid-template-columns:1fr auto;'
-            f'gap:10px;align-items:center;margin-bottom:10px">'
+            f'gap:12px;align-items:center;margin-bottom:12px">'
             f'<div>'
             f'<div style="font-size:12px;color:{name_c};font-weight:{name_fw};'
             f'margin-bottom:5px;overflow:hidden;white-space:nowrap;'
@@ -605,150 +600,93 @@ def _screen2_html(display: str, desc: str, attn_w,
             f'</div>'
             f'</div>'
             f'<span style="font-size:12px;color:{name_c};font-weight:{name_fw};'
-            f'white-space:nowrap">{sim_val:.3f}</span>'
+            f'white-space:nowrap">{sim_val:.2f}</span>'
             f'</div>'
         )
 
-    # ── Photo context strip ───────────────────────────────────────────────────
+    # ── Food photo (left column) ──────────────────────────────────────────────
     if img_b64:
-        photo_strip = (
-            f'<div style="display:flex;align-items:center;gap:14px;'
-            f'padding:12px 16px;background:rgba(255,250,243,0.85);'
-            f'border-radius:16px;border:1px solid rgba(63,43,35,0.09);'
-            f'margin-bottom:22px;box-shadow:0 4px 14px rgba(52,34,26,0.07)">'
+        photo_el = (
             f'<img src="data:image/jpeg;base64,{img_b64}"'
-            f' style="width:58px;height:58px;border-radius:12px;'
-            f'object-fit:cover;flex-shrink:0;'
-            f'box-shadow:0 4px 12px rgba(52,34,26,0.14)">'
-            f'<div>'
-            f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
-            f'letter-spacing:0.14em;font-weight:800;margin-bottom:3px">analyzing</div>'
-            f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:24px;'
-            f'color:#42101d;letter-spacing:-0.5px;line-height:1.1">{display}</div>'
-            f'</div>'
-            f'</div>'
+            f' style="width:100%;height:100%;object-fit:cover;display:block;'
+            f'border-radius:16px">'
         )
     else:
-        photo_strip = ""
+        photo_el = (
+            '<div style="width:100%;height:100%;min-height:260px;display:flex;'
+            'align-items:center;justify-content:center;font-size:56px;'
+            'border-radius:16px;background:linear-gradient(135deg,#ede3d8,#ddd0c4)">🍽️</div>'
+        )
 
     return f"""
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
-
-  {photo_strip}
 
   <!-- step label + heading -->
   <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
               letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
     STEP 3 &middot; TASTE FINGERPRINT</div>
-  <div style="font-family:Georgia,'Times New Roman',serif;font-size:34px;
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;
               font-weight:700;color:#211917;letter-spacing:-1.2px;
-              line-height:1;margin-bottom:6px">How does this taste?</div>
+              line-height:1;margin-bottom:6px">How does this {display} taste?</div>
   <div style="font-size:13px;color:#9e9188;margin-bottom:24px">
-    TasteBiLSTM read the flavor description and built a 512-d taste vector</div>
+    We turn the verified dish into a flavor profile the wine matcher can use.</div>
 
-  <!-- 2-col layout: left=orb+cluster, right=attention chips + bars -->
-  <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:28px;
+  <!-- 2-col layout: photo LEFT | heatmap + bars RIGHT -->
+  <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:28px;
               align-items:start;margin-bottom:24px">
 
-    <!-- LEFT: flavor orb + cluster fingerprint -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+    <!-- LEFT: food photo -->
+    <div style="border-radius:16px;overflow:hidden;
+                box-shadow:0 12px 32px rgba(52,34,26,0.12);
+                aspect-ratio:4/3">
+      {photo_el}
+    </div>
 
-      <!-- orb -->
-      <div style="position:relative;width:180px;height:180px;flex-shrink:0">
-        <!-- outer ring -->
-        <div style="position:absolute;inset:0;border-radius:50%;
-                    background:conic-gradient(
-                      #8d1f3a 0deg 72deg,
-                      #c9a15d 72deg 144deg,
-                      #6f7b5b 144deg 216deg,
-                      #7369b1 216deg 288deg,
-                      #b9694b 288deg 360deg
-                    );
-                    box-shadow:0 18px 48px rgba(122,24,48,0.22)"></div>
-        <!-- frosted inner circle -->
-        <div style="position:absolute;inset:22px;border-radius:50%;
-                    background:rgba(255,250,244,0.88);
-                    backdrop-filter:blur(12px);
-                    display:flex;flex-direction:column;
-                    align-items:center;justify-content:center;
-                    text-align:center;padding:8px">
-          <div style="font-family:Georgia,'Times New Roman',serif;
-                      font-size:11px;font-weight:700;color:#42101d;
-                      line-height:1.25;letter-spacing:-0.3px">{cluster_name}</div>
-        </div>
-      </div>
+    <!-- RIGHT: heatmap + cluster bars -->
+    <div style="display:flex;flex-direction:column;gap:22px">
 
-      <!-- cluster fingerprint badge -->
-      <div style="width:100%;padding:14px 16px;
-                  background:rgba(122,24,48,0.06);
-                  border-radius:16px;border-left:3px solid #7a1830;
-                  text-align:left">
+      <!-- taste fingerprint badge -->
+      <div style="padding:14px 16px;background:rgba(122,24,48,0.06);
+                  border-radius:14px;border-left:3px solid #7a1830">
         <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
-                    letter-spacing:0.12em;font-weight:800;margin-bottom:5px">
-          taste fingerprint</div>
-        <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;
+                    letter-spacing:0.12em;font-weight:800;margin-bottom:4px">
+          Flavor profile</div>
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;
                     font-weight:700;color:#42101d;letter-spacing:-0.5px;
                     line-height:1.2">{cluster_name}</div>
       </div>
 
-      <!-- pipeline pills -->
-      <div style="width:100%">
-        <div style="display:flex;align-items:stretch;border-radius:12px;
-                    overflow:hidden;border:1px solid rgba(63,43,35,0.09)">
-          <div style="flex:1;padding:9px 11px;background:rgba(251,247,241,0.8)">
-            <div style="font-size:9px;color:#b8aaa0;text-transform:uppercase;
-                        letter-spacing:0.08em;margin-bottom:2px">input</div>
-            <div style="font-size:11px;font-weight:700;color:#42101d">Flavor desc.</div>
-            <div style="font-size:10px;color:#9e9188;margin-top:1px">Claude Sonnet</div>
-          </div>
-          <div style="display:flex;align-items:center;padding:0 7px;
-                      background:rgba(251,247,241,0.5);
-                      color:#b8aaa0;font-size:13px">&rarr;</div>
-          <div style="flex:1;padding:9px 11px;background:rgba(251,247,241,0.8)">
-            <div style="font-size:9px;color:#b8aaa0;text-transform:uppercase;
-                        letter-spacing:0.08em;margin-bottom:2px">encoder</div>
-            <div style="font-size:11px;font-weight:700;color:#42101d">TasteBiLSTM</div>
-            <div style="font-size:10px;color:#9e9188;margin-top:1px">512-d vector</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: attention chips + similarity bars -->
-    <div style="display:flex;flex-direction:column;gap:20px">
-
       <!-- attention heatmap -->
       <div>
         <div style="display:flex;justify-content:space-between;
-                    align-items:center;margin-bottom:10px">
+                    align-items:center;margin-bottom:8px">
           <div style="font-size:11px;color:#9e9188;text-transform:uppercase;
-                      letter-spacing:0.1em;font-weight:800">
-            Attention heatmap</div>
-          <div style="font-size:10px;color:#b8aaa0">
-            <span style="display:inline-block;width:10px;height:10px;
-                         border-radius:2px;background:#7a1830;
-                         vertical-align:middle;margin-right:3px"></span>high
-            <span style="display:inline-block;width:10px;height:10px;
-                         border-radius:2px;background:rgba(201,161,93,0.28);
-                         vertical-align:middle;margin:0 3px 0 8px"></span>medium
+                      letter-spacing:0.1em;font-weight:800">Attention heatmap</div>
+          <div style="font-size:10px;color:#b8aaa0;display:flex;align-items:center;gap:6px">
+            <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
+                         background:#7a1830;vertical-align:middle"></span>high
+            <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
+                         background:rgba(201,161,93,0.28);vertical-align:middle;
+                         margin-left:6px"></span>medium
           </div>
         </div>
         <div style="background:rgba(251,247,241,0.8);border-radius:14px;
-                    padding:14px 16px;border:1px solid rgba(63,43,35,0.09);
-                    line-height:2;min-height:80px">
+                    padding:12px 14px;border:1px solid rgba(63,43,35,0.09);
+                    line-height:2;min-height:72px">
           {word_html}
         </div>
-        <div style="font-size:10px;color:#b8aaa0;margin-top:6px">
+        <div style="font-size:10px;color:#b8aaa0;margin-top:5px">
           Word warmth = Bahdanau attention weight &middot; darker = more influential</div>
       </div>
 
       <!-- cluster similarity bars -->
       <div>
-        <div style="font-size:11px;color:#9e9188;text-transform:uppercase;
-                    letter-spacing:0.1em;font-weight:800;margin-bottom:12px">
-          Closeness to flavor worlds</div>
+        <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+                    letter-spacing:0.12em;font-weight:800;margin-bottom:12px">
+          Closest flavor worlds</div>
         {cluster_rows}
       </div>
+
     </div>
   </div>
 
@@ -758,7 +696,7 @@ def _screen2_html(display: str, desc: str, attn_w,
     <summary style="padding:12px 18px;font-size:12px;font-weight:700;
                     color:#7c726b;cursor:pointer;list-style:none;
                     background:rgba(251,247,241,0.8)">
-      &#9432; What happens in the background?</summary>
+      + What happens in the background?</summary>
     <div style="padding:14px 18px;font-size:12px;color:#7c726b;
                 line-height:1.75;background:rgba(251,247,241,0.5)">
       The flavor description is tokenised and passed through a
@@ -767,8 +705,7 @@ def _screen2_html(display: str, desc: str, attn_w,
       (hidden=256, 2 layers, dropout=0.4, vocab=4294, max_seq=64).
       The attention-weighted context vector (512-d) is L2-normalised and compared
       by cosine similarity to 9 pre-computed cluster centroids
-      (BisectingKMeans, TF-IDF named) — the closest cluster becomes your
-      <em>taste fingerprint</em>.
+      (BisectingKMeans, TF-IDF named) — the closest cluster becomes the flavor profile.
     </div>
   </details>
 
@@ -788,142 +725,82 @@ def _screen2_html(display: str, desc: str, attn_w,
 
 
 def _screen4_html() -> str:
-    """Screen 4 (step 5) — The Story: project narrative, architecture diagrams, pipeline overview."""
+    """Screen 4 (step 5) -- The Story: project narrative + presentation placeholder."""
     return """
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
-  <!-- step label + heading -->
-  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
-              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
-    STEP 5 &middot; THE STORY</div>
-  <div style="font-family:Georgia,'Times New Roman',serif;font-size:34px;
-              font-weight:700;color:#211917;letter-spacing:-1.2px;
-              line-height:1;margin-bottom:6px">How it works</div>
-  <div style="font-size:13px;color:#9e9188;margin-bottom:28px">
-    RSU Advanced ML final project &mdash; two models, one pipeline</div>
+  <!-- overline + heading -->
+  <div style="text-align:center;margin-bottom:28px">
+    <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+                letter-spacing:0.18em;font-weight:800;margin-bottom:10px">
+      THE STORY BEHIND THE PROJECT</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:38px;
+                font-weight:700;color:#211917;letter-spacing:-1.5px;
+                line-height:1;margin-bottom:16px">The Story of Wine&amp;Dine</div>
+    <div style="font-size:14px;color:#7c726b;line-height:1.75;
+                max-width:580px;margin:0 auto">
+      Wine&amp;Dine started as an attempt to make wine pairing feel less intimidating
+      and more intuitive. Instead of asking users to understand wine terminology,
+      the system starts from something people already understand naturally: food.
+    </div>
+  </div>
 
-  <!-- 2-col problem / approach -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px">
-    <div style="padding:20px 22px;border-radius:20px;
-                background:rgba(122,24,48,0.06);
-                border:1px solid rgba(122,24,48,0.10)">
-      <div style="font-size:10px;color:#7a1830;text-transform:uppercase;
-                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">The problem</div>
-      <div style="font-size:13px;color:#42101d;line-height:1.75">
-        Given a food photo, recommend wines that actually fit the
-        <em>taste experience</em> &mdash; not just cuisine-level heuristics
-        from a lookup table.
+  <!-- problem / approach cards -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px">
+    <div style="padding:20px 22px;border-radius:18px;background:#fff;
+                border:1px solid rgba(63,43,35,0.09);
+                box-shadow:0 2px 8px rgba(52,34,26,0.06)">
+      <div style="font-size:10px;color:#9e9188;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">PROBLEM</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;
+                  font-weight:700;color:#211917;line-height:1.3;margin-bottom:10px">
+        Wine recommendations are overwhelming</div>
+      <div style="font-size:13px;color:#7c726b;line-height:1.7">
+        Most pairing experiences expect users to understand grape regions,
+        tannins and wine language before they can make a confident choice.
       </div>
     </div>
-    <div style="padding:20px 22px;border-radius:20px;
-                background:rgba(105,97,168,0.06);
-                border:1px solid rgba(105,97,168,0.10)">
-      <div style="font-size:10px;color:#6961a8;text-transform:uppercase;
-                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">The approach</div>
-      <div style="font-size:13px;color:#42101d;line-height:1.75">
-        Encode food&rsquo;s <em>flavor description</em> with a BiLSTM into a
-        512-d taste vector, cluster foods by taste, then retrieve wines per cluster
-        using three intentional pairing strategies.
+    <div style="padding:20px 22px;border-radius:18px;background:#fff;
+                border:1px solid rgba(63,43,35,0.09);
+                box-shadow:0 2px 8px rgba(52,34,26,0.06)">
+      <div style="font-size:10px;color:#9e9188;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">APPROACH</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;
+                  font-weight:700;color:#211917;line-height:1.3;margin-bottom:10px">
+        Start from taste, not wine knowledge</div>
+      <div style="font-size:13px;color:#7c726b;line-height:1.7">
+        The app translates food into flavor understanding first, then builds
+        recommendations around similarity, discovery and contrast.
       </div>
     </div>
   </div>
 
-  <!-- pipeline steps -->
-  <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
-              letter-spacing:0.12em;font-weight:800;margin-bottom:12px">Pipeline</div>
-  <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-              gap:0;margin-bottom:28px;border:1px solid rgba(63,43,35,0.10);
-              border-radius:16px;overflow:hidden">
-    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
-      <div style="font-size:18px;margin-bottom:6px">&#128247;</div>
-      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Food photo</div>
-      <div style="font-size:10px;color:#9e9188;line-height:1.55">User uploads any food image</div>
-    </div>
-    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
-      <div style="font-size:18px;margin-bottom:6px">&#127754;</div>
-      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">ResNet-50</div>
-      <div style="font-size:10px;color:#9e9188;line-height:1.55">101-class Food-101 classifier, fine-tuned from ImageNet</div>
-    </div>
-    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
-      <div style="font-size:18px;margin-bottom:6px">&#129502;</div>
-      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">TasteBiLSTM</div>
-      <div style="font-size:10px;color:#9e9188;line-height:1.55">Bidirectional LSTM + Bahdanau attention encodes flavor text &rarr; 512-d vector</div>
-    </div>
-    <div style="padding:14px 14px;background:rgba(251,247,241,0.9);border-right:1px solid rgba(63,43,35,0.08)">
-      <div style="font-size:18px;margin-bottom:6px">&#127381;</div>
-      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Clustering</div>
-      <div style="font-size:10px;color:#9e9188;line-height:1.55">BisectingKMeans (k=9) on taste vectors &mdash; TF-IDF named clusters</div>
-    </div>
-    <div style="padding:14px 14px;background:rgba(251,247,241,0.9)">
-      <div style="font-size:18px;margin-bottom:6px">&#127863;</div>
-      <div style="font-size:11px;font-weight:800;color:#42101d;margin-bottom:3px">Wine retrieval</div>
-      <div style="font-size:10px;color:#9e9188;line-height:1.55">3 tiers &times; cosine-similarity lookup in Vivino top-wine pool</div>
-    </div>
+  <!-- presentation placeholder -->
+  <div style="border-radius:18px;border:1.5px dashed rgba(122,24,48,0.22);
+              background:rgba(122,24,48,0.03);padding:32px;text-align:center;
+              margin-bottom:28px">
+    <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+                letter-spacing:0.16em;font-weight:800;margin-bottom:10px">
+      PRESENTATION PLACEHOLDER</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:28px;
+                font-weight:700;color:#7a1830;letter-spacing:-0.8px;
+                margin-bottom:10px">Project Presentation</div>
+    <div style="font-size:13px;color:#9e9188;margin-bottom:20px">
+      Add link to PowerPoint / research presentation / architecture deck here.</div>
+    <a href="#" style="display:inline-block;padding:12px 28px;border-radius:999px;
+                       background:linear-gradient(135deg,#8d1f3a,#5a1024);
+                       color:#fff;font-size:14px;font-weight:800;
+                       text-decoration:none;letter-spacing:-0.2px;
+                       box-shadow:0 10px 24px rgba(122,24,48,0.22)">
+      Open presentation &#x2197;</a>
   </div>
 
-  <!-- architecture cards -->
-  <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
-              letter-spacing:0.12em;font-weight:800;margin-bottom:12px">Architecture</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px">
-
-    <!-- ResNet card -->
-    <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(63,43,35,0.09);
-                box-shadow:0 4px 16px rgba(52,34,26,0.07)">
-      <div style="background:rgba(122,24,48,0.08);padding:14px 16px;
-                  border-bottom:1px solid rgba(63,43,35,0.09)">
-        <div style="font-size:10px;font-weight:800;text-transform:uppercase;
-                    letter-spacing:0.1em;color:#7a1830;margin-bottom:3px">ResNet-50</div>
-        <div style="font-size:13px;font-weight:700;color:#211917">Image classifier</div>
-      </div>
-      <div style="padding:14px 16px;font-size:12px;color:#7c726b;line-height:1.75">
-        <strong style="color:#211917">Backbone:</strong> torchvision ResNet-50, ImageNet pretrained<br>
-        <strong style="color:#211917">Head:</strong> Linear(2048, 101) — Food-101 classes<br>
-        <strong style="color:#211917">Training:</strong> fine-tuned on ~75k Food-101 images<br>
-        <strong style="color:#211917">Output:</strong> softmax probability distribution, top-5<br>
-        <strong style="color:#211917">Normalisation:</strong> ImageNet mean/std
-      </div>
-    </div>
-
-    <!-- BiLSTM card -->
-    <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(63,43,35,0.09);
-                box-shadow:0 4px 16px rgba(52,34,26,0.07)">
-      <div style="background:rgba(105,97,168,0.08);padding:14px 16px;
-                  border-bottom:1px solid rgba(63,43,35,0.09)">
-        <div style="font-size:10px;font-weight:800;text-transform:uppercase;
-                    letter-spacing:0.1em;color:#6961a8;margin-bottom:3px">TasteBiLSTM</div>
-        <div style="font-size:13px;font-weight:700;color:#211917">Flavor encoder</div>
-      </div>
-      <div style="padding:14px 16px;font-size:12px;color:#7c726b;line-height:1.75">
-        <strong style="color:#211917">Embedding:</strong> 4294 &times; 100 (min_freq=3 vocab)<br>
-        <strong style="color:#211917">LSTM:</strong> BiLSTM hidden=256, 2 layers, dropout=0.4<br>
-        <strong style="color:#211917">Attention:</strong> Bahdanau additive attention<br>
-        <strong style="color:#211917">Output:</strong> 512-d context vector, attention weights<br>
-        <strong style="color:#211917">Clusters:</strong> 9 BisectingKMeans centroids (.npy)
-      </div>
-    </div>
+  <!-- tags -->
+  <div style="text-align:center;font-size:12px;color:#b8aaa0">
+    Machine Learning &middot; Recommendation Systems &middot; Explainable AI &middot; UX Design
   </div>
-
-  <!-- data sources -->
-  <details style="border:1px solid rgba(63,43,35,0.09);border-radius:14px;overflow:hidden">
-    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
-                    color:#7c726b;cursor:pointer;list-style:none;
-                    background:rgba(251,247,241,0.8)">
-      &#9432; Data sources &amp; training details</summary>
-    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
-                line-height:1.75;background:rgba(251,247,241,0.5)">
-      <strong style="color:#211917">Food images:</strong>
-      Food-101 dataset (101 classes, ~1000 images/class).<br>
-      <strong style="color:#211917">Flavor descriptions:</strong>
-      LLM-generated (Claude Sonnet) classic + surprising pairing descriptions per dish.<br>
-      <strong style="color:#211917">Wine pool:</strong>
-      Vivino top-rated wines (pre-scraped, taste-vectorised, stored as results_all.json).<br>
-      <strong style="color:#211917">Cluster names:</strong>
-      TF-IDF top-bigrams per cluster &rarr; human-readable in cluster_names.json.
-    </div>
-  </details>
 
 </div>"""
-
 
 _TIER_INFO = {
     "SAFE BET":   "nearest cluster centroid by cosine similarity to dominant flavor description",
@@ -934,29 +811,24 @@ _WINE_INFO = "highest cosine similarity between food taste vector and wine taste
 
 
 def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str:
-    """Screen 3 (step 4) — wine pairings, redesigned to match mockup. Zero JS."""
+    """Screen 3 (step 4) -- wine pairings. Zero JS."""
+    import re as _re
 
-    # CSS for all info-panel toggles (checkbox trick — no JS, works in Gradio)
-    # Each card has two checkboxes: ckT-{uid} (tier info) and ckW-{uid} (wine info)
-    cb_css_rules = ""
-    for rec in recs[:3]:
-        uid = rec.get("tier", "x").lower().replace(" ", "-")
-        cb_css_rules += (
-            f"#ckT-{uid}{{display:none}}"
-            f"#ckT-{uid}:checked~#panT-{uid}{{display:block!important}}"
-            f"#ckW-{uid}{{display:none}}"
-            f"#ckW-{uid}:checked~#panW-{uid}{{display:block!important}}"
-        )
-    info_css = f"<style>{cb_css_rules}</style>"
+    def _extract_year(wine_str):
+        m = _re.search(r'\b(19|20)\d{2}\b', str(wine_str))
+        return m.group(0) if m else ""
+
+    def _clean_wine_name(wine_str):
+        return _re.sub(r'\s*(19|20)\d{2}\.?\d*\s*$', '', str(wine_str)).strip()
 
     cards_html = ""
     for rec in recs[:3]:
-        tier    = rec.get("tier", "")
-        wine    = rec.get("wine", "\u2014")
-        rating  = rec.get("rating", "\u2014")
-        snippet = _clip(rec.get("snippet", ""), 140)
-        kws     = rec.get("keywords", [])
-        conf    = float(rec.get("confidence", 0.0))
+        tier     = rec.get("tier", "")
+        wine     = rec.get("wine", "—")
+        rating   = rec.get("rating", "—")
+        snippet  = _clip(rec.get("snippet", ""), 140)
+        kws      = rec.get("keywords", [])
+        conf     = float(rec.get("confidence", 0.0))
 
         color    = _TIER_COLOR.get(tier, "#555")
         strip_bg = _TIER_STRIP_BG.get(tier, "#f5f5f5")
@@ -964,87 +836,65 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
         conf_lbl = _TIER_CONF_LABEL.get(tier, "match")
         tag_bg   = _TIER_TAG_BG.get(tier, "#eee")
         tier_lbl = tier.lower()
-
-        uid      = tier.lower().replace(" ", "-")
         conf_pct = int(conf * 100)
-        conf_bar = int(conf * 100)
+
+        wine_name = _clean_wine_name(wine)
+        wine_year = _extract_year(wine)
+        year_html = (f'<div style="font-size:12px;color:#9e9188;margin-top:2px">'
+                     f'{wine_year}</div>') if wine_year else ""
 
         reasoning = (
-            f"Your {display.lower()} is {feel} \u2014 "
-            + ("this wine matches that energy exactly." if tier == "SAFE BET"
-               else "this wine finds an angle most pairings overlook." if tier == "HIDDEN GEM"
-               else "this wine goes against it entirely. Sometimes contrast is the pairing.")
+            "This wine matches your dish's energy exactly." if tier == "SAFE BET"
+            else "This wine finds an angle most pairings overlook." if tier == "HIDDEN GEM"
+            else "A deliberate contrast pairing — goes against the dish. That's the point."
         )
 
         tags_html = ""
-        for kw in kws[:4]:
+        for kw in kws[:3]:
             tags_html += (
                 f'<span style="font-size:10px;font-weight:600;padding:3px 9px;'
                 f'border-radius:20px;background:{tag_bg};color:{color};'
                 f'white-space:nowrap">{kw}</span>'
             )
 
-        # info labels (pure CSS checkbox toggle — no onclick)
-        tier_lbl_i = (
-            f'<label for="ckT-{uid}"'
-            f' style="width:16px;height:16px;border-radius:50%;display:inline-flex;'
-            f'align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;'
-            f'border:1px solid {color};color:{color};font-size:9px;'
-            f'font-style:italic;font-weight:700;line-height:1">i</label>'
-        )
-        wine_lbl_i = (
-            f'<label for="ckW-{uid}"'
-            f' style="width:14px;height:14px;border-radius:50%;display:inline-flex;'
-            f'align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;'
-            f'border:1px solid #b8aaa0;color:#b8aaa0;font-size:9px;'
-            f'font-style:italic;font-weight:700;line-height:1">i</label>'
-        )
-
         cards_html += f"""
-<div style="border-radius:18px;overflow:hidden;background:rgba(255,252,248,0.92);
+<div style="border-radius:18px;overflow:hidden;background:#fff;
             border:1px solid rgba(63,43,35,0.09);
-            box-shadow:0 8px 28px rgba(52,34,26,0.09)">
-
-  <!-- checkboxes must be first children for ~ sibling CSS to reach panels below -->
-  <input type="checkbox" id="ckT-{uid}">
-  <input type="checkbox" id="ckW-{uid}">
+            box-shadow:0 4px 16px rgba(52,34,26,0.07)">
 
   <!-- tier header strip -->
-  <div style="background:{strip_bg};padding:11px 14px;
+  <div style="background:{strip_bg};padding:10px 14px;
               display:flex;align-items:center;justify-content:space-between">
-    <div style="display:flex;align-items:center;gap:7px">
-      <span style="font-size:13px;font-weight:900;color:{color}">{icon}</span>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;font-weight:900;color:{color}">{icon}</span>
       <span style="font-size:10px;font-weight:800;letter-spacing:0.08em;
                    text-transform:uppercase;color:{color}">{tier_lbl}</span>
     </div>
-    <div style="display:flex;align-items:center;gap:8px">
-      <div style="text-align:right">
-        <div style="font-family:Georgia,serif;font-size:24px;font-weight:700;
-                    color:{color};line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
-        <div style="font-size:9px;color:#b8aaa0;font-weight:700;
-                    text-transform:uppercase;letter-spacing:0.08em">{conf_lbl}</div>
-      </div>
-      {tier_lbl_i}
+    <div style="text-align:right">
+      <div style="font-family:Georgia,serif;font-size:22px;font-weight:700;
+                  color:{color};line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
+      <div style="font-size:9px;color:#b8aaa0;font-weight:700;
+                  text-transform:uppercase;letter-spacing:0.08em">{conf_lbl}</div>
     </div>
-  </div>
-
-  <!-- tier info panel (CSS toggle, sibling of checkboxes) -->
-  <div id="panT-{uid}"
-       style="display:none;padding:9px 14px;font-size:10.5px;line-height:1.6;
-              background:{strip_bg};color:{color};border-bottom:1px solid rgba(0,0,0,0.07)">
-    {_TIER_INFO.get(tier, "")}
   </div>
 
   <!-- confidence bar -->
   <div style="height:3px;background:rgba(64,42,31,0.08)">
-    <div style="background:{color};width:{conf_bar}%;height:100%"></div>
+    <div style="background:{color};width:{conf_pct}%;height:100%"></div>
   </div>
 
   <!-- card body -->
-  <div style="padding:14px;display:flex;flex-direction:column;gap:10px">
+  <div style="padding:14px;display:flex;flex-direction:column;gap:9px">
+
+    <!-- wine name + year -->
+    <div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;
+                  font-weight:700;color:#211917;line-height:1.25">{wine_name}</div>
+      {year_html}
+    </div>
 
     <!-- reasoning -->
-    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.65">
+    <div style="font-size:12px;color:#7c726b;line-height:1.6">
       {reasoning}
     </div>
 
@@ -1056,33 +906,16 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     <!-- divider -->
     <div style="height:1px;background:rgba(63,43,35,0.09)"></div>
 
-    <!-- wine name + info toggle -->
-    <div style="display:flex;align-items:flex-start;gap:7px">
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;
-                  font-weight:700;color:#211917;line-height:1.3;flex:1">{wine}</div>
-      {wine_lbl_i}
-    </div>
-
-    <!-- wine info panel -->
-    <div id="panW-{uid}"
-         style="display:none;font-size:10px;color:#9e9188;line-height:1.6;
-                font-style:italic;padding:6px 10px;background:rgba(64,42,31,0.04);
-                border-radius:8px;border-left:2px solid #b8aaa0">
-      {_WINE_INFO}
-    </div>
-
     <!-- rating -->
-    <div style="display:flex;align-items:center;gap:5px">
-      <span style="color:#c9a15d;font-size:13px">&#9733;</span>
-      <span style="font-family:Georgia,serif;font-size:14px;font-weight:700;
-                   color:#42101d">{rating}</span>
-      <span style="font-size:11px;color:#b8aaa0">/ 100</span>
+    <div style="display:flex;align-items:center;gap:4px">
+      <span style="color:#c9a15d;font-size:12px">&#9733;</span>
+      <span style="font-size:13px;font-weight:700;color:#42101d">{rating}</span>
+      <span style="font-size:10px;color:#b8aaa0">/ 100</span>
     </div>
 
     <!-- review quote -->
     <div style="font-size:11px;color:#7c726b;font-style:italic;line-height:1.65;
-                border-left:2px solid {color};padding-left:10px;
-                border-radius:0 0 0 2px">
+                border-left:2px solid {color};padding-left:10px">
       &ldquo;{snippet}&rdquo;
     </div>
 
@@ -1091,23 +924,24 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
 
     return f"""
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
-{info_css}
 
-  <!-- step label + heading -->
-  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
-              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
-    STEP 4 &middot; WINE PAIRINGS</div>
-  <div style="font-family:Georgia,'Times New Roman',serif;font-size:34px;
-              font-weight:700;color:#211917;letter-spacing:-1.2px;
-              line-height:1;margin-bottom:6px">Your wine pairings</div>
-  <div style="font-size:13px;color:#9e9188;margin-bottom:22px">
-    Taste fingerprint:
-    <strong style="color:#42101d">{cluster_name}</strong>
-    &mdash; three wines, three different angles</div>
+  <!-- heading row: title left, subtitle right -->
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;
+              align-items:start;margin-bottom:22px">
+    <div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;
+                  font-weight:700;color:#211917;letter-spacing:-1.2px;line-height:1">
+        Wine pairings</div>
+    </div>
+    <div style="padding-top:10px">
+      <div style="font-size:13px;color:#9e9188;line-height:1.5">
+        The result screen is the reward: three directions,<br>each with a different pairing logic.</div>
+    </div>
+  </div>
 
   <!-- 3-col card grid -->
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-              gap:14px;margin-bottom:24px">
+              gap:14px;margin-bottom:22px">
     {cards_html}
   </div>
 
@@ -1117,7 +951,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     <summary style="padding:12px 18px;font-size:12px;font-weight:700;
                     color:#7c726b;cursor:pointer;list-style:none;
                     background:rgba(251,247,241,0.8)">
-      &#9432; What happens in the background?</summary>
+      + what happens in background?</summary>
     <div style="padding:14px 18px;font-size:12px;color:#7c726b;
                 line-height:1.75;background:rgba(251,247,241,0.5)">
       For each tier, a different objective function picks the wine.
@@ -1125,15 +959,13 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
       cosine similarity to the dominant flavor description.
       <strong style="color:#211917">Hidden Gem</strong>: nearest centroid to the
       &lsquo;surprising pairing&rsquo; description.
-      <strong style="color:#211917">Bold Move</strong>: score = distance &times;
-      (1 + secondary affinity) &mdash; maximises contrast while keeping the wine drinkable.
-      Within each tier, the final wine is the highest cosine-similarity match from a
-      10-wine pool curated for that cluster.
+      <strong style="color:#211917">Bold Move</strong>: maximises contrast while
+      keeping the wine drinkable. Within each tier, the final wine is the highest
+      cosine-similarity match from a 10-wine pool curated for that cluster.
     </div>
   </details>
 
 </div>"""
-
 
 def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     """
@@ -1408,9 +1240,10 @@ _state: dict = {"food": "", "conf": 0.0, "top5": [], "img_b64": ""}
 def on_identify(pil_img):
     """CNN pass — returns screen-1 shell and shows yes/no confirm row."""
     if pil_img is None:
-        return "", gr.update(visible=False), gr.update(visible=True)
+        return "", gr.update(visible=False), gr.update(visible=True), gr.update(), gr.update()
 
     food_name, conf, top5 = identify_food(pil_img)
+    display = food_name.replace("_", " ").title() if "_" in food_name else food_name
 
     # encode photo as small JPEG for embedding in HTML
     thumb = pil_img.convert("RGB")
@@ -1423,8 +1256,13 @@ def on_identify(pil_img):
 
     s1   = _screen1_html(food_name, conf, top5, img_b64)
     html = _shell_html(s1, "", "", 0, "")
-    # hide upload screen, show result card + confirm buttons
-    return gr.update(value=html, visible=True), gr.update(visible=True), gr.update(visible=False)
+    return (
+        gr.update(value=html, visible=True),
+        gr.update(visible=True),
+        gr.update(visible=False),
+        gr.update(value=f"✓  Yes, it's {display}"),
+        gr.update(value="✗  No, correct dish"),
+    )
 
 
 def on_yes():
@@ -1704,11 +1542,11 @@ with gr.Blocks(
 
     with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
         yes_btn = gr.Button(
-            "✓  Yes, that's my dish — show pairings!",
+            "✓  Yes, it's my dish",
             variant="primary", elem_id="wdyes",
         )
         no_btn = gr.Button(
-            "↩  Not quite, try again",
+            "✗  No, correct dish",
             variant="secondary", elem_id="wdno",
         )
 
@@ -1716,7 +1554,7 @@ with gr.Blocks(
     identify_btn.click(
         on_identify,
         inputs=[img_input],
-        outputs=[wine_card, confirm_row, upload_col],
+        outputs=[wine_card, confirm_row, upload_col, yes_btn, no_btn],
     )
     yes_btn.click(
         on_yes,

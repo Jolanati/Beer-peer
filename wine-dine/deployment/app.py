@@ -1263,7 +1263,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
         + _step("2", "Detect Dish",    "wds2circ", "wds2lbl", "wdt0") + _sep
         + _step("3", "Fingerprint",    "wds3circ", "wds3lbl", "wdt1", unlocked < 1) + _sep
         + _step("4", "Wine Pairings",  "wds4circ", "wds4lbl", "wdt2", unlocked < 2) + _sep
-        + _step("5", "The Story",       "wds5circ", "wds5lbl", "wdt3", unlocked < 3)
+        + _step("5", "The Story",       "wds5circ", "wds5lbl", "wdt3", not bool(s4))
     )
 
     # ── Nav button styles ─────────────────────────────────────────────────────
@@ -1284,7 +1284,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     )
     n1_lock = f";{_lock}" if unlocked < 1 else ""
     n2_lock = f";{_lock}" if unlocked < 2 else ""
-    n3_lock = f";{_lock}" if unlocked < 3 else ""
+    n3_lock = f";{_lock}" if not s4 else ""
 
     return f"""<div id="wdshell"
      style="font-family:'Segoe UI',system-ui,Arial,sans-serif;

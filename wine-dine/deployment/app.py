@@ -527,6 +527,69 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
 </div>"""
 
 
+_DETECT_HEADER_HTML = """
+<div style="display:grid;grid-template-columns:auto 1fr auto;
+            align-items:start;gap:24px;padding:24px 34px 18px;
+            border-bottom:1px solid rgba(63,43,35,0.09)">
+  <div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;
+                letter-spacing:-0.8px;font-weight:700;white-space:nowrap;color:#211917">
+      Wine<span style="color:#7a1830">&amp;</span>Dine</div>
+    <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+                color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:0">
+    <!-- Step 1 done -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div style="width:48px;height:48px;border-radius:999px;display:grid;
+                  place-items:center;font-size:16px;font-weight:900;
+                  background:rgba(255,255,255,0.82);color:#756b63;
+                  border:1px solid rgba(64,42,31,0.16)">&#10003;</div>
+      <div style="font-size:12px;font-weight:800;color:#756b63;white-space:nowrap">Upload</div>
+    </div>
+    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <!-- Step 2 active -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div style="width:48px;height:48px;border-radius:999px;display:grid;
+                  place-items:center;background:linear-gradient(135deg,#8d1f3a,#5a1024);
+                  color:#fff;font-size:17px;font-weight:900;
+                  box-shadow:0 10px 28px rgba(122,24,48,0.24)">2</div>
+      <div style="font-size:12px;font-weight:800;color:#42101d;
+                  text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Detect Dish</div>
+    </div>
+    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <!-- Step 3 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
+      <div style="width:48px;height:48px;border-radius:999px;display:grid;
+                  place-items:center;background:rgba(255,255,255,0.58);
+                  color:#9e9188;font-size:17px;font-weight:900;
+                  border:1px solid rgba(200,190,180,0.5)">3</div>
+      <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
+    </div>
+    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <!-- Step 4 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
+      <div style="width:48px;height:48px;border-radius:999px;display:grid;
+                  place-items:center;background:rgba(255,255,255,0.58);
+                  color:#9e9188;font-size:17px;font-weight:900;
+                  border:1px solid rgba(200,190,180,0.5)">4</div>
+      <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
+    </div>
+    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <!-- Step 5 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
+      <div style="width:48px;height:48px;border-radius:999px;display:grid;
+                  place-items:center;background:rgba(255,255,255,0.58);
+                  color:#9e9188;font-size:17px;font-weight:900;
+                  border:1px solid rgba(200,190,180,0.5)">5</div>
+      <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
+    </div>
+  </div>
+  <div style="width:140px"></div>
+</div>
+"""
+
+
 def _s1_head_html(food_name: str) -> str:
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
     return (
@@ -1532,9 +1595,23 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdcard > .wrap { padding: 0 !important; background: transparent !important; }
 
-/* Screen 1: detect-dish layout inside the glass card */
+/* Screen 2: detect-dish layout inside the glass card */
 #wddetect {
-  padding: 34px 34px 28px !important;
+  padding: 0 !important;
+}
+#wddetect > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
+}
+#wddetect_hdr {
+  padding: 0 !important;
+}
+#wddetect_body {
+  padding: 32px 34px 28px !important;
+}
+#wddetect_body > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
 }
 #wds1body > .wrap {
   padding: 0 !important;
@@ -1734,34 +1811,36 @@ with gr.Blocks(
     # ── Result card (glass card wrapper) ─────────────────────────────────────
     with gr.Column(visible=False, elem_id="wdcard_outer") as result_col:
 
-        # Detect Dish section — photo left, info+buttons right
+        # Detect Dish section — shell header + photo left, info+buttons right
         with gr.Column(visible=False, elem_id="wddetect") as detect_col:
-            screen1_head  = gr.HTML(value="", elem_id="wds1head")
-            with gr.Row(elem_id="wds1body"):
-                with gr.Column(scale=11, elem_id="wds1photocol"):
-                    screen1_photo = gr.HTML(value="", elem_id="wds1photo")
-                with gr.Column(scale=9, elem_id="wds1right"):
-                    screen1_info = gr.HTML(value="", elem_id="wds1info")
-                    with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
-                        yes_btn = gr.Button(
-                            "✓  Yes, it's my dish",
-                            variant="primary", elem_id="wdyes",
-                        )
-                        no_btn = gr.Button(
-                            "✗  No, correct dish",
-                            variant="secondary", elem_id="wdno",
-                        )
-                    with gr.Column(visible=False, elem_id="wdmanual") as manual_row:
-                        dish_input = gr.Textbox(
-                            placeholder="e.g. pasta, sushi, burger…",
-                            label="", show_label=False,
-                            lines=1, max_lines=1,
-                            elem_id="wddishinput",
-                        )
-                        confirm_dish_btn = gr.Button(
-                            "Confirm dish →",
-                            variant="primary", elem_id="wdconfirmdish",
-                        )
+            gr.HTML(value=_DETECT_HEADER_HTML, elem_id="wddetect_hdr")
+            with gr.Column(elem_id="wddetect_body"):
+                screen1_head  = gr.HTML(value="", elem_id="wds1head")
+                with gr.Row(elem_id="wds1body"):
+                    with gr.Column(scale=11, elem_id="wds1photocol"):
+                        screen1_photo = gr.HTML(value="", elem_id="wds1photo")
+                    with gr.Column(scale=9, elem_id="wds1right"):
+                        screen1_info = gr.HTML(value="", elem_id="wds1info")
+                        with gr.Column(visible=False, elem_id="wdconfirm") as confirm_row:
+                            yes_btn = gr.Button(
+                                "✓  Yes, it's my dish",
+                                variant="primary", elem_id="wdyes",
+                            )
+                            no_btn = gr.Button(
+                                "✗  No, correct dish",
+                                variant="secondary", elem_id="wdno",
+                            )
+                        with gr.Column(visible=False, elem_id="wdmanual") as manual_row:
+                            dish_input = gr.Textbox(
+                                placeholder="e.g. pasta, sushi, burger…",
+                                label="", show_label=False,
+                                lines=1, max_lines=1,
+                                elem_id="wddishinput",
+                            )
+                            confirm_dish_btn = gr.Button(
+                                "Confirm dish →",
+                                variant="primary", elem_id="wdconfirmdish",
+                            )
 
         # Screens 2/3/4 carousel (shown after Yes is confirmed)
         wine_card = gr.HTML(value="", elem_id="wdcard")

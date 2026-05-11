@@ -1483,21 +1483,43 @@ html, body {
   min-height: 100vh;
 }
 .gradio-container {
-  max-width: 1200px !important;
+  max-width: 1280px !important;
   margin: 0 auto !important;
-  padding: 32px 24px !important;
+  padding: 32px 16px !important;
   background: transparent !important;
   min-height: 100vh;
+  width: 100% !important;
 }
 footer { display: none !important; }
 div.main { padding: 0 !important; background: transparent !important; }
-.block, .form {
+
+/* Default: strip Gradio's borders/backgrounds/padding from every block, but
+   DO NOT force width:100% globally (that would break nested scaled columns) */
+.gradio-container .block,
+.gradio-container .form {
   border: none !important;
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
+  margin: 0 !important;
 }
 .gap { gap: 0 !important; }
+
+/* TOP-LEVEL containers — every screen card and every info card MUST be exactly
+   the same width = full content width of .gradio-container. No Gradio default
+   max-width or auto-sizing allowed here. */
+#wdupload,
+#wdcard_outer,
+#wdinfo,
+#wdinfo3,
+#wdinfo4 {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+}
 
 /* Upload column = a single glass card (same styling as #wdcard_outer below) */
 #wdupload {

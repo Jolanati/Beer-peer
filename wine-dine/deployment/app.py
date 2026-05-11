@@ -1620,6 +1620,7 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 34px 90px rgba(52,34,26,0.10),
               inset 0 1px 0 rgba(255,255,255,0.75) !important;
   overflow: hidden !important;
+  position: relative !important;
 }
 #wdcard_outer > .wrap {
   padding: 0 !important;
@@ -1685,7 +1686,7 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over button — fixed top-right; clear wine red */
+/* Start Over button — wine red pill; fixed top-right during detect-dish */
 #wdstartover button {
   position: fixed !important;
   top: 28px !important;
@@ -1704,6 +1705,28 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 #wdstartover button:hover {
   background: linear-gradient(135deg,#d24560,#a0243f) !important;
+}
+/* During carousel — place Start Over inside the nav bar row (left side) */
+body:has(#wdt1:checked) #wdstartover,
+body:has(#wdt2:checked) #wdstartover,
+body:has(#wdt3:checked) #wdstartover {
+  position: absolute !important;
+  bottom: 37px !important;
+  left: 34px !important;
+  height: 72px !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+}
+body:has(#wdt1:checked) #wdstartover button,
+body:has(#wdt2:checked) #wdstartover button,
+body:has(#wdt3:checked) #wdstartover button {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: auto !important;
 }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,

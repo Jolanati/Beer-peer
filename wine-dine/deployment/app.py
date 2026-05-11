@@ -1339,14 +1339,14 @@ div.main { padding: 0 !important; background: transparent !important; }
   margin-top: 6px !important;
 }
 #wdfood > .wrap {
-  border-radius: 24px !important;
-  overflow: visible !important;
-  padding-bottom: 10px !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
 }
 /* Image upload zone */
 #wdfood .upload-container, #wdfood [data-testid="image"] {
   border: 1.5px dashed rgba(122,24,48,0.26) !important;
-  border-radius: 24px !important;
+  border-radius: 28px !important;
   background:
     radial-gradient(circle at 16% 18%, rgba(255,255,255,0.86), transparent 34%),
     linear-gradient(145deg, rgba(255,255,255,0.58), rgba(251,245,238,0.78)) !important;
@@ -1358,6 +1358,11 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdfood .upload-container:hover,
 #wdfood [data-testid="image"]:hover {
   border-color: rgba(122,24,48,0.42) !important;
+}
+/* Hide Gradio's secondary source buttons (clipboard icon strip) */
+#wdfood .source-selection,
+#wdfood [data-testid="source-select"] {
+  display: none !important;
 }
 /* Analyze button */
 #wdanalyze,
@@ -1494,9 +1499,10 @@ _UPLOAD_HEADER_HTML = """
       </div>
     </div>
     <div style="justify-self:end;align-self:center">
-      <div style="background:rgba(255,255,255,0.45);border:1px solid rgba(63,43,35,0.09);
-                  color:#211917;padding:10px 16px;border-radius:999px;
-                  font-size:13px;font-weight:700;white-space:nowrap">&#8635; start over</div>
+      <div style="background:linear-gradient(135deg,#8d1f3a,#5a1024);
+                  color:#fff;padding:13px 24px;border-radius:999px;
+                  font-size:14px;font-weight:800;white-space:nowrap;
+                  box-shadow:0 8px 20px rgba(122,24,48,0.22)">&#8635; Start Over</div>
     </div>
   </div>
 
@@ -1528,7 +1534,7 @@ with gr.Blocks(
         img_input = gr.Image(
             type="pil", label="", show_label=False,
             height=240, elem_id="wdfood",
-            sources=["upload", "clipboard"],
+            sources=["upload"],
         )
         with gr.Row(elem_id="wduploadcta"):
             identify_btn = gr.Button(

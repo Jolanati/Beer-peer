@@ -538,7 +538,7 @@ _DETECT_HEADER_HTML = """
     <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
                 color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
   </div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:0">
+  <div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%">
     <!-- Step 1 done -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1103,7 +1103,7 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     # ── 5-step bar builder ────────────────────────────────────────────────────
     _sep = (
         '<div style="flex:1;height:1px;background:rgba(64,42,31,0.18);'
-        'min-width:12px;max-width:40px;margin-bottom:22px;align-self:center"></div>'
+        'min-width:24px;margin-bottom:22px;align-self:center"></div>'
     )
 
     def _step(num, label, circ_cls, lbl_cls, for_id=None, locked=False):
@@ -1499,26 +1499,36 @@ div.main { padding: 0 !important; background: transparent !important; }
 }
 .gap { gap: 0 !important; }
 
-/* Upload screen layout — NO display:flex so Gradio's .hidden can hide this column */
+/* Upload column = a single glass card (same styling as #wdcard_outer below) */
+#wdupload {
+  background: rgba(255,250,244,0.72) !important;
+  backdrop-filter: blur(28px) saturate(1.08) !important;
+  border: 1px solid rgba(255,255,255,0.72) !important;
+  border-radius: 34px !important;
+  box-shadow: 0 34px 90px rgba(52,34,26,0.10),
+              inset 0 1px 0 rgba(255,255,255,0.75) !important;
+  overflow: hidden !important;
+}
+#wdupload > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
+}
+/* Image upload zone — sits inside the same glass card, no separate card look */
 #wdfood {
-  margin-top: 14px !important;
+  margin: 0 !important;
+  padding: 0 34px !important;
 }
 #wdfood > .wrap {
-  border-radius: 28px !important;
+  border-radius: 18px !important;
   overflow: hidden !important;
   padding: 0 !important;
 }
-/* Image upload zone */
 #wdfood .upload-container, #wdfood [data-testid="image"] {
   border: 1.5px dashed rgba(122,24,48,0.26) !important;
-  border-radius: 28px !important;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(255,255,255,0.86), transparent 34%),
-    linear-gradient(145deg, rgba(255,255,255,0.58), rgba(251,245,238,0.78)) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.72),
-    0 10px 28px rgba(64,42,31,0.07) !important;
-  min-height: 240px !important;
+  border-radius: 18px !important;
+  background: rgba(255,250,244,0.45) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4) !important;
+  min-height: 220px !important;
 }
 #wdfood .upload-container:hover,
 #wdfood [data-testid="image"]:hover {
@@ -1566,9 +1576,9 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-weight: 800 !important; padding: 13px 24px !important;
 }
 
-/* Upload CTA */
+/* Upload CTA — sits inside the same glass card with matching horizontal padding */
 #wduploadcta {
-  padding: 12px 0 0 !important;
+  padding: 16px 34px 28px !important;
 }
 #wduploadcta > .wrap {
   padding: 0 !important;
@@ -1653,13 +1663,13 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over button — fixed top-right; muted wine red (toned down) */
+/* Start Over button — fixed top-right; clear wine red */
 #wdstartover button {
   position: fixed !important;
   top: 28px !important;
   right: 40px !important;
   z-index: 9999 !important;
-  background: linear-gradient(135deg,#a8425a,#7a2940) !important;
+  background: linear-gradient(135deg,#c0334d,#8d1f3a) !important;
   color: #fff !important;
   border: none !important;
   padding: 10px 20px !important;
@@ -1667,11 +1677,11 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-size: 13px !important;
   font-weight: 800 !important;
   white-space: nowrap !important;
-  box-shadow: 0 6px 18px rgba(122,24,48,0.16) !important;
+  box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
   cursor: pointer !important;
 }
 #wdstartover button:hover {
-  background: linear-gradient(135deg,#b85070,#8a3450) !important;
+  background: linear-gradient(135deg,#d24560,#a0243f) !important;
 }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,
@@ -1702,13 +1712,7 @@ body:has(#wdt2:checked) #wdinfo4 {
 }
 """
 _UPLOAD_HEADER_HTML = """
-<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
-            background:rgba(255,250,244,0.72);
-            backdrop-filter:blur(28px) saturate(1.08);
-            border:1px solid rgba(255,255,255,0.72);
-            border-radius:34px;
-            box-shadow:0 34px 90px rgba(52,34,26,0.10),inset 0 1px 0 rgba(255,255,255,0.75);
-            overflow:hidden">
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
   <!-- header row: brand | step bar | spacer -->
   <div style="display:grid;grid-template-columns:auto 1fr auto;
@@ -1722,7 +1726,7 @@ _UPLOAD_HEADER_HTML = """
                   color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
     </div>
     <!-- 5-step indicator -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:0">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%">
       <!-- step 1 active -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1732,7 +1736,7 @@ _UPLOAD_HEADER_HTML = """
         <div style="font-size:12px;font-weight:800;color:#42101d;
                     text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Upload</div>
       </div>
-      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+      <div style="flex:1;min-width:24px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 2 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1741,7 +1745,7 @@ _UPLOAD_HEADER_HTML = """
                     border:1px solid rgba(200,190,180,0.5)">2</div>
         <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Detect Dish</div>
       </div>
-      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+      <div style="flex:1;min-width:24px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 3 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1750,7 +1754,7 @@ _UPLOAD_HEADER_HTML = """
                     border:1px solid rgba(200,190,180,0.5)">3</div>
         <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
       </div>
-      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+      <div style="flex:1;min-width:24px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 4 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1759,7 +1763,7 @@ _UPLOAD_HEADER_HTML = """
                     border:1px solid rgba(200,190,180,0.5)">4</div>
         <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
       </div>
-      <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+      <div style="flex:1;min-width:24px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
       <!-- step 5 -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="width:48px;height:48px;border-radius:999px;display:grid;

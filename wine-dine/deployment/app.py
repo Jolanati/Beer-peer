@@ -530,14 +530,14 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
 def _s1_head_html(food_name: str) -> str:
     display = food_name.replace("_", " ").title() if "_" in food_name else food_name
     return (
-        f'<div style="font-family:\'Segoe UI\',system-ui,Arial,sans-serif">'
-        f'<div style="font-size:11px;color:#7a1830;text-transform:uppercase;'
+        f'<div style="font-family:\'Segoe UI\',system-ui,Arial,sans-serif;margin-bottom:22px">'
+        f'<div style="font-size:12px;color:#7a1830;text-transform:uppercase;'
         f'letter-spacing:0.14em;font-weight:800;margin-bottom:10px">'
         f'STEP 2 &middot; DETECT DISH</div>'
-        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:38px;'
-        f'font-weight:700;color:#211917;letter-spacing:-1.5px;line-height:1;'
-        f'margin-bottom:6px">Is this {display}?</div>'
-        f'<div style="font-size:13px;color:#9e9188">Please verify the detected dish</div>'
+        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:40px;'
+        f'font-weight:700;color:#211917;letter-spacing:-1.4px;line-height:1;'
+        f'margin-bottom:8px">Is this {display}?</div>'
+        f'<div style="font-size:13px;color:#9e9188;line-height:1.6">Please verify the detected dish</div>'
         f'</div>'
     )
 
@@ -582,21 +582,21 @@ def _s1_info_html(food_name: str, conf: float, top5: list) -> str:
     return (
         f'<div style="font-family:\'Segoe UI\',system-ui,Arial,sans-serif;'
         f'display:flex;flex-direction:column;gap:0">'
-        f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
+        f'<div style="font-size:11px;color:#b8aaa0;text-transform:uppercase;'
         f'letter-spacing:0.14em;font-weight:800;margin-bottom:8px">we think this is</div>'
-        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:52px;'
-        f'line-height:0.88;letter-spacing:-2px;color:#42101d;margin-bottom:20px">{display}</div>'
+        f'<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:40px;'
+        f'font-weight:700;line-height:1;letter-spacing:-1.4px;color:#42101d;margin-bottom:22px">{display}</div>'
         f'<div style="margin-bottom:22px">'
         f'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px">'
-        f'<span style="font-size:11px;color:#9e9188;font-weight:700;text-transform:uppercase;'
-        f'letter-spacing:0.1em">Confidence</span>'
-        f'<span style="font-family:Georgia,serif;font-size:28px;font-weight:700;'
-        f'color:#7a1830;letter-spacing:-1px;line-height:1">{conf_pct}%</span></div>'
+        f'<span style="font-size:11px;color:#9e9188;font-weight:800;text-transform:uppercase;'
+        f'letter-spacing:0.12em">Confidence</span>'
+        f'<span style="font-family:Georgia,serif;font-size:26px;font-weight:700;'
+        f'color:#7a1830;letter-spacing:-0.8px;line-height:1">{conf_pct}%</span></div>'
         f'<div style="height:8px;background:rgba(64,42,31,0.10);border-radius:999px;overflow:hidden">'
         f'<div style="background:linear-gradient(90deg,#8d1f3a,#c9536e);'
         f'width:{conf_pct}%;height:100%;border-radius:999px"></div></div></div>'
         f'<div style="height:1px;background:rgba(63,43,35,0.09);margin-bottom:18px"></div>'
-        f'<div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;'
+        f'<div style="font-size:11px;color:#b8aaa0;text-transform:uppercase;'
         f'letter-spacing:0.12em;font-weight:800;margin-bottom:12px">other possibilities</div>'
         f'{others}</div>'
     )
@@ -607,28 +607,26 @@ def _screen2_html(display: str, desc: str, attn_w,
                   img_b64: str = "") -> str:
     """Screen 2 (step 3) — taste fingerprint: photo left, heatmap + bars right."""
 
-    # ── Attention-highlighted word chips ─────────────────────────────────────
+    # ── Attention-highlighted word chips (continuous gradient — every word colored) ──
     words    = desc.split()[:MAX_SEQ_LEN]
     attn_arr = attn_w[:len(words)]
     a_min, a_max = attn_arr.min(), attn_arr.max()
     attn_norm = (attn_arr - a_min) / (a_max - a_min + 1e-8)
+    # interpolate background from light cream (low attention) → wine red (high attention)
+    # `a_visual = a ** 0.55` boosts low-attention values so every word stays visible
     word_html = ""
     for w_txt, a in zip(words, attn_norm):
-        if a >= 0.60:
-            chip = ("background:#7a1830;color:#fff;font-weight:800;"
-                    "border:1px solid transparent")
-        elif a >= 0.30:
-            chip = ("background:rgba(201,161,93,0.28);color:#42101d;"
-                    "font-weight:600;border:1px solid rgba(201,161,93,0.4)")
-        elif a >= 0.10:
-            chip = ("background:rgba(122,24,48,0.07);color:#42101d;"
-                    "border:1px solid rgba(122,24,48,0.12)")
-        else:
-            chip = "background:transparent;color:#7c726b;border:1px solid transparent"
+        a_visual = float(a) ** 0.55
+        r = int(248 + (122 - 248) * a_visual)
+        g = int(238 + (24  - 238) * a_visual)
+        b = int(228 + (48  - 228) * a_visual)
+        text_color = "#fff" if a_visual > 0.48 else "#42101d"
+        weight = 600 if a_visual < 0.30 else (800 if a_visual > 0.65 else 700)
+        chip = f"background:rgb({r},{g},{b});color:{text_color};font-weight:{weight}"
         word_html += (
             f'<span style="display:inline-block;border-radius:6px;'
-            f'padding:3px 8px;margin:3px 2px;font-size:13px;'
-            f'line-height:1.5;cursor:default;{chip}">{w_txt}</span>'
+            f'padding:3px 8px;margin:2px 2px;font-size:13px;'
+            f'line-height:1.45;cursor:default;{chip}">{w_txt}</span>'
         )
 
     # ── Cluster similarity bars (top 3 only) ─────────────────────────────────
@@ -677,19 +675,19 @@ def _screen2_html(display: str, desc: str, attn_w,
     return f"""
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
-  <!-- step label + heading -->
+  <!-- step label + heading (same pattern as every other screen) -->
   <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
               letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
     STEP 3 &middot; TASTE FINGERPRINT</div>
-  <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;
-              font-weight:700;color:#211917;letter-spacing:-1.2px;
-              line-height:1;margin-bottom:6px">How does this {display} taste?</div>
-  <div style="font-size:13px;color:#9e9188;margin-bottom:24px">
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:40px;
+              font-weight:700;color:#211917;letter-spacing:-1.4px;
+              line-height:1;margin-bottom:8px">How does this {display} taste?</div>
+  <div style="font-size:13px;color:#9e9188;line-height:1.6;margin-bottom:24px">
     We turn the verified dish into a flavor profile the wine matcher can use.</div>
 
   <!-- 2-col layout: photo LEFT | badge + bars RIGHT -->
   <div style="display:grid;grid-template-columns:1fr 0.85fr;gap:28px;
-              align-items:start;margin-bottom:20px">
+              align-items:start;margin-bottom:22px">
 
     <!-- LEFT: food photo -->
     <div style="border-radius:16px;overflow:hidden;
@@ -704,7 +702,7 @@ def _screen2_html(display: str, desc: str, attn_w,
       <!-- taste fingerprint badge -->
       <div style="padding:14px 16px;background:rgba(122,24,48,0.06);
                   border-radius:14px;border-left:3px solid #7a1830">
-        <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+        <div style="font-size:11px;color:#b8aaa0;text-transform:uppercase;
                     letter-spacing:0.12em;font-weight:800;margin-bottom:4px">
           Flavor profile</div>
         <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;
@@ -714,7 +712,7 @@ def _screen2_html(display: str, desc: str, attn_w,
 
       <!-- cluster similarity bars -->
       <div>
-        <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
+        <div style="font-size:11px;color:#b8aaa0;text-transform:uppercase;
                     letter-spacing:0.12em;font-weight:800;margin-bottom:12px">
           Closest flavor worlds</div>
         {cluster_rows}
@@ -723,48 +721,26 @@ def _screen2_html(display: str, desc: str, attn_w,
     </div>
   </div>
 
-  <!-- full-width attention heatmap -->
-  <div style="margin-bottom:20px">
+  <!-- full-width attention heatmap with gradient coloring -->
+  <div style="margin-bottom:22px">
     <div style="display:flex;justify-content:space-between;
                 align-items:center;margin-bottom:8px">
       <div style="font-size:11px;color:#9e9188;text-transform:uppercase;
-                  letter-spacing:0.1em;font-weight:800">Attention heatmap</div>
-      <div style="font-size:10px;color:#b8aaa0;display:flex;align-items:center;gap:6px">
-        <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
-                     background:#7a1830;vertical-align:middle"></span>high
-        <span style="display:inline-block;width:9px;height:9px;border-radius:2px;
-                     background:rgba(201,161,93,0.28);vertical-align:middle;
-                     margin-left:6px"></span>medium
+                  letter-spacing:0.12em;font-weight:800">Attention heatmap</div>
+      <div style="font-size:10px;color:#b8aaa0;display:flex;align-items:center;gap:8px">
+        <span>less</span>
+        <span style="display:inline-block;width:80px;height:8px;border-radius:4px;
+                     background:linear-gradient(90deg,rgb(248,238,228),rgb(122,24,48))"></span>
+        <span>more</span>
       </div>
     </div>
     <div style="background:rgba(251,247,241,0.8);border-radius:14px;
                 padding:14px 16px;border:1px solid rgba(63,43,35,0.09);
-                line-height:2">
+                line-height:1.6">
       {word_html}
     </div>
-    <div style="font-size:10px;color:#b8aaa0;margin-top:5px">
+    <div style="font-size:10px;color:#b8aaa0;margin-top:6px">
       Word warmth = Bahdanau attention weight &middot; darker = more influential</div>
-  </div>
-
-  <!-- "what happens in background" — styled like Detect Dish info card -->
-  <div style="margin-bottom:22px;border-radius:16px;overflow:hidden;
-              background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.08));
-              border:1px solid rgba(122,24,48,0.12);
-              font-family:'Segoe UI',system-ui,Arial,sans-serif">
-    <details>
-      <summary style="display:flex;align-items:center;gap:10px;
-                      padding:15px 22px;cursor:pointer;list-style:none;
-                      font-size:13px;font-weight:700;color:#42101d">
-        What happens in the background?
-        <span style="margin-left:auto;font-size:16px;color:#9e9188;font-weight:400;line-height:1">+</span>
-      </summary>
-      <div style="padding:0 22px 18px;font-size:12px;color:#7c726b;line-height:1.75">
-        Claude generates three flavor descriptions for the detected dish. These are read by a
-        language model that focuses on the most taste-defining words, translates them into a
-        shared taste space, and finds the closest match among 9 pre-learned flavor profiles &mdash;
-        that match becomes the dish&rsquo;s flavor fingerprint.
-      </div>
-    </details>
   </div>
 
   <!-- CTA -->
@@ -787,16 +763,15 @@ def _screen4_html() -> str:
     return """
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
-  <!-- overline + heading -->
-  <div style="text-align:center;margin-bottom:28px">
-    <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
-                letter-spacing:0.18em;font-weight:800;margin-bottom:10px">
-      THE STORY BEHIND THE PROJECT</div>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:38px;
-                font-weight:700;color:#211917;letter-spacing:-1.5px;
-                line-height:1;margin-bottom:16px">The Story of Wine&amp;Dine</div>
-    <div style="font-size:14px;color:#7c726b;line-height:1.75;
-                max-width:580px;margin:0 auto">
+  <!-- step label + heading (same pattern as every other screen) -->
+  <div style="margin-bottom:24px">
+    <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
+                letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
+      STEP 5 &middot; THE STORY</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:40px;
+                font-weight:700;color:#211917;letter-spacing:-1.4px;
+                line-height:1;margin-bottom:8px">The Story of Wine&amp;Dine</div>
+    <div style="font-size:13px;color:#9e9188;line-height:1.6;max-width:680px">
       Wine&amp;Dine started as an attempt to make wine pairing feel less intimidating
       and more intuitive. Instead of asking users to understand wine terminology,
       the system starts from something people already understand naturally: food.
@@ -966,45 +941,19 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     return f"""
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
 
-  <!-- heading row: title left, subtitle right -->
-  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;
-              align-items:start;margin-bottom:22px">
-    <div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;
-                  font-weight:700;color:#211917;letter-spacing:-1.2px;line-height:1">
-        Wine pairings</div>
-    </div>
-    <div style="padding-top:10px">
-      <div style="font-size:13px;color:#9e9188;line-height:1.5">
-        The result screen is the reward: three directions,<br>each with a different pairing logic.</div>
-    </div>
-  </div>
+  <!-- step label + heading (same pattern as every other screen) -->
+  <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.14em;font-weight:800;margin-bottom:10px">
+    STEP 4 &middot; WINE PAIRINGS</div>
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:40px;
+              font-weight:700;color:#211917;letter-spacing:-1.4px;
+              line-height:1;margin-bottom:24px">Three wines, three directions</div>
 
   <!-- 3-col card grid -->
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-              gap:14px;margin-bottom:22px">
+              gap:16px;margin-bottom:8px">
     {cards_html}
   </div>
-
-  <!-- "what happens in background" details -->
-  <details style="border:1px solid rgba(63,43,35,0.09);
-                  border-radius:14px;overflow:hidden">
-    <summary style="padding:12px 18px;font-size:12px;font-weight:700;
-                    color:#7c726b;cursor:pointer;list-style:none;
-                    background:rgba(251,247,241,0.8)">
-      + what happens in background?</summary>
-    <div style="padding:14px 18px;font-size:12px;color:#7c726b;
-                line-height:1.75;background:rgba(251,247,241,0.5)">
-      For each tier, a different objective function picks the wine.
-      <strong style="color:#211917">Safe Bet</strong>: nearest cluster centroid by
-      cosine similarity to the dominant flavor description.
-      <strong style="color:#211917">Hidden Gem</strong>: nearest centroid to the
-      &lsquo;surprising pairing&rsquo; description.
-      <strong style="color:#211917">Bold Move</strong>: maximises contrast while
-      keeping the wine drinkable. Within each tier, the final wine is the highest
-      cosine-similarity match from a 10-wine pool curated for that cluster.
-    </div>
-  </details>
 
 </div>"""
 
@@ -1274,6 +1223,7 @@ def on_identify(pil_img):
         gr.update(visible=False), gr.update(visible=False),
         gr.update(), gr.update(), gr.update(),
         gr.update(visible=False),
+        gr.update(visible=False), gr.update(visible=False),
     )
     if pil_img is None:
         return _nil
@@ -1302,6 +1252,8 @@ def on_identify(pil_img):
         gr.update(value=_s1_photo_html(img_b64)),                  # screen1_photo
         gr.update(value=_s1_info_html(food_name, conf, top5)),     # screen1_info
         gr.update(visible=True),                                    # start_over_btn
+        gr.update(visible=False),                                   # info_card_3
+        gr.update(visible=False),                                   # info_card_4
     )
 
 
@@ -1315,7 +1267,12 @@ def on_yes():
 
     s1 = _screen1_html(food_name, conf, top5, _state.get("img_b64", ""))
 
-    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
+    yield (
+        gr.update(visible=False), gr.update(visible=False),
+        _shell_html(s1, _LOADING_SPINNER, "", 1, ""),
+        gr.update(visible=False),
+        gr.update(visible=False), gr.update(visible=False),
+    )
 
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
     img_b64 = _state.get("img_b64", "")
@@ -1327,7 +1284,12 @@ def on_yes():
     s3           = _screen3_html(display, cluster_name, recs, feel)
     s4           = _screen4_html()
 
-    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
+    yield (
+        gr.update(visible=False), gr.update(visible=False),
+        _shell_html(s1, s2, s3, 1, s4),
+        gr.update(visible=False),
+        gr.update(visible=True), gr.update(visible=True),
+    )
 
 
 def on_no():
@@ -1343,6 +1305,8 @@ def on_start_over():
         gr.update(visible=False),  # result_col
         gr.update(visible=False),  # info_card
         gr.update(visible=False),  # start_over_btn
+        gr.update(visible=False),  # info_card_3
+        gr.update(visible=False),  # info_card_4
     )
 
 
@@ -1350,7 +1314,10 @@ def on_confirm_dish(dish_text: str):
     """Run the full BiLSTM + wine pipeline from a manually entered dish name."""
     raw = dish_text.strip()
     if not raw:
-        yield gr.update(visible=True), gr.update(), gr.update(), gr.update()
+        yield (
+            gr.update(visible=True), gr.update(), gr.update(), gr.update(),
+            gr.update(), gr.update(),
+        )
         return
 
     food_key = raw.lower().replace(" ", "_")
@@ -1361,7 +1328,12 @@ def on_confirm_dish(dish_text: str):
     conf    = _state.get("conf", 0.0)
     s1      = _screen1_html(food_key, conf, top5, img_b64) if img_b64 else \
               _screen1_html(food_key, 0.0, [(food_key, 1.0)], "")
-    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, _LOADING_SPINNER, "", 1, ""), gr.update(visible=False)
+    yield (
+        gr.update(visible=False), gr.update(visible=False),
+        _shell_html(s1, _LOADING_SPINNER, "", 1, ""),
+        gr.update(visible=False),
+        gr.update(visible=False), gr.update(visible=False),
+    )
 
     cluster_idx, cluster_name, sims, desc, attn_w = bilstm_encode(food_key)
     s2 = _screen2_html(display, desc, attn_w, cluster_idx, cluster_name, sims, img_b64)
@@ -1372,11 +1344,19 @@ def on_confirm_dish(dish_text: str):
     s3           = _screen3_html(display, cluster_name, recs, feel)
     s4           = _screen4_html()
 
-    yield gr.update(visible=False), gr.update(visible=False), _shell_html(s1, s2, s3, 1, s4), gr.update(visible=False)
+    yield (
+        gr.update(visible=False), gr.update(visible=False),
+        _shell_html(s1, s2, s3, 1, s4),
+        gr.update(visible=False),
+        gr.update(visible=True), gr.update(visible=True),
+    )
 
 
-# ── Info card — shown below the glass card on Detect Dish screen only ─────────
-_INFO_CARD_HTML = """
+# ── Info cards — shown below the glass card, one per screen ───────────────────
+def _info_card(label_a: str, value_a: str, desc_a: str,
+               label_b: str, value_b: str, desc_b: str) -> str:
+    """Standard 'What happens in the background?' expandable card — 2 inner blocks."""
+    return f"""
 <div style="margin-top:14px;border-radius:16px;overflow:hidden;
             background:linear-gradient(135deg,rgba(122,24,48,0.05),rgba(201,161,93,0.08));
             border:1px solid rgba(122,24,48,0.12);
@@ -1390,23 +1370,42 @@ _INFO_CARD_HTML = """
     </summary>
     <div style="padding:0 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div style="background:rgba(255,255,255,0.80);border-radius:14px;padding:18px">
-        <div style="font-size:9px;font-weight:800;color:#7a1830;text-transform:uppercase;
-                    letter-spacing:0.13em;margin-bottom:8px">MODEL</div>
-        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">ResNet-50</div>
-        <div style="font-size:12px;color:#7c726b;line-height:1.6">
-          A deep learning model trained to recognise 101 different dishes from a single photo</div>
+        <div style="font-size:10px;font-weight:800;color:#7a1830;text-transform:uppercase;
+                    letter-spacing:0.13em;margin-bottom:8px">{label_a}</div>
+        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">{value_a}</div>
+        <div style="font-size:12px;color:#7c726b;line-height:1.6">{desc_a}</div>
       </div>
       <div style="background:rgba(255,255,255,0.80);border-radius:14px;padding:18px">
-        <div style="font-size:9px;font-weight:800;color:#7a1830;text-transform:uppercase;
-                    letter-spacing:0.13em;margin-bottom:8px">OUTPUT</div>
-        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">Probability scores</div>
-        <div style="font-size:12px;color:#7c726b;line-height:1.6">
-          The most probable dish detected in your photo, and other runner ups</div>
+        <div style="font-size:10px;font-weight:800;color:#7a1830;text-transform:uppercase;
+                    letter-spacing:0.13em;margin-bottom:8px">{label_b}</div>
+        <div style="font-size:15px;color:#211917;font-weight:700;margin-bottom:6px">{value_b}</div>
+        <div style="font-size:12px;color:#7c726b;line-height:1.6">{desc_b}</div>
       </div>
     </div>
   </details>
 </div>
 """
+
+_INFO_CARD_HTML = _info_card(
+    "MODEL", "ResNet-50",
+    "A deep learning model trained to recognise 101 different dishes from a single photo",
+    "OUTPUT", "Probability scores",
+    "The most probable dish detected in your photo, and other runner ups",
+)
+
+_INFO_CARD_3_HTML = _info_card(
+    "MODEL", "TasteBiLSTM + Bahdanau attention",
+    "A bidirectional LSTM that reads the flavor description and weights each word by how taste-defining it is",
+    "OUTPUT", "Flavor cluster",
+    "Cosine similarity to 9 pre-learned flavor profile centroids picks the closest match",
+)
+
+_INFO_CARD_4_HTML = _info_card(
+    "METHOD", "Tiered wine matching",
+    "Three objectives pick three wines: nearest flavor match, surprising angle, deliberate contrast",
+    "OUTPUT", "3 wine pairings",
+    "Safe Bet (cluster centroid), Hidden Gem (alt pairing), Bold Move (max contrast)",
+)
 
 # ── Full-screen app CSS ────────────────────────────────────────────
 _APP_CSS = """
@@ -1421,9 +1420,9 @@ html, body {
   min-height: 100vh;
 }
 .gradio-container {
-  max-width: 960px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
-  padding: 32px 18px !important;
+  padding: 32px 24px !important;
   background: transparent !important;
   min-height: 100vh;
 }
@@ -1558,27 +1557,32 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdconfirm > .wrap > *,
 #wdmanual > .wrap > * { width: 100% !important; }
 
-/* Text input styling */
+/* Manual dish input textbox — wine-tinted, prominent red border */
 #wddishinput textarea {
   border-radius: 12px !important;
-  border: 1.5px solid rgba(122,24,48,0.22) !important;
+  border: 1.5px solid rgba(122,24,48,0.42) !important;
   font-size: 14px !important;
-  padding: 10px 14px !important;
-  background: rgba(255,255,255,0.85) !important;
+  padding: 12px 16px !important;
+  background: rgba(255,248,245,0.95) !important;
+  color: #42101d !important;
   resize: none !important;
 }
-#wddishinput textarea:focus {
-  border-color: rgba(122,24,48,0.55) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(122,24,48,0.10) !important;
+#wddishinput textarea::placeholder {
+  color: rgba(122,24,48,0.40) !important;
 }
-/* Start Over button — fixed in top-right corner when result screens are visible */
+#wddishinput textarea:focus {
+  border-color: rgba(122,24,48,0.70) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
+  background: rgba(255,250,247,1) !important;
+}
+/* Start Over button — fixed top-right; muted wine red (toned down) */
 #wdstartover button {
   position: fixed !important;
   top: 28px !important;
   right: 40px !important;
   z-index: 9999 !important;
-  background: linear-gradient(135deg,#8d1f3a,#5a1024) !important;
+  background: linear-gradient(135deg,#a8425a,#7a2940) !important;
   color: #fff !important;
   border: none !important;
   padding: 10px 20px !important;
@@ -1586,21 +1590,38 @@ div.main { padding: 0 !important; background: transparent !important; }
   font-size: 13px !important;
   font-weight: 800 !important;
   white-space: nowrap !important;
-  box-shadow: 0 8px 20px rgba(122,24,48,0.22) !important;
+  box-shadow: 0 6px 18px rgba(122,24,48,0.16) !important;
   cursor: pointer !important;
 }
 #wdstartover button:hover {
-  background: linear-gradient(135deg,#a0243f,#6e1430) !important;
+  background: linear-gradient(135deg,#b85070,#8a3450) !important;
 }
-/* Confirm dish button — wine-red */
-#wdconfirmdish button {
+/* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
+#wdconfirmdish,
+#wdconfirmdish button,
+#wdconfirmdish button.primary,
+button#wdconfirmdish {
   background: linear-gradient(135deg,#8d1f3a,#5a1024) !important;
   border: none !important; color: #fff !important;
   border-radius: 999px !important;
   font-size: 14px !important; font-weight: 800 !important;
+  box-shadow: 0 8px 20px rgba(122,24,48,0.20) !important;
 }
 #wdconfirmdish button:hover {
   background: linear-gradient(135deg,#a0243f,#6e1430) !important;
+}
+/* Carousel info cards — show only the one that matches the active screen */
+#wdinfo3, #wdinfo4 {
+  display: none !important;
+}
+body:has(#wdt1:checked) #wdinfo3 {
+  display: block !important;
+}
+body:has(#wdt2:checked) #wdinfo4 {
+  display: block !important;
+}
+#wdinfo3, #wdinfo4 {
+  margin-top: 14px !important;
 }
 """
 _UPLOAD_HEADER_HTML = """
@@ -1675,13 +1696,13 @@ _UPLOAD_HEADER_HTML = """
   </div>
 
   <!-- intro copy -->
-  <div style="padding:36px 34px 28px">
+  <div style="padding:34px 34px 28px">
     <div style="font-size:12px;color:#7a1830;text-transform:uppercase;
-                letter-spacing:0.14em;font-weight:800;margin-bottom:12px">STEP 1 &middot; UPLOAD</div>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:50px;
-                font-weight:700;color:#211917;letter-spacing:-2px;line-height:0.95;
-                margin-bottom:18px">What are you<br>eating?</div>
-    <div style="font-size:16px;color:#7c726b;line-height:1.7;max-width:520px">
+                letter-spacing:0.14em;font-weight:800;margin-bottom:10px">STEP 1 &middot; UPLOAD</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:40px;
+                font-weight:700;color:#211917;letter-spacing:-1.4px;line-height:1;
+                margin-bottom:8px">What are you eating?</div>
+    <div style="font-size:13px;color:#9e9188;line-height:1.6;max-width:560px">
       Upload a food photo and the app will identify the dish,
       build a taste fingerprint and suggest wines that fit the experience.
     </div>
@@ -1746,8 +1767,10 @@ with gr.Blocks(
         wine_card = gr.HTML(value="", elem_id="wdcard")
         start_over_btn = gr.Button("↺  Start Over", elem_id="wdstartover", visible=False)
 
-    # ── Info card — outside the glass card, shown only on Detect Dish screen ──
-    info_card = gr.HTML(value="", elem_id="wdinfo", visible=False)
+    # ── Info cards — outside the glass card, one per screen state ────────────
+    info_card   = gr.HTML(value="",                 elem_id="wdinfo",  visible=False)
+    info_card_3 = gr.HTML(value=_INFO_CARD_3_HTML, elem_id="wdinfo3", visible=False)
+    info_card_4 = gr.HTML(value=_INFO_CARD_4_HTML, elem_id="wdinfo4", visible=False)
 
     # ── Event wiring ──────────────────────────────────────────────────────────
     identify_btn.click(
@@ -1755,12 +1778,14 @@ with gr.Blocks(
         inputs=[img_input],
         outputs=[result_col, detect_col, confirm_row, upload_col,
                  yes_btn, no_btn, info_card, manual_row,
-                 screen1_head, screen1_photo, screen1_info, start_over_btn],
+                 screen1_head, screen1_photo, screen1_info, start_over_btn,
+                 info_card_3, info_card_4],
     )
     yes_btn.click(
         on_yes,
         inputs=None,
-        outputs=[confirm_row, detect_col, wine_card, info_card],
+        outputs=[confirm_row, detect_col, wine_card, info_card,
+                 info_card_3, info_card_4],
     )
     no_btn.click(
         on_no,
@@ -1770,12 +1795,14 @@ with gr.Blocks(
     confirm_dish_btn.click(
         on_confirm_dish,
         inputs=[dish_input],
-        outputs=[manual_row, detect_col, wine_card, info_card],
+        outputs=[manual_row, detect_col, wine_card, info_card,
+                 info_card_3, info_card_4],
     )
     start_over_btn.click(
         on_start_over,
         inputs=None,
-        outputs=[upload_col, result_col, info_card, start_over_btn],
+        outputs=[upload_col, result_col, info_card, start_over_btn,
+                 info_card_3, info_card_4],
     )
 
 if __name__ == "__main__":

@@ -1687,19 +1687,19 @@ div.main { padding: 0 !important; background: transparent !important; }
   background: rgba(255,250,247,1) !important;
 }
 /* Start Over button — top-right of the card header, in EVERY screen.
-   The wrapper is absolutely positioned inside #wdcard_outer and spans the exact
-   y-range of the step-circle row (y=24 to y=72). The button itself is then
-   absolutely positioned inside that wrapper using top:50% + translateY(-50%) —
-   this guarantees vertical centering on the y=48 connector-line axis regardless
-   of how tall the rendered button ends up being. */
+   ONLY the wrapper is positioned; the button is rendered in normal flow inside.
+   Wrapper top is tuned so the button's vertical center lands on y=48 (the
+   axis of the connector line running through the step-circle centers).
+   Wrapper height is auto (sized by button) so the button's own padding/font
+   determines the rendered height and the math stays predictable. */
 #wdstartover {
   position: absolute !important;
-  top: 24px !important;
+  top: 30px !important;
   right: 28px !important;
-  height: 48px !important;
   width: auto !important;
-  min-width: 160px !important;
+  min-width: 0 !important;
   max-width: none !important;
+  height: auto !important;
   flex: 0 0 auto !important;
   z-index: 100 !important;
   margin: 0 !important;
@@ -1712,10 +1712,7 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdstartover button.primary,
 #wdstartover button.secondary,
 button#wdstartover {
-  position: absolute !important;
-  top: 50% !important;
-  right: 0 !important;
-  transform: translateY(-50%) !important;
+  position: static !important;
   background: linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%) !important;
   color: #fff !important;
   border: none !important;

@@ -17,6 +17,7 @@ import io
 import base64
 import json
 import time
+import re
 import string
 import numpy as np
 import torch
@@ -290,6 +291,83 @@ _TIER_TAG_BG = {
     "BOLD MOVE":  "rgba(189,104,70,0.10)",
 }
 
+# Human-readable score label shown above the % in each card header.
+_TIER_SCORE_LABEL = {
+    "SAFE BET":   "Excellent Match",
+    "HIDDEN GEM": "Interesting Discovery",
+    "BOLD MOVE":  "Bold Contrast",
+}
+
+# One-line italic "mood" sentence shown near the top of each card.
+_TIER_MOOD = {
+    "SAFE BET":   "Comforting, balanced, classic harmony.",
+    "HIDDEN GEM": "Unexpected depth that still harmonizes.",
+    "BOLD MOVE":  "Intentional contrast that changes every bite.",
+}
+
+# Fixed ML-honest one-liner shown inside the <details> "See pairing logic" row.
+_TIER_LOGIC = {
+    "SAFE BET":   ("Highest cosine similarity between the dish's 512-d taste vector "
+                   "and this wine's flavor profile."),
+    "HIDDEN GEM": ("Drawn from an adjacent taste cluster — similar enough to harmonize, "
+                   "different enough to surprise."),
+    "BOLD MOVE":  ("Selected by inverse similarity with a drinkability floor, so the "
+                   "contrast still works on the palate."),
+}
+
+# Maps a UI tier name onto the matching key inside food_flavor_description_v2.json.
+# The JSON's keys are historic; the UI labels are what users actually see.
+_TIER_DESC_KEY = {
+    "SAFE BET":   "classic",   # dominant dish flavor
+    "HIDDEN GEM": "safe_bet",  # compatible-but-surprising angle
+    "BOLD MOVE":  "contrast",  # contrast angle
+}
+
+# Curated multi-word flavor phrases scanned out of the per-tier dish descriptions
+# to populate the food side of the "Flavor bridge". Longest first so that
+# "smoky crust" wins over "crust" when both could match.
+FLAVOR_LEXICON = sorted([
+    # acidity / fresh
+    "tomato acidity", "bright acidity", "citrus acidity", "lemon zest",
+    "tangy vinegar", "pickled brightness", "tomato sauce",
+    # savory / umami
+    "umami depth", "roasted notes", "savory depth", "meaty richness",
+    "salty edge", "soy depth", "deep savor",
+    # smoke / char
+    "smoky crust", "smoky char", "charred edge", "wood smoke", "hickory smoke",
+    "smoky depth",
+    # fat / rich
+    "rich cheese", "melted cheese", "creamy texture", "buttery richness",
+    "olive oil", "fatty depth", "cream sauce",
+    # spice / heat
+    "warm spice", "chili heat", "peppery bite", "black pepper", "cumin warmth",
+    # sweet
+    "caramelized sugar", "honey sweetness", "brown sugar", "ripe fruit",
+    "fig sweetness", "vanilla undertone", "dark fruit",
+    # herbal / green
+    "fresh basil", "fresh herbs", "garlic note", "parsley brightness",
+    "arugula pepper", "herbal lift",
+    # texture / weight
+    "crispy crust", "tender meat", "soft crumb", "fall-off-bone tender",
+    # cuisine-specific essentials surfaced in many descriptions
+    "raw fish", "soy sauce", "seaweed brine", "nori sheet", "rice vinegar",
+    "wasabi heat", "dark chocolate", "milk chocolate", "cocoa depth",
+    "bittersweet cocoa", "ganache richness", "anchovy salt", "creamy dressing",
+    "crisp romaine", "toasted crouton",
+    # single-word fallbacks (still useful when nothing multi-word hits)
+    "tomato", "mozzarella", "cheese", "garlic", "basil", "salt", "smoke",
+    "char", "crust", "herbs", "pepper", "vinegar", "lemon", "honey",
+    "fig", "spice", "fruit", "tannins", "oak", "cherry", "caramel",
+    "sweetness", "richness", "fattiness", "acidity", "arugula", "parmesan",
+    "rice", "fish", "soy", "seaweed", "nori", "wasabi", "chocolate", "cocoa",
+    "ganache", "anchovy", "romaine", "crouton", "dressing", "butter", "cream",
+    # common -y / -ed / -ly adjective forms (word-boundary matching means
+    # 'fruit' alone won't catch 'fruity'; explicit entries do.)
+    "smoky", "salty", "peppery", "fruity", "tangy", "sweet", "spicy",
+    "creamy", "buttery", "earthy", "fatty", "sharp", "bright", "charred",
+    "roasted", "caramelized", "garlicky", "savory",
+], key=len, reverse=True)
+
 # Primary action colour used in shell nav, CTA buttons, active dots
 _PRIMARY = "#7a1f32"
 
@@ -301,6 +379,61 @@ def _cluster_adj(cluster_name: str) -> str:
     if first.lower().startswith("something "):
         first = first[10:]
     return first.lower()
+
+
+_FLAVOR_LEXICON_RE = [(p, re.compile(r'\b' + re.escape(p) + r'\b'))
+                       for p in FLAVOR_LEXICON]
+
+
+def _food_notes_for_tier(food_key: str, tier: str, n: int = 3) -> list:
+    """Return up to ``n`` flavor phrases extracted from the dish's per-tier
+    description (Safe Bet → 'classic', Hidden Gem → 'safe_bet', Bold Move →
+    'contrast'). Each card gets a *different* food side because the JSON
+    encodes the dish from three different angles.
+
+    Uses ``\\b...\\b`` word boundaries so 'char' doesn't match 'character'
+    and 'fruit' doesn't match 'fruity' — common suffixed forms live in the
+    lexicon as explicit entries instead.
+    """
+    rec = flavor_data.get(food_key, {})
+    key = _TIER_DESC_KEY.get(tier, "classic")
+    text = (rec.get(key) or rec.get("classic") or "").lower()
+    if not text:
+        return []
+    hits = []
+    seen = set()
+    for phrase, regex in _FLAVOR_LEXICON_RE:
+        m = regex.search(text)
+        if not m:
+            continue
+        # De-dupe by canonical head word so "tomato acidity" beats "tomato"
+        # and "smoky crust" beats "crust".
+        head = phrase.split()[-1]
+        if head in seen:
+            continue
+        seen.add(head)
+        hits.append((m.start(), phrase))
+        # Blank out the match so a shorter sub-phrase can't double-count.
+        text = text[:m.start()] + " " * (m.end() - m.start()) + text[m.end():]
+    # Prefer multi-word phrases over single-word fallbacks; among the same
+    # word count, prefer the one that appears earliest in the description.
+    hits.sort(key=lambda x: (-len(x[1].split()), x[0]))
+    return [p for _, p in hits[:n]]
+
+
+def _why_it_works(tier: str, wine_notes: list, food_notes: list) -> str:
+    """Build the 'Why it works' sentence by plugging extracted notes into a
+    per-tier template. Pads with safe defaults if either list is short."""
+    wn = (list(wine_notes) + ["its structure", "its finish"])[:2]
+    fn = (list(food_notes) + ["the dish's character", "the dish's palate"])[:2]
+    if tier == "SAFE BET":
+        return (f"The wine's {wn[0]} resonates with {fn[0]}, "
+                f"and {wn[1]} matches {fn[1]}.")
+    if tier == "HIDDEN GEM":
+        return (f"The wine's {wn[0]} mirrors {fn[0]} you might overlook, "
+                f"while {wn[1]} grounds {fn[1]}.")
+    return (f"{wn[0].capitalize()} contrasts {fn[0]}, "
+            f"and {wn[1]} cuts through {fn[1]} so each bite refreshes.")
 
 
 def _food_feel(safe_bet_cluster_name: str) -> str:
@@ -913,8 +1046,13 @@ _TIER_INFO = {
 _WINE_INFO = "highest cosine similarity between food taste vector and wine taste vectors within this cluster\u2019s 10-wine pool"
 
 
-def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str:
-    """Screen 3 (step 4) -- wine pairings. Zero JS."""
+def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
+                  food_key: str = "") -> str:
+    """Screen 3 (step 4) — wine pairings. Zero JS.
+
+    food_key — lowercase Food-101 key used to look up per-tier flavor
+    descriptions for the food side of each card's flavor bridge.
+    """
     import re as _re
 
     def _extract_year(wine_str):
@@ -924,6 +1062,11 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     def _clean_wine_name(wine_str):
         return _re.sub(r'\s*(19|20)\d{2}\.?\d*\s*$', '', str(wine_str)).strip()
 
+    def _notes_block(notes):
+        if not notes:
+            return '<span style="opacity:0.5">—</span>'
+        return "".join(f'<div style="margin:1px 0">{n}</div>' for n in notes)
+
     cards_html = ""
     for rec in recs[:3]:
         tier     = rec.get("tier", "")
@@ -932,24 +1075,24 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
         kws      = rec.get("keywords", [])
         conf     = float(rec.get("confidence", 0.0))
 
-        color    = _TIER_COLOR.get(tier, "#555")
-        strip_bg = _TIER_STRIP_BG.get(tier, "#f5f5f5")
-        icon     = _TIER_ICON.get(tier, "")
-        conf_lbl = _TIER_CONF_LABEL.get(tier, "match")
-        tag_bg   = _TIER_TAG_BG.get(tier, "#eee")
-        tier_lbl = tier.lower()
-        conf_pct = int(conf * 100)
+        color       = _TIER_COLOR.get(tier, "#555")
+        strip_bg    = _TIER_STRIP_BG.get(tier, "#f5f5f5")
+        icon        = _TIER_ICON.get(tier, "")
+        tag_bg      = _TIER_TAG_BG.get(tier, "#eee")
+        score_label = _TIER_SCORE_LABEL.get(tier, "Match")
+        mood        = _TIER_MOOD.get(tier, "")
+        logic       = _TIER_LOGIC.get(tier, "")
+        tier_lbl    = tier.lower()
+        conf_pct    = int(conf * 100)
 
         wine_name = _clean_wine_name(wine)
         wine_year = _extract_year(wine)
         year_html = (f'<div style="font-size:12px;color:#9e9188;margin-top:2px">'
                      f'{wine_year}</div>') if wine_year else ""
 
-        reasoning = (
-            "This wine matches your dish's energy exactly." if tier == "SAFE BET"
-            else "This wine finds an angle most pairings overlook." if tier == "HIDDEN GEM"
-            else "A deliberate contrast pairing — goes against the dish. That's the point."
-        )
+        food_notes = _food_notes_for_tier(food_key, tier, 3)
+        wine_notes = [k for k in kws[:3] if isinstance(k, str)]
+        why_text   = _why_it_works(tier, wine_notes, food_notes)
 
         tags_html = ""
         for kw in kws[:5]:
@@ -959,51 +1102,114 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
                 f'white-space:nowrap">{kw}</span>'
             )
 
+        bridge_html = ""
+        if food_notes or wine_notes:
+            bridge_html = (
+                '<div>'
+                '<div style="font-size:10px;font-weight:800;color:#9e9188;'
+                'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">'
+                'Flavor bridge</div>'
+                '<div style="display:flex;align-items:stretch;gap:6px">'
+                f'<div style="flex:1;min-width:0;background:{strip_bg};border-radius:10px;'
+                f'padding:8px 10px;font-size:11px;color:{color};'
+                f'font-weight:600;line-height:1.45">'
+                f'{_notes_block(food_notes)}'
+                '</div>'
+                '<div style="display:flex;align-items:center;color:#9e9188;'
+                'font-size:14px;font-weight:700">→</div>'
+                f'<div style="flex:1;min-width:0;background:{tag_bg};border-radius:10px;'
+                f'padding:8px 10px;font-size:11px;color:{color};'
+                f'font-weight:600;line-height:1.45">'
+                f'{_notes_block(wine_notes)}'
+                '</div>'
+                '</div>'
+                '</div>'
+            )
+
+        # Subtle inline-SVG bottle silhouette next to the wine name.
+        bottle_svg = (
+            f'<svg width="14" height="44" viewBox="0 0 14 44" '
+            f'style="flex-shrink:0;margin-top:2px;color:{color};opacity:0.6">'
+            f'<path d="M5 0 L9 0 L9 8 Q9 10 10 12 L12 18 Q13 20 13 22 '
+            f'L13 39 Q13 44 9 44 L5 44 Q1 44 1 39 L1 22 Q1 20 2 18 '
+            f'L4 12 Q5 10 5 8 Z" fill="currentColor"/></svg>'
+        )
+
         cards_html += f"""
 <div style="border-radius:18px;overflow:hidden;background:#fff;
             border:1px solid rgba(63,43,35,0.09);
-            box-shadow:0 4px 16px rgba(52,34,26,0.07)">
+            box-shadow:0 4px 16px rgba(52,34,26,0.07);
+            display:flex;flex-direction:column">
 
-  <!-- tier header: badge left, % right -->
+  <!-- tier header: badge left, score-label + % right -->
   <div style="background:{strip_bg};padding:14px 16px;
-              display:flex;align-items:center;justify-content:space-between">
-    <div style="display:flex;align-items:center;gap:6px">
-      <span style="font-size:12px;font-weight:900;color:{color}">{icon}</span>
+              display:flex;align-items:flex-start;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:6px;padding-top:4px">
+      <span style="font-size:13px;font-weight:900;color:{color}">{icon}</span>
       <span style="font-size:11px;font-weight:800;letter-spacing:0.08em;
                    text-transform:uppercase;color:{color}">{tier_lbl}</span>
     </div>
     <div style="text-align:right">
-      <div style="font-family:Georgia,serif;font-size:26px;font-weight:700;
-                  color:#7a1830;line-height:1;letter-spacing:-0.5px">{conf_pct}%</div>
-      <div style="font-size:9px;color:#b8aaa0;font-weight:700;
-                  text-transform:uppercase;letter-spacing:0.08em">{conf_lbl}</div>
+      <div style="font-size:10px;font-weight:800;color:{color};
+                  letter-spacing:0.06em;text-transform:uppercase;line-height:1">
+        {score_label}</div>
+      <div style="font-family:Georgia,serif;font-size:24px;font-weight:700;
+                  color:{color};line-height:1.1;margin-top:3px">{conf_pct}%</div>
     </div>
   </div>
 
   <!-- card body -->
-  <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+  <div style="padding:16px;display:flex;flex-direction:column;gap:12px;flex:1">
 
-    <!-- wine name + year -->
-    <div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;
-                  font-weight:700;color:#211917;line-height:1.2">{wine_name}</div>
-      {year_html}
+    <!-- mood line -->
+    <div style="font-size:13px;color:#7c726b;font-style:italic;line-height:1.45">
+      {mood}
     </div>
 
-    <!-- pairing reasoning -->
-    <div style="font-size:13px;color:#7c726b;line-height:1.6">{reasoning}</div>
+    <!-- bottle + wine name -->
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      {bottle_svg}
+      <div>
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;
+                    font-weight:700;color:#211917;line-height:1.25">{wine_name}</div>
+        {year_html}
+      </div>
+    </div>
 
-    <!-- flavor notes -->
+    <!-- taste tags -->
     <div style="display:flex;flex-wrap:wrap;gap:5px">{tags_html}</div>
 
-    <!-- divider -->
-    <div style="height:1px;background:rgba(63,43,35,0.09)"></div>
+    <!-- flavor bridge -->
+    {bridge_html}
+
+    <!-- why it works -->
+    <div>
+      <div style="font-size:10px;font-weight:800;color:#9e9188;
+                  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">
+        Why it works
+      </div>
+      <div style="font-size:13px;color:#3f2b23;line-height:1.55">
+        {why_text}
+      </div>
+    </div>
 
     <!-- review quote -->
-    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.7;
+    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.6;
                 border-left:2px solid {color};padding-left:10px">
       &ldquo;{snippet}&rdquo;
     </div>
+
+    <!-- see pairing logic -->
+    <details style="margin-top:auto">
+      <summary style="font-size:11px;font-weight:700;color:{color};cursor:pointer;
+                       list-style:none;padding:8px 0 4px;
+                       border-top:1px solid rgba(63,43,35,0.07)">
+        ⌄&nbsp;&nbsp;See pairing logic
+      </summary>
+      <div style="font-size:12px;color:#7c726b;line-height:1.6;padding-top:6px">
+        {logic}
+      </div>
+    </details>
 
   </div>
 </div>"""
@@ -1017,7 +1223,11 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str) -> str
     STEP 4 &middot; WINE PAIRINGS</div>
   <div style="font-family:Georgia,'Times New Roman',serif;font-size:40px;
               font-weight:700;color:#211917;letter-spacing:-1.4px;
-              line-height:1;margin-bottom:24px">Three wines, three directions</div>
+              line-height:1;margin-bottom:6px">Three wines, three directions</div>
+  <div style="font-size:14px;color:#7c726b;line-height:1.5;margin-bottom:22px;
+              max-width:680px">
+    Different paths to enjoy your {display}. Each pairing is AI-matched based on
+    flavor harmony, contrast, and your dish&rsquo;s unique taste fingerprint.</div>
 
   <!-- 3-col card grid -->
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
@@ -1279,7 +1489,7 @@ def _wine_card_parts(food_name: str, conf: float, top5: list,
     recs = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel = _food_feel(safe_cluster)
-    s3 = _screen3_html(display, cluster_name, recs, feel)
+    s3 = _screen3_html(display, cluster_name, recs, feel, food_key)
 
     s4 = _screen4_html()
 
@@ -1358,7 +1568,7 @@ def on_yes():
     recs         = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel         = _food_feel(safe_cluster)
-    s3           = _screen3_html(display, cluster_name, recs, feel)
+    s3           = _screen3_html(display, cluster_name, recs, feel, food_key)
     s4           = _screen4_html()
 
     yield (
@@ -1418,7 +1628,7 @@ def on_confirm_dish(dish_text: str):
     recs         = RESULTS_ALL.get(food_key, [])
     safe_cluster = recs[0].get("name", cluster_name) if recs else cluster_name
     feel         = _food_feel(safe_cluster)
-    s3           = _screen3_html(display, cluster_name, recs, feel)
+    s3           = _screen3_html(display, cluster_name, recs, feel, food_key)
     s4           = _screen4_html()
 
     yield (

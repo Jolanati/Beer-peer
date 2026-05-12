@@ -4,10 +4,6 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/PPT/index.html"
-    },
-    {
       "source": "/presentation",
       "destination": "/PPT/index.html"
     }

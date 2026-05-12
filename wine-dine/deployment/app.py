@@ -1176,7 +1176,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
   </div>
 
   <!-- card body -->
-  <div style="padding:16px;display:flex;flex-direction:column;gap:12px;flex:1">
+  <div style="padding:16px;display:flex;flex-direction:column;gap:12px">
 
     <!-- mood line -->
     <div style="font-size:15px;color:#7c726b;font-style:italic;line-height:1.45">
@@ -1217,7 +1217,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
     </div>
 
     <!-- see pairing logic -->
-    <details style="margin-top:auto">
+    <details>
       <summary style="font-size:12px;font-weight:700;color:{color};cursor:pointer;
                        list-style:none;padding:9px 0 4px;
                        border-top:1px solid rgba(63,43,35,0.07)">
@@ -1246,9 +1246,10 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
     Different paths to enjoy your {display}. Each pairing is AI-matched based on
     flavor harmony, contrast, and your dish&rsquo;s unique taste fingerprint.</div>
 
-  <!-- 3-col card grid -->
+  <!-- 3-col card grid. align-items:start so each card hugs its content —
+       expanding one details no longer stretches the others. -->
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-              gap:16px;margin-bottom:8px">
+              gap:16px;margin-bottom:8px;align-items:start">
     {cards_html}
   </div>
 

@@ -196,6 +196,79 @@
         </div>
       </div>
     </div>
+    <div class="slide-nav"><a href="#eda">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- §5 - EDA -->
+  <section id="eda" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 4 · Exploratory Analysis</span>
+      <h2>What the data told us</h2>
+
+      <div class="eda-grid stagger">
+
+        <!-- Left panel: Images -->
+        <div class="eda-panel">
+          <p class="eda-panel-label">Food images — 101,000 photos</p>
+
+          <div class="eda-finding">
+            <span class="eda-num">700</span>
+            <div class="eda-text">
+              <strong>training photos per dish</strong>
+              <span>All 101 categories are equally represented. No dish gets more practice than another — the model starts from a perfectly level playing field.</span>
+            </div>
+          </div>
+
+          <div class="eda-finding">
+            <span class="eda-num">Noisy</span>
+            <div class="eda-text">
+              <strong>real web photos, imperfect by design</strong>
+              <span>Blurry, badly lit, awkwardly cropped. That's the point — if the model can handle messy real-world photos, it will handle yours.</span>
+            </div>
+          </div>
+
+          <div class="eda-finding">
+            <span class="eda-num">224px</span>
+            <div class="eda-text">
+              <strong>every image resized to one standard size</strong>
+              <span>Photos arrive in every shape. All are resized to 224 × 224. Their colour statistics closely match ImageNet, so pretrained weights slot in cleanly.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eda-divider"></div>
+
+        <!-- Right panel: Reviews -->
+        <div class="eda-panel">
+          <p class="eda-panel-label">Wine reviews — 824,000 tasting notes</p>
+
+          <div class="eda-finding">
+            <span class="eda-num">&lt;60</span>
+            <div class="eda-text">
+              <strong>words in a typical review</strong>
+              <span>Short, punchy sensory bursts — "grippy tannins", "blackberry finish", "mineral edge". The 95th-percentile length became the model's fixed sequence cap.</span>
+            </div>
+          </div>
+
+          <div class="eda-finding">
+            <span class="eda-num">10×</span>
+            <div class="eda-text">
+              <strong>more Cabernet Sauvignon than the rarest grape</strong>
+              <span>Vivino reflects what the world drinks. Weighted training corrects the imbalance so minority grapes aren't drowned out by the crowd.</span>
+            </div>
+          </div>
+
+          <div class="eda-finding">
+            <span class="eda-num">15</span>
+            <div class="eda-text">
+              <strong>grape varieties, 15 distinct vocabularies</strong>
+              <span>Pinot Noir reviews say "silk" and "cherry". Syrah says "pepper" and "smoke". Every grape has its own language — and it is learnable.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <div class="slide-nav"><a href="#cnn">Next chapter <span class="arrow">↓</span></a></div>
   </section>
 

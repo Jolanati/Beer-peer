@@ -1087,7 +1087,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
 
         wine_name = _clean_wine_name(wine)
         wine_year = _extract_year(wine)
-        year_html = (f'<div style="font-size:12px;color:#9e9188;margin-top:2px">'
+        year_html = (f'<div style="font-size:13px;color:#9e9188;margin-top:3px">'
                      f'{wine_year}</div>') if wine_year else ""
 
         food_notes = _food_notes_for_tier(food_key, tier, 3)
@@ -1097,7 +1097,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
         tags_html = ""
         for kw in kws[:5]:
             tags_html += (
-                f'<span style="font-size:11px;font-weight:600;padding:4px 10px;'
+                f'<span style="font-size:12px;font-weight:600;padding:5px 12px;'
                 f'border-radius:20px;background:{tag_bg};color:{color};'
                 f'white-space:nowrap">{kw}</span>'
             )
@@ -1111,15 +1111,15 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
                 'Flavor bridge</div>'
                 '<div style="display:flex;align-items:stretch;gap:6px">'
                 f'<div style="flex:1;min-width:0;background:{strip_bg};border-radius:10px;'
-                f'padding:8px 10px;font-size:11px;color:{color};'
-                f'font-weight:600;line-height:1.45">'
+                f'padding:10px 12px;font-size:13px;color:{color};'
+                f'font-weight:600;line-height:1.5">'
                 f'{_notes_block(food_notes)}'
                 '</div>'
                 '<div style="display:flex;align-items:center;color:#9e9188;'
                 'font-size:14px;font-weight:700">→</div>'
                 f'<div style="flex:1;min-width:0;background:{tag_bg};border-radius:10px;'
-                f'padding:8px 10px;font-size:11px;color:{color};'
-                f'font-weight:600;line-height:1.45">'
+                f'padding:10px 12px;font-size:13px;color:{color};'
+                f'font-weight:600;line-height:1.5">'
                 f'{_notes_block(wine_notes)}'
                 '</div>'
                 '</div>'
@@ -1150,11 +1150,11 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
                    text-transform:uppercase;color:{color}">{tier_lbl}</span>
     </div>
     <div style="text-align:right">
-      <div style="font-size:10px;font-weight:800;color:{color};
+      <div style="font-size:11px;font-weight:800;color:{color};
                   letter-spacing:0.06em;text-transform:uppercase;line-height:1">
         {score_label}</div>
-      <div style="font-family:Georgia,serif;font-size:24px;font-weight:700;
-                  color:{color};line-height:1.1;margin-top:3px">{conf_pct}%</div>
+      <div style="font-family:Georgia,serif;font-size:28px;font-weight:700;
+                  color:{color};line-height:1.1;margin-top:4px">{conf_pct}%</div>
     </div>
   </div>
 
@@ -1162,7 +1162,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
   <div style="padding:16px;display:flex;flex-direction:column;gap:12px;flex:1">
 
     <!-- mood line -->
-    <div style="font-size:13px;color:#7c726b;font-style:italic;line-height:1.45">
+    <div style="font-size:15px;color:#7c726b;font-style:italic;line-height:1.45">
       {mood}
     </div>
 
@@ -1184,29 +1184,29 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
 
     <!-- why it works -->
     <div>
-      <div style="font-size:10px;font-weight:800;color:#9e9188;
+      <div style="font-size:11px;font-weight:800;color:#9e9188;
                   letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">
         Why it works
       </div>
-      <div style="font-size:13px;color:#3f2b23;line-height:1.55">
+      <div style="font-size:14.5px;color:#3f2b23;line-height:1.55">
         {why_text}
       </div>
     </div>
 
     <!-- review quote -->
-    <div style="font-size:12px;color:#7c726b;font-style:italic;line-height:1.6;
+    <div style="font-size:13px;color:#7c726b;font-style:italic;line-height:1.65;
                 border-left:2px solid {color};padding-left:10px">
       &ldquo;{snippet}&rdquo;
     </div>
 
     <!-- see pairing logic -->
     <details style="margin-top:auto">
-      <summary style="font-size:11px;font-weight:700;color:{color};cursor:pointer;
-                       list-style:none;padding:8px 0 4px;
+      <summary style="font-size:12px;font-weight:700;color:{color};cursor:pointer;
+                       list-style:none;padding:9px 0 4px;
                        border-top:1px solid rgba(63,43,35,0.07)">
         ⌄&nbsp;&nbsp;See pairing logic
       </summary>
-      <div style="font-size:12px;color:#7c726b;line-height:1.6;padding-top:6px">
+      <div style="font-size:13px;color:#7c726b;line-height:1.65;padding-top:6px">
         {logic}
       </div>
     </details>

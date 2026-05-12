@@ -1756,6 +1756,53 @@ body:has(#wdt2:checked) #wdinfo4 {
 #wdinfo3, #wdinfo4 {
   margin-top: 14px !important;
 }
+/* ── Welcome screen — landing splash before the upload step ──────────────── */
+#wdwelcome {
+  background: rgba(255,250,244,0.72) !important;
+  backdrop-filter: blur(28px) saturate(1.08) !important;
+  border: 1px solid rgba(255,255,255,0.72) !important;
+  border-radius: 34px !important;
+  box-shadow: 0 34px 90px rgba(52,34,26,0.10),
+              inset 0 1px 0 rgba(255,255,255,0.75) !important;
+  padding: 96px 48px 88px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+#wdwelcome > .wrap {
+  padding: 0 !important;
+  gap: 0 !important;
+  align-items: center !important;
+}
+#wdstart,
+#wdstart button,
+#wdstart button.primary,
+button#wdstart {
+  background: linear-gradient(135deg,#8d1f3a 0%,#5a1024 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  padding: 16px 40px !important;
+  box-shadow: 0 14px 36px rgba(122,24,48,0.26) !important;
+  cursor: pointer !important;
+  width: auto !important;
+  min-width: 220px !important;
+  white-space: nowrap !important;
+}
+#wdstart:hover,
+#wdstart button:hover {
+  background: linear-gradient(135deg,#a0243f 0%,#6e1430 100%) !important;
+  filter: brightness(1.02) !important;
+}
 """
 _UPLOAD_HEADER_HTML = """
 <div style="font-family:'Segoe UI',system-ui,Arial,sans-serif">
@@ -1844,8 +1891,37 @@ with gr.Blocks(
     css=_APP_CSS,
 ) as demo:
 
+    # ── Welcome / landing screen ──────────────────────────────────────────────
+    with gr.Column(visible=True, elem_id="wdwelcome") as welcome_col:
+        gr.HTML("""
+<div style="font-family:'Segoe UI',system-ui,Arial,sans-serif;
+            display:flex;flex-direction:column;align-items:center;gap:0;width:100%">
+  <div style="font-size:11px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.28em;font-weight:800;margin-bottom:22px">
+    RSU &middot; Advanced Machine Learning
+  </div>
+  <div style="font-family:Georgia,'Times New Roman',serif;font-size:78px;
+              font-weight:700;line-height:1;letter-spacing:-2.2px;
+              color:#211917;margin-bottom:16px">
+    Wine<span style="color:#7a1830">&amp;</span>Dine
+  </div>
+  <div style="font-size:14px;color:#7a1830;text-transform:uppercase;
+              letter-spacing:0.18em;font-weight:800;margin-bottom:36px">
+    Food &amp; wine pairing
+  </div>
+  <div style="font-size:16px;color:#5e544d;line-height:1.65;
+              max-width:560px;margin-bottom:44px">
+    A multimodal AI system that pairs wines to dishes from a single photo —
+    combining visual recognition with the semantic space of taste.
+  </div>
+</div>
+""")
+        start_btn = gr.Button(
+            "Let's start  →", variant="primary", elem_id="wdstart",
+        )
+
     # ── Upload screen (screen 0) ──────────────────────────────────────────────
-    with gr.Column(visible=True, elem_id="wdupload") as upload_col:
+    with gr.Column(visible=False, elem_id="wdupload") as upload_col:
         gr.HTML(_UPLOAD_HEADER_HTML)
         img_input = gr.Image(
             type="pil", label="", show_label=False,
@@ -1902,6 +1978,11 @@ with gr.Blocks(
     info_card_4 = gr.HTML(value=_INFO_CARD_4_HTML, elem_id="wdinfo4", visible=False)
 
     # ── Event wiring ──────────────────────────────────────────────────────────
+    start_btn.click(
+        lambda: (gr.update(visible=False), gr.update(visible=True)),
+        inputs=None,
+        outputs=[welcome_col, upload_col],
+    )
     identify_btn.click(
         on_identify,
         inputs=[img_input],

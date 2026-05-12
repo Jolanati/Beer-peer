@@ -28,6 +28,11 @@
     font-family: 'Lato', sans-serif;
   }
 
+  body {
+    display: grid;
+    place-items: center;
+  }
+
   /* ── DECK CONTAINER ─────────────────────────────────────────── */
   .deck {
     position: fixed;
@@ -38,6 +43,7 @@
     transform: translate(-50%, -50%);
     overflow: hidden;
     background: var(--cream);
+    box-shadow: 0 22px 70px rgba(0,0,0,.36);
   }
 
   /* ── SLIDES ─────────────────────────────────────────────────── */
@@ -47,7 +53,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 4.5% 6.5% 10.5%;
+    padding: 4.1% 5.2% 9.2%;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
@@ -117,7 +123,7 @@
 
   /* ── BODY TEXT ──────────────────────────────────────────────── */
   .body-text {
-    font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+    font-size: clamp(0.95rem, 1.42vw, 1.12rem);
     line-height: 1.65;
     color: var(--dark-text);
     max-width: 72ch;
@@ -133,20 +139,20 @@
     background: var(--card);
     border: 1px solid var(--rule);
     border-radius: 4px;
-    padding: 1.4em 1.5em;
+    padding: clamp(1em, 1.5vw, 1.4em) clamp(1em, 1.6vw, 1.5em);
     height: 100%;
   }
   .card-dark {
     background: rgba(255,255,255,.07);
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 4px;
-    padding: 1.4em 1.5em;
+    padding: clamp(1em, 1.5vw, 1.4em) clamp(1em, 1.6vw, 1.5em);
     height: 100%;
   }
 
   .card-label {
     font-family: 'Lato', sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -157,7 +163,7 @@
 
   .card-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1.22rem, 2vw, 1.58rem);
     font-weight: 600;
     color: var(--dark-text);
     line-height: 1.25;
@@ -165,7 +171,7 @@
   }
 
   .card-body {
-    font-size: clamp(0.78rem, 1.15vw, 0.92rem);
+    font-size: clamp(0.86rem, 1.16vw, 1rem);
     color: var(--muted);
     line-height: 1.55;
   }
@@ -203,8 +209,8 @@
   .model-row.highlight {
     border-left: 3px solid var(--wine);
   }
-  .model-name { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); flex: 1; }
-  .model-desc { font-size: 0.78rem; color: var(--muted); flex: 2; }
+  .model-name { font-size: 1rem; font-weight: 700; color: var(--dark-text); flex: 1; }
+  .model-desc { font-size: 0.88rem; color: var(--muted); flex: 2; line-height: 1.45; }
   .model-acc  {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
@@ -330,32 +336,60 @@
   /* ── NAV ────────────────────────────────────────────────────── */
   .nav {
     position: absolute;
-    bottom: 2%;
+    bottom: 1.8%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 1.2em;
+    gap: 0.85em;
     z-index: 100;
-    background: rgba(28,14,10,.55);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 40px;
-    padding: 0.55em 1.3em;
+    max-width: min(92%, 920px);
+    background: rgba(28,14,10,.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    padding: 0.55em 0.8em;
+    box-shadow: 0 10px 30px rgba(28,14,10,.25);
   }
   .nav button {
-    background: none; border: none; cursor: pointer;
-    color: rgba(255,255,255,.55);
-    font-size: 1rem; line-height: 1;
-    transition: color 0.2s;
-    padding: 0.1em 0.3em;
+    width: 2.35rem;
+    height: 2.35rem;
+    display: inline-grid;
+    place-items: center;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    cursor: pointer;
+    color: rgba(255,255,255,.82);
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+    padding: 0;
   }
-  .nav button:hover { color: var(--wine-pale); }
-  .nav button:disabled { opacity: 0.2; cursor: default; }
+  .nav button:hover {
+    color: var(--wine-deep);
+    background: var(--wine-pale);
+    border-color: var(--wine-pale);
+    transform: translateY(-1px);
+  }
+  .nav button:disabled {
+    opacity: 0.28;
+    cursor: default;
+    transform: none;
+    background: rgba(255,255,255,.05);
+    color: rgba(255,255,255,.45);
+  }
 
-  .nav-dots { display: flex; gap: 0.45em; }
+  .nav-dots {
+    display: flex;
+    gap: 0.42em;
+    align-items: center;
+    max-width: min(52vw, 560px);
+    overflow: hidden;
+  }
   .nav-dot {
-    width: 6px; height: 6px;
+    width: 7px; height: 7px;
+    flex: 0 0 auto;
     border-radius: 50%;
     background: rgba(255,255,255,.25);
     transition: background 0.3s, transform 0.3s;
@@ -368,11 +402,24 @@
 
   .slide-counter {
     font-family: 'Lato', sans-serif;
-    font-size: 0.68rem;
-    color: rgba(255,255,255,.4);
+    font-size: 0.7rem;
+    color: rgba(255,255,255,.68);
     letter-spacing: 0.1em;
-    min-width: 3em;
+    min-width: 4.6em;
     text-align: center;
+    white-space: nowrap;
+  }
+
+  .deck-link {
+    display: inline-block;
+    color: var(--wine-pale);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,135,156,.45);
+  }
+
+  .deck-link:hover {
+    color: var(--light-text);
+    border-bottom-color: var(--light-text);
   }
 
   /* ── COVER DECORATIONS ──────────────────────────────────────── */
@@ -440,6 +487,64 @@
   .attn-high  { background: rgba(107,30,50,.22); color: var(--wine); font-weight: 700; }
   .attn-mid   { background: rgba(107,30,50,.1);  color: var(--dark-text); }
   .attn-low   { color: var(--muted); }
+
+  /* Deck-wide readability pass: content should feel like slides, not a narrow report. */
+  .slide > [style*="max-width:1120px"],
+  .slide > [style*="max-width:1100px"],
+  .slide > [style*="max-width:1050px"],
+  .slide > [style*="max-width:900px"] {
+    max-width: min(100%, 1320px) !important;
+    width: 100%;
+  }
+
+  .slide [style*="font-size:.55rem"] { font-size: .66rem !important; }
+  .slide [style*="font-size:.58rem"] { font-size: .68rem !important; }
+  .slide [style*="font-size:.6rem"]  { font-size: .7rem !important; }
+  .slide [style*="font-size:.62rem"] { font-size: .72rem !important; }
+  .slide [style*="font-size:.64rem"] { font-size: .74rem !important; }
+  .slide [style*="font-size:.65rem"] { font-size: .75rem !important; }
+  .slide [style*="font-size:.68rem"] { font-size: .78rem !important; }
+  .slide [style*="font-size:.7rem"]  { font-size: .82rem !important; }
+  .slide [style*="font-size:.72rem"] { font-size: .84rem !important; }
+  .slide [style*="font-size:.74rem"] { font-size: .85rem !important; }
+  .slide [style*="font-size:.75rem"] { font-size: .86rem !important; }
+  .slide [style*="font-size:.76rem"] { font-size: .87rem !important; }
+  .slide [style*="font-size:.78rem"] { font-size: .9rem !important; }
+
+  #s3, #s3-eda, #s3-eda2, #s4-models, #s4-models-text, #s5, #s6, #s8, #s9, #s10, #s11 {
+    padding-top: 3.4%;
+  }
+
+  @media (max-aspect-ratio: 4/3) {
+    .deck {
+      width: 100vw;
+      height: 100vh;
+    }
+    .slide {
+      padding: 5.8% 5.4% 12%;
+    }
+    .grid-2, .grid-3, .results-grid {
+      grid-template-columns: 1fr;
+    }
+    .flex-row {
+      flex-direction: column;
+    }
+    .v-divider {
+      display: none;
+    }
+    .nav {
+      bottom: 1.2%;
+      gap: 0.48em;
+      padding: 0.45em 0.55em;
+    }
+    .nav-dots {
+      max-width: 38vw;
+    }
+    .nav button {
+      width: 2.15rem;
+      height: 2.15rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -560,11 +665,98 @@
   </div>
 
 
+  <!-- ------------------------------------------------------------ -->
+  <!-- SLIDE 3a: DATA PREPARATION -->
+  <!-- ------------------------------------------------------------ -->
+  <div class="slide slide-light" id="s3" style="justify-content:flex-start; padding-top:3.6%;">
+    <div class="overline">03 · Data Preparation</div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2vw; max-width:1120px;">
+      <div>
+        <div class="slide-title" style="font-size:clamp(2.1rem,4vw,3.05rem); margin-bottom:.12em; line-height:1.08;">Clean first. Split once.<br><em>Freeze the test set.</em></div>
+        <p class="body-text" style="max-width:66ch; font-size:clamp(.85rem,1.2vw,1rem); color:var(--muted);">
+          Before any EDA or architecture decisions, both datasets are cleaned, stratified, and locked into train / validation / test partitions.
+        </p>
+      </div>
+      <div style="min-width:330px; background:var(--wine-deep); color:var(--light-text); border-radius:6px; padding:1em 1.1em; box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);">
+        <div style="font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-pale); margin-bottom:.75em;">Stratified split</div>
+        <div style="display:grid; grid-template-columns:1.4fr .75fr .75fr; gap:.65em; align-items:end;">
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:3.1rem; font-weight:700; line-height:.9;">70%</div><div style="font-size:.68rem; color:rgba(250,247,242,.7); margin-top:.3em;">train</div></div>
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; line-height:.9; color:var(--wine-pale);">15%</div><div style="font-size:.68rem; color:rgba(250,247,242,.7); margin-top:.3em;">validate</div></div>
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; line-height:.9; color:var(--wine-pale);">15%</div><div style="font-size:.68rem; color:rgba(250,247,242,.7); margin-top:.3em;">test</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rule" style="margin:1em 0 1em;"></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.1em; max-width:1120px;">
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1.15em 1.25em; min-height:330px; display:flex; flex-direction:column;">
+        <div class="card-label" style="margin-bottom:.75em;">WineSensed cleaning</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.65em; flex:1;">
+          <div style="background:rgba(250,247,242,.62); border:1px solid rgba(221,211,204,.75); border-radius:4px; padding:.8em .85em;">
+            <div style="font-size:.82rem; font-weight:700; color:var(--dark-text);">Missing fields</div>
+            <div style="font-size:.72rem; color:var(--muted); line-height:1.35; margin-top:.2em;">No review text, grape, wine name, or rating means no usable training target.</div>
+          </div>
+          <div style="background:rgba(250,247,242,.62); border:1px solid rgba(221,211,204,.75); border-radius:4px; padding:.8em .85em;">
+            <div style="font-size:.82rem; font-weight:700; color:var(--dark-text);">Zero ratings</div>
+            <div style="font-size:.72rem; color:var(--muted); line-height:1.35; margin-top:.2em;">Vivino stores unrated wines as 0.0, so those rows are removed.</div>
+          </div>
+          <div style="background:rgba(250,247,242,.62); border:1px solid rgba(221,211,204,.75); border-radius:4px; padding:.8em .85em;">
+            <div style="font-size:.82rem; font-weight:700; color:var(--dark-text);">Short reviews</div>
+            <div style="font-size:.72rem; color:var(--muted); line-height:1.35; margin-top:.2em;">Fewer than 5 words carries too little flavor signal for sequence models.</div>
+          </div>
+          <div style="background:rgba(250,247,242,.62); border:1px solid rgba(221,211,204,.75); border-radius:4px; padding:.8em .85em;">
+            <div style="font-size:.82rem; font-weight:700; color:var(--dark-text);">Non-English text</div>
+            <div style="font-size:.72rem; color:var(--muted); line-height:1.35; margin-top:.2em;">The tokenizer and embeddings are English-language, so non-Latin text is filtered.</div>
+          </div>
+        </div>
+        <div style="margin-top:.75em; border-left:3px solid var(--wine); padding:.55em .8em; background:rgba(107,30,50,.055);">
+          <div style="font-size:.8rem; font-weight:700; color:var(--dark-text);">Duplicates removed</div>
+          <p style="font-size:.72rem; color:var(--muted); line-height:1.4; margin-top:.12em;">Vivino can attach the same review to multiple vintages, which would quietly bias class counts and tasting vocabulary.</p>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(180deg, var(--card), rgba(240,235,228,.55)); border:1px solid var(--rule); border-radius:6px; padding:1.15em 1.25em; min-height:330px; display:flex; flex-direction:column;">
+        <div class="card-label" style="margin-bottom:.75em;">Leakage control</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.7em; margin-bottom:.85em;">
+          <div style="border:1px solid var(--rule); border-radius:4px; padding:.9em; background:rgba(250,247,242,.55);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:2.25rem; font-weight:700; color:var(--wine); line-height:1;">Text</div>
+            <p style="font-size:.72rem; color:var(--muted); line-height:1.38; margin-top:.45em;">Wine reviews split by grape class with a fixed random seed.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:4px; padding:.9em; background:rgba(250,247,242,.55);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:2.25rem; font-weight:700; color:var(--wine); line-height:1;">Image</div>
+            <p style="font-size:.72rem; color:var(--muted); line-height:1.38; margin-top:.45em;">Food-101 split by food label so every class stays represented.</p>
+          </div>
+        </div>
+        <div style="background:var(--wine); color:var(--light-text); border-radius:5px; padding:1em 1.1em; flex:1; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--wine-pale); margin-bottom:.5em;">Why before EDA?</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,2.15vw,1.65rem); line-height:1.25; color:var(--light-text);">
+            EDA is run on training data only, so the test set never influences preprocessing, architecture choices, or model interpretation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1em; max-width:1120px; margin-top:1em;">
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.85em 1em;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Why clean?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">Cleaning removes rows that would teach the model the wrong thing: empty reviews, fake zero ratings, duplicate tasting notes, and text the tokenizer cannot read well.</p>
+      </div>
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.85em 1em;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Why split?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">The training set teaches the model, validation guides choices, and the test set is kept untouched so final performance is honest.</p>
+      </div>
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.85em 1em;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Why freeze?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">Freezing the test set prevents accidental leakage: no statistics, thresholds, or design decisions are allowed to peek at final exam data.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ─────────────────────────────────────────────────────────── -->
   <!-- SLIDE 4a: EDA PART 1 -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s3-eda" style="justify-content:flex-start; padding-top:3.5%;">
-    <div class="overline">03 · Exploratory Data Analysis</div>
+    <div class="overline">04 · Exploratory Data Analysis</div>
     <div class="slide-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem); margin-bottom:.2em;">Grape imbalance &amp; taste vocabulary.</div>
     <div class="rule" style="margin-bottom:.55em;"></div>
 
@@ -732,165 +924,165 @@
   <!-- ─────────────────────────────────────────────────────────── -->
   <!-- SLIDE 4b: EDA PART 2 -->
   <!-- ─────────────────────────────────────────────────────────── -->
-  <div class="slide slide-light" id="s3-eda2" style="justify-content:flex-start; padding-top:5%;">
-    <div class="overline">03 · Exploratory Data Analysis</div>
-    <div class="slide-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem); margin-bottom:.2em;">What the reviews revealed — part 2.</div>
-    <div class="rule" style="margin-bottom:.6em;"></div>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:.8em; max-width:1100px; flex:1;">
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.8em 1.1em; display:flex; flex-direction:column;">
-        <div style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.45em;">How long are the reviews?</div>
-        <div style="display:flex; align-items:flex-end; gap:5px; flex:1; padding-top:1.2em;">
-          <div style="flex:1; background:var(--rule); height:8%;  border-radius:2px 2px 0 0;"></div>
-          <div style="flex:1; background:var(--rule); height:22%; border-radius:2px 2px 0 0;"></div>
-          <div style="flex:1; background:var(--rule); height:55%; border-radius:2px 2px 0 0;"></div>
-          <div style="flex:1; background:var(--wine); height:100%; border-radius:2px 2px 0 0; position:relative;"><span style="position:absolute; top:-1.4em; left:50%; transform:translateX(-50%); font-size:.62rem; font-weight:700; color:var(--wine); white-space:nowrap;">peak</span></div>
-          <div style="flex:1; background:var(--wine); height:85%; border-radius:2px 2px 0 0; opacity:.82;"></div>
-          <div style="flex:1; background:var(--wine); height:58%; border-radius:2px 2px 0 0; opacity:.62; position:relative;"><span style="position:absolute; top:-1.4em; left:50%; transform:translateX(-50%); font-size:.62rem; color:var(--wine); white-space:nowrap; font-weight:700;">95th&nbsp;%ile cap</span></div>
-          <div style="flex:1; background:var(--rule); height:28%; border-radius:2px 2px 0 0;"></div>
-          <div style="flex:1; background:var(--rule); height:13%; border-radius:2px 2px 0 0;"></div>
-          <div style="flex:1; background:var(--rule); height:5%;  border-radius:2px 2px 0 0;"></div>
+  <div class="slide slide-light" id="s3-eda2" style="justify-content:flex-start; padding-top:3.6%;">
+    <div class="overline">04 · Exploratory Data Analysis</div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2vw; max-width:1120px;">
+      <div>
+        <div class="slide-title" style="font-size:clamp(1.9rem,3.6vw,2.8rem); margin-bottom:.18em;">Wine reviews are usable signal.</div>
+        <p class="body-text" style="max-width:66ch; font-size:clamp(.82rem,1.15vw,.98rem); color:var(--muted);">
+          The review corpus is long enough for sequence models, but still compact enough to cap without losing much information. Ratings add a practical business layer for choosing representative bottles.
+        </p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3, minmax(82px,1fr)); gap:.55em; min-width:330px;">
+        <div style="background:var(--wine); color:var(--light-text); border-radius:4px; padding:.75em .9em;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.85rem; font-weight:700; line-height:1;">40–80</div>
+          <div style="font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--wine-pale); margin-top:.2em;">word core</div>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(9,1fr); margin-top:.3em; margin-bottom:.4em; text-align:center;">
+        <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.75em .9em;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.85rem; font-weight:700; line-height:1; color:var(--wine);">95%</div>
+          <div style="font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.2em;">kept after cap</div>
+        </div>
+        <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.75em .9em;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.85rem; font-weight:700; line-height:1; color:var(--wine);">4.1</div>
+          <div style="font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.2em;">top avg rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="rule" style="margin:.9em 0 1em;"></div>
+
+    <div style="display:grid; grid-template-columns:1.08fr .92fr; gap:1.1em; max-width:1120px;">
+
+      <div style="background:linear-gradient(180deg, var(--card), rgba(240,235,228,.55)); border:1px solid var(--rule); border-radius:6px; padding:1.05em 1.2em 1em; min-height:330px; display:flex; flex-direction:column;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1em; margin-bottom:.8em;">
+          <div style="font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid);">Review length distribution</div>
+          <div style="font-size:.64rem; color:var(--muted);">tokens per review</div>
+        </div>
+        <div style="position:relative; flex:1; min-height:210px; border-bottom:1px solid rgba(140,123,114,.28); display:flex; align-items:flex-end; gap:7px; padding:1.8em .2em 0;">
+          <div style="position:absolute; left:0; right:0; top:32%; border-top:1px dashed rgba(140,123,114,.22);"></div>
+          <div style="flex:1; background:#ded5ce; height:8%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:#d8cec6; height:22%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:#cbbdb5; height:55%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:var(--wine); height:100%; border-radius:3px 3px 0 0; position:relative; box-shadow:0 0 0 1px rgba(107,30,50,.12);"><span style="position:absolute; top:-1.6em; left:50%; transform:translateX(-50%); font-size:.62rem; font-weight:700; color:var(--wine); white-space:nowrap;">peak</span></div>
+          <div style="flex:1; background:#8b4357; height:85%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:#a36f7d; height:58%; border-radius:3px 3px 0 0; position:relative;"><span style="position:absolute; top:-1.6em; left:50%; transform:translateX(-50%); font-size:.62rem; color:var(--wine-mid); white-space:nowrap; font-weight:700;">95th %ile</span></div>
+          <div style="flex:1; background:#d8cec6; height:28%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:#ded5ce; height:13%; border-radius:3px 3px 0 0;"></div>
+          <div style="flex:1; background:#e5ddd7; height:5%; border-radius:3px 3px 0 0;"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(9,1fr); margin-top:.55em; text-align:center;">
           <span style="font-size:.58rem; color:var(--muted);">&lt;10</span>
           <span style="font-size:.58rem; color:var(--muted);">10–25</span>
           <span style="font-size:.58rem; color:var(--muted);">25–40</span>
-          <span style="font-size:.58rem; color:var(--muted); font-weight:700; color:var(--wine);">40–60</span>
-          <span style="font-size:.58rem; color:var(--muted); font-weight:700; color:var(--wine);">60–80</span>
-          <span style="font-size:.58rem; color:var(--muted); font-weight:600; color:var(--wine-mid);">80–110</span>
+          <span style="font-size:.58rem; font-weight:700; color:var(--wine);">40–60</span>
+          <span style="font-size:.58rem; font-weight:700; color:var(--wine);">60–80</span>
+          <span style="font-size:.58rem; font-weight:600; color:var(--wine-mid);">80–110</span>
           <span style="font-size:.58rem; color:var(--muted);">110–150</span>
           <span style="font-size:.58rem; color:var(--muted);">150–200</span>
           <span style="font-size:.58rem; color:var(--muted);">&gt;200</span>
         </div>
-        <p style="font-size:.72rem; color:var(--muted); line-height:1.4;">Most reviews are 40–80 words. Cap at 95th percentile — only 5% trimmed. Used across all text models.</p>
+        <p style="font-size:.72rem; color:var(--muted); line-height:1.45; margin-top:.8em;">Most reviews sit in the 40–80 word range. Capping at the 95th percentile trims only the extreme tail while keeping the useful tasting vocabulary.</p>
       </div>
 
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.8em 1.1em; display:flex; flex-direction:column;">
-        <div style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.55em;">Rating varies by grape <span style="font-weight:400; letter-spacing:0; text-transform:none; font-size:.68rem;">(avg Vivino score / 5)</span></div>
-        <div style="display:flex; flex-direction:column; gap:.55em; flex:1; padding-top:.2em;">
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Champagne</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine); width:92%; border-radius:3px;"></div></div><span style="font-size:.72rem; font-weight:700; color:var(--wine); flex-shrink:0; width:2.4em;">4.1</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Pinot Noir</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine); width:84%; border-radius:3px;"></div></div><span style="font-size:.72rem; font-weight:700; color:var(--wine); flex-shrink:0; width:2.4em;">3.9</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Riesling</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine); width:78%; border-radius:3px;"></div></div><span style="font-size:.72rem; font-weight:600; color:var(--wine-mid); flex-shrink:0; width:2.4em;">3.8</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Chardonnay</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine); width:74%; border-radius:3px;"></div></div><span style="font-size:.72rem; font-weight:600; color:var(--wine-mid); flex-shrink:0; width:2.4em;">3.7</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Cab. Sauvignon</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine-mid); width:68%; border-radius:3px;"></div></div><span style="font-size:.72rem; font-weight:600; color:var(--wine-mid); flex-shrink:0; width:2.4em;">3.6</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Merlot</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine-mid); width:60%; border-radius:3px;"></div></div><span style="font-size:.72rem; color:var(--muted); flex-shrink:0; width:2.4em;">3.5</span></div>
-          <div style="display:flex; align-items:center; gap:.6em; min-width:0;"><span style="font-size:.75rem; color:var(--dark-text); width:7.5em; flex-shrink:0; text-align:right; font-weight:600;">Viognier</span><div style="flex:1; overflow:hidden; border-radius:3px; background:var(--rule); height:14px;"><div style="height:100%; background:var(--wine-mid); width:50%; border-radius:3px;"></div></div><span style="font-size:.72rem; color:var(--muted); flex-shrink:0; width:2.4em;">3.4</span></div>
+      <div style="background:var(--wine-deep); color:var(--light-text); border-radius:6px; padding:1.05em 1.2em 1em; min-height:330px; display:flex; flex-direction:column; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1em; margin-bottom:1em;">
+          <div style="font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-pale);">Average rating by grape</div>
+          <div style="font-size:.64rem; color:rgba(250,247,242,.55);">Vivino / 5</div>
         </div>
-        <p style="font-size:.72rem; color:var(--muted); line-height:1.4; margin-top:.6em;">Champagne and Pinot Noir rated highest — relevant when selecting wines for recommendation cards.</p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ─────────────────────────────────────────────────────────── -->
-  <!-- SLIDE 5: DATA PREPARATION -->
-  <!-- ─────────────────────────────────────────────────────────── -->
-  <div class="slide slide-light" id="s3">
-    <div class="overline">03 · Data Preparation</div>
-    <div class="slide-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem);">Before training anything —<br><em>clean, split, freeze.</em></div>
-    <div class="rule" style="margin:.3em 0 .7em;"></div>
-    <div style="display:flex; gap:2.5em; max-width:1100px; align-items:flex-start;">
-
-      <div style="flex:1; min-width:0;">
-        <div class="card-label" style="margin-bottom:.6em;">Data Cleaning — WineSensed</div>
-        <div style="display:flex; flex-direction:column; gap:.4em;">
-          <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.55em .9em;">
-            <div style="font-size:.78rem; font-weight:700; color:var(--dark-text);">Missing fields removed</div>
-            <div style="font-size:.7rem; color:var(--muted);">Reviews with no text, grape, wine name, or rating — unusable for training</div>
-          </div>
-          <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.55em .9em;">
-            <div style="font-size:.78rem; font-weight:700; color:var(--dark-text);">Zero-rated entries dropped</div>
-            <div style="font-size:.7rem; color:var(--muted);">Vivino encodes "not yet rated" as 0.0 — not a real score</div>
-          </div>
-          <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.55em .9em;">
-            <div style="font-size:.78rem; font-weight:700; color:var(--dark-text);">Short reviews removed</div>
-            <div style="font-size:.7rem; color:var(--muted);">Fewer than 5 words carry no meaningful signal for the model</div>
-          </div>
-          <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.55em .9em;">
-            <div style="font-size:.78rem; font-weight:700; color:var(--dark-text);">Non-English filtered out</div>
-            <div style="font-size:.7rem; color:var(--muted);">Non-Latin script produces near-zero vectors in a model trained on English</div>
-          </div>
-          <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.55em .9em;">
-            <div style="font-size:.78rem; font-weight:700; color:var(--dark-text);">Duplicates removed</div>
-            <div style="font-size:.7rem; color:var(--muted);">Vivino reattaches the same note to multiple vintages — biases class distribution</div>
-          </div>
+        <div style="display:flex; flex-direction:column; gap:.62em; flex:1;">
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.92); font-weight:700;">Champagne</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:92%; background:var(--wine-pale); border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; font-weight:700; color:var(--wine-pale);">4.1</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.92); font-weight:700;">Pinot Noir</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:84%; background:#d59aab; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; font-weight:700; color:var(--wine-pale);">3.9</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.78); font-weight:600;">Riesling</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:78%; background:#be768a; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; color:rgba(250,247,242,.72);">3.8</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.78); font-weight:600;">Chardonnay</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:74%; background:#a95f75; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; color:rgba(250,247,242,.72);">3.7</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.68); font-weight:600;">Cab. Sauvignon</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:68%; background:#94465f; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; color:rgba(250,247,242,.62);">3.6</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.62); font-weight:600;">Merlot</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:60%; background:#7e344b; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; color:rgba(250,247,242,.55);">3.5</span></div>
+          <div style="display:flex; align-items:center; gap:.7em;"><span style="font-size:.74rem; width:7.6em; text-align:right; color:rgba(250,247,242,.58); font-weight:600;">Viognier</span><div style="flex:1; background:rgba(255,255,255,.13); height:15px; border-radius:999px; overflow:hidden;"><div style="height:100%; width:50%; background:#68273c; border-radius:999px;"></div></div><span style="font-size:.72rem; width:2em; color:rgba(250,247,242,.5);">3.4</span></div>
         </div>
-        <p style="font-size:.68rem; color:var(--muted); font-style:italic; margin-top:.5em;">Food-101 required no cleaning — curated benchmark, no missing labels.</p>
-      </div>
-
-      <div style="width:1px; background:var(--rule); align-self:stretch; flex-shrink:0;"></div>
-
-      <div style="flex:1; min-width:0;">
-        <div class="card-label" style="margin-bottom:.6em;">Train / Validate / Test Split</div>
-        <div style="background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.9em 1.1em; margin-bottom:.7em;">
-          <div style="display:flex; gap:2em; margin-bottom:.5em;">
-            <div class="stat-block"><div class="stat-num" style="font-size:1.8rem;">70%</div><div class="stat-label">train</div></div>
-            <div class="stat-block"><div class="stat-num" style="font-size:1.8rem;">15%</div><div class="stat-label">validate</div></div>
-            <div class="stat-block"><div class="stat-num" style="font-size:1.8rem;">15%</div><div class="stat-label">test</div></div>
-          </div>
-          <p class="card-body">Stratified split — every portion preserves the same class proportions. Applied to both datasets independently.</p>
-        </div>
-        <div style="background:var(--card); border:1px solid var(--rule); border-left:2px solid var(--wine); border-radius:3px; padding:.8em 1em;">
-          <div class="card-label" style="margin-bottom:.3em;">Why split before EDA?</div>
-          <p class="card-body">EDA was run on training data only. Computing statistics on the full dataset would let test-set information quietly influence architecture decisions — a subtle but real form of data leakage.</p>
+        <div style="border-top:1px solid rgba(255,255,255,.12); padding-top:.75em; margin-top:.85em; display:flex; gap:.8em; align-items:flex-start;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.55rem; line-height:1; color:var(--wine-pale); font-weight:700;">→</div>
+          <p style="font-size:.74rem; color:rgba(250,247,242,.68); line-height:1.45;">High-rated grapes are not the model target, but they improve the final product layer: when a cluster is selected, the recommendation card can prefer wines people actually liked.</p>
         </div>
       </div>
 
     </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1em; max-width:1120px; margin-top:1em;">
+      <div style="border-left:3px solid var(--wine); background:rgba(107,30,50,.055); padding:.85em 1em; border-radius:4px;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">What is a sequence model?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">An LSTM reads text word by word, so review length matters. Too short gives no taste signal; too long slows training and adds noise.</p>
+      </div>
+      <div style="border-left:3px solid var(--wine); background:rgba(107,30,50,.055); padding:.85em 1em; border-radius:4px;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Why cap at 95%?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">The cap keeps almost every normal review and cuts only unusually long outliers, making batches more stable and comparable.</p>
+      </div>
+      <div style="border-left:3px solid var(--wine); background:rgba(107,30,50,.055); padding:.85em 1em; border-radius:4px;">
+        <div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Why show ratings?</div>
+        <p style="font-size:.76rem; color:var(--muted); line-height:1.45;">The model learns taste language, not popularity. Ratings help the app choose a real bottle after the flavor match is found.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- ─────────────────────────────────────────────────────────── -->
+  <!-- ------------------------------------------------------------ -->
   <!-- SLIDE 5a: IMAGE PROCESSING MODEL -->
-  <!-- ─────────────────────────────────────────────────────────── -->
-  <div class="slide slide-light" id="s4-models">
-    <div class="overline">04 · The Models — Image Processing</div>
-    <div class="slide-title">Teaching a model to see food.<br><em>From scratch to transfer learning.</em></div>
-    <div class="rule"></div>
+  <!-- ------------------------------------------------------------ -->
+  <div class="slide slide-light" id="s4-models" style="justify-content:flex-start; padding-top:3.7%;">
+    <div class="overline">05 · The Models — Image Processing</div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2vw; max-width:1120px;">
+      <div>
+        <div class="slide-title" style="font-size:clamp(2rem,3.8vw,2.9rem); margin-bottom:.12em; line-height:1.1;">Teaching a model to see food.<br><em>Transfer learning wins.</em></div>
+        <p class="body-text" style="max-width:66ch; font-size:clamp(.85rem,1.2vw,1rem); color:var(--muted);">The image task is 101-way food classification. We compare a custom CNN trained from scratch against a ResNet-50 that starts with ImageNet visual knowledge.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:.65em; min-width:300px;">
+        <div style="background:var(--card); border:1px solid var(--rule); border-radius:5px; padding:.85em 1em;"><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; color:var(--muted); line-height:1;">48.3%</div><div style="font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.3em;">scratch CNN</div></div>
+        <div style="background:var(--wine); color:var(--light-text); border-radius:5px; padding:.85em 1em;"><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; line-height:1;">77.2%</div><div style="font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--wine-pale); margin-top:.3em;">ResNet-50</div></div>
+      </div>
+    </div>
+    <div class="rule" style="margin:1em 0 1em;"></div>
 
-    <div style="max-width:900px;">
-
-      <!-- Baseline -->
-      <div class="model-row" style="margin-bottom:.5em;">
-        <div style="flex:1;">
-          <div class="model-name">CNN from scratch</div>
-          <div class="model-desc" style="margin-top:.25em;">Custom convolutional architecture trained from random weight initialisation on Food-101. 101 classes, 101k images.</div>
+    <div style="display:grid; grid-template-columns:1.05fr .95fr; gap:1.1em; max-width:1120px;">
+      <div style="display:flex; flex-direction:column; gap:.8em;">
+        <div class="model-row" style="margin:0; min-height:118px;">
+          <div style="flex:1;">
+            <div class="model-name" style="font-size:1rem;">CNN from scratch</div>
+            <div class="model-desc" style="margin-top:.35em; font-size:.82rem; line-height:1.45;">A custom convolutional network starts with random weights and has to learn every visual feature from Food-101 alone: edges, textures, shapes, and food-specific cues.</div>
+          </div>
+          <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3.25rem; font-weight:700; color:var(--muted); line-height:1;">48.3%</div>
+            <div style="font-size:.7rem; color:var(--muted);">macro F1 0.4672</div>
+          </div>
         </div>
-        <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
-          <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--muted); line-height:1;">48.0%</div>
-          <div style="font-size:.7rem; color:var(--muted);">top-1 accuracy</div>
+        <div style="display:flex; align-items:center; gap:1em; padding:.25em 0 .25em 1em;">
+          <div style="width:1px; height:2.2em; background:var(--rule);"></div>
+          <span style="font-size:.82rem; color:var(--wine); font-style:italic;">Transfer learning starts from useful visual features instead of learning everything from zero.</span>
+        </div>
+        <div class="model-row highlight" style="margin:0; min-height:128px;">
+          <div style="flex:1;">
+            <div class="model-name" style="font-size:1rem;">ResNet-50 — two-phase fine-tuning</div>
+            <div class="model-desc" style="margin-top:.35em; font-size:.82rem; line-height:1.45;">Phase 1 trains the new food classifier head while the backbone is frozen. Phase 2 fine-tunes the network at a lower learning rate so the model adapts to food photos without forgetting general vision.</div>
+          </div>
+          <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3.25rem; font-weight:700; color:var(--wine); line-height:1;">77.2%</div>
+            <div style="font-size:.7rem; color:var(--muted);">macro F1 0.7714</div>
+          </div>
         </div>
       </div>
 
-      <div style="display:flex; align-items:center; gap:1em; margin:.4em 0 .6em; padding-left:1em;">
-        <div style="width:1px; height:2em; background:var(--rule);"></div>
-        <span style="font-size:.78rem; color:var(--wine); font-style:italic;">Transfer learning — start from ImageNet weights instead of random</span>
-      </div>
-
-      <!-- ResNet -->
-      <div class="model-row highlight" style="margin-bottom:1.4em;">
-        <div style="flex:1;">
-          <div class="model-name">ResNet-50 — two-phase fine-tuning</div>
-          <div class="model-desc" style="margin-top:.25em;">Phase 1: freeze backbone, train classifier head only. Phase 2: unfreeze and fine-tune the full network at a lower learning rate. Grad-CAM used to verify the model attends to the actual food.</div>
+      <div style="background:var(--wine-deep); color:var(--light-text); border-radius:6px; padding:1.15em 1.25em; min-height:315px; display:flex; flex-direction:column;">
+        <div style="font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-pale); margin-bottom:.8em;">How to read the result</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.8em; margin-bottom:.9em;">
+          <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.11); border-radius:4px; padding:.8em;"><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; color:var(--wine-pale); line-height:1;">+29.0</div><div style="font-size:.64rem; color:rgba(250,247,242,.66); margin-top:.35em;">percentage points gained</div></div>
+          <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.11); border-radius:4px; padding:.8em;"><div style="font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:700; color:var(--wine-pale); line-height:1;">101</div><div style="font-size:.64rem; color:rgba(250,247,242,.66); margin-top:.35em;">food classes separated</div></div>
         </div>
-        <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
-          <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--wine); line-height:1;">76.5%</div>
-          <div style="font-size:.7rem; color:var(--muted);">top-1 accuracy</div>
+        <p style="font-size:.82rem; color:rgba(250,247,242,.72); line-height:1.55; margin-bottom:.85em;">For a non-technical audience: ResNet-50 is like giving the model visual common sense before asking it to specialize in food. That prior knowledge is why it beats the scratch CNN so strongly.</p>
+        <div style="margin-top:auto; border-top:1px solid rgba(255,255,255,.13); padding-top:.8em; display:flex; gap:.8em; align-items:flex-start;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.55rem; line-height:1; color:var(--wine-pale); font-weight:700;">→</div>
+          <p style="font-size:.75rem; color:rgba(250,247,242,.66); line-height:1.45;"><strong style="color:var(--light-text);">Grad-CAM check:</strong> heatmaps confirm the model attends to the actual food region, not the plate or background.</p>
         </div>
       </div>
+    </div>
 
-      <!-- Grad-CAM note -->
-      <div class="card" style="display:flex; gap:1.5em; align-items:flex-start; padding:1em 1.4em;">
-        <div style="flex:1;">
-          <div class="card-label" style="margin-bottom:.4em;">Grad-CAM explainability</div>
-          <p class="card-body">Gradient-weighted class activation maps confirm the model is attending to the right regions — the actual food, not the plate or background. A 76.5% accuracy on 101 classes is a meaningful result for a system that needs to work in the real world.</p>
-        </div>
-        <div style="flex-shrink:0; text-align:center; padding-top:.3em;">
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--wine-mid); line-height:1;">+28.5</div>
-          <div style="font-size:.68rem; color:var(--muted); margin-top:.2em;">pp gained<br>vs scratch</div>
-        </div>
-      </div>
-
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1em; max-width:1120px; margin-top:1em;">
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.8em 1em;"><div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.3em;">Why compare two CNNs?</div><p style="font-size:.75rem; color:var(--muted); line-height:1.42;">The scratch model proves the pipeline works; transfer learning shows what a production-ready vision model can achieve.</p></div>
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.8em 1em;"><div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.3em;">Why top-1 accuracy?</div><p style="font-size:.75rem; color:var(--muted); line-height:1.42;">The app needs one dish label to trigger flavor lookup, so the first prediction matters most.</p></div>
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.8em 1em;"><div style="font-size:.64rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.3em;">Why macro F1?</div><p style="font-size:.75rem; color:var(--muted); line-height:1.42;">Macro F1 checks whether performance is broad across classes, not just good on easy or frequent foods.</p></div>
     </div>
   </div>
 
@@ -898,7 +1090,7 @@
   <!-- SLIDE 5b: TEXT PROCESSING MODEL -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s4-models-text">
-    <div class="overline">04 · The Models — Text Processing</div>
+    <div class="overline">05 · The Models — Text Processing</div>
     <div class="slide-title">Teaching a model to read wine reviews.<br><em>From LSTM to BiLSTM with attention.</em></div>
     <div class="rule"></div>
 
@@ -912,8 +1104,9 @@
             <div class="model-desc" style="margin-top:.25em;">Unidirectional LSTM trained on 824k WineSensed reviews to classify 15 grape varieties.</div>
           </div>
           <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--muted); line-height:1;">16.4%</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--muted); line-height:1;">18.1%</div>
             <div style="font-size:.7rem; color:var(--muted);">top-1 accuracy</div>
+            <div style="font-size:.62rem; color:var(--muted); margin-top:.25em;">macro F1 0.1388</div>
           </div>
         </div>
 
@@ -925,11 +1118,12 @@
         <div class="model-row highlight" style="margin-bottom:1.2em;">
           <div style="flex:1;">
             <div class="model-name">BiLSTM + Bahdanau attention</div>
-            <div class="model-desc" style="margin-top:.25em;">Processes each review forwards and backwards. Attention weights highlight tasting words — "cassis", "grippy tannin" — over filler. + DistilBERT bonus (+3 pts).</div>
+            <div class="model-desc" style="margin-top:.25em;">Processes each review forwards and backwards. Attention weights highlight tasting words — "cassis", "grippy tannin" — over filler. DistilBERT bonus: 20.6% accuracy, macro F1 0.1552.</div>
           </div>
           <div style="text-align:right; flex-shrink:0; padding-left:1.5em;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--wine); line-height:1;">21.9%</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--wine); line-height:1;">22.0%</div>
             <div style="font-size:.7rem; color:var(--muted);">top-1 accuracy</div>
+            <div style="font-size:.62rem; color:var(--muted); margin-top:.25em;">macro F1 0.1951</div>
           </div>
         </div>
 
@@ -940,7 +1134,7 @@
       <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:.8em;">
 
         <div class="card">
-          <div class="card-label" style="margin-bottom:.4em;">Is 21.9% a good result?</div>
+          <div class="card-label" style="margin-bottom:.4em;">Is 22.0% a good result?</div>
           <p class="card-body" style="margin-bottom:.5em;">Random chance across 15 classes is <strong style="color:var(--dark-text);">6.7%</strong> — so the model is 3x better than guessing. But a naive classifier always predicting Cabernet Sauvignon (the most common grape) would score around <strong style="color:var(--dark-text);">~29%</strong> from class imbalance alone.</p>
           <p class="card-body">So the grape classification accuracy is modest. But it was never the real goal.</p>
         </div>
@@ -960,7 +1154,7 @@
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-dark" id="s4">
     <div class="section-break"></div>
-    <div class="overline overline-dark" style="margin-left:1.5vw;">05 · The Bridge</div>
+    <div class="overline overline-dark" style="margin-left:1.5vw;">06 · The Bridge</div>
     <div class="slide-title slide-title-light" style="margin-left:1.5vw; font-size:clamp(2.2rem,5.5vw,4.2rem); max-width:20ch;">
       We had two capable models.<br>Now we needed a bridge.
     </div>
@@ -988,7 +1182,7 @@
   <!-- SLIDE 6: W2V FIRST ATTEMPT -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s5">
-    <div class="overline">05 · The Bridge — First Attempt</div>
+    <div class="overline">06 · The Bridge — First Attempt</div>
     <div class="slide-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem);">Word2Vec. The obvious first bridge.<br><em>It collapsed immediately.</em></div>
     <div class="rule" style="margin:.3em 0 .7em;"></div>
 
@@ -1046,80 +1240,42 @@
 
   <!-- ─────────────────────────────────────────────────────────── -->
   <!-- SLIDE 7: 6 MORE ATTEMPTS -->
-  <!-- ─────────────────────────────────────────────────────────── -->
-  <div class="slide slide-light" id="s6" style="justify-content:flex-start; padding-top:5%;">
-    <div class="overline">05 · The Bridge — Six More Attempts</div>
-    <div class="slide-title" style="font-size:clamp(1.4rem,2.4vw,1.9rem); margin-bottom:.2em;">We tried six more ways to match food to grape.</div>
-    <div class="rule" style="margin-bottom:.5em;"></div>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:.45em; max-width:1100px; flex:1;">
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">Can an already trained grape classifier just pick the right grape from a food description?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">The model was already trained on grape vocabulary — an argmax on its output should give a direct recommendation.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">It did produce recommendations — but one grape dominated 44 out of 101 foods.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Training imbalance meant the model defaulted to the most common grape regardless of what food was given.</div></div>
-        </div>
+  <!-- ------------------------------------------------------------ -->
+  <!-- SLIDE 7: SIX MORE ATTEMPTS -->
+  <!-- ------------------------------------------------------------ -->
+  <div class="slide slide-light" id="s6" style="justify-content:flex-start; padding-top:3.6%;">
+    <div class="overline">06 · The Bridge — Six More Attempts</div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2vw; max-width:1320px; width:100%;">
+      <div>
+        <div class="slide-title" style="font-size:clamp(2rem,3.7vw,2.85rem); margin-bottom:.14em; line-height:1.1;">Six more attempts.<br><em>Same underlying problem.</em></div>
+        <p class="body-text" style="max-width:70ch; color:var(--muted);">Every approach below tried to turn a food description into a grape recommendation. The details changed, but the geometry kept collapsing: grape names are not stable flavor targets.</p>
       </div>
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">What if we skip the label — and use the encoder's hidden state instead?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">The hidden state carries richer information than the final class output — it should reflect flavor, not just grape rank.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">All 15 grape centroids were nearly identical — pairwise cosine 0.85–0.99.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Cross-entropy training collapses all embeddings toward decision boundaries — at every layer.</div></div>
-        </div>
+      <div style="background:var(--wine); color:var(--light-text); border-radius:6px; padding:1em 1.15em; min-width:260px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:700; line-height:.9;">6</div>
+        <div style="font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--wine-pale); margin-top:.35em;">experiments after W2V</div>
       </div>
+    </div>
+    <div class="rule" style="margin:1em 0 1em;"></div>
 
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">Is the bottleneck how we describe the food — what if we write it like a wine reviewer?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">If the food description uses sensory language that matches the training vocabulary, it should route more precisely.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">9 out of 10 foods changed their recommendation — input format genuinely matters.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Better routing can't fix a collapsed embedding space. The diversity ceiling was still there.</div></div>
-        </div>
-      </div>
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">What if we use MPNET — an encoder designed to actually spread categories apart?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">MPNET was contrastively trained to push different meanings apart — so its grape centroids would not collapse.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Grape centroids did spread well (cosine 0.03–0.70) — but food keywords landed in completely the wrong region.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Good encoder geometry doesn't help if food and wine don't share the same semantic neighbourhood.</div></div>
-        </div>
-      </div>
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">Can we steer MPNET's space with a small trained head — without retraining the whole model?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">A lightweight projection layer trained with contrastive loss should pull food and wine closer without touching the backbone.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">The head learned a transformation — but the underlying backbone geometry remained exactly the same.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">The backbone defines the space. A layer on top cannot reorganize what is already baked into the weights.</div></div>
-        </div>
-      </div>
-
-      <div style="background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.6em .85em;">
-        <div style="font-size:.72rem; font-weight:700; color:var(--wine); margin-bottom:.35em; padding-bottom:.28em; border-bottom:1px solid var(--rule); line-height:1.35; font-style:italic; font-family:'Cormorant Garamond',serif;">What if we combine MPNET's better geometry with wine-style food descriptions — surely that's enough?</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.4em;">
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why we thought so</div><div style="font-size:.68rem; color:var(--muted); line-height:1.4;">Two improvements combined — a better encoder that spreads, and richer input that bridges vocabulary — should close the gap.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">How it worked</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">5 out of 10 grapes reached — an improvement — but completely different grapes than BiLSTM suggested.</div></div>
-          <div><div style="font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.15em;">Why it failed</div><div style="font-size:.68rem; color:var(--dark-text); line-height:1.4;">Domain mismatch confirmed. No encoder trained on grape labels can align food and wine in a shared meaningful space.</div></div>
-        </div>
-      </div>
-
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:.9em; max-width:1320px; width:100%;">
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label">Attempt 2</div><div class="card-heading" style="font-size:1.3rem;">BiLSTM argmax</div><p class="card-body">Use the grape classifier directly on food text. One grape dominated the output, so recommendations lacked diversity.</p></div>
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label">Attempt 3</div><div class="card-heading" style="font-size:1.3rem;">BiLSTM centroids</div><p class="card-body">Compare food vectors to grape centroids. The grape vectors were too close together to separate meaningful tastes.</p></div>
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label">Attempt 4</div><div class="card-heading" style="font-size:1.3rem;">Wine-style food text</div><p class="card-body">Rewrite food descriptions in wine language. Routing changed, but the system still clustered around the same grape regions.</p></div>
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label">Attempt 5</div><div class="card-heading" style="font-size:1.3rem;">MPNET encoder</div><p class="card-body">Try a stronger sentence encoder. It improved geometry but did not solve the mismatch between food and grape labels.</p></div>
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label">Attempt 6</div><div class="card-heading" style="font-size:1.3rem;">SupCon head</div><p class="card-body">Train a contrastive projection layer. It moved vectors a little, but frozen centroids limited the improvement.</p></div>
+      <div style="background:var(--wine-deep); color:var(--light-text); border-radius:6px; padding:1em; min-height:150px;"><div class="card-label card-label-dark">Attempts 7–8</div><div class="card-heading" style="font-size:1.3rem; color:var(--light-text);">MPNET + wine descriptions</div><p style="font-size:.9rem; line-height:1.45; color:rgba(250,247,242,.72);">The best grape-based setup still failed to create reliable food-to-wine diversity.</p></div>
     </div>
 
-    <div style="max-width:1100px; width:100%; display:flex; justify-content:flex-end; padding-top:.4em;">
-      <span style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.8vw,2.2rem); font-weight:700; font-style:italic; color:var(--wine);">...and they all failed.</span>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1em; max-width:1320px; width:100%; margin-top:1em;">
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.95em 1.1em;"><div style="font-size:.75rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">What we learned</div><p class="card-body">The bottleneck was not the encoder alone. It was the target: grape variety is a name, while pairing needs taste properties like acidity, body, tannin, fruit, oak, and minerality.</p></div>
+      <div style="background:rgba(107,30,50,.055); border-left:3px solid var(--wine); border-radius:4px; padding:.95em 1.1em;"><div style="font-size:.75rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.35em;">Decision</div><p class="card-body">We stopped asking &quot;which grape?&quot; and rebuilt the bridge around sensory taste axes, then clustered wines by flavor neighborhoods.</p></div>
     </div>
   </div>
 
-  <!-- SLIDE 8: SECTION BREAK — THE TURN -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-dark" id="s7">
     <div class="section-break"></div>
-    <div class="overline overline-dark" style="margin-left:1.5vw;">05 · The Turn</div>
+    <div class="overline overline-dark" style="margin-left:1.5vw;">07 · The Turn</div>
     <div class="slide-title slide-title-light" style="margin-left:1.5vw; font-size:clamp(2rem,5vw,3.8rem); max-width:22ch; line-height:1.2;">
       Stop asking <em>what grape.</em><br>Start asking <em>what taste.</em>
     </div>
@@ -1136,7 +1292,7 @@
   <!-- SLIDE 9: THE 10 TASTE AXES -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s8">
-    <div class="overline">05 · The Turn — Taste Axes</div>
+    <div class="overline">07 · The Turn — Taste Axes</div>
     <div class="slide-title">10 orthogonal sensory axes derived<br><em>from sommelier literature.</em></div>
     <div class="rule"></div>
     <table class="axis-table" style="max-width:1100px;">
@@ -1168,10 +1324,10 @@
   </div>
 
   <!-- ─────────────────────────────────────────────────────────── -->
-  <!-- SLIDE 10: TASTEBILDTM ARCHITECTURE -->
+  <!-- SLIDE 10: TASTEBILSTM ARCHITECTURE -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s9">
-    <div class="overline">06 · The Architecture — TasteBiLSTM</div>
+    <div class="overline">08 · The Architecture — TasteBiLSTM</div>
     <div class="slide-title">A BiLSTM trained on taste, not grape.<br><em>The encoder at the heart of the system.</em></div>
     <div class="rule"></div>
     <div class="flex-row" style="max-width:1100px; gap:3vw;">
@@ -1195,7 +1351,7 @@
         </div>
         <div class="model-row highlight" style="background:transparent; border-left:3px solid var(--wine);">
           <div class="model-name" style="font-size:.8rem; min-width:8em;">5 &nbsp; Multi-label</div>
-          <div class="model-desc">Trained on 10 sensory axes simultaneously — not 15 grape labels</div>
+          <div class="model-desc">Trained on 10 sensory axes simultaneously — not 15 grape labels. Test macro F1: 0.9487.</div>
         </div>
         <div class="attention-demo" style="margin-top:1.2em; font-size:.95rem; line-height:1.9;">
           <span class="attn-low">Dense,</span>
@@ -1231,7 +1387,7 @@
   <!-- SLIDE 11: BISECTING KMEANS + PIPELINE -->
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-light" id="s10">
-    <div class="overline">06 · The Architecture — Clustering &amp; Retrieval</div>
+    <div class="overline">08 · The Architecture — Clustering &amp; Retrieval</div>
     <div class="slide-title">BisectingKMeans discovers 9 flavor worlds.<br><em>Cosine similarity does the rest.</em></div>
     <div class="rule"></div>
     <p class="body-text" style="max-width:80ch; margin-bottom:1.2em;">
@@ -1241,7 +1397,7 @@
       <div class="pipe-step">
         <div class="ps-label">Step 1</div>
         <div class="ps-name">Food Photo</div>
-        <div class="ps-detail">ResNet-50 · 76.5% · identifies dish</div>
+        <div class="ps-detail">ResNet-50 · 77.2% · identifies dish</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-step">
@@ -1289,22 +1445,22 @@
   <!-- ─────────────────────────────────────────────────────────── -->
   <div class="slide slide-dark" id="s11">
     <div class="section-break"></div>
-    <div class="overline overline-dark" style="margin-left:1.5vw;">07 · Results</div>
+    <div class="overline overline-dark" style="margin-left:1.5vw;">09 · Results</div>
     <div class="slide-title slide-title-light" style="margin-left:1.5vw; font-size:clamp(2rem,4.5vw,3.2rem);">
-      Full marks. Both bonuses. <em>And a system that works.</em>
+      Requirements met. Bonuses explored. <em>Prototype deployed.</em>
     </div>
     <div class="rule rule-dark" style="max-width:700px; margin-left:1.5vw;"></div>
     <div class="results-grid" style="max-width:1050px; margin-left:1.5vw;">
       <div class="result-card">
-        <div class="rc-num">76.5%</div>
-        <div class="rc-label">ResNet-50 top-1 accuracy on Food-101 (vs 48.0% from scratch)</div>
+        <div class="rc-num">77.2%</div>
+        <div class="rc-label">ResNet-50 top-1 accuracy on Food-101 (vs 48.3% from scratch)</div>
       </div>
       <div class="result-card">
         <div class="rc-num">9</div>
         <div class="rc-label">flavor neighborhoods discovered unsupervised — silhouette-validated</div>
       </div>
       <div class="result-card">
-        <div class="rc-num">+13 pts</div>
+        <div class="rc-num">bonus</div>
         <div class="rc-label">bonus components — DistilBERT (+3) and joint multimodal model (+10)</div>
       </div>
       <div class="result-card">
@@ -1342,7 +1498,7 @@
       <p class="body-text body-text-light" style="max-width:48ch; opacity:.8; margin-bottom:1.8em;">
         Upload a food photo. Watch the ResNet-50 identify the dish. See the TasteBiLSTM build a taste fingerprint. Receive three wines, each matched by a different pairing logic.
       </p>
-      <a href="https://huggingface.co/spaces/YOUR_GRADIO_LINK" target="_blank" style="
+      <a href="https://huggingface.co/spaces/Jolanati/wine-dine" target="_blank" style="
         display:inline-block;
         background:var(--wine-pale);
         color:var(--wine-deep);
@@ -1356,6 +1512,10 @@
         border-radius:3px;
         transition:background .2s;
       ">Open Wine &amp; Dine →</a>
+      <p class="body-text body-text-light" style="max-width:48ch; opacity:.72; margin-top:1em; font-size:.82rem;">
+        Presentation deploy:
+        <a class="deck-link" href="https://wine-dine-9ixf.vercel.app/PPT" target="_blank">wine-dine-9ixf.vercel.app/PPT</a>
+      </p>
       <div class="stat-row" style="margin-top:2.5em; gap:3.5vw;">
         <div class="stat-block">
           <div style="font-family:'Lato',sans-serif; font-size:.6rem; letter-spacing:.2em; color:var(--wine-pale); text-transform:uppercase; margin-bottom:.4em;">Vision</div>
@@ -1384,6 +1544,7 @@
   <button id="btn-prev" onclick="go(-1)" title="Previous (←)">&#8592;</button>
   <div class="nav-dots" id="dots"></div>
   <button id="btn-next" onclick="go(1)" title="Next (→ or Space)">&#8594;</button>
+  <button id="btn-fullscreen" onclick="toggleFullscreen()" title="Fullscreen (F)" aria-label="Toggle fullscreen">⛶</button>
   <div class="slide-counter" id="counter">1 / 13</div>
 </nav>
 
@@ -1391,6 +1552,9 @@
   const slides = document.querySelectorAll('.slide');
   const dots   = document.getElementById('dots');
   const counter = document.getElementById('counter');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const btnFullscreen = document.getElementById('btn-fullscreen');
   let current = 0;
 
   // Build dots
@@ -1401,50 +1565,107 @@
     dots.appendChild(d);
   });
 
-  function goTo(n) {
-    if (n < 0 || n >= slides.length) return;
-    slides[current].classList.remove('active');
-    slides[current].classList.add('exit');
-    setTimeout(() => slides[current].classList.remove('exit'), 400);
-    current = n;
-    slides[current].classList.add('active');
-    // Dots
+  function updateNav() {
     document.querySelectorAll('.nav-dot').forEach((d,i) =>
       d.classList.toggle('active', i === current)
     );
     counter.textContent = `${current + 1} / ${slides.length}`;
-    document.getElementById('btn-prev').disabled = current === 0;
-    document.getElementById('btn-next').disabled = current === slides.length - 1;
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current === slides.length - 1;
+    btnFullscreen.textContent = document.fullscreenElement ? '×' : '⛶';
+    btnFullscreen.title = document.fullscreenElement ? 'Exit fullscreen (F)' : 'Fullscreen (F)';
+  }
+
+  function goTo(n) {
+    const next = Math.max(0, Math.min(slides.length - 1, n));
+    if (next === current) {
+      updateNav();
+      return;
+    }
+
+    const previous = current;
+    slides[previous].classList.remove('active');
+    slides[previous].classList.add('exit');
+    setTimeout(() => slides[previous].classList.remove('exit'), 420);
+
+    current = next;
+    slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
+    history.replaceState(null, '', `#${current + 1}`);
+    updateNav();
   }
 
   function go(dir) { goTo(current + dir); }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal(); return; }
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(-1); }
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      go(1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      go(-1);
+    }
+    if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      goTo(slides.length - 1);
+    }
+    if (e.key.toLowerCase() === 'f') {
+      e.preventDefault();
+      toggleFullscreen();
+    }
   });
 
   function openModal(id) {
-    document.getElementById('modal-overlay').style.display = 'flex';
+    const overlay = document.getElementById('modal-overlay');
+    if (!overlay) return;
+    overlay.style.display = 'flex';
     document.querySelectorAll('.modal-box').forEach(m => m.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = 'block';
   }
+
   function closeModal() {
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.style.display = 'none';
   }
 
+  async function toggleFullscreen() {
+    try {
+      if (!document.fullscreenElement) {
+        await document.getElementById('deck').requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (err) {
+      console.warn('Fullscreen unavailable:', err);
+    } finally {
+      updateNav();
+    }
+  }
+
+  document.addEventListener('fullscreenchange', updateNav);
+
   // Touch swipe
   let tx = 0;
-  document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+  document.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
   document.addEventListener('touchend', e => {
     const dx = tx - e.changedTouches[0].clientX;
     if (Math.abs(dx) > 50) go(dx > 0 ? 1 : -1);
-  });
+  }, { passive: true });
 
   // Init
-  goTo(0);
+  const hashSlide = Number.parseInt(location.hash.replace('#', ''), 10);
+  if (Number.isFinite(hashSlide)) {
+    current = Math.max(0, Math.min(slides.length - 1, hashSlide - 1));
+  }
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+  updateNav();
 </script>
 </body>
 </html>

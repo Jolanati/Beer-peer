@@ -1686,21 +1686,20 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over button — top-right of the card header, in EVERY screen.
-   ONLY the wrapper is positioned; the button is rendered in normal flow inside.
-   Wrapper top is tuned so the button's vertical center lands on y=48 (the
-   axis of the connector line running through the step-circle centers).
-   Wrapper height is auto (sized by button) so the button's own padding/font
-   determines the rendered height and the math stays predictable. */
+/* Start Over button — sits in the 140px right-spacer column of the header grid,
+   vertically centred on the step-circle axis (y=48 from card top).
+   display:flex has NO !important so Gradio's inline display:none still hides it. */
 #wdstartover {
   position: absolute !important;
-  top: 30px !important;
-  right: 28px !important;
-  width: auto !important;
+  top: 24px !important;
+  right: 34px !important;
+  width: 140px !important;
+  height: 48px !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
   min-width: 0 !important;
   max-width: none !important;
-  height: auto !important;
-  flex: 0 0 auto !important;
   z-index: 100 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1722,9 +1721,9 @@ button#wdstartover {
   white-space: nowrap !important;
   box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
   cursor: pointer !important;
-  padding: 12px 32px !important;
+  padding: 10px 20px !important;
   width: auto !important;
-  min-width: 160px !important;
+  min-width: 0 !important;
   min-height: 0 !important;
 }
 #wdstartover button:hover {

@@ -2,10 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/presentation",
-      "destination": "/PPT/index.html"
-    }
-  ]
+  "outputDirectory": "landing"
 }

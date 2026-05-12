@@ -46,15 +46,23 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 5% 7% 9%;
+    justify-content: flex-start;
+    padding: 4.5% 6.5% 10.5%;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.55s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.4,0,.2,1);
     pointer-events: none;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     box-sizing: border-box;
   }
+
+  /* Keep section breaks and cover-style slides vertically centered */
+  #s0, #s4, #s7, #s11, #s12 { justify-content: center; }
+
+  /* Hide scrollbars while preserving access to overflowing content */
+  .slide::-webkit-scrollbar { width: 0; height: 0; }
+  .slide { scrollbar-width: none; }
   .slide.active {
     opacity: 1;
     transform: translateY(0);
@@ -118,20 +126,22 @@
   .body-muted { color: var(--muted); }
 
   /* ── CARD GRID ──────────────────────────────────────────────── */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5vw; margin-top: 1em; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2vw; margin-top: 1em; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5vw; margin-top: 1em; align-items: stretch; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2vw; margin-top: 1em; align-items: stretch; }
 
   .card {
     background: var(--card);
     border: 1px solid var(--rule);
     border-radius: 4px;
     padding: 1.4em 1.5em;
+    height: 100%;
   }
   .card-dark {
     background: rgba(255,255,255,.07);
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 4px;
     padding: 1.4em 1.5em;
+    height: 100%;
   }
 
   .card-label {
@@ -716,9 +726,6 @@
           <p class="card-body">EDA was run on training data only. Computing statistics on the full dataset would let test-set information quietly influence architecture decisions — a subtle but real form of data leakage.</p>
         </div>
       </div>
-
-    </div>
-  </div>
 
     </div>
   </div>

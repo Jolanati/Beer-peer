@@ -305,6 +305,15 @@ _TIER_MOOD = {
     "BOLD MOVE":  "Intentional contrast that changes every bite.",
 }
 
+# Small captions shown above the food/wine boxes inside the Flavor bridge so the
+# left→right relationship reads at a glance. Phrasing differs per tier because
+# Safe Bet = resonance, Hidden Gem = drawing out, Bold Move = contrast.
+_TIER_BRIDGE_LABEL = {
+    "SAFE BET":   ("Your dish tastes of",   "Matched in the wine"),
+    "HIDDEN GEM": ("Subtle in your dish",   "Brought out by the wine"),
+    "BOLD MOVE":  ("The dish's anchor",     "Contrasted by the wine"),
+}
+
 # Fixed ML-honest one-liner shown inside the <details> "See pairing logic" row.
 _TIER_LOGIC = {
     "SAFE BET":   ("Highest cosine similarity between the dish's 512-d taste vector "
@@ -1104,15 +1113,22 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
 
         bridge_html = ""
         if food_notes or wine_notes:
+            food_lbl, wine_lbl = _TIER_BRIDGE_LABEL.get(
+                tier, ("In your dish", "In the wine")
+            )
+            _cap = ('font-size:10px;color:#9e9188;font-weight:700;'
+                    'letter-spacing:0.04em;margin-bottom:6px;'
+                    'text-transform:uppercase;line-height:1.3')
             bridge_html = (
                 '<div>'
-                '<div style="font-size:10px;font-weight:800;color:#9e9188;'
+                '<div style="font-size:11px;font-weight:800;color:#9e9188;'
                 'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">'
                 'Flavor bridge</div>'
                 '<div style="display:flex;align-items:stretch;gap:6px">'
                 f'<div style="flex:1;min-width:0;background:{strip_bg};border-radius:10px;'
                 f'padding:10px 12px;font-size:13px;color:{color};'
                 f'font-weight:600;line-height:1.5">'
+                f'<div style="{_cap}">{food_lbl}</div>'
                 f'{_notes_block(food_notes)}'
                 '</div>'
                 '<div style="display:flex;align-items:center;color:#9e9188;'
@@ -1120,6 +1136,7 @@ def _screen3_html(display: str, cluster_name: str, recs: list, feel: str,
                 f'<div style="flex:1;min-width:0;background:{tag_bg};border-radius:10px;'
                 f'padding:10px 12px;font-size:13px;color:{color};'
                 f'font-weight:600;line-height:1.5">'
+                f'<div style="{_cap}">{wine_lbl}</div>'
                 f'{_notes_block(wine_notes)}'
                 '</div>'
                 '</div>'

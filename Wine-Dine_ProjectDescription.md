@@ -1,4 +1,4 @@
-# Wine Peer
+# Wine & Dine
 
 Deep Learning Project - RSU
 
@@ -8,9 +8,9 @@ Deep Learning Project - RSU
 
 ## 1. Project Idea
 
-Wine Peer is a deep learning application that bridges the gap between what a person is eating and what they should be drinking. The core concept is simple: a user photographs their meal, and the app returns three wine recommendations — one that matches the food’s characteristic flavors, one that goes in the opposite direction to cut through and refresh, and one that offers an unexpected complementary angle — each with a real tasting note from a Vivino user and an approval percentage.
+Wine & Dine is a deep learning application that bridges the gap between what a person is eating and what they should be drinking. The core concept is simple: a user photographs their meal, and the app returns three wine recommendations — one that matches the food's characteristic flavors, one that goes in the opposite direction to cut through and refresh, and one that offers an unexpected complementary angle — each with a real tasting note from a Vivino user and an approval percentage.
 
-The motivation comes from a genuine everyday moment. You sit down at a restaurant, or you are cooking at home, and you wonder what to drink. Wine pairing guides exist but are rarely accessible at the moment of decision. Wine Peer makes that knowledge available through a single photograph.
+The motivation comes from a genuine everyday moment. You sit down at a restaurant, or you are cooking at home, and you wonder what to drink. Wine pairing guides exist but are rarely accessible at the moment of decision. Wine & Dine makes that knowledge available through a single photograph.
 
 The project is academically grounded in two independent machine learning tasks — image classification and text classification — connected by a flavor embedding layer. A CNN recognises the food, Word2Vec maps food flavor vocabulary to grape variety vocabulary, and a BiLSTM retrieves genuine tasting language from 824,000 real Vivino reviews. This architecture satisfies the dual-dataset and CNN+LSTM requirement of the project rubric while producing a product concept with genuine real-world utility.
 
@@ -22,7 +22,7 @@ The project is academically grounded in two independent machine learning tasks �
 
 The interaction is designed to take under 10 seconds from input to output:
 
-1. User opens Wine Peer and photographs their meal on a plate or table.
+1. User opens Wine & Dine and photographs their meal on a plate or table.
 2. The CNN model identifies the dish from the image.
 3. The food's flavor profile (a set of taste-descriptor keywords in wine vocabulary) is looked up from the food flavor table.
 4. Word2Vec — trained on 824,000 real Vivino reviews — maps those keywords into the same flavor embedding space as grape varieties. Cosine similarity finds the best match for each of three pairing intents: Characteristic, Opposite, Unexpected.
@@ -248,4 +248,4 @@ Classifying by grape variety (Cabernet Sauvignon, Pinot Noir, Chardonnay…) rat
 
 ---
 
-Wine Peer - Project Description v1.0 - RSU Advanced Machine Learning Course
+Wine & Dine - Project Description v1.0 - RSU Advanced Machine Learning Course

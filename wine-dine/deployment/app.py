@@ -585,7 +585,15 @@ _DETECT_HEADER_HTML = """
       <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">The Story</div>
     </div>
   </div>
-  <div style="width:140px"></div>
+  <div style="width:140px;display:flex;align-items:center;justify-content:center">
+    <button onclick="var b=document.querySelector('#wdstartover button');if(b)b.click()"
+            style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
+                   border:none;border-radius:999px;font-size:13px;font-weight:800;
+                   padding:10px 20px;cursor:pointer;white-space:nowrap;
+                   box-shadow:0 8px 22px rgba(122,24,48,0.24)">
+      &#x21BA;&nbsp;&nbsp;Start Over
+    </button>
+  </div>
 </div>
 """
 
@@ -1195,7 +1203,15 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
   <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;width:100%">
     {steps_html}
   </div>
-  <div style="width:140px"></div>
+  <div style="width:140px;display:flex;align-items:center;justify-content:center">
+    <button onclick="var b=document.querySelector('#wdstartover button');if(b)b.click()"
+            style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
+                   border:none;border-radius:999px;font-size:13px;font-weight:800;
+                   padding:10px 20px;cursor:pointer;white-space:nowrap;
+                   box-shadow:0 8px 22px rgba(122,24,48,0.24)">
+      &#x21BA;&nbsp;&nbsp;Start Over
+    </button>
+  </div>
 </div>
 
 <!-- ── screens — DIRECT children of #wdshell (CSS sibling selector requirement) -->
@@ -1686,50 +1702,8 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over button — sits in the 140px right-spacer column of the header grid,
-   vertically centred on the step-circle axis (y=48 from card top).
-   display:flex has NO !important so Gradio's inline display:none still hides it. */
-#wdstartover {
-  position: absolute !important;
-  top: 24px !important;
-  right: 34px !important;
-  width: 140px !important;
-  height: 48px !important;
-  display: flex;
-  align-items: center !important;
-  justify-content: center !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  z-index: 100 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-#wdstartover button,
-#wdstartover button.primary,
-#wdstartover button.secondary,
-button#wdstartover {
-  position: static !important;
-  background: linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%) !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 999px !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  white-space: nowrap !important;
-  box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
-  cursor: pointer !important;
-  padding: 10px 20px !important;
-  width: auto !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-}
-#wdstartover button:hover {
-  background: linear-gradient(135deg,#d24560 0%,#a0243f 100%) !important;
-  filter: brightness(1.02) !important;
-}
+/* Start Over Gradio button — hidden; real button lives in the header HTML above */
+#wdstartover { display: none !important; }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,
 #wdconfirmdish button,

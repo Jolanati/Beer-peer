@@ -5,11 +5,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/PPT/wine-dine-presentation (1).html"
+      "destination": "/PPT/index.html"
     },
     {
       "source": "/presentation",
-      "destination": "/PPT/wine-dine-presentation (1).html"
+      "destination": "/PPT/index.html"
     }
   ]
 }

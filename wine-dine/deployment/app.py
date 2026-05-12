@@ -1687,34 +1687,35 @@ div.main { padding: 0 !important; background: transparent !important; }
   background: rgba(255,250,247,1) !important;
 }
 /* Start Over button — top-right of the card header, in EVERY screen.
-   Wrapper is absolutely positioned inside #wdcard_outer and given the exact
-   height of the step-circle row (48px), starting at y=24px (the header
-   padding-top). Inner flex centers the button on the connector-line axis.
-   IMPORTANT: `align-items` uses !important but `display` does NOT, so Gradio's
-   `display:none` (from visible=False) still wins. */
+   The wrapper is absolutely positioned inside #wdcard_outer and spans the exact
+   y-range of the step-circle row (y=24 to y=72). The button itself is then
+   absolutely positioned inside that wrapper using top:50% + translateY(-50%) —
+   this guarantees vertical centering on the y=48 connector-line axis regardless
+   of how tall the rendered button ends up being. */
 #wdstartover {
   position: absolute !important;
   top: 24px !important;
   right: 28px !important;
   height: 48px !important;
   width: auto !important;
-  min-width: 0 !important;
+  min-width: 160px !important;
   max-width: none !important;
   flex: 0 0 auto !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
   z-index: 100 !important;
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
   box-shadow: none !important;
+  background: transparent !important;
 }
-/* Match the wine-red pill style of #wdyes (multi-selector defeats Gradio defaults) */
-#wdstartover,
 #wdstartover button,
 #wdstartover button.primary,
 #wdstartover button.secondary,
 button#wdstartover {
+  position: absolute !important;
+  top: 50% !important;
+  right: 0 !important;
+  transform: translateY(-50%) !important;
   background: linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%) !important;
   color: #fff !important;
   border: none !important;
@@ -1724,14 +1725,11 @@ button#wdstartover {
   white-space: nowrap !important;
   box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
   cursor: pointer !important;
-}
-#wdstartover button {
-  position: static !important;
-  padding: 11px 22px !important;
+  padding: 12px 32px !important;
   width: auto !important;
+  min-width: 160px !important;
   min-height: 0 !important;
 }
-#wdstartover:hover,
 #wdstartover button:hover {
   background: linear-gradient(135deg,#d24560 0%,#a0243f 100%) !important;
   filter: brightness(1.02) !important;

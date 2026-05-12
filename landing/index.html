@@ -132,81 +132,71 @@
     <div class="container reveal">
       <span class="section-label">Chapter 3 · Preparation</span>
       <h2>Preparing the data</h2>
-      <p class="lead">
-        Rigorous evaluation framework first, then exploratory analysis to understand 
-        dataset characteristics before any model training.
-      </p>
 
-      <div class="split">
-        <div class="reveal">
-          <h3>Train / Val / Test split</h3>
-          <p>
-            Both datasets split identically with a fixed random seed. 
-            All splits <strong>stratified</strong> by target variable. 
-            Test set used exactly once for final reporting.
-          </p>
-          <div class="bar-chart-h">
-            <div class="bar-row">
-              <span class="bar-label">Train</span>
-              <div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width: 70%;"></div></div>
-              <span class="bar-value">70%</span>
+      <div class="tri-grid stagger">
+        <!-- Card 1: Filter -->
+        <div class="tri-card">
+          <p class="tri-eyebrow">Step 1 — Filter</p>
+          <h3 class="tri-heading">WineSensed cleaning</h3>
+          <p class="tri-sub">From 824,000 raw tasting notes, five passes remove unusable rows.</p>
+          <ul class="step-list">
+            <li><span>Missing essentials —</span><em>no text, grape, wine name, or rating</em></li>
+            <li><span>Zero-rated —</span><em>Vivino encodes "not yet rated" as 0.0</em></li>
+            <li><span>Short reviews —</span><em>fewer than 5 words, no useful signal</em></li>
+            <li><span>Non-English —</span><em>less than 80% ASCII characters</em></li>
+            <li><span>Duplicates —</span><em>same note reattached to multiple vintages</em></li>
+          </ul>
+          <p class="tri-note">Food-101 needs no cleaning — <code>torchvision</code> delivers 1,000 images × 101 classes, perfectly balanced.</p>
+        </div>
+
+        <!-- Card 2: Split -->
+        <div class="tri-card">
+          <p class="tri-eyebrow">Step 2 — Split</p>
+          <h3 class="tri-heading">70 · 15 · 15</h3>
+          <p class="tri-sub">Both datasets split with a fixed seed, <strong style="color:var(--wine)">before</strong> any EDA — test-set statistics never touch architecture decisions.</p>
+          <div class="split-thirds">
+            <div class="split-third">
+              <span class="split-pct">70%</span>
+              <span class="split-lbl">Train</span>
             </div>
-            <div class="bar-row">
-              <span class="bar-label">Validation</span>
-              <div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width: 15%;"></div></div>
-              <span class="bar-value">15%</span>
+            <div class="split-third">
+              <span class="split-pct">15%</span>
+              <span class="split-lbl">Val</span>
             </div>
-            <div class="bar-row">
-              <span class="bar-label">Test</span>
-              <div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width: 15%;"></div></div>
-              <span class="bar-value">15%</span>
+            <div class="split-third">
+              <span class="split-pct">15%</span>
+              <span class="split-lbl">Test</span>
+            </div>
+          </div>
+          <p class="tri-note">Stratified by target class. Test set frozen — touched exactly once per model.</p>
+        </div>
+
+        <!-- Card 3: Balance -->
+        <div class="tri-card">
+          <p class="tri-eyebrow">Step 3 — Balance</p>
+          <h3 class="tri-heading">Class imbalance</h3>
+          <p class="tri-sub">The two datasets present opposite challenges.</p>
+          <div class="balance-rows">
+            <div class="balance-row">
+              <div class="balance-label">Food-101</div>
+              <div class="balance-detail">
+                <strong>Perfectly balanced</strong>
+                <span>101 classes · 1,000 images each · no mitigation needed</span>
+              </div>
+            </div>
+            <div class="balance-divider"></div>
+            <div class="balance-row">
+              <div class="balance-label">WineSensed</div>
+              <div class="balance-detail">
+                <strong>Imbalanced</strong>
+                <span>Top grape has 10× more reviews than the rarest — weighted cross-entropy gives rare classes stronger gradients</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="reveal reveal-delay-2">
-          <h3>Class distribution</h3>
-          <table class="comparison-table">
-            <thead>
-              <tr><th>Property</th><th>Food-101</th><th>WineSensed</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Total samples</td><td>101,000</td><td>824,000</td></tr>
-              <tr><td>Classes</td><td>101 foods</td><td>15 grapes</td></tr>
-              <tr><td>Balance</td><td>Perfect (1k/class)</td><td>Imbalanced</td></tr>
-              <tr><td>Mitigation</td><td>—</td><td>Weighted CE loss</td></tr>
-              <tr><td>Avg sample</td><td>224×224 px</td><td>~30 words</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="section-divider"></div>
-
-      <div class="reveal">
-        <h3>Wine review class imbalance — top 15 grape varieties</h3>
-        <p>The top 5 grapes account for the majority of reviews. Weighted cross-entropy ensures 
-           rare varieties receive proportionally stronger gradients.</p>
-        <div class="bar-chart-h grape-chart">
-          <div class="bar-row"><span class="bar-label">Cab. Sauvignon</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:100%"></div></div><span class="bar-value">~120k</span></div>
-          <div class="bar-row"><span class="bar-label">Pinot Noir</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:85%"></div></div><span class="bar-value">~100k</span></div>
-          <div class="bar-row"><span class="bar-label">Chardonnay</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:72%"></div></div><span class="bar-value">~86k</span></div>
-          <div class="bar-row"><span class="bar-label">Syrah</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:58%"></div></div><span class="bar-value">~70k</span></div>
-          <div class="bar-row"><span class="bar-label">Merlot</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:50%"></div></div><span class="bar-value">~60k</span></div>
-          <div class="bar-row"><span class="bar-label">Sauv. Blanc</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:38%"></div></div><span class="bar-value">~46k</span></div>
-          <div class="bar-row"><span class="bar-label">Malbec</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:32%"></div></div><span class="bar-value">~38k</span></div>
-          <div class="bar-row"><span class="bar-label">Tempranillo</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:28%"></div></div><span class="bar-value">~34k</span></div>
-          <div class="bar-row"><span class="bar-label">Sangiovese</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:25%"></div></div><span class="bar-value">~30k</span></div>
-          <div class="bar-row"><span class="bar-label">Riesling</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:22%"></div></div><span class="bar-value">~26k</span></div>
-          <div class="bar-row"><span class="bar-label">Grenache</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:18%"></div></div><span class="bar-value">~22k</span></div>
-          <div class="bar-row"><span class="bar-label">Zinfandel</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:15%"></div></div><span class="bar-value">~18k</span></div>
-          <div class="bar-row"><span class="bar-label">Pinot Grigio</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:12%"></div></div><span class="bar-value">~14k</span></div>
-          <div class="bar-row"><span class="bar-label">Viognier</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:8%"></div></div><span class="bar-value">~10k</span></div>
-          <div class="bar-row"><span class="bar-label">Chenin Blanc</span><div class="bar-track"><div class="bar-fill anim-bar" style="--bar-width:5%"></div></div><span class="bar-value">~6k</span></div>
-        </div>
       </div>
     </div>
-    <div class="slide-nav"><a href="#" id="next-after-prep">Continue <span class="arrow">↓</span></a></div>
+    <div class="slide-nav"><a href="#cnn">Next chapter <span class="arrow">↓</span></a></div>
   </section>
 
   <!-- More sections will be added here -->

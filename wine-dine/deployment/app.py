@@ -1757,6 +1757,8 @@ body:has(#wdt2:checked) #wdinfo4 {
   margin-top: 14px !important;
 }
 /* ── Welcome screen — landing splash before the upload step ──────────────── */
+/* NOTE: do NOT set `display:flex !important` here — it would override Gradio's
+   `display:none` when visible=False, leaving the welcome card stuck on screen. */
 #wdwelcome {
   background: rgba(255,250,244,0.72) !important;
   backdrop-filter: blur(28px) saturate(1.08) !important;
@@ -1766,9 +1768,6 @@ body:has(#wdt2:checked) #wdinfo4 {
               inset 0 1px 0 rgba(255,255,255,0.75) !important;
   padding: 96px 48px 88px !important;
   text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;

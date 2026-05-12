@@ -428,12 +428,12 @@ def _screen1_html(food_name: str, conf: float, top5: list, img_b64: str = "") ->
     if img_b64:
         photo_el = (
             f'<img src="data:image/jpeg;base64,{img_b64}"'
-            f' style="width:100%;height:100%;object-fit:cover;display:block;'
+            f' style="width:100%;height:520px;object-fit:cover;display:block;'
             f'border-radius:20px">'
         )
     else:
         photo_el = (
-            '<div style="width:100%;height:360px;display:flex;align-items:center;'
+            '<div style="width:100%;height:520px;display:flex;align-items:center;'
             'justify-content:center;font-size:72px;border-radius:20px;'
             'background:linear-gradient(135deg,#ede3d8,#ddd0c4)">🍽️</div>'
         )
@@ -609,11 +609,11 @@ def _s1_photo_html(img_b64: str) -> str:
     if img_b64:
         inner = (
             f'<img src="data:image/jpeg;base64,{img_b64}"'
-            f' style="width:100%;height:100%;object-fit:cover;display:block;border-radius:20px">'
+            f' style="width:100%;height:520px;object-fit:cover;display:block;border-radius:20px">'
         )
     else:
         inner = (
-            '<div style="width:100%;height:360px;display:flex;align-items:center;'
+            '<div style="width:100%;height:520px;display:flex;align-items:center;'
             'justify-content:center;font-size:72px;border-radius:20px;'
             'background:linear-gradient(135deg,#ede3d8,#ddd0c4)">🍽️</div>'
         )
@@ -1686,12 +1686,25 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over button — wine red pill; fixed top-right during detect-dish */
+/* Start Over button — top-right of the card header, in EVERY screen.
+   Wrapper itself is absolutely positioned inside #wdcard_outer (position:relative). */
+#wdstartover {
+  position: absolute !important;
+  top: 24px !important;
+  right: 28px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  z-index: 100 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 #wdstartover button {
-  position: fixed !important;
-  top: 28px !important;
-  right: 40px !important;
-  z-index: 9999 !important;
+  position: static !important;
   background: linear-gradient(135deg,#c0334d,#8d1f3a) !important;
   color: #fff !important;
   border: none !important;
@@ -1702,34 +1715,10 @@ div.main { padding: 0 !important; background: transparent !important; }
   white-space: nowrap !important;
   box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
   cursor: pointer !important;
+  width: auto !important;
 }
 #wdstartover button:hover {
   background: linear-gradient(135deg,#d24560,#a0243f) !important;
-}
-/* During carousel — place Start Over inside the 140px right spacer of header,
-   directly to the right of "The Story" step (separated by grid gap). */
-body:has(#wdt1:checked) #wdstartover,
-body:has(#wdt2:checked) #wdstartover,
-body:has(#wdt3:checked) #wdstartover {
-  position: absolute !important;
-  top: 32px !important;
-  right: 34px !important;
-  width: 140px !important;
-  height: auto !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  z-index: 10 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-body:has(#wdt1:checked) #wdstartover button,
-body:has(#wdt2:checked) #wdstartover button,
-body:has(#wdt3:checked) #wdstartover button {
-  position: static !important;
-  top: auto !important;
-  right: auto !important;
-  z-index: auto !important;
 }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,

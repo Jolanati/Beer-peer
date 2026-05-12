@@ -1706,19 +1706,20 @@ div.main { padding: 0 !important; background: transparent !important; }
 #wdstartover button:hover {
   background: linear-gradient(135deg,#d24560,#a0243f) !important;
 }
-/* During carousel — place Start Over inside the nav bar row (left side) */
+/* During carousel — place Start Over in top-right of header next to "The Story" step */
 body:has(#wdt1:checked) #wdstartover,
 body:has(#wdt2:checked) #wdstartover,
 body:has(#wdt3:checked) #wdstartover {
   position: absolute !important;
-  bottom: 37px !important;
-  left: 34px !important;
-  height: 72px !important;
+  top: 32px !important;
+  right: 24px !important;
+  height: auto !important;
   width: auto !important;
   display: flex !important;
   align-items: center !important;
   z-index: 10 !important;
   margin: 0 !important;
+  padding: 0 !important;
 }
 body:has(#wdt1:checked) #wdstartover button,
 body:has(#wdt2:checked) #wdstartover button,

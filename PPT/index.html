@@ -541,18 +541,17 @@
         <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem);">Tasting notes by real Vivino users. Each review includes grape variety, wine name, country, and rating.</p>
       </div>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.4em;">
-      <div style="padding:1.4em 1.8em; background:rgba(107,30,50,.05); border-left:3px solid var(--wine); border-radius:2px; display:flex; flex-direction:column; gap:.5em;">
+    <div class="card" style="padding:1.6em 1.8em; display:flex; flex-direction:row; align-items:center; gap:3em; background:linear-gradient(135deg, rgba(107,30,50,.06) 0%, var(--card) 100%); box-shadow:0 2px 8px rgba(28,14,10,.08); border-left:3px solid var(--wine);">
+      <div style="flex-shrink:0;">
         <div class="card-label">Constructed · LLM-generated</div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.7vw,1.2rem); font-weight:600; color:var(--dark-text);">Food Flavor Table</div>
-        <div style="display:flex; gap:2.2em; margin-top:.2em;">
-          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.6rem,2.4vw,2rem); color:var(--wine);">101</div><div class="stat-label">food entries</div></div>
-          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.6rem,2.4vw,2rem); color:var(--wine);">3</div><div class="stat-label">descriptions each</div></div>
+        <div class="card-heading" style="font-size:clamp(1rem,1.7vw,1.2rem); margin:.3em 0 .7em;">Food Flavor Table</div>
+        <div style="display:flex; gap:2.2em;">
+          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.8rem,2.8vw,2.2rem); color:var(--wine);">101</div><div class="stat-label">food entries</div></div>
+          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.8rem,2.8vw,2.2rem); color:var(--wine);">3</div><div class="stat-label">descriptions each</div></div>
         </div>
       </div>
-      <div style="padding:1.4em 1.8em; background:rgba(107,30,50,.02); border:1px solid var(--rule); border-radius:2px; display:flex; align-items:center;">
-        <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem); line-height:1.65; margin:0;">For each food: its dominant taste, underlying hidden notes, and a contrasting pairing suggestion — written in sensory language matching wine review vocabulary.</p>
-      </div>
+      <div style="width:1px; background:var(--rule); align-self:stretch; flex-shrink:0;"></div>
+      <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem); line-height:1.65; margin:0;">For each food: its dominant taste, underlying hidden notes, and a contrasting pairing suggestion — written in sensory language matching wine review vocabulary.</p>
     </div>
   </div>
 

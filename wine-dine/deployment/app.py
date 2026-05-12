@@ -538,7 +538,7 @@ _DETECT_HEADER_HTML = """
     <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
                 color:#42101d;font-weight:800;margin-top:6px">Food &amp; wine pairing</div>
   </div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%">
+  <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;width:100%">
     <!-- Step 1 done -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -547,7 +547,7 @@ _DETECT_HEADER_HTML = """
                   border:1px solid rgba(64,42,31,0.16)">&#10003;</div>
       <div style="font-size:12px;font-weight:800;color:#756b63;white-space:nowrap">Upload</div>
     </div>
-    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);min-width:24px;margin-bottom:22px;align-self:center"></div>
     <!-- Step 2 active -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -557,7 +557,7 @@ _DETECT_HEADER_HTML = """
       <div style="font-size:12px;font-weight:800;color:#42101d;
                   text-decoration:underline;text-underline-offset:4px;white-space:nowrap">Detect Dish</div>
     </div>
-    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);min-width:24px;margin-bottom:22px;align-self:center"></div>
     <!-- Step 3 -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -566,7 +566,7 @@ _DETECT_HEADER_HTML = """
                   border:1px solid rgba(200,190,180,0.5)">3</div>
       <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Fingerprint</div>
     </div>
-    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);min-width:24px;margin-bottom:22px;align-self:center"></div>
     <!-- Step 4 -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -575,7 +575,7 @@ _DETECT_HEADER_HTML = """
                   border:1px solid rgba(200,190,180,0.5)">4</div>
       <div style="font-size:12px;font-weight:800;color:#9e9188;white-space:nowrap">Wine Pairings</div>
     </div>
-    <div style="width:32px;height:1px;background:rgba(64,42,31,0.18);margin-bottom:22px"></div>
+    <div style="flex:1;height:1px;background:rgba(64,42,31,0.18);min-width:24px;margin-bottom:22px;align-self:center"></div>
     <!-- Step 5 -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5">
       <div style="width:48px;height:48px;border-radius:999px;display:grid;
@@ -1699,26 +1699,35 @@ div.main { padding: 0 !important; background: transparent !important; }
   z-index: 100 !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
-#wdstartover button {
-  position: static !important;
-  background: linear-gradient(135deg,#c0334d,#8d1f3a) !important;
+/* Match the wine-red pill style of #wdyes (multi-selector defeats Gradio defaults) */
+#wdstartover,
+#wdstartover button,
+#wdstartover button.primary,
+#wdstartover button.secondary,
+button#wdstartover {
+  background: linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%) !important;
   color: #fff !important;
   border: none !important;
-  padding: 10px 20px !important;
   border-radius: 999px !important;
   font-size: 13px !important;
   font-weight: 800 !important;
   white-space: nowrap !important;
   box-shadow: 0 8px 22px rgba(122,24,48,0.24) !important;
   cursor: pointer !important;
-  width: auto !important;
 }
+#wdstartover button {
+  position: static !important;
+  padding: 11px 22px !important;
+  width: auto !important;
+  min-height: 0 !important;
+}
+#wdstartover:hover,
 #wdstartover button:hover {
-  background: linear-gradient(135deg,#d24560,#a0243f) !important;
+  background: linear-gradient(135deg,#d24560 0%,#a0243f 100%) !important;
+  filter: brightness(1.02) !important;
 }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,

@@ -1687,17 +1687,22 @@ div.main { padding: 0 !important; background: transparent !important; }
   background: rgba(255,250,247,1) !important;
 }
 /* Start Over button — top-right of the card header, in EVERY screen.
-   Wrapper itself is absolutely positioned inside #wdcard_outer (position:relative).
-   `top:28px` lands the button's vertical center on the same axis as the connector
-   line that runs through the step-circle centers (~48px from card top). */
+   Wrapper is absolutely positioned inside #wdcard_outer and given the exact
+   height of the step-circle row (48px), starting at y=24px (the header
+   padding-top). Inner flex centers the button on the connector-line axis.
+   IMPORTANT: `align-items` uses !important but `display` does NOT, so Gradio's
+   `display:none` (from visible=False) still wins. */
 #wdstartover {
   position: absolute !important;
-  top: 28px !important;
+  top: 24px !important;
   right: 28px !important;
+  height: 48px !important;
   width: auto !important;
   min-width: 0 !important;
   max-width: none !important;
   flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
   z-index: 100 !important;
   margin: 0 !important;
   padding: 0 !important;

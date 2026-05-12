@@ -586,12 +586,10 @@ _DETECT_HEADER_HTML = """
     </div>
   </div>
   <div style="width:140px;display:flex;align-items:center;justify-content:center">
-    <div role="button" tabindex="0"
-         onclick="var b=document.querySelector('#wdstartover button');if(b)b.click()"
-         style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
-                border:none;border-radius:999px;font-size:13px;font-weight:800;
-                padding:10px 20px;cursor:pointer;white-space:nowrap;
-                box-shadow:0 8px 22px rgba(122,24,48,0.24);user-select:none">
+    <div style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
+               border-radius:999px;font-size:13px;font-weight:800;
+               padding:10px 20px;white-space:nowrap;user-select:none;
+               box-shadow:0 8px 22px rgba(122,24,48,0.24);text-align:center">
       &#x21BA;&nbsp;&nbsp;Start Over
     </div>
   </div>
@@ -1205,12 +1203,10 @@ def _shell_html(s1: str, s2: str, s3: str, cur: int, s4: str = "") -> str:
     {steps_html}
   </div>
   <div style="width:140px;display:flex;align-items:center;justify-content:center">
-    <div role="button" tabindex="0"
-         onclick="var b=document.querySelector('#wdstartover button');if(b)b.click()"
-         style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
-                border:none;border-radius:999px;font-size:13px;font-weight:800;
-                padding:10px 20px;cursor:pointer;white-space:nowrap;
-                box-shadow:0 8px 22px rgba(122,24,48,0.24);user-select:none">
+    <div style="background:linear-gradient(135deg,#c0334d 0%,#8d1f3a 100%);color:#fff;
+               border-radius:999px;font-size:13px;font-weight:800;
+               padding:10px 20px;white-space:nowrap;user-select:none;
+               box-shadow:0 8px 22px rgba(122,24,48,0.24);text-align:center">
       &#x21BA;&nbsp;&nbsp;Start Over
     </div>
   </div>
@@ -1704,16 +1700,31 @@ div.main { padding: 0 !important; background: transparent !important; }
   box-shadow: 0 0 0 3px rgba(122,24,48,0.14) !important;
   background: rgba(255,250,247,1) !important;
 }
-/* Start Over Gradio button — invisible trigger only; visual button is in header HTML.
-   visibility:hidden (not display:none) so JS .click() still reaches Gradio's handler. */
+/* Start Over — transparent click-catcher overlaying the visual button in the header.
+   opacity:0 hides it; position:absolute places it exactly over the 140px spacer column.
+   No JS needed: real Gradio button click fires on_start_over directly. */
 #wdstartover {
   position: absolute !important;
-  left: -9999px !important;
-  top: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-  visibility: hidden !important;
+  top: 24px !important;
+  right: 34px !important;
+  width: 140px !important;
+  height: 48px !important;
+  opacity: 0 !important;
+  z-index: 200 !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#wdstartover button,
+#wdstartover button.primary,
+#wdstartover button.secondary {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 /* Confirm dish button — wine-red (bulletproof selectors override Gradio primary blue) */
 #wdconfirmdish,

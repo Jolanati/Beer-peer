@@ -563,114 +563,192 @@
   <!-- ─────────────────────────────────────────────────────────── -->
   <!-- SLIDE 4a: EDA PART 1 -->
   <!-- ─────────────────────────────────────────────────────────── -->
-  <div class="slide slide-light" id="s3-eda" style="justify-content:flex-start; padding-top:4%;">
+  <div class="slide slide-light" id="s3-eda" style="justify-content:flex-start; padding-top:3.5%;">
     <div class="overline">03 · Exploratory Data Analysis</div>
     <div class="slide-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem); margin-bottom:.2em;">What the reviews revealed — part 1.</div>
-    <div class="rule" style="margin-bottom:.5em;"></div>
-    <p style="font-size:.72rem; color:var(--muted); font-style:italic; margin-bottom:.6em;">Food-101 — no surprises. Perfectly balanced, 1,000 images per class. Nothing required us to change approach.</p>
+    <div class="rule" style="margin-bottom:.55em;"></div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:.8em; flex:1; min-height:0;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1em; flex:1; min-height:0;">
 
-      <!-- BAR CHART: grape imbalance with counts -->
-      <div onclick="openModal('modal-imbalance')" style="cursor:pointer; background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.8em 1.1em; transition:box-shadow .2s, border-color .2s; position:relative; display:flex; flex-direction:column;" onmouseenter="this.style.boxShadow='0 4px 18px rgba(107,30,50,.15)'; this.style.borderColor='var(--wine-pale)';" onmouseleave="this.style.boxShadow=''; this.style.borderColor='var(--rule)';">
-        <div style="font-size:.56rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.5em;">Some grapes dominate the dataset</div>
-        <div style="display:flex; align-items:flex-end; gap:3px; flex:1; padding-top:1.6em; min-height:0;">
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine); font-weight:700; margin-bottom:2px;">78k</span>
-            <div style="flex:1; width:100%; background:var(--wine); border-radius:2px 2px 0 0;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; text-align:center; line-height:1.2; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Cab. Sauv.</span>
+      <!-- LEFT: HORIZONTAL BAR CHART — easy to read, no label rotation -->
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em 1.2em 1em 1em; display:flex; flex-direction:column;">
+        <div style="font-size:.56rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.1em;">Grape variety · review count</div>
+        <div style="font-size:.62rem; color:var(--muted); margin-bottom:.8em;">Dataset is <strong style="color:var(--wine);">highly imbalanced</strong> — top grape has 26× more reviews than the last</div>
+
+        <!-- helper macro: label | bar | count -->
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Cab. Sauvignon</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:100%; background:var(--wine); border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--wine); font-weight:700; text-align:right; flex-shrink:0;">78k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine); font-weight:700; margin-bottom:2px;">66k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.88; border-radius:2px 2px 0 0; height:85%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Pinot Noir</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Pinot Noir</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:85%; background:var(--wine); opacity:.9; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--wine); font-weight:700; text-align:right; flex-shrink:0;">66k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine); font-weight:700; margin-bottom:2px;">47k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.72; border-radius:2px 2px 0 0; height:60%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Chardonnay</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Chardonnay</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:60%; background:var(--wine); opacity:.78; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--wine); font-weight:700; text-align:right; flex-shrink:0;">47k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine); font-weight:700; margin-bottom:2px;">38k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.60; border-radius:2px 2px 0 0; height:48%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Merlot</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Merlot</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:49%; background:var(--wine); opacity:.68; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--wine-mid); font-weight:700; text-align:right; flex-shrink:0;">38k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine); font-weight:700; margin-bottom:2px;">30k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.50; border-radius:2px 2px 0 0; height:38%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Riesling</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Riesling</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:38%; background:var(--wine); opacity:.58; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--wine-mid); font-weight:700; text-align:right; flex-shrink:0;">30k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine-pale); font-weight:700; margin-bottom:2px;">23k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.42; border-radius:2px 2px 0 0; height:29%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Syrah</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Syrah / Shiraz</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:29%; background:var(--wine); opacity:.48; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">23k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--wine-pale); font-weight:700; margin-bottom:2px;">17k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.35; border-radius:2px 2px 0 0; height:22%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Sauvignon B.</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Sauvignon Blanc</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:22%; background:var(--wine); opacity:.40; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">17k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--muted); font-weight:700; margin-bottom:2px;">12k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.28; border-radius:2px 2px 0 0; height:16%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Champagne</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Champagne</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:15%; background:var(--wine); opacity:.33; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">12k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--muted); font-weight:700; margin-bottom:2px;">9k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.22; border-radius:2px 2px 0 0; height:12%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Grüner V.</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Grüner Veltliner</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:12%; background:var(--wine); opacity:.28; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">9k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--muted); font-weight:700; margin-bottom:2px;">6k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.17; border-radius:2px 2px 0 0; height:8%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Rosé</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Rosé</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:8%; background:var(--wine); opacity:.22; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">6k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--muted); font-weight:700; margin-bottom:2px;">4k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.13; border-radius:2px 2px 0 0; height:5%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Tempranillo</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Tempranillo</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:5%; background:var(--wine); opacity:.18; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">4k</span>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%;">
-            <span style="font-size:.52rem; color:var(--muted); font-weight:700; margin-bottom:2px;">3k</span>
-            <div style="flex:1; width:100%; background:var(--wine); opacity:.10; border-radius:2px 2px 0 0; height:4%;"></div>
-            <span style="font-size:.48rem; color:var(--muted); margin-top:3px; writing-mode:vertical-rl; transform:rotate(180deg); max-height:4em; overflow:hidden;">Viognier</span>
+
+          <div style="display:flex; align-items:center; gap:.5em;">
+            <span style="width:8em; font-size:.66rem; color:var(--dark-text); text-align:right; flex-shrink:0; white-space:nowrap;">Viognier</span>
+            <div style="flex:1; height:.75em; background:rgba(107,30,50,.09); border-radius:2px; overflow:hidden;"><div style="height:100%; width:4%; background:var(--wine); opacity:.14; border-radius:2px;"></div></div>
+            <span style="width:2.6em; font-size:.66rem; color:var(--muted); font-weight:700; text-align:right; flex-shrink:0;">3k</span>
           </div>
+
         </div>
-        <p style="font-size:.68rem; color:var(--muted); line-height:1.4; margin-top:.5em; padding-bottom:1.2em;">Imbalance ratio over 3× — corrected with weighted loss during training.</p>
-        <div style="position:absolute; bottom:.5em; right:.8em; font-size:.56rem; color:var(--wine-pale); font-weight:700;">↗ expand</div>
+
+        <div style="margin-top:.8em; padding-top:.6em; border-top:1px solid var(--rule); font-size:.62rem; color:var(--muted); line-height:1.5;">
+          Corrected with <strong style="color:var(--dark-text);">class-weighted cross-entropy loss</strong> during training.
+        </div>
       </div>
 
-      <!-- WORD CLOUDS: more words per grape -->
-      <div onclick="openModal('modal-wordcloud')" style="cursor:pointer; background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:.8em 1.1em; transition:box-shadow .2s, border-color .2s; position:relative; display:flex; flex-direction:column;" onmouseenter="this.style.boxShadow='0 4px 18px rgba(107,30,50,.15)'; this.style.borderColor='var(--wine-pale)';" onmouseleave="this.style.boxShadow=''; this.style.borderColor='var(--rule)';">
-        <div style="font-size:.56rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.45em;">Each grape has its own taste vocabulary</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.5em; flex:1; min-height:0;">
-          <div style="background:var(--cream); border-radius:3px; padding:.6em .8em; overflow:hidden;">
-            <div style="font-size:.52rem; font-weight:700; letter-spacing:.1em; color:var(--wine-mid); margin-bottom:.3em;">PINOT NOIR</div>
-            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.1em .2em; align-content:flex-start;">
-              <span style="font-size:1.3rem;font-weight:700;color:#6B1E32;">cherry</span><span style="font-size:.9rem;font-weight:600;color:#9B3A52;">raspberry</span><span style="font-size:.75rem;color:#1C0E0A;">violet</span><span style="font-size:.65rem;color:#8C7B72;">silk</span><span style="font-size:.82rem;color:#6B1E32;">strawberry</span><span style="font-size:.65rem;color:#8C7B72;">earthy</span><span style="font-size:.7rem;color:#1C0E0A;">spice</span><span style="font-size:.62rem;color:#9B3A52;">delicate</span><span style="font-size:.6rem;color:#8C7B72;">terroir</span><span style="font-size:.68rem;color:#6B1E32;">cranberry</span><span style="font-size:.58rem;color:#8C7B72;">silky</span><span style="font-size:.62rem;color:#1C0E0A;">rose petal</span><span style="font-size:.58rem;color:#C9879C;">elegant</span><span style="font-size:.6rem;color:#8C7B72;">pomegranate</span>
+      <!-- RIGHT: WORD CLOUDS — 2×2, centered words, large enough to read -->
+      <div style="background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1em 1.2em; display:flex; flex-direction:column;">
+        <div style="font-size:.56rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wine-mid); margin-bottom:.1em;">Top review keywords · by grape variety</div>
+        <div style="font-size:.62rem; color:var(--muted); margin-bottom:.7em;">Each grape carries a <strong style="color:var(--wine);">distinct sensory fingerprint</strong> — word size reflects frequency</div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.6em; flex:1; min-height:0;">
+
+          <div style="background:rgba(107,30,50,.04); border:1px solid rgba(107,30,50,.1); border-radius:5px; padding:.7em .9em; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="font-size:.55rem; font-weight:700; letter-spacing:.12em; color:var(--wine); margin-bottom:.5em; text-transform:uppercase;">Pinot Noir</div>
+            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.25em .3em; justify-content:center; align-content:center; flex:1; line-height:1.3;">
+              <span style="font-size:1.55rem;font-weight:700;color:#6B1E32;">cherry</span>
+              <span style="font-size:1.05rem;font-weight:600;color:#9B3A52;">raspberry</span>
+              <span style="font-size:.95rem;color:#1C0E0A;">strawberry</span>
+              <span style="font-size:.78rem;color:#6B1E32;">violet</span>
+              <span style="font-size:.75rem;color:#8C7B72;">spice</span>
+              <span style="font-size:.7rem;color:#9B3A52;">earthy</span>
+              <span style="font-size:.68rem;color:#6B1E32;">cranberry</span>
+              <span style="font-size:.66rem;color:#1C0E0A;">rose petal</span>
+              <span style="font-size:.65rem;color:#8C7B72;">silky</span>
+              <span style="font-size:.63rem;color:#9B3A52;">delicate</span>
+              <span style="font-size:.62rem;color:#8C7B72;">terroir</span>
+              <span style="font-size:.6rem;color:#C9879C;">elegant</span>
+              <span style="font-size:.58rem;color:#8C7B72;">silk</span>
+              <span style="font-size:.58rem;color:#C9879C;">pomegranate</span>
             </div>
           </div>
-          <div style="background:var(--cream); border-radius:3px; padding:.6em .8em; overflow:hidden;">
-            <div style="font-size:.52rem; font-weight:700; letter-spacing:.1em; color:var(--wine-mid); margin-bottom:.3em;">CAB. SAUVIGNON</div>
-            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.1em .2em; align-content:flex-start;">
-              <span style="font-size:1.3rem;font-weight:700;color:#6B1E32;">cassis</span><span style="font-size:.9rem;font-weight:600;color:#1C0E0A;">tannin</span><span style="font-size:.82rem;color:#9B3A52;">plum</span><span style="font-size:.75rem;color:#6B1E32;">blackcurrant</span><span style="font-size:.65rem;color:#8C7B72;">cedar</span><span style="font-size:.7rem;color:#1C0E0A;">graphite</span><span style="font-size:.65rem;color:#8C7B72;">tobacco</span><span style="font-size:.62rem;color:#9B3A52;">firm</span><span style="font-size:.6rem;color:#8C7B72;">grip</span><span style="font-size:.68rem;color:#6B1E32;">blackberry</span><span style="font-size:.58rem;color:#8C7B72;">structured</span><span style="font-size:.62rem;color:#1C0E0A;">dark fruit</span><span style="font-size:.58rem;color:#C9879C;">austere</span><span style="font-size:.6rem;color:#8C7B72;">mint</span>
+
+          <div style="background:rgba(28,14,10,.04); border:1px solid rgba(28,14,10,.1); border-radius:5px; padding:.7em .9em; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="font-size:.55rem; font-weight:700; letter-spacing:.12em; color:#4a1a28; margin-bottom:.5em; text-transform:uppercase;">Cab. Sauvignon</div>
+            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.25em .3em; justify-content:center; align-content:center; flex:1; line-height:1.3;">
+              <span style="font-size:1.55rem;font-weight:700;color:#6B1E32;">cassis</span>
+              <span style="font-size:1.05rem;font-weight:600;color:#1C0E0A;">tannin</span>
+              <span style="font-size:.95rem;color:#9B3A52;">blackcurrant</span>
+              <span style="font-size:.8rem;color:#6B1E32;">plum</span>
+              <span style="font-size:.75rem;color:#1C0E0A;">graphite</span>
+              <span style="font-size:.7rem;color:#8C7B72;">cedar</span>
+              <span style="font-size:.68rem;color:#6B1E32;">blackberry</span>
+              <span style="font-size:.66rem;color:#9B3A52;">dark fruit</span>
+              <span style="font-size:.65rem;color:#8C7B72;">tobacco</span>
+              <span style="font-size:.63rem;color:#1C0E0A;">structured</span>
+              <span style="font-size:.62rem;color:#8C7B72;">grip</span>
+              <span style="font-size:.6rem;color:#9B3A52;">firm</span>
+              <span style="font-size:.58rem;color:#C9879C;">austere</span>
+              <span style="font-size:.58rem;color:#8C7B72;">mint</span>
             </div>
           </div>
-          <div style="background:var(--cream); border-radius:3px; padding:.6em .8em; overflow:hidden;">
-            <div style="font-size:.52rem; font-weight:700; letter-spacing:.1em; color:var(--wine-mid); margin-bottom:.3em;">CHARDONNAY</div>
-            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.1em .2em; align-content:flex-start;">
-              <span style="font-size:1.3rem;font-weight:700;color:#6B1E32;">butter</span><span style="font-size:.9rem;font-weight:600;color:#9B3A52;">vanilla</span><span style="font-size:.82rem;color:#1C0E0A;">tropical</span><span style="font-size:.75rem;color:#6B1E32;">citrus</span><span style="font-size:.65rem;color:#8C7B72;">oak</span><span style="font-size:.7rem;color:#1C0E0A;">melon</span><span style="font-size:.65rem;color:#8C7B72;">apple</span><span style="font-size:.62rem;color:#9B3A52;">creamy</span><span style="font-size:.6rem;color:#8C7B72;">brioche</span><span style="font-size:.68rem;color:#6B1E32;">toasty</span><span style="font-size:.58rem;color:#8C7B72;">pear</span><span style="font-size:.62rem;color:#1C0E0A;">lemon curd</span><span style="font-size:.58rem;color:#C9879C;">rich</span><span style="font-size:.6rem;color:#8C7B72;">hazelnut</span>
+
+          <div style="background:rgba(200,160,80,.06); border:1px solid rgba(200,160,80,.2); border-radius:5px; padding:.7em .9em; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="font-size:.55rem; font-weight:700; letter-spacing:.12em; color:#7a5e20; margin-bottom:.5em; text-transform:uppercase;">Chardonnay</div>
+            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.25em .3em; justify-content:center; align-content:center; flex:1; line-height:1.3;">
+              <span style="font-size:1.55rem;font-weight:700;color:#7a5e20;">butter</span>
+              <span style="font-size:1.05rem;font-weight:600;color:#9B3A52;">vanilla</span>
+              <span style="font-size:.95rem;color:#6B4C1A;">tropical</span>
+              <span style="font-size:.8rem;color:#7a5e20;">citrus</span>
+              <span style="font-size:.75rem;color:#8C7B72;">melon</span>
+              <span style="font-size:.7rem;color:#1C0E0A;">oak</span>
+              <span style="font-size:.68rem;color:#7a5e20;">toasty</span>
+              <span style="font-size:.66rem;color:#9B3A52;">creamy</span>
+              <span style="font-size:.65rem;color:#8C7B72;">apple</span>
+              <span style="font-size:.63rem;color:#6B4C1A;">lemon curd</span>
+              <span style="font-size:.62rem;color:#8C7B72;">brioche</span>
+              <span style="font-size:.6rem;color:#9B3A52;">pear</span>
+              <span style="font-size:.58rem;color:#C9879C;">rich</span>
+              <span style="font-size:.58rem;color:#8C7B72;">hazelnut</span>
             </div>
           </div>
-          <div style="background:var(--cream); border-radius:3px; padding:.6em .8em; overflow:hidden;">
-            <div style="font-size:.52rem; font-weight:700; letter-spacing:.1em; color:var(--wine-mid); margin-bottom:.3em;">RIESLING</div>
-            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.1em .2em; align-content:flex-start;">
-              <span style="font-size:1.3rem;font-weight:700;color:#6B1E32;">petrol</span><span style="font-size:.9rem;font-weight:600;color:#1C0E0A;">mineral</span><span style="font-size:.82rem;color:#9B3A52;">floral</span><span style="font-size:.75rem;color:#6B1E32;">apricot</span><span style="font-size:.65rem;color:#8C7B72;">lime</span><span style="font-size:.7rem;color:#1C0E0A;">off-dry</span><span style="font-size:.65rem;color:#8C7B72;">honey</span><span style="font-size:.62rem;color:#9B3A52;">slate</span><span style="font-size:.6rem;color:#8C7B72;">racy</span><span style="font-size:.68rem;color:#6B1E32;">crisp</span><span style="font-size:.58rem;color:#8C7B72;">grapefruit</span><span style="font-size:.62rem;color:#1C0E0A;">green apple</span><span style="font-size:.58rem;color:#C9879C;">delicate</span><span style="font-size:.6rem;color:#8C7B72;">steely</span>
+
+          <div style="background:rgba(60,100,140,.05); border:1px solid rgba(60,100,140,.15); border-radius:5px; padding:.7em .9em; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="font-size:.55rem; font-weight:700; letter-spacing:.12em; color:#3c648c; margin-bottom:.5em; text-transform:uppercase;">Riesling</div>
+            <div style="font-family:'Cormorant Garamond',serif; display:flex; flex-wrap:wrap; gap:.25em .3em; justify-content:center; align-content:center; flex:1; line-height:1.3;">
+              <span style="font-size:1.55rem;font-weight:700;color:#3c648c;">petrol</span>
+              <span style="font-size:1.05rem;font-weight:600;color:#1C0E0A;">mineral</span>
+              <span style="font-size:.95rem;color:#3c648c;">floral</span>
+              <span style="font-size:.8rem;color:#6B1E32;">apricot</span>
+              <span style="font-size:.75rem;color:#1C0E0A;">off-dry</span>
+              <span style="font-size:.7rem;color:#3c648c;">slate</span>
+              <span style="font-size:.68rem;color:#6B4C1A;">honey</span>
+              <span style="font-size:.66rem;color:#8C7B72;">lime</span>
+              <span style="font-size:.65rem;color:#3c648c;">green apple</span>
+              <span style="font-size:.63rem;color:#8C7B72;">grapefruit</span>
+              <span style="font-size:.62rem;color:#1C0E0A;">crisp</span>
+              <span style="font-size:.6rem;color:#3c648c;">racy</span>
+              <span style="font-size:.58rem;color:#C9879C;">delicate</span>
+              <span style="font-size:.58rem;color:#8C7B72;">steely</span>
             </div>
           </div>
+
         </div>
-        <p style="font-size:.68rem; color:var(--muted); line-height:1.4; margin-top:.5em; padding-bottom:1.2em;">Consistent sensory vocabulary across 824k reviews — learnable patterns.</p>
-        <div style="position:absolute; bottom:.5em; right:.8em; font-size:.56rem; color:var(--wine-pale); font-weight:700;">↗ expand</div>
+
+        <div style="margin-top:.8em; padding-top:.6em; border-top:1px solid var(--rule); font-size:.62rem; color:var(--muted); line-height:1.5;">
+          Consistent vocabulary across <strong style="color:var(--dark-text);">824k reviews</strong> — patterns stable enough to learn from.
+        </div>
       </div>
 
     </div>

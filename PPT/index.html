@@ -518,8 +518,24 @@
   <div class="slide slide-light" id="s2" style="justify-content:center; padding:5% 7%;">
     <div class="overline">02 · The Data</div>
     <div class="slide-title" style="font-size:clamp(1.9rem,3.4vw,2.8rem); margin-bottom:0.5em;">Three datasets — two sourced, one built.</div>
-    <div class="rule" style="margin:0 0 1.4em;"></div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.4em; margin-bottom:1.4em;">
+    <div class="rule" style="margin:0 0 1.2em;"></div>
+
+    <!-- Food Flavor Table — narrow, full width, compact -->
+    <div style="display:flex; align-items:center; gap:2.5em; padding:.75em 1.6em; margin-bottom:1.4em; background:linear-gradient(135deg, rgba(107,30,50,.06) 0%, var(--card) 100%); border-left:3px solid var(--wine); border-radius:2px; box-shadow:0 1px 5px rgba(28,14,10,.06);">
+      <div style="flex-shrink:0;">
+        <div class="card-label">Constructed · LLM-generated</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.15rem); font-weight:600; color:var(--dark-text); margin:.15em 0 .5em;">Food Flavor Table</div>
+        <div style="display:flex; gap:2em;">
+          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.6rem,2.4vw,2rem); color:var(--wine);">101</div><div class="stat-label">food entries</div></div>
+          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.6rem,2.4vw,2rem); color:var(--wine);">3</div><div class="stat-label">descriptions each</div></div>
+        </div>
+      </div>
+      <div style="width:1px; background:var(--rule); align-self:stretch; flex-shrink:0;"></div>
+      <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem); line-height:1.6; margin:0;">For each food: its dominant taste, underlying hidden notes, and a contrasting pairing suggestion — written in sensory language matching wine review vocabulary.</p>
+    </div>
+
+    <!-- Two main dataset cards -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.4em;">
       <div class="card" style="padding:1.6em 1.8em; display:flex; flex-direction:column; gap:.6em; background:linear-gradient(135deg, var(--card) 0%, rgba(240,235,228,.5) 100%); box-shadow:0 2px 8px rgba(28,14,10,.08);">
         <div class="card-label">Food-101</div>
         <div class="card-heading" style="font-size:clamp(1rem,1.7vw,1.2rem);">101 food categories · 1,000 images each</div>
@@ -540,18 +556,6 @@
         </div>
         <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem);">Tasting notes by real Vivino users. Each review includes grape variety, wine name, country, and rating.</p>
       </div>
-    </div>
-    <div class="card" style="padding:1.6em 1.8em; display:flex; flex-direction:row; align-items:center; gap:3em; background:linear-gradient(135deg, rgba(107,30,50,.06) 0%, var(--card) 100%); box-shadow:0 2px 8px rgba(28,14,10,.08); border-left:3px solid var(--wine);">
-      <div style="flex-shrink:0;">
-        <div class="card-label">Constructed · LLM-generated</div>
-        <div class="card-heading" style="font-size:clamp(1rem,1.7vw,1.2rem); margin:.3em 0 .7em;">Food Flavor Table</div>
-        <div style="display:flex; gap:2.2em;">
-          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.8rem,2.8vw,2.2rem); color:var(--wine);">101</div><div class="stat-label">food entries</div></div>
-          <div class="stat-block"><div class="stat-num" style="font-size:clamp(1.8rem,2.8vw,2.2rem); color:var(--wine);">3</div><div class="stat-label">descriptions each</div></div>
-        </div>
-      </div>
-      <div style="width:1px; background:var(--rule); align-self:stretch; flex-shrink:0;"></div>
-      <p class="card-body" style="font-size:clamp(0.82rem,1.2vw,0.95rem); line-height:1.65; margin:0;">For each food: its dominant taste, underlying hidden notes, and a contrasting pairing suggestion — written in sensory language matching wine review vocabulary.</p>
     </div>
   </div>
 

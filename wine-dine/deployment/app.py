@@ -1687,10 +1687,12 @@ div.main { padding: 0 !important; background: transparent !important; }
   background: rgba(255,250,247,1) !important;
 }
 /* Start Over button — top-right of the card header, in EVERY screen.
-   Wrapper itself is absolutely positioned inside #wdcard_outer (position:relative). */
+   Wrapper itself is absolutely positioned inside #wdcard_outer (position:relative).
+   `top:36px` aligns the button's vertical center with the step-circle row
+   (header padding 24px + half of 48px circle = ~48px from card top). */
 #wdstartover {
   position: absolute !important;
-  top: 24px !important;
+  top: 36px !important;
   right: 28px !important;
   width: auto !important;
   min-width: 0 !important;

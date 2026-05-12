@@ -1,0 +1,9 @@
+.git/
+.venv/
+**/__pycache__/
+**/*.pt
+**/*.npy
+**/*.ipynb
+wine-dine/data/
+wine-dine/weights/
+wine-dine/figures/

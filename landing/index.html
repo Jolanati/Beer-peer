@@ -272,7 +272,501 @@
     <div class="slide-nav"><a href="#cnn">Next chapter <span class="arrow">↓</span></a></div>
   </section>
 
-  <!-- More sections will be added here -->
+  <!-- §6 - CNN -->
+  <section id="cnn" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 5 · Computer Vision</span>
+      <h2>Teaching a machine to see food</h2>
+
+      <div class="cnn-grid stagger">
+
+        <!-- Left: accuracy progression -->
+        <div class="cnn-left">
+          <p class="cnn-col-label">Accuracy on 101 food categories</p>
+
+          <div class="acc-bar-block">
+            <div class="acc-meta">
+              <span class="acc-name">First attempt — custom CNN</span>
+              <span class="acc-desc">4-block network built from scratch, random weights</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track">
+                <div class="acc-fill anim-bar" style="--bar-width:35.5%"></div>
+              </div>
+              <span class="acc-pct">48%</span>
+            </div>
+          </div>
+
+          <div class="acc-bar-block acc-bar-block--winner">
+            <div class="acc-meta">
+              <span class="acc-name">ResNet-50 — transfer learning</span>
+              <span class="acc-desc">Pretrained on 1.2M ImageNet photos, adapted for food</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track">
+                <div class="acc-fill anim-bar" style="--bar-width:56.5%"></div>
+              </div>
+              <span class="acc-pct acc-pct--gold">76.5%</span>
+            </div>
+          </div>
+
+          <p class="acc-footnote">Top-1 accuracy · 15,150 unseen test images · 101 food categories</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="cnn-divider"></div>
+
+        <!-- Right: method cards -->
+        <div class="cnn-right">
+          <p class="cnn-col-label">How we got there</p>
+
+          <div class="method-card">
+            <span class="method-num">1</span>
+            <div class="method-body">
+              <strong>Built our own — then hit the ceiling</strong>
+              <span>A VGG-style network with 4 convolutional blocks, trained for 20 epochs. Reached 48% — impressive for a model that learned purely from our 70k training photos, but not production-ready.</span>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <span class="method-num">2</span>
+            <div class="method-body">
+              <strong>Borrowed a giant's eyes</strong>
+              <span>ResNet-50 already "knows" textures, edges, and shapes from 1.2M images. We replaced only its final layer — now it answers "which of 101 dishes?" instead of "which of 1,000 ImageNet objects?".</span>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <span class="method-num">3</span>
+            <div class="method-body">
+              <strong>Two-phase fine-tuning</strong>
+              <span><em>Phase A (5 epochs):</em> train the new head only — let it stabilise before touching anything else. <em>Phase B (10 epochs):</em> gently unfreeze the deep layers so the model adapts its visual intuition to food specifically. Result: <strong>76.5% accuracy, F1 0.764</strong>.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#rnn">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- §7 - RNN -->
+  <section id="rnn" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 6 · Reading Wine</span>
+      <h2>Teaching a machine to read wine</h2>
+
+      <div class="cnn-grid stagger">
+
+        <!-- Left: accuracy bars -->
+        <div class="cnn-left">
+          <p class="cnn-col-label" style="color:var(--gold)">Accuracy identifying grape variety (15 classes)</p>
+
+          <div class="acc-bar-block" style="border-bottom-color:var(--rule-dark)">
+            <div class="acc-meta">
+              <span class="acc-name" style="color:var(--text-dark)">Random guess</span>
+              <span class="acc-desc" style="color:var(--text-dark-m)">No model — just picking at random from 15 grapes</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track" style="background:rgba(255,255,255,0.08)">
+                <div class="acc-fill anim-bar" style="--bar-width:22%;background:rgba(255,255,255,0.15)"></div>
+              </div>
+              <span class="acc-pct" style="color:var(--text-dark-m)">6.7%</span>
+            </div>
+          </div>
+
+          <div class="acc-bar-block" style="border-bottom-color:var(--rule-dark)">
+            <div class="acc-meta">
+              <span class="acc-name" style="color:var(--text-dark)">LSTM baseline</span>
+              <span class="acc-desc" style="color:var(--text-dark-m)">Reads reviews left-to-right, one word at a time</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track" style="background:rgba(255,255,255,0.08)">
+                <div class="acc-fill anim-bar" style="--bar-width:55%;background:var(--gold)"></div>
+              </div>
+              <span class="acc-pct" style="color:var(--gold)">16.4%</span>
+            </div>
+          </div>
+
+          <div class="acc-bar-block" style="border-bottom-color:var(--rule-dark)">
+            <div class="acc-meta">
+              <span class="acc-name" style="color:var(--text-dark)">BiLSTM + Attention</span>
+              <span class="acc-desc" style="color:var(--text-dark-m)">Reads both ways, focuses on the most telling words</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track" style="background:rgba(255,255,255,0.08)">
+                <div class="acc-fill anim-bar" style="--bar-width:73%;background:var(--gold)"></div>
+              </div>
+              <span class="acc-pct" style="color:var(--gold)">21.9%</span>
+            </div>
+          </div>
+
+          <div class="acc-bar-block acc-bar-block--rnn-winner" style="border-bottom-color:var(--rule-dark)">
+            <div class="acc-meta">
+              <span class="acc-name" style="color:var(--gold)">DistilBERT</span>
+              <span class="acc-desc" style="color:var(--text-dark-m)">Pretrained transformer — deep language understanding</span>
+            </div>
+            <div class="acc-track-row">
+              <div class="acc-track" style="background:rgba(255,255,255,0.08)">
+                <div class="acc-fill anim-bar" style="--bar-width:83%;background:linear-gradient(90deg,var(--gold),#e8c88a)"></div>
+              </div>
+              <span class="acc-pct" style="color:var(--gold)">~25%</span>
+            </div>
+          </div>
+
+          <p class="acc-footnote" style="border-top-color:var(--rule-dark);color:var(--text-dark-m)">15-class grape classification · WineSensed test set</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="cnn-divider" style="background:var(--rule-dark)"></div>
+
+        <!-- Right: the twist -->
+        <div class="cnn-right">
+          <p class="cnn-col-label" style="color:var(--gold)">What each model learned</p>
+
+          <div class="method-card" style="border-bottom-color:var(--rule-dark)">
+            <span class="method-num" style="border-color:var(--gold);color:var(--gold)">1</span>
+            <div class="method-body">
+              <strong style="color:var(--text-dark)">The language of wine is real</strong>
+              <span style="color:var(--text-dark-m)">Even a basic LSTM scores 16.4% — more than twice random. "Cassis and cedar" really does predict Cabernet Sauvignon. The vocabulary signal exists.</span>
+            </div>
+          </div>
+
+          <div class="method-card" style="border-bottom-color:var(--rule-dark)">
+            <span class="method-num" style="border-color:var(--gold);color:var(--gold)">2</span>
+            <div class="method-body">
+              <strong style="color:var(--text-dark)">Attention highlights sensory words</strong>
+              <span style="color:var(--text-dark-m)">BiLSTM attention consistently weights words like <em style="color:var(--gold);font-style:normal">"tannin"</em>, <em style="color:var(--gold);font-style:normal">"acidity"</em>, <em style="color:var(--gold);font-style:normal">"mineral"</em> highest. The model is learning taste — not grammar.</span>
+            </div>
+          </div>
+
+          <div class="method-card" style="border-bottom-color:var(--rule-dark)">
+            <span class="method-num" style="border-color:var(--gold);color:var(--gold)">3</span>
+            <div class="method-body">
+              <strong style="color:var(--text-dark)">A hint at something deeper</strong>
+              <span style="color:var(--text-dark-m)">Across all three models, the most predictive words are never grape names — they're always sensory: <em style="color:var(--gold);font-style:normal">texture</em>, <em style="color:var(--gold);font-style:normal">acidity</em>, <em style="color:var(--gold);font-style:normal">body</em>. Wine reviews don't really describe what something <em style="color:var(--gold);font-style:normal">is</em> — they describe what it <em style="color:var(--gold);font-style:normal">feels like</em>. That distinction will matter.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#bridge">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- §8 - Bridge -->
+  <section id="bridge" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 7 · The Problem</span>
+
+      <h2 class="bridge-heading">We had two capable models.<br>Now we needed a bridge.</h2>
+
+      <hr class="bridge-rule">
+
+      <div class="bridge-flows stagger">
+        <p class="bridge-flow">Food photo &rarr; ResNet-50 &rarr; <em>"Cheesecake"</em></p>
+        <p class="bridge-flow">Wine review &rarr; BiLSTM &rarr; <em>"Sangiovese"</em></p>
+      </div>
+
+      <p class="bridge-body">Two completely different vocabularies, two completely different models. We needed something in between — a shared space where a cheesecake and a Riesling could meet. So we tried. And tried again.</p>
+
+      <p class="bridge-teaser">Eight attempts before we found the answer.</p>
+    </div>
+    <div class="slide-nav"><a href="#attempts">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- §9 - W2V failure -->
+  <section id="attempts" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 8 · First Attempt</span>
+      <h2>The idea that seemed almost too easy</h2>
+
+      <p class="w2v-intro stagger"><em>We already had 824,000 wine reviews. The plan: fine-tune Word2Vec, translate food keywords into wine vocabulary, compare to grape centroids. One model, one cosine score — done.</em></p>
+
+      <div class="w2v-grid stagger">
+
+        <!-- Left: the logic -->
+        <div class="w2v-col">
+          <p class="w2v-col-label">What we built</p>
+
+          <div class="w2v-step">
+            <span class="w2v-arrow">→</span>
+            <div>
+              <strong>Fine-tuned Word2Vec</strong>
+              <span>Google News 300-d, retrained on 824k wine reviews.</span>
+            </div>
+          </div>
+          <div class="w2v-step">
+            <span class="w2v-arrow">→</span>
+            <div>
+              <strong>Food keyword table</strong>
+              <span>101 dishes, 3 keyword lists each: <em>classic · surprising · contrast</em>. Plain food words — no wine vocabulary.</span>
+            </div>
+          </div>
+          <div class="w2v-step">
+            <span class="w2v-arrow">→</span>
+            <div>
+              <strong>Cosine to grape centroids</strong>
+              <span>Averaged keyword vectors compared to 15 grape centroids. Nearest grape wins.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w2v-divider"></div>
+
+        <!-- Right: the collapse -->
+        <div class="w2v-col">
+          <p class="w2v-col-label">What actually happened</p>
+
+          <div class="w2v-finding">
+            <span class="w2v-num">0.82</span>
+            <div class="w2v-finding-text">
+              <strong>Mean cosine — all 101 food queries</strong>
+              <span>All food vectors collapsed to the same direction. Co-occurrence ≠ taste: <em>"smoky"</em>, <em>"creamy"</em>, <em>"umami"</em> all expand to <em>"rich, fruity, tannin"</em>.</span>
+            </div>
+          </div>
+
+          <div class="w2v-finding">
+            <span class="w2v-num">4/15</span>
+            <div class="w2v-finding-text">
+              <strong>Unique grapes ever recommended</strong>
+              <span>Barbera won 67/101 foods. Eleven varieties never appeared.</span>
+            </div>
+          </div>
+
+          <div class="w2v-finding w2v-finding--last">
+            <span class="w2v-num" style="font-size:1.2rem;line-height:1.4">Sushi = Cheesecake</span>
+            <div class="w2v-finding-text">
+              <strong>Same wine, every time</strong>
+              <span>Word similarity is not flavor similarity.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#attempts2">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 9 — Six More Doors -->
+  <section id="attempts2" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 9 · Six More Doors</span>
+      <h2>We tried six more things</h2>
+
+      <div class="log-grid stagger">
+
+        <!-- Header -->
+        <div class="log-head">What we tried</div>
+        <div class="log-head">What happened</div>
+
+        <!-- Row 2 -->
+        <div class="log-left">
+          <span class="log-tech">BiLSTM argmax</span>
+          <span class="log-plain">"Our model already knows grapes — just ask it to pick one for each food"</span>
+        </div>
+        <div class="log-right">It always chose the same one. One grape won 44 of 101 dishes.</div>
+
+        <!-- Row 3 -->
+        <div class="log-left">
+          <span class="log-tech">BiLSTM centroid cosine</span>
+          <span class="log-plain">"Don't ask for a pick — compare the flavor fingerprint of food to each grape"</span>
+        </div>
+        <div class="log-right">All grape fingerprints looked nearly identical. You can't rank things that look the same.</div>
+
+        <!-- Row 4 -->
+        <div class="log-left">
+          <span class="log-tech">BiLSTM + wine descriptions</span>
+          <span class="log-plain">"Describe the food the way a sommelier would, not a chef"</span>
+        </div>
+        <div class="log-right">Different picks — but the fingerprints were still too close.</div>
+
+        <!-- Row 5 -->
+        <div class="log-left">
+          <span class="log-tech">MPNET + keywords</span>
+          <span class="log-plain">"Use a newer, stronger language model that separates things better"</span>
+        </div>
+        <div class="log-right">Grape fingerprints spread apart — but food words landed in the wrong region entirely.</div>
+
+        <!-- Row 6 -->
+        <div class="log-left">
+          <span class="log-tech">MPNET + SupCon projection head</span>
+          <span class="log-plain">"Train a layer on top to actively push grapes apart and pull food toward the right ones"</span>
+        </div>
+        <div class="log-right">The base was frozen — its grape fingerprints didn't move. We were reshaping shadows, not the wall.</div>
+
+        <!-- Row 7 -->
+        <div class="log-left log-left--last">
+          <span class="log-tech">MPNET + wine descriptions</span>
+          <span class="log-plain">"Combine both fixes — stronger model and sommelier language"</span>
+        </div>
+        <div class="log-right log-right--last">5 of 10 unique grapes. Closer. Still not enough.</div>
+
+      </div>
+
+      <div class="log-verdict stagger">
+        <hr class="log-rule">
+        <p class="log-verdict-line">Seven doors. Same wall.</p>
+        <p class="log-verdict-sub">We weren't failing at the methods.</p>
+        <p class="log-verdict-em"><em>We were asking the wrong question.</em></p>
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#turn">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 10 — The Turn -->
+  <section id="turn" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 10 · The Turn</span>
+
+      <h2 class="turn-heading">
+        Stop asking <em>what grape.</em><br>
+        Start asking <em>what taste.</em>
+      </h2>
+
+      <hr class="turn-rule">
+
+      <p class="turn-body stagger">The problem with grape labels is that they are <em>names</em> — not descriptions. Cabernet Sauvignon can be a hundred different taste experiences depending on terroir, vintage, and winemaker. The label compresses all of that into one point.</p>
+
+      <p class="turn-question stagger"><em>What if we trained on what wine actually tastes like — not what grape it is?</em></p>
+    </div>
+    <div class="slide-nav"><a href="#axes">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 11 — Slide A: Steps 1–4 -->
+  <section id="axes" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 11 · The Taste Language</span>
+      <h2>Teaching a model what flavor means</h2>
+
+      <div class="tl-grid stagger">
+
+        <!-- Step 1 LEFT -->
+        <div class="tl-content tl-content--left">
+          <span class="tl-num">1</span>
+          <strong class="tl-title">Decide what taste means</strong>
+          <p class="tl-desc">We picked 10 dimensions that cover how wine tastes: body, acidity, tannin, red fruit, dark fruit, earthy, sweet, oaky, floral, mineral. Think of them as 10 dials on a flavor control panel.</p>
+          <span class="tl-tech">Multi-label classification targets</span>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div></div>
+
+        <!-- Step 2 RIGHT -->
+        <div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content tl-content--right">
+          <span class="tl-num">2</span>
+          <strong class="tl-title">Write a cheat sheet for each dial</strong>
+          <p class="tl-desc">For each dimension we listed the words that signal it. Oaky = oak, vanilla, toast, cedar, smoky. Written by hand — no model involved yet.</p>
+          <span class="tl-tech">Keyword seed lists for weak supervision</span>
+        </div>
+
+        <!-- Step 3 LEFT -->
+        <div class="tl-content tl-content--left">
+          <span class="tl-num">3</span>
+          <strong class="tl-title">Scan 824,000 reviews with those cheat sheets</strong>
+          <p class="tl-desc">Like a highlighter on every review. If it contains any oaky word → oaky fires. Multiple dials fire at once. Each review ends up with its own flavor signature — automatically, no human labeling needed.</p>
+          <span class="tl-tech">Weak supervision → binary 10-dim label vectors</span>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div></div>
+
+        <!-- Step 4 RIGHT -->
+        <div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content tl-content--right">
+          <span class="tl-num">4</span>
+          <strong class="tl-title">Train a model to recognize taste from text</strong>
+          <p class="tl-desc">We showed the neural network thousands of labeled reviews. It learned: when you see this language, these dials fire. After training it can read any text and predict the flavor profile on its own.</p>
+          <span class="tl-tech">TasteBiLSTM — BiLSTM + Bahdanau attention, 10-axis output head</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#encoder">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 12 — Slide B: Steps 5–8 -->
+  <section id="encoder" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 12 · From Text to Taste Space</span>
+      <h2>Every wine gets a taste address</h2>
+
+      <div class="tl-grid tl-grid--dark stagger">
+
+        <!-- Step 5 LEFT -->
+        <div class="tl-content tl-content--left">
+          <span class="tl-num">5</span>
+          <strong class="tl-title">The model learns more than 10 dials</strong>
+          <p class="tl-desc">The 10 axes told the model what to learn. Internally it built a finer picture — 512 numbers per text. Similar tastes produce similar numbers. Different tastes point away from each other.</p>
+          <span class="tl-tech">512-d L2-normalised hidden state, cosine range –0.097 to 0.841</span>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div></div>
+
+        <!-- Step 6 RIGHT -->
+        <div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content tl-content--right">
+          <span class="tl-num">6</span>
+          <strong class="tl-title">Stamp every wine with its taste address</strong>
+          <p class="tl-desc">We ran all 824,000 wine reviews through the trained model. Each wine became a point in taste space — placed by how it tastes, not by grape name or price.</p>
+          <span class="tl-tech">TasteBiLSTM encoder inference on full corpus</span>
+        </div>
+
+        <!-- Step 7 LEFT -->
+        <div class="tl-content tl-content--left">
+          <span class="tl-num">7</span>
+          <strong class="tl-title">Group wines into taste neighborhoods</strong>
+          <p class="tl-desc">The math suggested 12 groups. We chose 9 — one per taste dimension — because it makes results explainable and avoids splitting real flavor profiles into noise.</p>
+          <span class="tl-tech">BisectingKMeans K=9, silhouette 0.4757 vs K=12 at 0.4972</span>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div></div>
+
+        <!-- Step 8 RIGHT -->
+        <div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content tl-content--right">
+          <span class="tl-num">8</span>
+          <strong class="tl-title">Let the machine name the neighborhoods</strong>
+          <p class="tl-desc">We ran a text analysis on each group to find the most distinctive words. The machine named them automatically: <em>"Something Bold"</em>, <em>"Something Sweet"</em>, <em>"Something Earthy &amp; Smoky"</em>...</p>
+          <span class="tl-tech">TF-IDF on cluster review texts → top keyword → cluster name</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#bridge2">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 13 — Slide C: Steps 9–10 -->
+  <section id="bridge2" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 13 · The Bridge</span>
+      <h2>Food and wine — same space, same language</h2>
+
+      <div class="br2-grid stagger">
+        <div class="br2-col">
+          <span class="br2-num">9</span>
+          <strong class="br2-title">Write one taste sentence per food</strong>
+          <p class="br2-desc">For every dish we wrote a plain English description of how it tastes — the same kind of language a wine review uses. <em>"Warm, buttery, cinnamon-spiced, with a sweet caramelized edge."</em> Written by an AI language model.</p>
+          <span class="tl-tech">LLM-generated descriptions — Claude Sonnet</span>
+        </div>
+
+        <div class="br2-arrow">→</div>
+
+        <div class="br2-col">
+          <span class="br2-num">10</span>
+          <strong class="br2-title">Send food through the same encoder</strong>
+          <p class="br2-desc">The food description goes through the exact same model. It gets the same kind of 512-number taste address. Now food and wine live in the same space.</p>
+          <span class="tl-tech">Cross-modal retrieval via shared embedding space</span>
+        </div>
+      </div>
+
+      <p class="br2-closing stagger"><em>For the first time, a strawberry tart and a Pinot Noir can be neighbors — because they actually taste alike.</em></p>
+    </div>
+    <div class="slide-nav"><a href="#results">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
 
   <script src="script.js"></script>
 </body>

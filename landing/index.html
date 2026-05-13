@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wine & Dine — The Story</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -745,27 +745,194 @@
       <span class="section-label">Chapter 13 · The Bridge</span>
       <h2>Food and wine — same space, same language</h2>
 
-      <div class="br2-grid stagger">
-        <div class="br2-col">
-          <span class="br2-num">9</span>
-          <strong class="br2-title">Write one taste sentence per food</strong>
-          <p class="br2-desc">For every dish we wrote a plain English description of how it tastes — the same kind of language a wine review uses. <em>"Warm, buttery, cinnamon-spiced, with a sweet caramelized edge."</em> Written by an AI language model.</p>
+      <div class="tl-grid stagger">
+
+        <!-- Step 9 LEFT -->
+        <div class="tl-content tl-content--left">
+          <span class="tl-num">9</span>
+          <strong class="tl-title">Write one taste sentence per food</strong>
+          <p class="tl-desc">For every dish we wrote a plain English description of how it tastes — the same kind of language a wine review uses. <em>"Warm, buttery, cinnamon-spiced, with a sweet caramelized edge."</em> Written by an AI language model.</p>
           <span class="tl-tech">LLM-generated descriptions — Claude Sonnet</span>
         </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div></div>
 
-        <div class="br2-arrow">→</div>
-
-        <div class="br2-col">
-          <span class="br2-num">10</span>
-          <strong class="br2-title">Send food through the same encoder</strong>
-          <p class="br2-desc">The food description goes through the exact same model. It gets the same kind of 512-number taste address. Now food and wine live in the same space.</p>
+        <!-- Step 10 RIGHT -->
+        <div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content tl-content--right">
+          <span class="tl-num">10</span>
+          <strong class="tl-title">Send food through the same encoder</strong>
+          <p class="tl-desc">The food description goes through the exact same model. It gets the same kind of 512-number taste address. Now food and wine live in the same space.</p>
           <span class="tl-tech">Cross-modal retrieval via shared embedding space</span>
         </div>
+
       </div>
 
       <p class="br2-closing stagger"><em>For the first time, a strawberry tart and a Pinot Noir can be neighbors — because they actually taste alike.</em></p>
     </div>
-    <div class="slide-nav"><a href="#results">Next chapter <span class="arrow">↓</span></a></div>
+    <div class="slide-nav"><a href="#logic">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 14 — How We Choose -->
+  <!-- Chapter 14 — Pairing Logic -->
+  <section id="logic" class="section light">
+    <div class="container reveal">
+      <span class="section-label">Chapter 14 · The Pairing Logic</span>
+      <h2>What every number in the result actually means</h2>
+
+      <div class="annot-outer stagger">
+
+        <!-- Left callouts -->
+        <div class="annot-col annot-col--left">
+          <div class="ann-card ann-card--wine">
+            <strong class="ann-title">The score</strong>
+            <p class="ann-desc">Cosine similarity between the food's taste vector and this specific wine's vector. Taste proximity — not a quality rating. 62% can be a better pairing than 90% if you want contrast.</p>
+            <span class="ann-tech">cosine(food_vec, wine_vec)</span>
+          </div>
+          <div class="ann-card ann-card--wine" style="margin-top:0.7rem">
+            <strong class="ann-title">The wine</strong>
+            <p class="ann-desc">Not the same wine for every dish in the cluster. Cheesecake and pizza are both "something rich" — but their vectors point differently, so they get different wines from the same pool.</p>
+            <span class="ann-tech">ranked per food vector, not cluster centroid</span>
+          </div>
+          <div class="ann-card ann-card--wine" style="margin-top:0.7rem">
+            <strong class="ann-title">Flavor tags</strong>
+            <p class="ann-desc">The words that scored highest in both the food description and the wine review. These are the specific flavor words that brought the two together.</p>
+            <span class="ann-tech">TF-IDF overlap · food desc ∩ wine review</span>
+          </div>
+        </div>
+
+        <!-- Screenshot -->
+        <div class="annot-screen">
+          <img src="app-pairing.png" alt="Wine &amp; Dine app — wine pairings result">
+        </div>
+
+        <!-- Right callouts -->
+        <div class="annot-col annot-col--right">
+          <div class="ann-card ann-card--safe">
+            <strong class="ann-title">Safe Bet</strong>
+            <p class="ann-desc">Highest cosine similarity to <em>this food's exact vector</em> inside the nearest taste cluster. The obvious match — and genuinely satisfying.</p>
+            <span class="ann-tech">argmax cos(food, wine) in cluster₁</span>
+          </div>
+          <div class="ann-card ann-card--gem" style="margin-top:0.7rem">
+            <strong class="ann-title">Hidden Gem</strong>
+            <p class="ann-desc">Top-rated wine from the second-closest cluster. Similar enough to harmonize — different enough to reveal something unexpected.</p>
+            <span class="ann-tech">top rating in cluster₂</span>
+          </div>
+          <div class="ann-card ann-card--bold" style="margin-top:0.7rem">
+            <strong class="ann-title">Bold Move</strong>
+            <p class="ann-desc">The farthest wine that still passes a rating floor. Contrast by design — every bite of food refreshes the palate.</p>
+            <span class="ann-tech">inverse cosine sim · rating ≥ floor</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom row: wine review + why it works -->
+      <div class="annot-bottom stagger">
+        <div class="ann-card ann-card--bottom">
+          <strong class="ann-title">The wine review</strong>
+          <p class="ann-desc">A real quote from the WineSensed dataset — 824,000 reviews. Selected as the one whose language most closely matched the flavor profile the model identified in the food.</p>
+          <span class="ann-tech">highest TF-IDF overlap with food description</span>
+        </div>
+        <div class="ann-card ann-card--bottom">
+          <strong class="ann-title">Why it works</strong>
+          <p class="ann-desc">The system's human-readable justification — the specific flavor words that appear in both the food description and the wine review, showing exactly what brought them together.</p>
+          <span class="ann-tech">food desc keywords ∩ wine review keywords</span>
+        </div>
+      </div>
+
+        </div><!-- /.annot-wrap -->
+
+    </div>
+    <div class="slide-nav"><a href="#pairing">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <!-- Chapter 15 — Full Architecture -->
+  <section id="pairing" class="section dark">
+    <div class="container reveal">
+      <span class="section-label">Chapter 15 · Full Architecture</span>
+      <h2>One photo. Three recommendations. Here's how.</h2>
+
+      <div class="tl2 stagger">
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--input"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">A photo arrives</strong>
+            <p class="tl2-desc">You upload any dish. The system takes it from there.</p>
+          </div>
+        </div>
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--cnn"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">The dish is identified</strong>
+            <p class="tl2-desc">ResNet-50 classifies the image across 101 food categories, fine-tuned on Food-101.</p>
+            <span class="tl2-tech">76.5% top-1 accuracy</span>
+          </div>
+        </div>
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--desc"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">Its taste is put into words</strong>
+            <p class="tl2-desc">The dish name retrieves a one-sentence flavor profile — dominant character, a surprising note, a contrast suggestion — written in the same register as wine reviews.</p>
+            <span class="tl2-tech">101 LLM-generated descriptions</span>
+          </div>
+        </div>
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--bilstm"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">Words become 512 numbers</strong>
+            <p class="tl2-desc">TasteBiLSTM reads that sentence — forwards, backwards, with attention — and compresses it into a single taste vector: the food's address in a shared food-wine space.</p>
+            <span class="tl2-tech">BiLSTM + Bahdanau attention &middot; 512-d &middot; L2-normalised</span>
+          </div>
+        </div>
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--cluster"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">A flavor neighborhood is assigned</strong>
+            <p class="tl2-desc">Cosine similarity to 9 pre-built taste centroids names the profile and returns a confidence score: how close was this dish to its cluster?</p>
+            <span class="tl2-tech">BisectingKMeans &middot; K=9 &middot; silhouette 0.476 &middot; 824k wine vectors</span>
+          </div>
+        </div>
+
+        <div class="tl2-item">
+          <div class="tl2-rail"><div class="tl2-dot tl2-dot--output"></div></div>
+          <div class="tl2-body">
+            <strong class="tl2-title">Three wines are chosen — three different ways</strong>
+            <p class="tl2-desc">Each strategy picks from a pool of 10 pre-vetted wines per cluster, ranked against the exact dish vector — so two dishes in the same cluster still get different bottles.</p>
+            <div class="tl2-tiers">
+              <span class="tl2-tier tl2-tier--safe">Safe Bet &mdash; nearest flavor match</span>
+              <span class="tl2-tier tl2-tier--gem">Hidden Gem &mdash; pairs with the surprising note</span>
+              <span class="tl2-tier tl2-tier--bold">Bold Move &mdash; highest contrast that still works</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-nav"><a href="#team">Next chapter <span class="arrow">↓</span></a></div>
+  </section>
+
+  <section id="team" class="section team-section">
+    <div class="team-body reveal">
+      <p class="team-course">RSU Advanced Machine Learning &middot; Final Project 2026</p>
+      <div class="team-inner">
+      <div class="team-thankyou">Thank you</div>
+      <p class="team-project">Wine &amp; Dine</p>
+      <ul class="team-names">
+        <li>Girts Ziemanis</li>
+        <li>Ugis Rutins</li>
+        <li>Maris Zelcs</li>
+        <li>Evija Sturmane</li>
+        <li>Jolanta Stutane</li>
+      </ul>
+      <a class="team-demo" href="https://huggingface.co/spaces/Jolanati/wine-dine" target="_blank">Go to demo &rarr;</a>
+    </div>
   </section>
 
   <script src="script.js"></script>

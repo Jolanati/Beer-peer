@@ -1215,6 +1215,7 @@ strong {
 }
 .tl-content {
   padding: 0.4rem 0 0.6rem;
+  margin-bottom: -2.4rem;
 }
 .tl-content--left {
   padding-right: 1.2rem;
@@ -1225,14 +1226,14 @@ strong {
 }
 .tl-num {
   display: block;
-  font: 700 1.5rem/1 'Cormorant Garamond';
+  font: 700 1.8rem/1 'Cormorant Garamond';
   color: var(--wine);
   margin-bottom: 0.15rem;
 }
 .tl-grid--dark .tl-num { color: var(--gold); }
 .tl-title {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-light);
   line-height: 1.3;
@@ -1240,7 +1241,7 @@ strong {
 }
 .tl-grid--dark .tl-title { color: var(--text-dark); }
 .tl-desc {
-  font-size: 0.76rem;
+  font-size: 0.88rem;
   color: var(--text-light-m);
   line-height: 1.5;
   margin: 0 0 0.2rem;
@@ -1249,11 +1250,12 @@ strong {
 .tl-grid--dark .tl-desc em { font-style: italic; color: var(--gold); }
 .tl-tech {
   display: block;
-  font: 400 0.6rem/1.3 'Lato';
-  color: var(--text-light-m);
-  opacity: 0.7;
+  font: 400 0.72rem/1.3 'Lato';
+  color: #4a4a4a;
+  opacity: 1;
+  margin-top: 0.45rem;
 }
-.tl-grid--dark .tl-tech { color: var(--text-dark-m); }
+.tl-grid--dark .tl-tech { color: rgba(240,235,228,0.65); }
 
 /* ── Chapter 13 — The Bridge (Slide C) ── */
 #bridge2 { padding-top: 0.8rem; padding-bottom: 3rem; }
@@ -1295,13 +1297,321 @@ strong {
 .br2-closing {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
   color: var(--wine);
   text-align: center;
-  margin-top: 1.2rem;
+  margin-top: 2.8rem;
+  line-height: 1.45;
 }
 
-.bridge-heading {
+/* ── Chapter 14 — Annotated Screenshot ── */
+#logic { padding-top: 0.8rem; padding-bottom: 3rem; }
+#logic h2 { margin-bottom: 0.4rem; }
+
+.annot-wrap {
+  display: grid;
+  grid-template-columns: 1fr 52% 1fr;
+  gap: 0 1.6rem;
+  margin-top: 0.3rem;
+}
+.annot-outer {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 52% 1fr;
+  gap: 0 1.6rem;
+  align-items: start;
+}
+
+.annot-screen img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  display: block;
+}
+
+.annot-col {
+  display: flex;
+  flex-direction: column;
+}
+.annot-col--left  { align-items: flex-end; }
+.annot-col--right { align-items: flex-start; }
+
+.ann-card {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  border-left: 3px solid var(--rule);
+}
+.annot-col--left .ann-card {
+  border-left: none;
+  border-right: 3px solid var(--rule);
+  text-align: right;
+}
+
+/* Arrow pointing right (left callouts → screenshot) */
+.annot-col--left .ann-card::after {
+  content: '→';
+  position: absolute;
+  right: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--wine);
+  line-height: 1;
+}
+
+/* Arrow pointing left (screenshot ← right callouts) */
+.annot-col--right .ann-card::before {
+  content: '←';
+  position: absolute;
+  left: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  line-height: 1;
+}
+.ann-card--safe::before { color: #697a54; }
+.ann-card--gem::before  { color: #6961a8; }
+.ann-card--bold::before { color: #bd6846; }
+.ann-card--wine  { border-color: var(--wine); }
+.ann-card--safe  { border-color: #697a54; }
+.ann-card--gem   { border-color: #6961a8; }
+.ann-card--bold  { border-color: #bd6846; }
+.ann-card--empty {
+  border-color: var(--rule);
+  min-height: 3.5rem;
+  background: rgba(0,0,0,0.02);
+  box-shadow: none;
+}
+.ann-card--empty::after,
+.ann-card--empty::before { display: none; }
+.ann-card--bottom {
+  min-height: 4rem;
+}
+.ann-card--bottom::before {
+  content: '↑';
+  position: absolute;
+  top: -1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: var(--wine);
+  line-height: 1;
+}
+
+.annot-bottom {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+  align-self: start;
+}
+
+.ann-title {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+.ann-desc {
+  font-size: 0.66rem;
+  color: var(--text-light-m);
+  line-height: 1.5;
+  margin: 0;
+}
+.ann-desc em { font-style: italic; color: var(--text-light); }
+.ann-tech {
+  display: block;
+  font: 400 0.58rem/1.3 'Lato';
+  color: #4a4a4a;
+  margin-top: 0.15rem;
+}
+
+/* ── Chapter 15 — Full Architecture ── */
+#pairing { padding-top: 0.8rem; padding-bottom: 5rem; }
+#pairing h2 { margin-bottom: 1.2rem; }
+
+.tl2 {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.tl2-item {
+  display: flex;
+  align-items: stretch;
+}
+.tl2-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1.6rem;
+  position: relative;
+}
+.tl2-item:not(:last-child) .tl2-rail::after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(212,169,106,0.2);
+  transform: translateX(-50%);
+}
+.tl2-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+  position: relative;
+  z-index: 1;
+}
+.tl2-dot--input   { background: var(--gold); }
+.tl2-dot--cnn     { background: var(--wine-accent); }
+.tl2-dot--desc    { background: var(--wine-light); }
+.tl2-dot--bilstm  { background: var(--wine); }
+.tl2-dot--cluster { background: #697a54; }
+.tl2-dot--output  { background: var(--gold); width: 0.7rem; height: 0.7rem; margin-top: 0.38rem; }
+
+.tl2-body {
+  padding: 0 0 1.5rem 0.9rem;
+  min-width: 0;
+}
+.tl2-item:last-child .tl2-body { padding-bottom: 0; }
+.tl2-title {
+  display: block;
+  font: 700 1.2rem/1.25 'Cormorant Garamond';
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+}
+.tl2-desc {
+  font-size: 0.73rem;
+  color: var(--text-dark-m);
+  line-height: 1.6;
+  margin: 0 0 0.25rem;
+}
+.tl2-tech {
+  display: block;
+  font: 400 0.59rem/1.3 'Lato';
+  color: rgba(212,169,106,0.4);
+}
+.tl2-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+}
+.tl2-tier {
+  font: 400 0.68rem/1 'Lato';
+  color: var(--text-dark-m);
+  padding-left: 0.75rem;
+  position: relative;
+}
+.tl2-tier::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+}
+.tl2-tier--safe::before { background: #697a54; }
+.tl2-tier--gem::before  { background: #6961a8; }
+.tl2-tier--bold::before { background: #bd6846; }
+.tl2-tier--safe { color: rgba(105,122,84,0.85); }
+.tl2-tier--gem  { color: rgba(105,97,168,0.85); }
+.tl2-tier--bold { color: rgba(189,104,70,0.85); }
+
+/* ── Team / Closing slide ── */
+.team-section {
+  background: radial-gradient(ellipse at 62% 42%, var(--wine) 0%, var(--wine-deeper) 55%, #110409 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+}
+.team-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 10rem;
+}
+.team-course {
+  font: 400 0.7rem/1 'Lato';
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240,235,228,0.3);
+  margin: 0 0 2.5rem;
+}
+.team-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.team-thankyou {
+  font: 400 clamp(5rem, 12vw, 8.5rem)/1 'Great Vibes';
+  color: var(--cream);
+  margin: 0.1rem 0 0;
+}
+.team-project {
+  font: 400 0.75rem/1 'Lato';
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.65;
+  margin: 0;
+}
+.team-names {
+  list-style: none;
+  padding: 0;
+  margin: 1.6rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 2rem;
+}
+.team-names li {
+  font: 300 0.88rem/1.6 'Lato';
+  color: rgba(240,235,228,0.55);
+  letter-spacing: 0.04em;
+}
+.team-demo {
+  display: inline-block;
+  margin-top: 1.8rem;
+  padding: 0.6rem 2rem;
+  border: 1px solid rgba(212,169,106,0.45);
+  border-radius: 50px;
+  font: 700 0.7rem/1 'Lato';
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.team-demo:hover {
+  background: rgba(212,169,106,0.1);
+  border-color: var(--gold);
+}
+
+
   font-size: clamp(2.8rem, 5.5vw, 4.2rem);
   line-height: 1.15;
   color: var(--text-light);

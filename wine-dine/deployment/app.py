@@ -1020,24 +1020,35 @@ def _screen4_html() -> str:
     </div>
   </div>
 
-  <!-- presentation placeholder -->
-  <div style="border-radius:18px;border:1.5px dashed rgba(122,24,48,0.22);
-              background:rgba(122,24,48,0.03);padding:32px;text-align:center;
-              margin-bottom:28px">
-    <div style="font-size:10px;color:#b8aaa0;text-transform:uppercase;
-                letter-spacing:0.16em;font-weight:800;margin-bottom:10px">
-      PRESENTATION PLACEHOLDER</div>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:28px;
-                font-weight:700;color:#7a1830;letter-spacing:-0.8px;
-                margin-bottom:10px">Project Presentation</div>
-    <div style="font-size:13px;color:#9e9188;margin-bottom:20px">
-      Add link to PowerPoint / research presentation / architecture deck here.</div>
-    <a href="#" style="display:inline-block;padding:12px 28px;border-radius:999px;
-                       background:linear-gradient(135deg,#8d1f3a,#5a1024);
-                       color:#fff;font-size:14px;font-weight:800;
-                       text-decoration:none;letter-spacing:-0.2px;
-                       box-shadow:0 10px 24px rgba(122,24,48,0.22)">
-      Open presentation &#x2197;</a>
+  <!-- project presentation -->
+  <div style="border-radius:18px;background:#fff;
+              border:1px solid rgba(63,43,35,0.09);
+              box-shadow:0 2px 12px rgba(52,34,26,0.07);
+              padding:28px 32px;margin-bottom:28px;
+              display:flex;align-items:center;gap:28px">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:10px;color:#9e9188;text-transform:uppercase;
+                  letter-spacing:0.14em;font-weight:800;margin-bottom:8px">
+        PROJECT PRESENTATION</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;
+                  font-weight:700;color:#211917;line-height:1.25;margin-bottom:8px">
+        The full Wine&amp;Dine story</div>
+      <div style="font-size:13px;color:#9e9188;line-height:1.6">
+        Walk through the problem, datasets, model architecture and design decisions —
+        from raw food photo to your three wine pairings.
+      </div>
+    </div>
+    <a href="https://wine-dine-seven.vercel.app/" target="_blank" rel="noopener"
+       style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
+              padding:13px 26px;border-radius:999px;
+              background:linear-gradient(135deg,#8d1f3a,#5a1024);
+              color:#fff;font-size:13px;font-weight:800;
+              text-decoration:none;letter-spacing:0.02em;
+              box-shadow:0 8px 22px rgba(122,24,48,0.22);
+              white-space:nowrap">
+      Open presentation
+      <span style="font-size:16px;line-height:1">&#x2197;</span>
+    </a>
   </div>
 
   <!-- tags -->

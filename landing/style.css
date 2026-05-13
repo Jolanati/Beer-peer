@@ -147,7 +147,7 @@ strong {
 
 .slide-nav {
   position: absolute;
-  bottom: 3rem;
+  bottom: 2.6rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -1438,12 +1438,11 @@ strong {
 }
 
 /* ── Chapter 15 — Full Architecture ── */
-#pairing { padding-top: 0.8rem; padding-bottom: 5rem; }
+#pairing { padding-top: 0.8rem; padding-bottom: 8rem; }
 #pairing h2 { margin-bottom: 1.2rem; }
 
 .tl2 {
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
 }
@@ -1612,7 +1611,8 @@ strong {
 }
 
 
-  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+.bridge-heading {
+  font-size: clamp(3.2rem, 6vw, 5rem);
   line-height: 1.15;
   color: var(--text-light);
   margin: 0.6rem 0 2rem;
@@ -1626,7 +1626,7 @@ strong {
 .bridge-flows { margin-bottom: 1.4rem; }
 .bridge-flow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-style: italic;
   color: var(--text-light-m);
   margin: 0 0 0.35rem;
@@ -1636,7 +1636,7 @@ strong {
   color: var(--wine);
 }
 .bridge-body {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-light-m);
   line-height: 1.7;
   max-width: 52ch;
@@ -1644,7 +1644,7 @@ strong {
 }
 .bridge-teaser {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-style: italic;
   color: var(--wine);
   margin: 0;
